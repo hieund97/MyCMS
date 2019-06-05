@@ -10,12 +10,18 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-    protected $redirecto = '/admin';
+    protected $redirectTo = '/admin';
+    
     public function showLoginForm(){
         return view('admin.auth.login');
     }
 
-    public function login(){
-        
-    }    
+    public function logout(Request $request)
+    {
+        auth()->guard()->logout();
+
+        session()->invalidate();
+
+        return redirect('/admin/login');
+    }
 }

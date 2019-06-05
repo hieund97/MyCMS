@@ -1,57 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('manage/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('manage/img/favicon.png') }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('manage/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{asset('manage/img/favicon.png') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Material Dashboard PRO by Creative Tim
   </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-    name='viewport' />
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
   <!-- Canonical SEO -->
   <link rel="canonical" href="https://www.creative-tim.com/product/material-dashboard-pro" />
   <!--  Social tags      -->
-  <meta name="keywords"
-    content="creative tim, html dashboard, html css dashboard, web dashboard, bootstrap 4 dashboard, bootstrap 4, css3 dashboard, bootstrap 4 admin, material dashboard bootstrap 4 dashboard, frontend, responsive bootstrap 4 dashboard, material design, material dashboard bootstrap 4 dashboard">
-  <meta name="description"
-    content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
+  <meta name="keywords" content="creative tim, html dashboard, html css dashboard, web dashboard, bootstrap 4 dashboard, bootstrap 4, css3 dashboard, bootstrap 4 admin, material dashboard bootstrap 4 dashboard, frontend, responsive bootstrap 4 dashboard, material design, material dashboard bootstrap 4 dashboard">
+  <meta name="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="Material Dashboard PRO by Creative Tim">
-  <meta itemprop="description"
-    content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
-  <meta itemprop="image"
-    content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta itemprop="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
+  <meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="product">
   <meta name="twitter:site" content="@creativetim">
   <meta name="twitter:title" content="Material Dashboard PRO by Creative Tim">
-  <meta name="twitter:description"
-    content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
+  <meta name="twitter:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <meta name="twitter:creator" content="@creativetim">
-  <meta name="twitter:image"
-    content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Open Graph data -->
   <meta property="fb:app_id" content="655968634437471">
   <meta property="og:title" content="Material Dashboard PRO by Creative Tim" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="http://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html" />
-  <meta property="og:image"
-    content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
-  <meta property="og:description"
-    content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
+  <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
+  <meta property="og:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
   <meta property="og:site_name" content="Creative Tim" />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css"
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="{{ asset('manage/css/material-dashboard.min.css?v=2.1.0') }}" rel="stylesheet" />
+  <link href="{{asset('manage/css/material-dashboard.min.css?v=2.1.0') }}" rel="stylesheet"/>
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset('manage/demo/demo.css') }}" rel="stylesheet" />
+  <link href="{{asset('manage/demo/demo.css') }}" rel="stylesheet"/>
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -76,164 +67,107 @@
   <!-- Extra details for Live View on GitHub Pages -->
   <!-- Google Tag Manager (noscript) -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
     <div class="container">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="/admin/register">Register Page</a>
+        <a class="navbar-brand" href="/admin/login">Login Page</a>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-        aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
         <span class="navbar-toggler-icon icon-bar"></span>
         <span class="navbar-toggler-icon icon-bar"></span>
         <span class="navbar-toggler-icon icon-bar"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item  active ">
+        <ul class="navbar-nav">          
+          <li class="nav-item ">
             <a href="/admin/register" class="nav-link">
               <i class="material-icons">person_add</i> Register
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item  active ">
             <a href="/admin/login" class="nav-link">
               <i class="material-icons">fingerprint</i> Login
             </a>
           </li>
+          {{-- <li class="nav-item ">
+            <a href="../pages/lock.html" class="nav-link">
+              <i class="material-icons">lock_open</i> Lock
+            </a>
+          </li> --}}
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Navbar -->
   <div class="wrapper wrapper-full-page">
-    <div class="page-header register-page header-filter" filter-color="black"
-      style="background-image: url({{ asset('manage/img/register.jpg')}});">
-      <div class="container">          
+    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url({{asset('manage/img/login.jpg') }}); background-size: cover; background-position: top center;">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="container">
         <div class="row">
-          <div class="col-md-5 ml-auto mr-auto">
-            <div class="card card-signup">
-                @if (session()->has('add_user'))
-                <div class="alert alert-success">
-                  <div class="container">
-                    <div class="alert-icon">
-                      <i class="material-icons">check</i>
-                    </div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                    </button>
-                    <b>Đăng ký thành công</b> </br>  <a href="/admin/login">Quay lại trang Login</a>
-                  </div>
-                </div>
-                @endif
-                
-                @if ($errors->has('password'))
-                <div class="alert alert-danger">
-                    <div class="container">
-                      <div class="alert-icon">
-                        <i class="material-icons">error_outline</i>
-                      </div>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                      </button>
-                      <b>Có lỗi xảy ra</b> </br> Mật khẩu không khớp
-                    </div>
-                  </div>  
-                @endif
-              <h2 class="card-title text-center">Register</h2>
-              <div class="col-md-11 mr-auto">
-                <div class="social text-center" style="margin-left: 35px;">
-                  {{-- <button class="btn btn-just-icon btn-round btn-twitter">
-                    <i class="fa fa-twitter"></i>
-                  </button>
-                  <button class="btn btn-just-icon btn-round btn-dribbble">
-                    <i class="fa fa-dribbble"></i>
-                  </button>
-                  <button class="btn btn-just-icon btn-round btn-facebook">
-                    <i class="fa fa-facebook"> </i>
-                  </button>
-                  <h4 class="mt-3"> or be classical </h4> --}}
-                </div>
+          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
 
-                {{-- Form --}}
-                
-                
-                <form class="form" method="post" action="/admin/register">
-                  @csrf
-                  <div class="form-group has-default">
-                    <div class="input-group">
+                {{-- Form Login --}}
+            <form class="form" method="POST" action="">
+              @csrf
+              <div class="card card-login card-hidden">
+                <div class="card-header card-header-rose text-center">
+                  <h4 class="card-title">Login</h4>
+                  <div class="social-line">
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="card-body ">
+                  <p class="card-description text-center">Or Be Classical</p>
+                  <span class="bmd-form-group">
+                    {{-- <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="material-icons">face</i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" name="firstname" placeholder="First Name...">
-                    </div>
-                  </div>
-                  <div class="form-group has-default">
+                      <input type="text" class="form-control" placeholder="First Name...">
+                    </div> --}}
+                  </span>
+                  <span class="bmd-form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                          <i class="material-icons">face</i>
+                          <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" name="lastname" placeholder="Last Name...">
+                      <input type="email" name="email" class="form-control" placeholder="Email...">
                     </div>
-                  </div>
-                  <div class="form-group has-default">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">mail</i>
-                        </span>
-                      </div>
-                      <input type="email" class="form-control" name="email" placeholder="Email...">
-                    </div>
-                  </div>
-                  <div class="form-group has-default">
+                  </span>
+                  <span class="bmd-form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="material-icons">lock_outline</i>
                         </span>
                       </div>
-                      <input type="password" placeholder="Password..." name="password" class="form-control">
+                      <input type="password" name="password" class="form-control" placeholder="Password...">
                     </div>
-                  </div>
-                  <div class="form-group has-default">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input type="password" placeholder="Re-type Password..." name="retypepassword"
-                        class="form-control">
-                    </div>
-                  </div>
-                  {{-- <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="" checked="">
-                      <span class="form-check-sign">
-                        <span class="check"></span>
-                      </span>
-                      I agree to the
-                      <a href="#something">terms and conditions</a>.
-                    </label>
-                  </div> --}}
-                  <div class="text-center" style="margin-left: 37px;">
-                    <button class="btn btn-primary btn-round mt-4" type="submit">Get Started</button>
-                  </div>
-                </form>
-
-                {{-- End Form --}}
-
+                  </span>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <button class="btn btn-rose btn-link btn-lg"  type="submit" >Lets Go</button>
+                </div>
               </div>
-            </div>
+            </form>
+              {{-- End Form Login --}}
           </div>
         </div>
       </div>
@@ -275,23 +209,22 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="{{ asset('manage/js/core/jquery.min.js') }}"></script>
-  <script src="{{ asset('manage/js/core/popper.min.js') }}"></script>
-  <script src="{{ asset('manage/js/core/bootstrap-material-design.min.js') }}"></script>
-  <script src="{{ asset('manage/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+  <script src="{{asset('manage/js/core/jquery.min.js') }}"></script>
+  <script src="{{asset('manage/js/core/popper.min.js') }}"></script>
+  <script src="{{asset('manage/js/core/bootstrap-material-design.min.js') }}"></script>
+  <script src="{{asset('manage/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
-  <script src="{{ asset('manage/js/plugins/chartist.min.js') }}"></script>
+  <script src="{{asset('manage/js/plugins/chartist.min.js') }}"></script>
   <!--  Notifications Plugin    -->
-  <script src="{{ asset('manage/js/plugins/bootstrap-notify.js') }}"></script>
+  <script src="{{asset('manage/js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
+  <script src="{{asset('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset('manage/demo/demo.js') }}"></script>
-
+  <script src="{{asset('manage/demo/demo.js') }}"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -464,7 +397,7 @@
     });
   </script>
   <!-- Sharrre libray -->
-  <script src="{{ asset('manage/demo/jquery.sharrre.js') }}"></script>
+  <script src="{{asset('manage/demo/jquery.sharrre.js') }}"></script>
   <script>
     $(document).ready(function() {
 
@@ -564,12 +497,15 @@
     });
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
   </noscript>
   <script>
     $(document).ready(function() {
       md.checkFullPageBackgroundImage();
+      setTimeout(function() {
+        // after 1000 ms we add the class animated to the login/register card
+        $('.card').removeClass('card-hidden');
+      }, 700);
     });
   </script>
 </body>

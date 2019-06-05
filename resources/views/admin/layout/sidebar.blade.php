@@ -38,12 +38,12 @@
                 <span class="sidebar-normal"> Edit Profile </span>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="#">
                 <span class="sidebar-mini"> S </span>
                 <span class="sidebar-normal"> Settings </span>
               </a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </div>

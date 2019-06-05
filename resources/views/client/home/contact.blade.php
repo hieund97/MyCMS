@@ -21,57 +21,16 @@
 
 <body class="contact-page">
 
-	<nav class="navbar navbar-transparent navbar-absolute">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://www.creative-tim.com">Creative Tim</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navigation-example">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#pablo">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#pablo">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#pablo">
-                            Products
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#pablo">
-                            Contact Us
-                        </a>
-                    </li>
-                    <li>
-                    <a href="#" target="_blank" class="btn btn-white btn-simple">
-                        <i class="material-icons">shopping_cart</i> Buy Now
-                    </a>
-                </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	{{-- navbar --}}
+    @include('client.layout.navbar')
+    {{-- End Navbar --}}
 
     <div class="page-header header-filter header-small" data-parallax="true"
         style="background-image: url({{ asset ('client/img/bg9.jpg')}});">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="title">About Us</h1>
+                    <h1 class="title">Contact Us</h1>
                     <h4>Meet the amazing team behind this project and find out more about how we work.</h4>
                 </div>
             </div>
@@ -156,142 +115,16 @@
     {{-- Subcribe --}}
     <!--     *********    SIMPLE SUBSCRIBE LINE     *********      -->
 
-    <div class="subscribe-line subscribe-line-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="title">Get Tips & Tricks every Week!</h3>
-                    <p class="description">
-                        Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-plain card-form-horizontal">
-                        <div class="card-content">
-                            <form method="" action="">
-                                <div class="row">
-                                    <div class="col-sm-8">
-
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">mail</i>
-                                            </span>
-                                            <input type="email" value="" placeholder="Your Email..." class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <button type="button" class="btn btn-rose btn-round btn-block">Subscribe</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('client.layout.subcribe')
 
     <!--     *********   SIMPLE SUBSCRIBE LINE     *********      -->
     {{-- End Subcribe --}}
 
     {{-- Footer --}}
-    <footer class="footer footer-black footer-big">
-        <div class="container">
-
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h5>About Us</h5>
-                        <p>Creative Tim is a startup that creates design tools that make the web development process
-                            faster and easier. </p>
-                        <p>We love the web and care deeply for how users interact with a digital product. We power
-                            businesses and individuals to create better looking web projects around the world. </p>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h5>Social Feed</h5>
-                        <div class="social-feed">
-                            <div class="feed-line">
-                                <i class="fa fa-twitter"></i>
-                                <p>How to handle ethical disagreements with your clients.</p>
-                            </div>
-                            <div class="feed-line">
-                                <i class="fa fa-twitter"></i>
-                                <p>The tangible benefits of designing at 1x pixel density.</p>
-                            </div>
-                            <div class="feed-line">
-                                <i class="fa fa-facebook-square"></i>
-                                <p>A collection of 25 stunning sites that you can use for inspiration.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h5>Instagram Feed</h5>
-                        <div class="gallery-feed">
-                            <img src="{{ asset ('client/img/faces/card-profile6-square.jpg') }}"
-                                class="img img-raised img-rounded" alt="" />
-                            <img src="{{ asset ('client/img/faces/christian.jpg') }}" class="img img-raised img-rounded"
-                                alt="" />
-                            <img src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}"
-                                class="img img-raised img-rounded" alt="" />
-                            <img src="{{ asset ('client/img/faces/card-profile1-square.jpg') }}"
-                                class="img img-raised img-rounded" alt="" />
-
-                            <img src="{{ asset ('client/img/faces/marc.jpg') }}" class="img img-raised img-rounded"
-                                alt="" />
-                            <img src="{{ asset ('client/img/faces/kendall.jpg') }}" class="img img-raised img-rounded"
-                                alt="" />
-                            <img src="{{ asset ('client/img/faces/card-profile5-square.jpg') }}"
-                                class="img img-raised img-rounded" alt="" />
-                            <img src="{{ asset ('client/img/faces/card-profile2-square.jpg') }}"
-                                class="img img-raised img-rounded" alt="" />
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <hr />
-
-            <ul class="pull-left">
-                <li>
-                    <a href="#pablo">
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="#pablo">
-                        Presentation
-                    </a>
-                </li>
-                <li>
-                    <a href="#pablo">
-                        Discover
-                    </a>
-                </li>
-                <li>
-                    <a href="#pablo">
-                        Payment
-                    </a>
-                </li>
-                <li>
-                    <a href="#pablo">
-                        Contact Us
-                    </a>
-                </li>
-            </ul>
-
-            <div class="copyright pull-right">
-                Copyright &copy; <script>
-                    document.write(new Date().getFullYear())
-                </script> Creative Tim All Rights Reserved.
-            </div>
-        </div>
-    </footer>
+    @include('client.layout.footer')
     {{-- End Footer --}}
+
+    
 </body>
 	<!--   Core JS Files   -->
 	<script src="{{ asset ('client/js/jquery.min.js') }}" type="text/javascript"></script>

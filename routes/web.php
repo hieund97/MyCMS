@@ -23,17 +23,27 @@ Route::group([
     Route::group([
         'middleware' => 'guest'
     ], function () {
-        Route::get('/login', "LoginController@showLoginForm");
-        Route::get('/register', 'RegisterController@register');
-        Route::post('/login', "LoginController@login");
+        Route::get('login', "LoginController@showLoginForm");        
+        Route::post('login', "LoginController@login");
+        Route::get('register', 'RegisterController@register');
+        Route::post('/register', 'RegisterController@store');
 
     });
 
     Route::group([
-        // 'middleware' => 'auth'
+        'middleware' => 'auth'
     ], function () {
-        Route::get('/dashboard', 'DashboardController@index');
-        Route::post('/logout', 'LoginController@logout');
+        Route::get('/', 'DashboardController@index');
+        Route::post('logout', 'LoginController@logout');
+
+        // Admin User Route
+        Route::group([
+            'prefix' => 'user'
+        ], function () {
+            Route::get('/', 'UserController@index');
+            Route::get('/create', 'UserController@create');
+            Route::get('/{user}/edit', 'UserController@edit');
+        });
     });
 
 

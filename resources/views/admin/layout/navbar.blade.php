@@ -62,7 +62,7 @@
                   <a class="dropdown-item" href="#">Profile</a>
                   <a class="dropdown-item" href="#">Settings</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()" class="dropdown-item" href="#">Log out</a>
                 </div>
               </li>
             </ul>
@@ -70,3 +70,7 @@
         </div>
       </nav>
       <!-- End Navbar -->
+
+      <form action="/admin/logout" method="POST" id="logout-form">
+        @csrf
+      </form>
