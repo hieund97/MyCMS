@@ -78,7 +78,7 @@
                 <img src="{{ asset('manage/img/sidebar-4.jpg') }}" alt="">
               </a>
             </li>
-            <li class="button-container">
+            {{-- <li class="button-container">
               <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-rose btn-block btn-fill">Buy Now</a>
               <a href="https://demos.creative-tim.com/material-dashboard-pro/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
                 Documentation
@@ -86,8 +86,8 @@
               <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-info btn-block">
                 Get Free Demo!
               </a>
-            </li>
-            <li class="button-container github-star">
+            </li> --}}
+            {{-- <li class="button-container github-star">
               <a class="github-button" href="https://github.com/creativetimofficial/ct-material-dashboard-pro" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
             </li>
             <li class="header-title">Thank you for 95 shares!</li>
@@ -96,6 +96,6 @@
               <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
               <br>
               <br>
-            </li>
+            </li> --}}
           </ul>
         </div>

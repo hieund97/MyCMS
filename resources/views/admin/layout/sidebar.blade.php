@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="rose" data-background-color="black" data-image=" {{ asset ('manage/img/sidebar-1.jpg') }}">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -15,42 +15,42 @@
   <div class="sidebar-wrapper">
     <div class="user">
       <div class="photo">
-        <img src="../assets/img/faces/avatar.jpg" />
+        <img src="{{ asset ('manage/img/default-avatar.png') }}" />
       </div>
       <div class="user-info">
-        <a data-toggle="collapse" href="#collapseExample" class="username">
+        <a href="/admin/user/{{$user->id}}" class="username">
           <span>
-            Tania Andrew
-            <b class="caret"></b>
+            {{auth()->user()->last_name}} {{auth()->user()->first_name}}
+            {{-- <b class="caret"></b> --}}
           </span>
         </a>
-        <div class="collapse" id="collapseExample">
+        {{-- <div class="collapse" id="collapseExample">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/admin/user">
                 <span class="sidebar-mini"> MP </span>
                 <span class="sidebar-normal"> My Profile </span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/admin/user">
                 <span class="sidebar-mini"> EP </span>
                 <span class="sidebar-normal"> Edit Profile </span>
               </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="#">
                 <span class="sidebar-mini"> S </span>
                 <span class="sidebar-normal"> Settings </span>
               </a>
-            </li> --}}
+            </li>
           </ul>
-        </div>
+        </div> --}}
       </div>
     </div>
     <ul class="nav">
       <li class="nav-item active ">
-        <a class="nav-link" href="../examples/dashboard.html">
+        <a class="nav-link" href="/admin">
           <i class="material-icons">dashboard</i>
           <p> Dashboard </p>
         </a>

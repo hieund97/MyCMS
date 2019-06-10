@@ -40,9 +40,9 @@ Route::group([
         Route::group([
             'prefix' => 'user'
         ], function () {
-            Route::get('/', 'UserController@index');
-            Route::get('/create', 'UserController@create');
-            Route::get('/{user}/edit', 'UserController@edit');
+            Route::get('/{user}', 'UserController@index');
+            Route::get('/create', 'UserController@create');            
+            Route::put('{user}', 'UserController@update');
         });
     });
 
