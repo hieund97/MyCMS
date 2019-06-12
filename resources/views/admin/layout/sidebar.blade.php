@@ -15,10 +15,10 @@
   <div class="sidebar-wrapper">
     <div class="user">
       <div class="photo">
-        <img src="{{ asset ('manage/img/default-avatar.png') }}" />
+        <img src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}" />
       </div>
-      <div class="user-info">
-        <a href="/admin/user/{{$user->id}}" class="username">
+      <div class="user-info">        
+        <a href="/admin/user/{{auth()->user()->id}}/edit" class="username">
           <span>
             {{auth()->user()->last_name}} {{auth()->user()->first_name}}
             {{-- <b class="caret"></b> --}}
@@ -57,61 +57,31 @@
       </li>
       <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-          <i class="material-icons">image</i>
-          <p> Pages
+          <i class="material-icons">person</i>
+          <p> User
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse" id="pagesExamples">
           <ul class="nav">
             <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/pricing.html">
-                <span class="sidebar-mini"> P </span>
-                <span class="sidebar-normal"> Pricing </span>
+              <a class="nav-link" href="/admin/user/{{auth()->user()->id}}/edit">
+                <span class="sidebar-mini"> MP </span>
+                <span class="sidebar-normal"> My Profile </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/rtl.html">
-                <span class="sidebar-mini"> RS </span>
-                <span class="sidebar-normal"> RTL Support </span>
+              <a class="nav-link" href="/admin/user">
+                <span class="sidebar-mini"> LS </span>
+                <span class="sidebar-normal"> List User </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/timeline.html">
-                <span class="sidebar-mini"> T </span>
-                <span class="sidebar-normal"> Timeline </span>
+              <a class="nav-link" href="/admin/register">
+                <span class="sidebar-mini"> RG </span>
+                <span class="sidebar-normal"> Register </span>
               </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/login.html">
-                <span class="sidebar-mini"> LP </span>
-                <span class="sidebar-normal"> Login Page </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/register.html">
-                <span class="sidebar-mini"> RP </span>
-                <span class="sidebar-normal"> Register Page </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/lock.html">
-                <span class="sidebar-mini"> LSP </span>
-                <span class="sidebar-normal"> Lock Screen Page </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/user.html">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal"> User Profile </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/pages/error.html">
-                <span class="sidebar-mini"> E </span>
-                <span class="sidebar-normal"> Error Page </span>
-              </a>
-            </li>
+            </li>            
           </ul>
         </div>
       </li>

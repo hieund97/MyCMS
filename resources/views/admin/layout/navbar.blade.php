@@ -59,8 +59,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="/admin/user/{{auth()->user()->id}}/edit">Profile</a>
                   <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="/admin/register">Register</a>
                   <div class="dropdown-divider"></div>
                   <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()" class="dropdown-item" href="#">Log out</a>
                 </div>

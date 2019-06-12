@@ -20,13 +20,14 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'admin'
 ], function () {
+    Route::get('register', 'RegisterController@register');
+    Route::post('/register', 'RegisterController@store');
     Route::group([
         'middleware' => 'guest'
     ], function () {
         Route::get('login', "LoginController@showLoginForm");        
         Route::post('login', "LoginController@login");
-        Route::get('register', 'RegisterController@register');
-        Route::post('/register', 'RegisterController@store');
+        
 
     });
 
@@ -40,9 +41,9 @@ Route::group([
         Route::group([
             'prefix' => 'user'
         ], function () {
-            Route::get('/{user}', 'UserController@index');
-            Route::get('/create', 'UserController@create');            
-            Route::put('{user}', 'UserController@update');
+            Route::get('{user}/edit', 'UserController@edit');
+            Route::get('/', 'UserController@index');
+            Route::put('{user}', 'UserController@update');                     
         });
     });
 
