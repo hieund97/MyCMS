@@ -43,6 +43,8 @@ Route::group([
         ], function () {
             Route::get('{user}/edit', 'UserController@edit');
             Route::get('/', 'UserController@index');
+            Route::get('/create', 'UserController@create');
+            Route::post('/', 'UserController@store');
             Route::put('{user}', 'UserController@update');                     
         });
     });

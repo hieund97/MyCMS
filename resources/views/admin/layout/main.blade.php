@@ -55,6 +55,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('manage/demo/demo.css') }}" rel="stylesheet" />
   <!-- Google Tag Manager -->
+  
   <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
