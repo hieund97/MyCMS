@@ -161,7 +161,7 @@
         <div class="collapse" id="tablesExamples">
           <ul class="nav">
             <li class="nav-item ">
-              <a class="nav-link" href="../examples/tables/regular.html">
+              <a class="nav-link" href="/admin/blog/create">
                 <span class="sidebar-mini"> TB </span>
                 <span class="sidebar-normal"> Thêm bài viết </span>
               </a>
@@ -201,7 +201,19 @@
                 <span class="sidebar-mini"> ĐG </span>
                 <span class="sidebar-normal"> Khách hàng đánh giá </span>
               </a>
-            </li>            
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="../examples/maps/fullscreen.html">
+                  <span class="sidebar-mini"> GD </span>
+                  <span class="sidebar-normal"> Giao dịch khách hàng </span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="../examples/maps/fullscreen.html">
+                  <span class="sidebar-mini"> LS </span>
+                  <span class="sidebar-normal"> Lịch sử giao dịch </span>
+                </a>
+            </li>     
           </ul>
         </div>
       </li>

@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-icon card-header-rose">
                         <div class="card-icon">
@@ -133,7 +133,7 @@
                                 padding-left: 30px;
                             ">
                                     <div class="card card-profile"
-                                        style="margin-top: 0px;margin-bottom: 0px; float:right;">
+                                        style="margin-top: 0px;margin-bottom: 0px; float:right; width:200px;">
                                         <div class="avatar-wrapper" style="
                                             margin-top: 0px;
                                             margin-bottom: 0px;

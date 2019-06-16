@@ -158,6 +158,17 @@
   <script src="{{asset ('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset ('manage/demo/demo.js') }}"></script>
+  {{-- ck editor --}}
+  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script> CKEDITOR.replace( 'editor1', {
+      filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+      filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+      filebrowserWindowWidth: '1000',
+      filebrowserWindowHeight: '700'
+  } ); </script>
+  {{-- ck finder --}}
+  <script type="text/javascript" src="{{ asset('ckfinder/ckfinder.js') }}"></script>
+  <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
   @stack('js')
   <script>
     $(document).ready(function() {
