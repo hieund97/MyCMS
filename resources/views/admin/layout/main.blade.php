@@ -120,7 +120,8 @@
   <!-- Plugin for the momentJs  -->
   <script src="{{asset ('manage/js/plugins/moment.min.js') }}"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="{{asset ('manage/js/plugins/sweetalert2.js') }}"></script>
+  {{-- <script src="{{asset ('manage/js/plugins/sweetalert2.js') }}"></script> --}}
+  <script src="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
   <!-- Forms Validations Plugin -->
   <script src="{{asset ('manage/js/plugins/jquery.validate.min.js') }}"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -157,6 +158,7 @@
   <script src="{{asset ('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset ('manage/demo/demo.js') }}"></script>
+  @stack('js')
   <script>
     $(document).ready(function() {
     $().ready(function() {

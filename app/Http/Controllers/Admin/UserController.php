@@ -97,6 +97,12 @@ class UserController extends Controller
         $user->save();
         session()->flash('update_user', 'success');
         return redirect('/admin/user/'.$user->id.'/edit');
-    }  
+    } 
+
+    // Delete User
+    public function destroy(User $user){
+        $user->delete();
+        return response()->json([], 204);
+    }
     
 }

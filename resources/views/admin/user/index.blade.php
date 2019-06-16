@@ -21,9 +21,9 @@
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">face</i>
                         </div>
-                        <h4 class="card-title">List User</h4>
+                        <h4 class="card-title">Danh sách thành viên</h4>
 
                     </div>
                     <div class="card-body">                        
@@ -31,14 +31,14 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Name</th>
+                                        <th class="text-center">ID</th>
+                                        <th>Tên</th>
                                         <th>User Name</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Position</th>
+                                        <th>Số điện thoại</th>
+                                        <th style="padding-left: 45px;">Vị trí</th>
                                         <th>Avatar</th>
-                                        <th class="text-right">Actions</th>
+                                        <th class="text-right">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,8 +50,8 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>
                                         <td>
-                                            <button style="width: 110px;"
-                                                class="btn btn-{{$user->level==1?'danger':'success'}}">{{$user->level==1?'Admin':'Member'}}</button>
+                                            <label style="width: 110px;"
+                                                class="btn btn-{{$user->level==1?'danger':'success'}}">{{$user->level==1?'Admin':'Member'}}</label>
                                         </td>
                                         <td>
                                             <div class="photo">
@@ -59,23 +59,25 @@
                                             src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
                                             </div>
                                         </td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-round" style="padding-top: 25px; padding-left: 7px; padding-right: 7px;">
-                                                <a style="color:white;" href="/admin/user/{{$user->id}}/edit"><i
+                                        <td class="td-actions text-right" style="padding-right: 15px;">
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-round" 
+                                                 data-original-title="Sửa">
+                                                <a style="color:white;" href="/admin/user/{{$user->id}}/edit" ><i
                                                         class="material-icons">edit</i></a>
                                             </button>
-                                            <a href="#" rel="tooltip" data-id="{{$user->id}}"
-                                                    class="btn btn-danger btn-round btn-del" style="padding-top: 25px; padding-left: 7px; padding-right: 7px;">
-                                                    <i class="material-icons">delete</i>
-                                            </a>
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del" data-id="{{$user->id}}" 
+                                                 data-original-title="Xóa">
+                                                <i class="material-icons">close</i>
+                                            </button>                                            
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             <div>
+                                {{-- nó không xóa được anh ạ --}}
                                 {{$users->links()}}
-                                <a href="/admin/user/create" style="float:right;" class="btn btn-primary">Add User</a>
+                                <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm thành viên</a>
                             </div>
                         </div>
                     </div>
@@ -85,33 +87,68 @@
     </div>
 </div>
 @endsection
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+@push('js')
+    
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}"> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
 
 <script>
     $(document).ready(function(){
-        $('.btn-del').click(function(e)){
+		$('.btn-del').click(function(e){		
             e.preventDefault();
-            let userId = $(this).attr('data-id')
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.value) {
-                    Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                    )
-                }
-            })
-        }
-    });
+            console.log('im in');
+            	
+			let userId = $(this).attr('data-id')
+			const swalWithBootstrapButtons = Swal.mixin({
+					customClass: {
+						confirmButton: 'btn btn-success',
+						cancelButton: 'btn btn-danger'
+					},
+					buttonsStyling: false,
+					})
+
+					swalWithBootstrapButtons.fire({
+					title: 'Bạn có chắc chắn muốn xóa',
+					text: "Hành động sẽ không thể hoàn tác",
+					type: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Có, Xóa người dùng',
+					cancelButtonText: 'Không, Hủy bỏ!',
+					reverseButtons: true
+					}).then((result) => {
+					if (result.value) {
+						$.ajax({
+							url: '/admin/user/' + userId,
+							method: 'POST',
+							data: {
+								_token: "{{csrf_token()}}",
+								_method: "DELETE"
+							},
+							success: function(){
+								swalWithBootstrapButtons.fire(
+								'Đã xóa!',
+								'Người dùng đã bị xóa',
+								'success'
+								).then((result2) => {
+									if(result2.value){
+									window.location.reload();
+									}
+								});							
+							}
+						});
+						
+					} else if (
+						// Read more about handling dismissals
+						result.dismiss === Swal.DismissReason.cancel
+					) {
+						swalWithBootstrapButtons.fire(
+						'Đã hủy',
+						'Dữ liệu của bạn vẫn an toàn :)',
+						'error'
+						)
+					}
+				})	
+		});
+	});
 </script>
+@endpush

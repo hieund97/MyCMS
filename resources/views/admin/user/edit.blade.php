@@ -156,41 +156,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3" style="
-                                padding-right: 30px;
-                                padding-left: 30px;
-                            ">
+                                {{-- <div class="col-md-3">
+                                        <h4 class="title">Avatar</h4>
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                          <div class="fileinput-new thumbnail img-circle">
+                                            <img src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" alt="...">
+                                          </div>
+                                          <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
+                                          <div>
+                                            <span class="btn btn-round btn-rose btn-file">
+                                              <span class="fileinput-new">Add Photo</span>
+                                              <span class="fileinput-exists">Change</span>
+                                              <input type="file" name="..." />
+                                            </span>
+                                            <br />
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                          </div>
+                                        </div>
+                                      </div> --}}
+                                <div class="col-md-3" style="padding-right: 30px;padding-left: 30px;">
                                     <div class="card card-profile"
                                         style="margin-top: 0px;margin-bottom: 0px; float:right;">
-                                        <div class="avatar-wrapper" style="
-                                            margin-top: 0px;
-                                            margin-bottom: 0px;
-                                            margin-right: 0px;
-                                            margin-left: 0px;
-                                        ">
+                                        <div class="avatar-wrapper" style="margin-top: 0px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;">
                                             <img class="profile-pic"
                                                 src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
+                                                
                                             <div class="upload-button">
                                                 <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                             </div>
-                                            <input class="file-upload" name="avatar" type="file" accept="image/*" />
+                                            <input class="file-upload fileinput-new" name="avatar" type="file" accept="image/*" />
                                         </div>
-                                        {{-- <div class="card-body">
-                                                <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                                <h4 class="card-title">{{$user->last_name}} {{$user->first_name}}</h4>
-                                        <p class="card-description">
-                                            Don't be scared of the truth because we need to restart the human foundation
-                                            in truth And I
-                                            love you like Kanye loves Kanye I love Rick Owens’ bed design but the back
-                                            is...
-                                        </p>
-                                        <button type="submit" class="btn btn-rose btn-round">Update Avatar</button>
-                                        <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
-                                    </div> --}}
+                                    </div>                                       
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
+                            <button type="submit" class="btn btn-rose">Update Profile</button>
                             <div class="clearfix"></div>
                         </form>
                         {{-- end form --}}

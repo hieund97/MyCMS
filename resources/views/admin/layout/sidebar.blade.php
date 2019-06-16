@@ -5,11 +5,11 @@
     Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-      CT
+    <a href="/admin" class="simple-text logo-mini">
+      AC
     </a>
-    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      Creative Tim
+    <a href="/admin" class="simple-text logo-normal">
+      AVENGER CMS
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -49,118 +49,88 @@
       </div>
     </div>
     <ul class="nav">
-      <li class="nav-item active ">
+      <li class="nav-item {{Request::segment(2) === null ? 'active' : null}} ">
         <a class="nav-link" href="/admin">
           <i class="material-icons">dashboard</i>
-          <p> Dashboard </p>
+          <p> Bảng tin </p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+      <li class="nav-item {{Request::segment(2) === 'user' ? 'active' : null}} ">
+        <a class="nav-link {{Request::segment(2) === 'user' ? null : 'collapsed'}}" data-toggle="collapse" href="#pagesExamples" aria-expanded="{{Request::segment(2) === 'user' ? 'true' : 'false'}}">
           <i class="material-icons">person</i>
-          <p> User
+          <p> Thành viên
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse" id="pagesExamples">
+        <div class="{{Request::segment(2) === 'user' ? 'collapse show' : 'collapse'}}" id="pagesExamples">
           <ul class="nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="/admin/user/{{auth()->user()->id}}/edit">
-                <span class="sidebar-mini"> MP </span>
-                <span class="sidebar-normal"> My Profile </span>
+            <li class="nav-item {{Request::segment(4) === 'edit' ? 'active' : null}} ">
+              <a class="nav-link " href="/admin/user/{{auth()->user()->id}}/edit">
+                <span class="sidebar-mini"> TT </span>
+                <span class="sidebar-normal"> Thông tin của tôi </span>
               </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item {{Request::segment(2) === 'user' ? 'active' : null}} ">
               <a class="nav-link" href="/admin/user">
-                <span class="sidebar-mini"> LS </span>
-                <span class="sidebar-normal"> List User </span>
+                <span class="sidebar-mini"> DT </span>
+                <span class="sidebar-normal"> Danh sách thành viên </span>
               </a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/admin/register">
-                <span class="sidebar-mini"> RG </span>
-                <span class="sidebar-normal"> Register </span>
+                <span class="sidebar-mini"> ĐK </span>
+                <span class="sidebar-normal"> Đăng ký </span>
               </a>
             </li>            
           </ul>
         </div>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
+      <li class="nav-item {{Request::segment(2) === 'products' ? 'active' : null}}">
+        <a class="nav-link {{Request::segment(2) === 'products' ? null : 'collapsed'}}" data-toggle="collapse" href="#componentsExamples" aria-expanded="{{Request::segment(2) === 'products' ? 'true' : 'false'}}">
           <i class="material-icons">card_travel</i>
-          <p> Products
+          <p> Sản phẩm
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse" id="componentsExamples">
+        <div class="{{Request::segment(2) === 'products' ? 'collapse show' : 'collapse'}}" id="componentsExamples">
           <ul class="nav">
-            <li class="nav-item ">
+              <li class="nav-item {{Request::segment(2) === 'products' ? 'active' : null}} ">
+                  <a class="nav-link" href="/admin/products">
+                    <span class="sidebar-mini"> DSP </span>
+                    <span class="sidebar-normal"> Danh sách sản phẩm </span>
+                  </a>
+                </li>    
+            <li class="nav-item  ">
               <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
-                <span class="sidebar-mini"> MLT </span>
-                <span class="sidebar-normal"> Multi Level Collapse
-                  <b class="caret"></b>
+                <span class="sidebar-mini" style="padding-top: 15px;"> DM </span>
+                <span class="sidebar-normal"> Danh sách sản phẩm </br> theo danh mục
+                  <b class="caret" style="margin-top: 0px;"></b>
                 </span>
               </a>
               <div class="collapse" id="componentsCollapse">
                 <ul class="nav">
                   <li class="nav-item ">
-                    <a class="nav-link" href="#0">
-                      <span class="sidebar-mini"> E </span>
-                      <span class="sidebar-normal"> Example </span>
+                    <a class="nav-link" style="padding-left: 20px;" href="#0">
+                      <span class="sidebar-mini"> Q </span>
+                      <span class="sidebar-normal"> Quần </span>
                     </a>
                   </li>
                 </ul>
               </div>
-            </li>
+            </li> 
             <li class="nav-item ">
               <a class="nav-link" href="../examples/components/buttons.html">
-                <span class="sidebar-mini"> B </span>
-                <span class="sidebar-normal"> Buttons </span>
+                <span class="sidebar-mini"> CP </span>
+                <span class="sidebar-normal"> Giá tùy chỉnh </span>
               </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/grid.html">
-                <span class="sidebar-mini"> GS </span>
-                <span class="sidebar-normal"> Grid System </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/panels.html">
-                <span class="sidebar-mini"> P </span>
-                <span class="sidebar-normal"> Panels </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/sweet-alert.html">
-                <span class="sidebar-mini"> SA </span>
-                <span class="sidebar-normal"> Sweet Alert </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/notifications.html">
-                <span class="sidebar-mini"> N </span>
-                <span class="sidebar-normal"> Notifications </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/icons.html">
-                <span class="sidebar-mini"> I </span>
-                <span class="sidebar-normal"> Icons </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/components/typography.html">
-                <span class="sidebar-mini"> T </span>
-                <span class="sidebar-normal"> Typography </span>
-              </a>
-            </li>
+            </li>           
           </ul>
         </div>
       </li>
       <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#formsExamples">
-          <i class="material-icons">content_paste</i>
-          <p> Forms
+          <i class="material-icons">dns</i>
+          <p> Danh mục
             <b class="caret"></b>
           </p>
         </a>
@@ -168,35 +138,23 @@
           <ul class="nav">
             <li class="nav-item ">
               <a class="nav-link" href="../examples/forms/regular.html">
-                <span class="sidebar-mini"> RF </span>
-                <span class="sidebar-normal"> Regular Forms </span>
+                <span class="sidebar-mini"> TD </span>
+                <span class="sidebar-normal"> Thêm danh mục </span>
               </a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="../examples/forms/extended.html">
-                <span class="sidebar-mini"> EF </span>
-                <span class="sidebar-normal"> Extended Forms </span>
+                <span class="sidebar-mini"> DSD </span>
+                <span class="sidebar-normal"> Danh sách danh mục</span>
               </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/forms/validation.html">
-                <span class="sidebar-mini"> VF </span>
-                <span class="sidebar-normal"> Validation Forms </span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/forms/wizard.html">
-                <span class="sidebar-mini"> W </span>
-                <span class="sidebar-normal"> Wizard </span>
-              </a>
-            </li>
+            </li>            
           </ul>
         </div>
       </li>
       <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#tablesExamples">
-          <i class="material-icons">grid_on</i>
-          <p> Tables
+          <i class="material-icons">book</i>
+          <p> Bài viết
             <b class="caret"></b>
           </p>
         </a>
@@ -204,29 +162,29 @@
           <ul class="nav">
             <li class="nav-item ">
               <a class="nav-link" href="../examples/tables/regular.html">
-                <span class="sidebar-mini"> RT </span>
-                <span class="sidebar-normal"> Regular Tables </span>
+                <span class="sidebar-mini"> TB </span>
+                <span class="sidebar-normal"> Thêm bài viết </span>
               </a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="../examples/tables/extended.html">
-                <span class="sidebar-mini"> ET </span>
-                <span class="sidebar-normal"> Extended Tables </span>
+                <span class="sidebar-mini"> DB </span>
+                <span class="sidebar-normal"> Danh sách bài viết </span>
               </a>
-            </li>
+            </li>        
             <li class="nav-item ">
-              <a class="nav-link" href="../examples/tables/datatables.net.html">
-                <span class="sidebar-mini"> DT </span>
-                <span class="sidebar-normal"> DataTables.net </span>
-              </a>
-            </li>
+                <a class="nav-link" href="../examples/tables/extended.html">
+                  <span class="sidebar-mini"> CĐ </span>
+                  <span class="sidebar-normal"> Chủ đề </span>
+                </a>
+              </li>          
           </ul>
         </div>
       </li>
       <li class="nav-item ">
         <a class="nav-link" data-toggle="collapse" href="#mapsExamples">
-          <i class="material-icons">place</i>
-          <p> Maps
+          <i class="material-icons">sentiment_satisfied_alt</i>
+          <p> Khách hàng
             <b class="caret"></b>
           </p>
         </a>
@@ -234,43 +192,37 @@
           <ul class="nav">
             <li class="nav-item ">
               <a class="nav-link" href="../examples/maps/google.html">
-                <span class="sidebar-mini"> GM </span>
-                <span class="sidebar-normal"> Google Maps </span>
+                <span class="sidebar-mini"> DK </span>
+                <span class="sidebar-normal"> Danh sách khách hàng </span>
               </a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="../examples/maps/fullscreen.html">
-                <span class="sidebar-mini"> FSM </span>
-                <span class="sidebar-normal"> Full Screen Map </span>
+                <span class="sidebar-mini"> ĐG </span>
+                <span class="sidebar-normal"> Khách hàng đánh giá </span>
               </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/maps/vector.html">
-                <span class="sidebar-mini"> VM </span>
-                <span class="sidebar-normal"> Vector Map </span>
-              </a>
-            </li>
+            </li>            
           </ul>
         </div>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="../examples/widgets.html">
-          <i class="material-icons">widgets</i>
-          <p> Widgets </p>
+          <i class="material-icons">calendar_today</i>
+          <p> Subcribe </p>
         </a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="../examples/charts.html">
           <i class="material-icons">timeline</i>
-          <p> Charts </p>
+          <p> Doanh thu </p>
         </a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="../examples/calendar.html">
-          <i class="material-icons">date_range</i>
-          <p> Calendar </p>
+          <i class="material-icons">aspect_ratio</i>
+          <p> Quảng cáo </p>
         </a>
       </li>
-    </ul>
+    </ul>    
   </div>
 </div>

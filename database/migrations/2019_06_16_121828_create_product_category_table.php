@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProductCategoryTable extends Migration
+class CreateProductCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddProductCategoryTable extends Migration
     public function up()
     {
         Schema::create('product_category', function (Blueprint $table) {
-            $table->bigInteger('product_id');
-            $table->bigInteger('category_id');
+            $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
