@@ -137,14 +137,13 @@
             </div>
             @endif
 
-
             {{-- Form Login --}}
             <form class="form" method="POST" action="">
               @csrf
               <div class="card card-login card-hidden">
                 <div class="card-header card-header-rose text-center">
                   <h4 class="card-title">Login</h4>
-                  <div class="social-line">
+                  {{-- <div class="social-line">
                     <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-facebook-square"></i>
                     </a>
@@ -154,7 +153,7 @@
                     <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-google-plus"></i>
                     </a>
-                  </div>
+                  </div> --}}
                 </div>
                 <div class="card-body ">
                   {{-- <p class="card-description text-center">Or Be Classical</p> --}}

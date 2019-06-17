@@ -70,7 +70,7 @@
                 <span class="sidebar-normal"> Thông tin của tôi </span>
               </a>
             </li>
-            <li class="nav-item {{Request::segment(2) === 'user' ? 'active' : null}} ">
+            <li class="nav-item {{ (request()->is('admin/user')) ? 'active' : '' }} ">
               <a class="nav-link" href="/admin/user">
                 <span class="sidebar-mini"> DT </span>
                 <span class="sidebar-normal"> Danh sách thành viên </span>
@@ -160,7 +160,7 @@
         </a>
         <div class="collapse" id="tablesExamples">
           <ul class="nav">
-            <li class="nav-item ">
+            <li class="nav-item  ">
               <a class="nav-link" href="/admin/blog/create">
                 <span class="sidebar-mini"> TB </span>
                 <span class="sidebar-normal"> Thêm bài viết </span>

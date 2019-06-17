@@ -15,14 +15,14 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="bmd-label-floating">
                                         <h2>Tiêu đề</h2>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" name="title" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -33,8 +33,7 @@
                                     </label>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <textarea class="form-control" id="editor1" required rows="25"></textarea>
-                                            @include('ckfinder::setup')
+                                            <textarea class="form-control" id="editor1" required rows="25"></textarea>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -97,4 +96,3 @@
 </div>
 </div>
 @endsection
-@include('ckfinder::setup')
