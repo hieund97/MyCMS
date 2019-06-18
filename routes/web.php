@@ -61,9 +61,16 @@ Route::group([
             'prefix' => 'blog'
         ], function () {
             Route::get('/', 'BlogController@index');
-            Route::get('category', 'BlogController@category');
             Route::get('create', 'BlogController@create');
             Route::post('/', 'BlogController@store');
+        });
+
+        Route::group([
+            'prefix' => 'blog-category'
+        ], function () {
+            Route::get('/', 'Blog_CategoryController@index');
+            Route::get('/create', 'Blog_CategoryController@create');
+            Route::post('/', 'Blog_CategoryController@store');
         });
     });
 

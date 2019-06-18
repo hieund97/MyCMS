@@ -1,10 +1,23 @@
 @extends('admin.layout.main')
-@section('title', 'Blog')
+@section('title', 'Category')
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                    @if (session()->has('create_user'))
+                    <div class="alert alert-success">
+                        <div class="container">
+                            <div class="alert-icon">
+                                <i class="material-icons">check</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                            </button>
+                            <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                        </div>
+                    </div>                        
+                    @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
@@ -17,7 +30,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" style="width: 66px;">ID</th>
+                                        <th class="text-center" style="width: 66px;">id</th>
                                         <th style="width: 46px;">
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -28,17 +41,15 @@
                                                 </label>
                                             </div>
                                         </th>
-                                        <th class="text-center" style="width: 156px;">Ảnh bài viết</th>
-                                        <th class="text-center" style="width: 416px;">Tên bài viết</th>
-                                        <th class="text-center" style="width: 166px;">Chủ đề</th>
-                                        <th class="text-center" style="width: 196px;">Tác giả</th>
-                                        <th class="text-center" style="width: 186px;">Xuất bản ngày</th>
+                                        <th class="text-center" style="width: 416px;">Tên bài viết</th>                                        
+                                        <th class="text-center" style="width: 196px;">Tạo bởi</th>
+                                        <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($blogs as $blog)                                    
+                                    {{-- @foreach ($categories as $category) --}}
                                     <tr>
                                         <td class="text-center">1</td>
                                         <td class="text-center">
@@ -51,17 +62,12 @@
                                                 </label>
                                             </div>
                                         </td>
+                                        <td></td>                                        
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
                                         <td class="text-center">
-                                            <div class="photo">
-                                                <img style=" width: 80px; height: 80px;" src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}" />
-                                            </div>
-                                        </td>
-                                    <td><a href="">{{$blog->title}}</a></td>
-                                        <td class="text-center">{{$blog->category}}</td>
-                                        <td class="text-center"> {{$blog->author}}</td>
-                                        <td class="text-center"> {{$blog->created_at}}</td>
-                                        <td class="text-center">
-                                            <label style="padding-right: 10px;padding-left: 10px;" class="btn btn-info">Published</label>
+                                            <label style="padding-right: 10px;padding-left: 10px;"
+                                                class="btn btn-info">Published</label>
                                         </td>
                                         <td class="td-actions"
                                             style="width: 106px;padding-right: 0px;padding-left: 20px;">
@@ -75,14 +81,11 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                 </tbody>
                             </table>
-                            <div>
-                                {{$blogs->links()}}
-                                <a href="/admin/blog/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm bài viết</a>
-                            </div>
                         </div>
+                        <a href="/admin/blog-category/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm chủ đề</a>
                     </div>
                 </div>
                 @endsection

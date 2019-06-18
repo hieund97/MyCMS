@@ -24,7 +24,7 @@
                                         <h2>Tiêu đề</h2>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" name="title" class="form-control" required>
+                                        <input type="text" style="" name="title" class="form-control" required></<input>
                                     </div>
                                 </div>
                             </div>
@@ -51,9 +51,8 @@
                 <div class="card card-profile">
                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                            <img src="{{asset ('manage/img/placeholder.jpg') }}">
-                            {{-- <img src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}">
-                            --}}
+                            {{-- <img src="{{asset ('manage/img/placeholder.jpg') }}"> --}}
+                            <img src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                         <div>
@@ -67,28 +66,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-profile" style="height: 80px;padding-top: 15px;">
+                <div class="card card-profile" style="height: 110px;">
+                    <div class="card-header card-header-icon card-header-rose">
+                        <h4 class="card-title">Chủ đề </h4>
+                    </div>
                     <div class="dropdown bootstrap-select" style="width: 240px;">
                         <select class="selectpicker" name="category" data-size="7"
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn chủ đề</option>
-                            @foreach ($blogs as $blog)
-                            <option>{{$blog->category}}</option>  
+                            @foreach ($categories as $category)
+                            <option>{{$blog_category->category}}</option>  
                             @endforeach                            
                         </select>
                     </div>
                 </div>
                 <div class="card card-profile" style="height: 110px;">
                     <div class="card-header card-header-icon card-header-rose">
-                        <h4 class="card-title">Chọn tác giả </h4>
+                        <h4 class="card-title">Tác giả </h4>
                     </div>
                     <div class="dropdown bootstrap-select" style="width: 240px;">
                         <select class="selectpicker" name="author" data-size="7"
                             data-style="btn btn-primary btn-round" title="Single Select">
-                            <option selected>{{auth()->user()->last_name}} {{auth()->user()->first_name}}</option>
-                            {{-- @foreach ($users as $user)
+                            <option disabled selected>Chọn tác giả</option>
+                            @foreach ($users as $user)
                             <option>{{$user->last_name}} {{$user->first_name}}</option>
-                            @endforeach                                                         --}}
+                            @endforeach                                                        
                         </select>
                     </div>
                 </div>

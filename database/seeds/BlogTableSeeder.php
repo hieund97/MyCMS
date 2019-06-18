@@ -17,6 +17,6 @@ class BlogTableSeeder extends Seeder
             ',            
             'author' => 'Nguyễn Đức Hiếu',
             'short_decription' => 'Nhà hàng có tên là Under, do công ty tư vấn kiến trúc Snøhetta thiết kế. Công trình tọa lạc tại Lindesnes, điểm cực Nam của bờ biển Na Uy, nơi hợp lưu độc đáo phát triển cả hệ sinh thái nước lợ và nước mặn.'
-        ]);
+        ]);        
     }
 }

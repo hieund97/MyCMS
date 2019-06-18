@@ -75,7 +75,6 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{-- nó không xóa được anh ạ --}}
                                 {{$users->links()}}
                                 <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm thành viên</a>
                             </div>
