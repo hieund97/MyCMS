@@ -104,7 +104,7 @@
     </div>
 
     {{-- footer --}}
-    @include('admin.layout.footer')
+    {{-- @include('admin.layout.footer') --}}
     {{-- end footer --}}
   </div>
 

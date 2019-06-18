@@ -33,6 +33,11 @@ CKEDITOR.editorConfig = function( config ) {
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;pre';
 
+	config.language = 'en';
+	config.uiColor = '#FFFFFF';
+	config.height = 350;
+	config.toolbarCanCollapse = true;
+
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 	// config.filebrowserBrowseUrl = 'https://cms.local/ckfinder/ckfinder.html';

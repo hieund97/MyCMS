@@ -63,6 +63,7 @@ Route::group([
             Route::get('/', 'BlogController@index');
             Route::get('category', 'BlogController@category');
             Route::get('create', 'BlogController@create');
+            Route::post('/', 'BlogController@store');
         });
     });
 

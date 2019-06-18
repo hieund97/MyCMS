@@ -151,29 +151,29 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#tablesExamples">
+      <li class="nav-item {{Request::segment(2) === 'blog' ? 'active' : null}}">
+        <a class="nav-link {{Request::segment(2) === 'blog' ? null : 'collapsed'}}" data-toggle="collapse" href="#tablesExamples" aria-expanded="{{Request::segment(2) === 'blog' ? 'true' : 'false'}}">
           <i class="material-icons">book</i>
           <p> Bài viết
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse" id="tablesExamples">
+        <div class="{{Request::segment(2) === 'blog' ? 'collapse show' : 'collapse'}}" id="tablesExamples">
           <ul class="nav">
-            <li class="nav-item  ">
+            <li class="nav-item {{Request::segment(3) === 'create' ? 'active' : null}} ">
               <a class="nav-link" href="/admin/blog/create">
                 <span class="sidebar-mini"> TB </span>
                 <span class="sidebar-normal"> Thêm bài viết </span>
               </a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/tables/extended.html">
+            <li class="nav-item {{ (request()->is('admin/blog')) ? 'active' : '' }} ">
+              <a class="nav-link" href="/admin/blog">
                 <span class="sidebar-mini"> DB </span>
                 <span class="sidebar-normal"> Danh sách bài viết </span>
               </a>
             </li>        
-            <li class="nav-item ">
-                <a class="nav-link" href="../examples/tables/extended.html">
+            <li class="nav-item {{Request::segment(3) === 'category' ? 'active' : null}} ">
+                <a class="nav-link" href="/admin/blog/category">
                   <span class="sidebar-mini"> CĐ </span>
                   <span class="sidebar-normal"> Chủ đề </span>
                 </a>

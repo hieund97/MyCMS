@@ -14,7 +14,7 @@
                             <small class="category">Complete your profile</small>
                         </h4>
                     </div>
-                    <div class="card-body">                       
+                    <div class="card-body">
 
                         @if ($errors->has('password'))
                         <div class="alert alert-danger">
@@ -30,7 +30,7 @@
                         </div>
                         @endif
                         {{-- form --}}
-                        <form action="/admin/user" method="POST" enctype="multipart/form-data">                            
+                        <form action="/admin/user" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-5">
@@ -68,17 +68,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Level</label>
-                                            <input type="text" name="level" class="form-control">                                                
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Level</label>
+                                        <input type="text" name="level" class="form-control">
                                     </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Address</label>
-                                        <input type="text" name="address" class="form-control">                                            
+                                        <input type="text" name="address" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Country</label>
-                                        <input type="text" name="country" class="form-control">                                            
+                                        <input type="text" name="country" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -123,23 +123,15 @@
                                         <div class="form-group">
                                             {{-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so
                                                 thirsty, I'm in that two seat Lambo.</label> --}}
-                                            <textarea class="form-control" name="aboutme"
-                                                rows="5"></textarea>
+                                            <textarea class="form-control" name="aboutme" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3" style="
-                                padding-right: 30px;
-                                padding-left: 30px;
-                            ">
+                                <div class="col-md-3" style="padding-right: 30px;padding-left: 30px;">
                                     <div class="card card-profile"
                                         style="margin-top: 0px;margin-bottom: 0px; float:right; width:200px;">
-                                        <div class="avatar-wrapper" style="
-                                            margin-top: 0px;
-                                            margin-bottom: 0px;
-                                            margin-right: 0px;
-                                            margin-left: 0px;
-                                        ">
+                                        <div class="avatar-wrapper"
+                                            style="margin-top: 0px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;">
                                             <img class="profile-pic"
                                                 src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
                                             <div class="upload-button">
@@ -147,30 +139,18 @@
                                             </div>
                                             <input class="file-upload" name="avatar" type="file" accept="image/*" />
                                         </div>
-                                        {{-- <div class="card-body">
-                                                <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                                <h4 class="card-title">{{$user->last_name}} {{$user->first_name}}</h4>
-                                        <p class="card-description">
-                                            Don't be scared of the truth because we need to restart the human foundation
-                                            in truth And I
-                                            love you like Kanye loves Kanye I love Rick Owens’ bed design but the back
-                                            is...
-                                        </p>
-                                        <button type="submit" class="btn btn-rose btn-round">Update Avatar</button>
-                                        <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
-                                    </div> --}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <button type="submit" class="btn btn-rose pull-right">Create Profile</button>
-                            <div class="clearfix"></div>
+                                <button type="submit" class="btn btn-rose pull-right">Create Profile</button>
+                                <div class="clearfix"></div>
                         </form>
                         {{-- end form --}}
 
                     </div>
                 </div>
-            </div>            
-        </div>        
+            </div>
+        </div>
     </div>
 </div>
 </div>

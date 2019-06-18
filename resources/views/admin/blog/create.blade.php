@@ -15,7 +15,9 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+
+                        {{-- Form --}}
+                        <form action="/admin/blog" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="bmd-label-floating">
@@ -33,7 +35,8 @@
                                     </label>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <textarea class="form-control" id="editor1" required rows="25"></textarea>                                            
+                                            <textarea class="form-control" name="content" id="editor1" required
+                                                rows="30"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -57,23 +60,35 @@
                             <span class="btn btn-rose btn-round btn-file">
                                 <span class="fileinput-new">Select image</span>
                                 <span class="fileinput-exists">Change</span>
-                                <input type="file" name="..." />
+                                <input type="file" name="thumb" />
                             </span>
                             <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
                                 data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                         </div>
                     </div>
                 </div>
-                <div class="card card-profile">
+                <div class="card card-profile" style="height: 80px;padding-top: 15px;">
                     <div class="dropdown bootstrap-select" style="width: 240px;">
-                        <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round"
-                            title="Single Select">
+                        <select class="selectpicker" name="category" data-size="7"
+                            data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn chủ đề</option>
-                            <option value="2">Foobar</option>
-                            <option value="3">Is great</option>
-                            <option value="4">Is bum</option>
-                            <option value="5">Is wow</option>
-                            <option value="6">boom</option>
+                            @foreach ($blogs as $blog)
+                            <option>{{$blog->category}}</option>  
+                            @endforeach                            
+                        </select>
+                    </div>
+                </div>
+                <div class="card card-profile" style="height: 110px;">
+                    <div class="card-header card-header-icon card-header-rose">
+                        <h4 class="card-title">Chọn tác giả </h4>
+                    </div>
+                    <div class="dropdown bootstrap-select" style="width: 240px;">
+                        <select class="selectpicker" name="author" data-size="7"
+                            data-style="btn btn-primary btn-round" title="Single Select">
+                            <option selected>{{auth()->user()->last_name}} {{auth()->user()->first_name}}</option>
+                            {{-- @foreach ($users as $user)
+                            <option>{{$user->last_name}} {{$user->first_name}}</option>
+                            @endforeach                                                         --}}
                         </select>
                     </div>
                 </div>
@@ -83,12 +98,14 @@
                     </label>
                     <div class="form-group">
                         <div class="form-group">
-                            <textarea class="form-control" style="padding-left: 15px; padding-right: 15px;" required rows="10"></textarea>
+                            <textarea class="form-control" name="short_decription"
+                                style="padding-left: 15px; padding-right: 15px;" required rows="8"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             </form>
+            {{-- end Form --}}
         </div>
     </div>
 </div>
