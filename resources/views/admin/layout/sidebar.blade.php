@@ -120,7 +120,7 @@
             </li> 
             <li class="nav-item ">
               <a class="nav-link" href="../examples/components/buttons.html">
-                <span class="sidebar-mini"> CP </span>
+                <span class="sidebar-mini"> GTC </span>
                 <span class="sidebar-normal"> Giá tùy chỉnh </span>
               </a>
             </li>           
@@ -151,14 +151,14 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::segment(2) === 'blog' ? 'active' : null}}">
-        <a class="nav-link {{Request::segment(2) === 'blog'||'blog-category' ? null : 'collapsed'}}" data-toggle="collapse" href="#tablesExamples" aria-expanded="{{Request::segment(2) === 'blog'||'blog-category' ? 'true' : 'false'}}">
+      <li class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
+        <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}" data-toggle="collapse" href="#tablesExamples" aria-expanded="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'true' : 'false'}}">
           <i class="material-icons">book</i>
           <p> Bài viết
             <b class="caret"></b>
           </p>
         </a>
-        <div class="{{Request::segment(2) === 'blog'||'blog-category' ? 'collapse show' : 'collapse'}} " id="tablesExamples">
+        <div class="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'collapse show' : 'collapse'}} " id="tablesExamples">
           <ul class="nav">
             <li class="nav-item {{Request::segment(3) === 'create' ? 'active' : null}} ">
               <a class="nav-link" href="/admin/blog/create">

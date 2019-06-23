@@ -26,16 +26,7 @@
                               </button>
                               <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
                             </div>
-                          </div>
-                          {{-- <script>
-                          Swal.fire({
-                            position: 'top-end',
-                            type: 'success',
-                            title: 'Your work has been saved',
-                            showConfirmButton: false,
-                            timer: 1500
-                            })
-                          </script> --}}
+                          </div>                          
                         @endif
 
                         @if ($errors->has('password'))

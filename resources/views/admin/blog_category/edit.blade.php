@@ -14,10 +14,11 @@
                             <small class="category">Làm cho bài viết của bạn đa dạng hơn</small>
                         </h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body">                        
 
                         {{-- form --}}
-                        <form action="/admin/blog-category" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/blog-category/{{$blog_category->id}}/edit" method="POST" enctype="multipart/form-data">
+                            @method('PUT')
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -25,25 +26,27 @@
                                         <h4>Tên chủ đề</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" style="" name="category" class="form-control" required></<input>
+                                        <input type="text" style="" name="category" class="form-control" value="{{$blog_category->category}}"
+                                            required>
+                                        </<input>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="card-header card-header-icon card-header-rose">
-                                    <h4 class="card-title">Tác giả </h4>
-                                </div>
-                                <div class="dropdown bootstrap-select" style="width: 240px;">
-                                    <select class="selectpicker" name="author" data-size="7"
-                                        data-style="btn btn-primary btn-round" title="Single Select">
-                                        <option disabled selected>Chọn tác giả</option>
-                                        @foreach ($users as $user)
-                                            <option>{{$user->last_name}} {{$user->first_name}}</option>
-                                        @endforeach                                                        
-                                    </select>
+                                <div class="card card-profile">
+                                    <label class="bmd-label-floating">
+                                        <h4>Mô tả ngắn</h4>
+                                    </label>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="short_decription"
+                                                style="padding-left: 15px; padding-right: 15px;" required
+                                                rows="8">{{$blog_category->short_decription}}</textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-rose pull-right">Tạo chủ đề</button>
+                            <button type="submit" class="btn btn-rose pull-right">Sửa chủ đề</button>
                             <div class="clearfix"></div>
                         </form>
                         {{-- end form --}}

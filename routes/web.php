@@ -71,6 +71,10 @@ Route::group([
             Route::get('/', 'Blog_CategoryController@index');
             Route::get('/create', 'Blog_CategoryController@create');
             Route::post('/', 'Blog_CategoryController@store');
+            Route::get('{blog_category}/edit', 'Blog_CategoryController@edit');
+            Route::put('{blog_category}/edit', 'Blog_CategoryController@update');
+            Route::delete('{blog_category}/delete', 'Blog_CategoryController@destroy');
+
         });
     });
 

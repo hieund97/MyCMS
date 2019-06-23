@@ -5,19 +5,32 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                    @if (session()->has('create_user'))
-                    <div class="alert alert-success">
-                        <div class="container">
-                            <div class="alert-icon">
-                                <i class="material-icons">check</i>
-                            </div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                            </button>
-                            <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                @if (session()->has('create_blog_category'))
+                <div class="alert alert-success">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">check</i>
                         </div>
-                    </div>                        
-                    @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                    </div>
+                </div>
+                @endif
+                @if (session()->has('update_blog_category'))
+                <div class="alert alert-success">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">check</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                    </div>
+                </div>
+                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
@@ -41,18 +54,17 @@
                                                 </label>
                                             </div>
                                         </th>
-                                        <th class="text-center" style="width: 416px;">Tên bài viết</th>                                        
-                                        <th class="text-center" style="width: 196px;">Tạo bởi</th>
+                                        <th class="text-center" style="width: 416px;">Tên chủ đề</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($categories as $category) --}}
+                                    @foreach ($blog_categories as $blog_category)
                                     <tr>
                                         <td class="text-center">1</td>
-                                        <td class="text-center">
+                                        <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
                                                     <input class="form-check-input" type="checkbox" value="" checked>
@@ -62,9 +74,8 @@
                                                 </label>
                                             </div>
                                         </td>
-                                        <td></td>                                        
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
+                                        <td class="text-center"><a href="">{{$blog_category->category}}</a></td>
+                                        <td class="text-center">{{$blog_category->created_at}}</td>
                                         <td class="text-center">
                                             <label style="padding-right: 10px;padding-left: 10px;"
                                                 class="btn btn-info">Published</label>
@@ -73,19 +84,25 @@
                                             style="width: 106px;padding-right: 0px;padding-left: 20px;">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
-                                                <a style="color:white;" href="#"><i class="material-icons">edit</i></a>
+                                                <a style="color:white;"
+                                                    href="/admin/blog-category/{{$blog_category->id}}/edit"><i
+                                                        class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
-                                                data-id="" data-original-title="Xóa">
+                                        data-id="{{$blog_category->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
+                            <div>
+                                {{$blog_categories->links()}}
+                                <a href="/admin/blog-category/create" style="padding-left: 15px; padding-right: 15px;"
+                                    class="btn btn-primary pull-right">Thêm chủ đề</a>
+                            </div>
                         </div>
-                        <a href="/admin/blog-category/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm chủ đề</a>
                     </div>
                 </div>
                 @endsection
@@ -100,8 +117,9 @@
 		$('.btn-del').click(function(e){		
             e.preventDefault();
             console.log('im in');
+        
             	
-			let userId = $(this).attr('data-id')
+			let blogCategoryId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
 						confirmButton: 'btn btn-success',
@@ -121,7 +139,7 @@
 					}).then((result) => {
 					if (result.value) {
 						$.ajax({
-							url: '/admin/user/' + userId,
+							url: '/admin/blog-category/' + blogCategoryId + '/delete',
 							method: 'POST',
 							data: {
 								_token: "{{csrf_token()}}",

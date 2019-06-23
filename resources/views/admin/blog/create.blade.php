@@ -74,7 +74,7 @@
                         <select class="selectpicker" name="category" data-size="7"
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn chủ đề</option>
-                            @foreach ($categories as $category)
+                            @foreach ($blog_categories as $blog_category)
                             <option>{{$blog_category->category}}</option>  
                             @endforeach                            
                         </select>
