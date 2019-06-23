@@ -65,6 +65,7 @@ Route::group([
             Route::post('/', 'BlogController@store');
         });
 
+        // Admin Blog-Category Route
         Route::group([
             'prefix' => 'blog-category'
         ], function () {
@@ -84,6 +85,8 @@ Route::group([
 // CK finder
 Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\CKFinderController@examplesAction')
     ->name('ckfinder_examples');
+
+    
 
 /**
  * CLient Zone

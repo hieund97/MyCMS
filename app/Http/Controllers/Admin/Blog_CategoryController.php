@@ -22,7 +22,7 @@ class Blog_CategoryController extends Controller
 
     public function store(Blog_Category $blog_category, Request $request){
         $blog_category = Blog_Category::create([
-            'category' => $request->category,
+            'name' => $request->category,
             'short_decription' => $request->short_decription
         ]);
         session()->flash('create_blog_category', 'success');
@@ -35,7 +35,7 @@ class Blog_CategoryController extends Controller
 
     public function update(Blog_Category $blog_category, Request $request){
         $blog_category->update([
-            'category' => $request->category,
+            'name' => $request->category,
             'short_decription' => $request->short_decription
         ]);
         session()->flash('update_blog_category', 'success');

@@ -15,7 +15,7 @@
                         </h4>
                     </div>
                     <div class="card-body">                        
-
+                        
                         {{-- form --}}
                         <form action="/admin/blog-category/{{$blog_category->id}}/edit" method="POST" enctype="multipart/form-data">
                             @method('PUT')
@@ -26,7 +26,7 @@
                                         <h4>Tên chủ đề</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" style="" name="category" class="form-control" value="{{$blog_category->category}}"
+                                        <input type="text" style="" name="category" class="form-control" value="{{$blog_category->name}}"
                                             required>
                                         </<input>
                                     </div>

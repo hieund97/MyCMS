@@ -50,7 +50,7 @@
             <div class="col-md-2">
                 <div class="card card-profile">
                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail">
+                        <div class="fileinput-new thumbnail" style="margin-top: 20px;">
                             {{-- <img src="{{asset ('manage/img/placeholder.jpg') }}"> --}}
                             <img src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}">
                         </div>
@@ -75,7 +75,7 @@
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn chủ đề</option>
                             @foreach ($blog_categories as $blog_category)
-                            <option>{{$blog_category->category}}</option>  
+                            <option>{{$blog_category->blog_category['name']}}</option>  
                             @endforeach                            
                         </select>
                     </div>
@@ -88,8 +88,8 @@
                         <select class="selectpicker" name="author" data-size="7"
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn tác giả</option>
-                            @foreach ($users as $user)
-                            <option>{{$user->last_name}} {{$user->first_name}}</option>
+                            @foreach ($blog_categories as $blog_category)
+                            <option>{{$blog_category->user['last_name']}} {{$blog_category->user['first_name']}}</option>
                             @endforeach                                                        
                         </select>
                     </div>

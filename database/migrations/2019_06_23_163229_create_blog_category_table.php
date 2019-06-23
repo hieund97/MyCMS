@@ -13,9 +13,9 @@ class CreateBlogCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('Blog_Category', function (Blueprint $table) {
+        Schema::create('blog_category', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category');
+            $table->string('name');            
             $table->string('short_decription')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateBlogCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Blog_Category');
+        Schema::dropIfExists('blog_category');
     }
 }

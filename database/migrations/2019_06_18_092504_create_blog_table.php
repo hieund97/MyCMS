@@ -18,8 +18,8 @@ class CreateBlogTable extends Migration
             $table->mediumText('title');            
             $table->longText('content');            
             $table->string('thumbnail')->nullable();
-            $table->integer('category_id');
-            $table->integer('user_id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->longText('short_decription')->nullable();
             $table->timestamps();
         });

@@ -54,7 +54,7 @@
                                                 </label>
                                             </div>
                                         </th>
-                                        <th class="text-center" style="width: 416px;">Tên chủ đề</th>
+                                        <th style="width: 416px;">Tên chủ đề</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>
                                         <th>Hành động</th>
@@ -63,18 +63,18 @@
                                 <tbody>
                                     @foreach ($blog_categories as $blog_category)
                                     <tr>
-                                        <td class="text-center">1</td>
+                                        <td class="text-center">{{$blog_category->id}}</td>
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input class="form-check-input" type="checkbox">
                                                     <span class="form-check-sign">
                                                         <span class="check"></span>
                                                     </span>
                                                 </label>
                                             </div>
                                         </td>
-                                        <td class="text-center"><a href="">{{$blog_category->category}}</a></td>
+                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/blog-category/{{$blog_category->id}}/edit">{{$blog_category->name}}</a></td>
                                         <td class="text-center">{{$blog_category->created_at}}</td>
                                         <td class="text-center">
                                             <label style="padding-right: 10px;padding-left: 10px;"

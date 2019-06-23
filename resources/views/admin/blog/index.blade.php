@@ -53,10 +53,10 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="photo">
-                                                <img style=" width: 80px; height: 80px;" src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}" />
+                                                <img style=" width: 80px; height: 80px;" src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" />
                                             </div>
                                         </td>
-                                    <td><a href="">{{$blog->title}}</a></td>
+                                    <td><a style="font-weight: bold; font-size: 120%;" href="">{{$blog->title}}</a></td>
                                         <td class="text-center">{{$blog->category}}</td>
                                         <td class="text-center"> {{$blog->author}}</td>
                                         <td class="text-center"> {{$blog->created_at}}</td>

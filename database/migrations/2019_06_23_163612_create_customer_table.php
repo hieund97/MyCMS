@@ -23,6 +23,7 @@ class CreateCustomerTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->boolean('level')->nullable();
+            $table->decimal('total')->nullable();
             $table->string('review')->nullable();
             $table->timestamps();
         });
