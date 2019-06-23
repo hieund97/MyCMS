@@ -16,9 +16,9 @@ class BlogController extends Controller
     }
 
     public function create(Blog $blog){
-        $categories = Blog_Category::get();
+        $blog_categories = Blog_Category::get();
         $users = User::get();
-        return view('admin.blog.create', compact('blog', 'users', 'categories'));
+        return view('admin.blog.create', compact('blog', 'users', 'blog_categories'));
     }    
 
     public function store(Blog $blog, Request $request){
