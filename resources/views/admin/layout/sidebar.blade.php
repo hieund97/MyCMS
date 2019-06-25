@@ -1,4 +1,5 @@
-<div class="sidebar" data-color="rose" data-background-color="black" data-image=" {{ asset ('manage/img/sidebar-1.jpg') }}">
+<div class="sidebar" data-color="rose" data-background-color="black"
+  data-image=" {{ asset ('manage/img/sidebar-1.jpg') }}">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -15,9 +16,10 @@
   <div class="sidebar-wrapper">
     <div class="user">
       <div class="photo">
-        <img src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}" />
+        <img
+          src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}" />
       </div>
-      <div class="user-info">        
+      <div class="user-info">
         <a href="/admin/user/{{auth()->user()->id}}/edit" class="username">
           <span>
             {{auth()->user()->last_name}} {{auth()->user()->first_name}}
@@ -56,7 +58,8 @@
         </a>
       </li>
       <li class="nav-item {{Request::segment(2) === 'user' ? 'active' : null}} ">
-        <a class="nav-link {{Request::segment(2) === 'user' ? null : 'collapsed'}}" data-toggle="collapse" href="#pagesExamples" aria-expanded="{{Request::segment(2) === 'user' ? 'true' : 'false'}}">
+        <a class="nav-link {{Request::segment(2) === 'user' ? null : 'collapsed'}}" data-toggle="collapse"
+          href="#pagesExamples" aria-expanded="{{Request::segment(2) === 'user' ? 'true' : 'false'}}">
           <i class="material-icons">person</i>
           <p> Thành viên
             <b class="caret"></b>
@@ -81,12 +84,13 @@
                 <span class="sidebar-mini"> ĐK </span>
                 <span class="sidebar-normal"> Đăng ký </span>
               </a>
-            </li>            
+            </li>
           </ul>
         </div>
       </li>
       <li class="nav-item {{Request::segment(2) === 'products' ? 'active' : null}}">
-        <a class="nav-link {{Request::segment(2) === 'products' ? null : 'collapsed'}}" data-toggle="collapse" href="#componentsExamples" aria-expanded="{{Request::segment(2) === 'products' ? 'true' : 'false'}}">
+        <a class="nav-link {{Request::segment(2) === 'products' ? null : 'collapsed'}}" data-toggle="collapse"
+          href="#componentsExamples" aria-expanded="{{Request::segment(2) === 'products' ? 'true' : 'false'}}">
           <i class="material-icons">card_travel</i>
           <p> Sản phẩm
             <b class="caret"></b>
@@ -94,12 +98,18 @@
         </a>
         <div class="{{Request::segment(2) === 'products' ? 'collapse show' : 'collapse'}}" id="componentsExamples">
           <ul class="nav">
-              <li class="nav-item {{Request::segment(2) === 'products' ? 'active' : null}} ">
-                  <a class="nav-link" href="/admin/products">
-                    <span class="sidebar-mini"> DSP </span>
-                    <span class="sidebar-normal"> Danh sách sản phẩm </span>
+              <li class="nav-item {{ (request()->is('admin/products/create')) ? 'active' : '' }} ">
+                  <a class="nav-link" href="/admin/products/create">
+                    <span class="sidebar-mini"> TSP </span>
+                    <span class="sidebar-normal"> Thêm sản phẩm </span>
                   </a>
-                </li>    
+                </li>
+            <li class="nav-item {{ (request()->is('admin/products')) ? 'active' : '' }} ">
+              <a class="nav-link" href="/admin/products">
+                <span class="sidebar-mini"> DSP </span>
+                <span class="sidebar-normal"> Danh sách sản phẩm </span>
+              </a>
+            </li>
             <li class="nav-item  ">
               <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
                 <span class="sidebar-mini" style="padding-top: 15px;"> DM </span>
@@ -117,48 +127,52 @@
                   </li>
                 </ul>
               </div>
-            </li> 
+            </li>
             <li class="nav-item ">
               <a class="nav-link" href="../examples/components/buttons.html">
                 <span class="sidebar-mini"> GTC </span>
                 <span class="sidebar-normal"> Giá tùy chỉnh </span>
               </a>
-            </li>           
+            </li>
           </ul>
         </div>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#formsExamples">
+      <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
+        <a class="nav-link {{Request::segment(2) === 'categories' ? null : 'collapsed'}}" data-toggle="collapse" href="#formsExamples" aria-expanded="{{Request::segment(2) === 'categories' ? 'true' : 'false'}}">
           <i class="material-icons">dns</i>
           <p> Danh mục
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse" id="formsExamples">
+        <div class="{{Request::segment(2) === 'categories' ? 'collapse show' : 'collapse'}}" id="formsExamples">
           <ul class="nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/forms/regular.html">
+            <li class="nav-item {{ (request()->is('admin/categories/create')) ? 'active' : '' }} ">
+              <a class="nav-link" href="/admin/categories/create">
                 <span class="sidebar-mini"> TD </span>
                 <span class="sidebar-normal"> Thêm danh mục </span>
               </a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../examples/forms/extended.html">
+            <li class="nav-item {{ (request()->is('admin/categories')) ? 'active' : '' }}">
+              <a class="nav-link" href="/admin/categories">
                 <span class="sidebar-mini"> DSD </span>
                 <span class="sidebar-normal"> Danh sách danh mục</span>
               </a>
-            </li>            
+            </li>
           </ul>
         </div>
       </li>
       <li class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
-        <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}" data-toggle="collapse" href="#tablesExamples" aria-expanded="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'true' : 'false'}}">
+        <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}"
+          data-toggle="collapse" href="#tablesExamples"
+          aria-expanded="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'true' : 'false'}}">
           <i class="material-icons">book</i>
           <p> Bài viết
             <b class="caret"></b>
           </p>
         </a>
-        <div class="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'collapse show' : 'collapse'}} " id="tablesExamples">
+        <div
+          class="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'collapse show' : 'collapse'}} "
+          id="tablesExamples">
           <ul class="nav">
             <li class="nav-item {{Request::segment(3) === 'create' ? 'active' : null}} ">
               <a class="nav-link" href="/admin/blog/create">
@@ -171,13 +185,13 @@
                 <span class="sidebar-mini"> DB </span>
                 <span class="sidebar-normal"> Danh sách bài viết </span>
               </a>
-            </li>        
+            </li>
             <li class="nav-item {{ (request()->is('admin/blog-category')) ? 'active' : '' }} ">
-                <a class="nav-link" href="/admin/blog-category">
-                  <span class="sidebar-mini"> CĐ </span>
-                  <span class="sidebar-normal"> Chủ đề </span>
-                </a>
-              </li>          
+              <a class="nav-link" href="/admin/blog-category">
+                <span class="sidebar-mini"> CĐ </span>
+                <span class="sidebar-normal"> Chủ đề </span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
@@ -203,17 +217,17 @@
               </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/maps/fullscreen.html">
-                  <span class="sidebar-mini"> GD </span>
-                  <span class="sidebar-normal"> Giao dịch khách hàng </span>
-                </a>
+              <a class="nav-link" href="../examples/maps/fullscreen.html">
+                <span class="sidebar-mini"> GD </span>
+                <span class="sidebar-normal"> Giao dịch khách hàng </span>
+              </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="../examples/maps/fullscreen.html">
-                  <span class="sidebar-mini"> LS </span>
-                  <span class="sidebar-normal"> Lịch sử giao dịch </span>
-                </a>
-            </li>     
+              <a class="nav-link" href="../examples/maps/fullscreen.html">
+                <span class="sidebar-mini"> LS </span>
+                <span class="sidebar-normal"> Lịch sử giao dịch </span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
@@ -235,6 +249,6 @@
           <p> Quảng cáo </p>
         </a>
       </li>
-    </ul>    
+    </ul>
   </div>
 </div>

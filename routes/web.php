@@ -54,6 +54,16 @@ Route::group([
             'prefix' => 'products'
         ], function(){
             Route::get('/', 'ProductController@index');
+            Route::get('/create', 'ProductController@create');
+        });
+
+        // Admin Product-Category Route
+        Route::group([
+            'prefix' => 'categories'
+        ], function () {
+            Route::get('/', 'CategoryController@index');
+            Route::get('/create', 'CategoryController@create');
+            Route::get('{category}/edit', 'CategoryController@edit');
         });
 
         // Admin Blog Route

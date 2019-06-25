@@ -9,6 +9,15 @@
                     <i class="material-icons">card_travel</i>
                 </div>
                 <h4 class="card-title">Danh sách sản phẩm</h4>
+                <div style="float:right;">
+                    <div id="datatables_filter" class="dataTables_filter">
+                        <label>
+                            <span class="bmd-form-group bmd-form-group-sm"><input type="search"
+                                    class="form-control form-control-sm" placeholder="Search records"
+                                    aria-controls="datatables"></span>
+                        </label>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,7 +71,8 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm sản phẩm</a>
+                <a href="/admin/products/create" style="padding-left: 15px; padding-right: 15px;"
+                    class="btn btn-primary pull-right">Thêm sản phẩm</a>
             </div>
         </div>
     </div>

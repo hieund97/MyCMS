@@ -37,6 +37,15 @@
                             <i class="material-icons">book</i>
                         </div>
                         <h4 class="card-title">Danh sách bài viết</h4>
+                        <div style="float:right;">
+                            <div id="datatables_filter" class="dataTables_filter">
+                                <label>
+                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
+                                            class="form-control form-control-sm" placeholder="Search records"
+                                            aria-controls="datatables"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -56,6 +65,7 @@
                                         </th>
                                         <th style="width: 416px;">Tên chủ đề</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
+                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -74,8 +84,12 @@
                                                 </label>
                                             </div>
                                         </td>
-                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/blog-category/{{$blog_category->id}}/edit">{{$blog_category->name}}</a></td>
+                                        <td><a style="font-weight: bold; font-size: 120%;"
+                                                href="/admin/blog-category/{{$blog_category->id}}/edit">{{$blog_category->name}}</a>
+                                        </td>
                                         <td class="text-center">{{$blog_category->created_at}}</td>
+                                        <td class="text-center">{{$blog_category->updated_at}}</td>
+
                                         <td class="text-center">
                                             <label style="padding-right: 10px;padding-left: 10px;"
                                                 class="btn btn-info">Published</label>
@@ -89,7 +103,7 @@
                                                         class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
-                                        data-id="{{$blog_category->id}}" data-original-title="Xóa">
+                                                data-id="{{$blog_category->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>

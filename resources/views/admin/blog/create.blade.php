@@ -89,7 +89,7 @@
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn tác giả</option>
                             @foreach ($blog_categories as $blog_category)
-                            <option>{{$blog_category->user['last_name']}} {{$blog_category->user['first_name']}}</option>
+                            <option>{{$blog_category->user['first_name']}}</option>
                             @endforeach                                                        
                         </select>
                     </div>

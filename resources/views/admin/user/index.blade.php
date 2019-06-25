@@ -5,28 +5,37 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                    @if (session()->has('create_user'))
-                    <div class="alert alert-success">
-                        <div class="container">
-                            <div class="alert-icon">
-                                <i class="material-icons">check</i>
-                            </div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                            </button>
-                            <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                @if (session()->has('create_user'))
+                <div class="alert alert-success">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">check</i>
                         </div>
-                    </div>                        
-                    @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                    </div>
+                </div>
+                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">face</i>
                         </div>
                         <h4 class="card-title">Danh sách thành viên</h4>
-
+                        <div style="float:right;">
+                            <div id="datatables_filter" class="dataTables_filter">
+                                <label>
+                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
+                                            class="form-control form-control-sm" placeholder="Search records"
+                                            aria-controls="datatables"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">                        
+
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -56,19 +65,19 @@
                                         <td>
                                             <div class="photo">
                                                 <img style=" width: 50px; height: 50px; border-radius: 25px;"
-                                            src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
+                                                    src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
                                             </div>
                                         </td>
                                         <td class="td-actions text-right" style="padding-right: 15px;">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-round" 
-                                                 data-original-title="Sửa">
-                                                <a style="color:white;" href="/admin/user/{{$user->id}}/edit" ><i
+                                            <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                                data-original-title="Sửa">
+                                                <a style="color:white;" href="/admin/user/{{$user->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del" data-id="{{$user->id}}" 
-                                                 data-original-title="Xóa">
+                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                                data-id="{{$user->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
-                                            </button>                                            
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -76,7 +85,8 @@
                             </table>
                             <div>
                                 {{$users->links()}}
-                                <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;" class="btn btn-primary pull-right">Thêm thành viên</a>
+                                <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;"
+                                    class="btn btn-primary pull-right">Thêm thành viên</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +97,7 @@
 </div>
 @endsection
 @push('js')
-    
+
 {{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}"> --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
 
@@ -149,5 +159,42 @@
 				})	
 		});
 	});
+</script>
+<script>
+    $(document).ready(function() {
+          $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+              [10, 25, 50, -1],
+              [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+              search: "_INPUT_",
+              searchPlaceholder: "Search records",
+            }
+          });
+    
+          var table = $('#datatable').DataTable();
+    
+          // Edit record
+          table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+          });
+    
+          // Delete a record
+          table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+          });
+    
+          //Like record
+          table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+          });
+        });
 </script>
 @endpush
