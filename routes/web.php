@@ -64,6 +64,9 @@ Route::group([
             Route::get('/', 'CategoryController@index');
             Route::get('/create', 'CategoryController@create');
             Route::get('{category}/edit', 'CategoryController@edit');
+            Route::put('{category}/edit', 'CategoryController@update');
+            Route::post('/','CategoryController@store');
+            Route::delete('{categories}/delete', 'CategoryController@destroy');
         });
 
         // Admin Blog Route
@@ -73,6 +76,7 @@ Route::group([
             Route::get('/', 'BlogController@index');
             Route::get('create', 'BlogController@create');
             Route::post('/', 'BlogController@store');
+            
         });
 
         // Admin Blog-Category Route

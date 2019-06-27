@@ -1,6 +1,11 @@
 @extends('admin.layout.main')
 @section('title', 'User')
 @section('content')
+<style type="text/css">
+    .chieucao {
+        height: 54px;
+    }
+</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -36,21 +41,21 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Company</label>
-                                        <input type="text" name="company" class="form-control" value="ILOVEU3000"
-                                            readonly>
+                                        <input type="text" name="company" class="form-control chieucao"
+                                            value="ILOVEU3000" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Username</label>
-                                        <input type="text" name="username" class="form-control"
+                                        <input type="text" name="username" class="form-control chieucao"
                                             value="{{$user->user_name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email address</label>
-                                        <input type="email" name="email" class="form-control">
+                                        <input type="email" name="email" class="form-control chieucao">
                                     </div>
                                 </div>
                             </div>
@@ -58,19 +63,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Fist Name</label>
-                                        <input type="text" name="firstname" class="form-control">
+                                        <input type="text" name="firstname" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Last Name</label>
-                                        <input type="text" name="lastname" class="form-control">
+                                        <input type="text" name="lastname" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Level</label>
-                                        <input type="text" name="level" class="form-control">
+                                        <input type="text" name="level" class="form-control chieucao">
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +83,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Address</label>
-                                        <input type="text" name="address" class="form-control">
+                                        <input type="text" name="address" class="form-control chieucao">
                                     </div>
                                 </div>
                             </div>
@@ -86,19 +91,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">City</label>
-                                        <input type="text" name="city" class="form-control">
+                                        <input type="text" name="city" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Country</label>
-                                        <input type="text" name="country" class="form-control">
+                                        <input type="text" name="country" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Phone</label>
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="text" name="phone" class="form-control chieucao">
                                     </div>
                                 </div>
                             </div>
@@ -106,13 +111,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Password</label>
-                                        <input type="password" name="password" class="form-control">
+                                        <input type="password" name="password" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Retype Password</label>
-                                        <input type="password" name="retypepassword" class="form-control">
+                                        <input type="password" name="retypepassword" class="form-control chieucao">
                                     </div>
                                 </div>
                             </div>
@@ -121,29 +126,34 @@
                                     <div class="form-group">
                                         <label>About Me</label>
                                         <div class="form-group">
-                                            {{-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so
-                                                thirsty, I'm in that two seat Lambo.</label> --}}
-                                            <textarea class="form-control" name="aboutme" rows="5"></textarea>
+                                            <textarea class="form-control" name="aboutme" rows="12"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3" style="padding-right: 30px;padding-left: 30px;">
-                                    <div class="card card-profile"
-                                        style="margin-top: 0px;margin-bottom: 0px; float:right; width:200px;">
-                                        <div class="avatar-wrapper"
-                                            style="margin-top: 0px;margin-bottom: 0px;margin-right: 0px;margin-left: 0px;">
-                                            <img class="profile-pic"
-                                                src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
-                                            <div class="upload-button">
-                                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                                            </div>
-                                            <input class="file-upload" name="avatar" type="file" accept="image/*" />
+                                <div class="card card-profile"
+                                    style="width: 300px;margin-bottom: 0px;margin-left: 40px;">
+                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail" style="margin-top: 20px;">
+                                            <img
+                                                src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                        <div>
+                                            <span class="btn btn-rose btn-round btn-file">
+                                                <span class="fileinput-new">Select image</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" name="thumb" />
+                                            </span>
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
+                                                data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                         </div>
                                     </div>
                                 </div>
-
-                                <button type="submit" class="btn btn-rose pull-right">Create Profile</button>
+                                <button type="submit" style="width: 150px;padding-left: 25px;margin-left: 15px;"
+                                    class="btn btn-rose pull-right">Create Profile</button>
                                 <div class="clearfix"></div>
+                            </div>
+
                         </form>
                         {{-- end form --}}
 

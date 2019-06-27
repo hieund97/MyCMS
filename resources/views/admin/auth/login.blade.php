@@ -186,8 +186,16 @@
                       </div>
                       <input type="password" name="password" class="form-control" placeholder="Password...">
                     </div>
-                  </span>
+                  </span>                  
                 </div>
+                <div class="form-check" style="margin-top: 20px;margin-left: 30px;margin-bottom: 0px;">
+                    <label class="form-check-label">
+                      <input class="form-check-input" name="remember" type="checkbox" value=""> Remeber Me
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
                 <div class="card-footer justify-content-center">
                   <button class="btn btn-rose btn-link btn-lg" type="submit">Lets Go</button>
                 </div>

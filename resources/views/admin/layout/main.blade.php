@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{{asset('manage/css/material-dashboard.min.css?v=2.1.0') }}" rel="stylesheet" />
+
   {{-- avatar css --}}
   <link href="{{asset('manage/css/avatar.css') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -110,7 +111,7 @@
   </div>
 
   {{-- fix plugin --}}
-  @include('admin.layout.fixplugin')
+  {{-- @include('admin.layout.fixplugin') --}}
   {{-- end fix plugin --}}
 
   <!--   Core JS Files   -->

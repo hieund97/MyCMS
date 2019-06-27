@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\View\Composers;
+
+use Illuminate\View\View;
+use App\Models\Categories;
+use App\Repositories\UserRepository;
+
+class CategoryPartialComposer
+{
+    protected $CategoryPartialList= [];
+
+    public function __construct(){
+        $this->CategoryPartialList = Categories::where('parent_id', '=', 0)->get();
+    }
+
+    public function compose(View $view)
+     {
+         $view->with('category', $this->CategoryPartialList);
+     }
+}

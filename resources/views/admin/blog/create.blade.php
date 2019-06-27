@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header card-header-icon card-header-rose">
                         <div class="card-icon">
-                            <i class="material-icons">perm_identity</i>
+                            <i class="material-icons">book</i>
                         </div>
                         <h4 class="card-title">Thêm Bài viết -
                             <small class="category">sáng tạo bài viết của bạn </small>

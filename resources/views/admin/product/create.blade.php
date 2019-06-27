@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header card-header-icon card-header-rose">
                     <div class="card-icon">
-                        <i class="material-icons">perm_identity</i>
+                        <i class="material-icons">card_travel</i>
                     </div>
                     <h4 class="card-title">Thêm sản phẩm</h4>
                 </div>
@@ -100,12 +100,8 @@
                             </div>
                             <select class="selectpicker" style="width: 275px;" data-size="7"
                                 data-style="btn btn-primary btn-round" title="Single Select">
-                                <option disabled selected>Danh mục</option>
-                                <option value="2">Foobar</option>
-                                <option value="3">Is great</option>
-                                <option value="4">Is bum</option>
-                                <option value="5">Is wow</option>
-                                <option value="6">boom</option>
+                                <option selected value="0">Danh mục</option>
+                                {{getCategory($categories, 0, '')}}
                             </select>
                         </div>
                         {{-- end area 2 --}}
@@ -120,7 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="bmd-label-floating">Size</label>
+                            <label class="bmd-label-floating">Size  <a href=""><i class="material-icons">settings</i></a></label>
                             <div class="row padding" style="margin-left: 15px;">
                                 <div class="col-sm-10 checkbox-radios">
                                     <div class="form-check form-check-inline">
@@ -165,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="bmd-label-floating">Màu sắc</label>
+                            <label class="bmd-label-floating">Màu sắc <a href=""><i class="material-icons">settings</i></a></label>
                             <div class="row padding" style="margin-left: 15px;">
                                 <div class="col-sm-10 checkbox-radios">
                                     <div class="form-check form-check-inline">
@@ -222,7 +218,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-rose">Create Profile</button>
+                            <button type="submit" class="btn btn-rose">Thêm sản phẩm</button>
                         </div>
 
                         {{-- end area 3 --}}

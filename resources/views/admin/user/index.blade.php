@@ -54,7 +54,7 @@
                                     @foreach ($users as $user)
                                     <tr>
                                         <td class="text-center">{{$user->id}}</td>
-                                        <td>{{$user->last_name}} {{$user->first_name}}</td>
+                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/user/{{$user->id}}/edit">{{$user->last_name}} {{$user->first_name}}</a></td>
                                         <td>{{$user->user_name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone}}</td>

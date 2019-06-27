@@ -8,14 +8,14 @@
                 <div class="card">
                     <div class="card-header card-header-icon card-header-rose">
                         <div class="card-icon">
-                            <i class="material-icons">perm_identity</i>
+                            <i class="material-icons">assignment</i>
                         </div>
                         <h4 class="card-title">Thêm danh mục</h4>
                     </div>
                     <div class="card-body">
 
                         {{-- form --}}
-                        <form action="/admin/blog-category" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/categories" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -28,22 +28,34 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($errors->has('category'))
+                            <div class="alert alert-danger">
+                                <div class="container">
+                                    <div class="alert-icon">
+                                        <i class="material-icons">error_outline</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    <b>LỖI</b> DANH MỤC BỊ TRÙNG
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
-                                <label class="bmd-label-floating" style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
+                                <label class="bmd-label-floating"
+                                    style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
                                     <h4>Danh mục cha</h4>
                                 </label>
-                                
-                                    <select class="selectpicker" data-size="7" data-style="btn btn-primary btn-round"
-                                        title="Single Select">
-                                        <option selected value="0">Danh mục gốc</option>
-                                        <option value="2">Foobar</option>
-                                        <option value="3">Is great</option>
-                                        <option value="4">Is bum</option>
-                                        <option value="5">Is wow</option>
-                                        <option value="6">boom</option>
-                                    </select>
-                               
+
+                                <select class="selectpicker" data-size="7" name="parent"
+                                    data-style="btn btn-primary btn-round" title="Single Select">
+                                    <option selected value="0">Danh mục gốc</option>
+                                    {{getCategory($categories, 0, '')}}
+
+                                </select>
+
                             </div>
+
                             <button type="submit" class="btn btn-rose pull-right">Tạo danh mục</button>
                             <div class="clearfix"></div>
                         </form>
