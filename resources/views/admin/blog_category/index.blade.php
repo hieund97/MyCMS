@@ -4,7 +4,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 @if (session()->has('create_blog_category'))
                 <div class="alert alert-success">
                     <div class="container">
@@ -119,13 +119,74 @@
                         </div>
                     </div>
                 </div>
-                @endsection
-                @push('js')
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header card-header-icon card-header-rose">
+                        <div class="card-icon">
+                            <i class="material-icons">book</i>
+                        </div>
+                        <h4 class="card-title">Thêm chủ đề</h4>
+                    </div>
+                    <div class="card-body">
 
-                
+                        {{-- form --}}
+                        <form action="/admin/blog-category" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="bmd-label-floating">
+                                        <h4>Tên chủ đề</h4>
+                                    </label>
+                                    <div class="form-group">
+                                        <input type="text" style="" name="category" class="form-control" required>
+                                        </ <input>
+                                    </div>
+                                </div>
+                            </div>
+                            @if ($errors->has('category'))
+                            <div class="alert alert-danger">
+                                <div class="container">
+                                    <div class="alert-icon">
+                                        <i class="material-icons">error_outline</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    <b>LỖI</b> CHỦ ĐỀ BỊ TRÙNG
+                                </div>
+                            </div>
+                            @endif
+                            <div class="row">
+                                <div class="card card-profile">
+                                    <label class="bmd-label-floating">
+                                        <h4>Mô tả ngắn</h4>
+                                    </label>
+                                    <div class="form-group">                                        
+                                        <textarea class="form-control" name="short_decription"
+                                            style="padding-left: 15px; padding-right: 15px;" required rows="8">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Tạo chủ đề</button>
+                            <div class="clearfix"></div>
+                        </form>
+                        {{-- end form --}}
 
-                <script>
-                    $(document).ready(function(){
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@push('js')
+
+
+
+<script>
+    $(document).ready(function(){
 		$('.btn-del').click(function(e){		
             e.preventDefault();
             console.log('im in');
@@ -145,7 +206,7 @@
 					text: "Hành động sẽ không thể hoàn tác",
 					type: 'warning',
 					showCancelButton: true,
-					confirmButtonText: 'Có, Xóa người dùng',
+					confirmButtonText: 'Có, Xóa chủ đề',
 					cancelButtonText: 'Không, Hủy bỏ!',
 					reverseButtons: true
 					}).then((result) => {
@@ -160,7 +221,7 @@
 							success: function(){
 								swalWithBootstrapButtons.fire(
 								'Đã xóa!',
-								'Người dùng đã bị xóa',
+								'Chủ đề đã bị xóa',
 								'success'
 								).then((result2) => {
 									if(result2.value){
@@ -183,5 +244,5 @@
 				})	
 		});
 	});
-                </script>
-                @endpush
+</script>
+@endpush

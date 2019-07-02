@@ -34,7 +34,9 @@ class UserController extends Controller
             [
                 'require' => 'Trường này trống cmnr',                
             ]
-        );        
+        );
+        // dd($request->all());
+
         $avatarName=Null;
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên

@@ -5,6 +5,19 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                @if (session()->has('create_blog'))
+                <div class="alert alert-success">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">check</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                    </div>
+                </div>
+                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
@@ -62,24 +75,32 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="photo">
-                                                <img style=" width: 80px; height: 80px;"
-                                                    src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" />
+                                                <a href="/admin/blog/{{$blog->id}}/edit"><img style=" width: 80px; height: 80px;"
+                                                    src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" /></a>
                                             </div>
                                         </td>
-                                        <td><a style="font-weight: bold; font-size: 120%;" href="">{{$blog->title}}</a>
+                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/blog/{{$blog->id}}/edit">{{$blog->title}}</a>
                                         </td>
-                                        <td class="text-center">{{$blog->category}}</td>
-                                        <td class="text-center"> {{$blog->author}}</td>
+                                        <td class="text-center">
+                                            {{ isset($blog->blog_category->name) ? $blog->blog_category->name : '' }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{ isset($blog->users->last_name) ? $blog->users->last_name : '' }} {{ isset($blog->users->first_name) ? $blog->users->first_name : '' }}
+                                        </td>
                                         <td class="text-center"> {{$blog->created_at}}</td>
                                         <td class="text-center">
                                             <label style="padding-right: 10px;padding-left: 10px;"
                                                 class="btn btn-info">Published</label>
                                         </td>
                                         <td class="td-actions"
-                                            style="width: 106px;padding-right: 0px;padding-left: 20px;">
+                                            style="width: 106px;padding-right: 0px;">
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-round btn-del"
+                                                data-id="" data-original-title="Xem">
+                                                <i class="material-icons">visibility</i>
+                                            </button>
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
-                                                <a style="color:white;" href="#"><i class="material-icons">edit</i></a>
+                                                <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
                                                 data-id="" data-original-title="Xóa">

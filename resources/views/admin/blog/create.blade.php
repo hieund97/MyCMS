@@ -2,6 +2,8 @@
 @section('title', 'Create Blog')
 @section('content')
 <div class="content">
+<form action="/admin/blog" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10">
@@ -15,9 +17,6 @@
                         </h4>
                     </div>
                     <div class="card-body">
-
-                        {{-- Form --}}
-                        <form action="/admin/blog" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="bmd-label-floating">
@@ -43,7 +42,6 @@
                             </div>
                             <button type="submit" class="btn btn-rose pull-right">Tạo bài viết</button>
                             <div class="clearfix"></div>
-
                     </div>
                 </div>
             </div>
@@ -52,7 +50,8 @@
                     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail" style="margin-top: 20px;">
                             {{-- <img src="{{asset ('manage/img/placeholder.jpg') }}"> --}}
-                            <img src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}">
+                            <img
+                                src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/placeholder.jpg') }}">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                         <div>
@@ -74,9 +73,12 @@
                         <select class="selectpicker" name="category" data-size="7"
                             data-style="btn btn-primary btn-round" title="Single Select">
                             <option disabled selected>Chọn chủ đề</option>
+                            @if (isset($blog_categories))
                             @foreach ($blog_categories as $blog_category)
-                            <option>{{$blog_category->blog_category['name']}}</option>  
-                            @endforeach                            
+                            <option value="{{$blog_category->id}}">{{$blog_category->name}}</option>
+                            @endforeach
+                            @endif
+
                         </select>
                     </div>
                 </div>
@@ -85,12 +87,14 @@
                         <h4 class="card-title">Tác giả </h4>
                     </div>
                     <div class="dropdown bootstrap-select" style="width: 240px;">
-                        <select class="selectpicker" name="author" data-size="7"
-                            data-style="btn btn-primary btn-round" title="Single Select">
+                        <select class="selectpicker" name="author" data-size="7" data-style="btn btn-primary btn-round"
+                            title="Single Select">
                             <option disabled selected>Chọn tác giả</option>
-                            @foreach ($blog_categories as $blog_category)
-                            <option>{{$blog_category->user['first_name']}}</option>
-                            @endforeach                                                        
+                            @if (isset($users))
+                            @foreach ($users as $user)
+                            <option value="{{$user->id}}">{{$user->last_name}} {{$user->first_name}}</option>
+                            @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>
@@ -106,12 +110,9 @@
                     </div>
                 </div>
             </div>
-            </form>
-            {{-- end Form --}}
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
+</form>
+
 @endsection

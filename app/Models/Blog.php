@@ -13,7 +13,7 @@ class Blog extends Model
         return $this->belongsTo('App\Models\Blog_Category', 'category_id', 'id');
     }
     
-    public function user(){
+    public function users(){
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 }

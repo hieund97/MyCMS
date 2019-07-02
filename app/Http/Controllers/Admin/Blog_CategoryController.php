@@ -15,12 +15,23 @@ class Blog_CategoryController extends Controller
         return view('admin.blog_category.index', compact('blog_categories'));
     }
 
-    public function create(){
-        $users = User::get();
-        return view('admin.blog_category.create', compact('users'));
-    }
+    // public function create(){
+    //     $users = User::get();
+    //     return view('admin.blog_category.create', compact('users'));
+    // }
 
     public function store(Blog_Category $blog_category, Request $request){
+        $this->validate(
+            $request,
+            [
+                'category' => 'required | unique:blog_category,name'               
+                
+            ],
+            [
+                'require' => 'Trường này trống cmnr',  
+                'unique'  => 'Tên danh mục đã bị trùng'
+            ]
+        );
         $blog_category = Blog_Category::create([
             'name' => $request->category,
             'short_decription' => $request->short_decription
@@ -34,6 +45,17 @@ class Blog_CategoryController extends Controller
     }
 
     public function update(Blog_Category $blog_category, Request $request){
+        $this->validate(
+            $request,
+            [
+                'category' => 'required | unique:blog_category,name'               
+                
+            ],
+            [
+                'require' => 'Trường này trống cmnr',  
+                'unique'  => 'Tên danh mục đã bị trùng'
+            ]
+        );
         $blog_category->update([
             'name' => $request->category,
             'short_decription' => $request->short_decription

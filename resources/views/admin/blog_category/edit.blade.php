@@ -8,11 +8,9 @@
                 <div class="card">
                     <div class="card-header card-header-icon card-header-rose">
                         <div class="card-icon">
-                            <i class="material-icons">perm_identity</i>
+                            <i class="material-icons">book</i>
                         </div>
-                        <h4 class="card-title">Thêm chủ đề -
-                            <small class="category">Làm cho bài viết của bạn đa dạng hơn</small>
-                        </h4>
+                        <h4 class="card-title">Sửa chủ đề</h4>
                     </div>
                     <div class="card-body">                        
                         
@@ -32,6 +30,19 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($errors->has('category'))
+                            <div class="alert alert-danger">
+                                <div class="container">
+                                    <div class="alert-icon">
+                                        <i class="material-icons">error_outline</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    <b>LỖI</b> CHỦ ĐỀ BỊ TRÙNG
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
                                 <div class="card card-profile">
                                     <label class="bmd-label-floating">

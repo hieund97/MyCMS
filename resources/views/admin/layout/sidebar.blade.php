@@ -12,7 +12,7 @@
   -->
   <div class="logo">
     <a href="/admin" class="simple-text logo-normal">
-      <img class="img-fluid" style="width: 200px;margin-left: 30px;" src="{{asset ('manage/img/logoavenger.png')}}"
+      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
         alt="">
     </a>
   </div>
@@ -26,31 +26,8 @@
         <a href="/admin/user/{{auth()->user()->id}}/edit" class="username">
           <span>
             {{auth()->user()->last_name}} {{auth()->user()->first_name}}
-            {{-- <b class="caret"></b> --}}
           </span>
-        </a>
-        {{-- <div class="collapse" id="collapseExample">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/user">
-                <span class="sidebar-mini"> MP </span>
-                <span class="sidebar-normal"> My Profile </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/user">
-                <span class="sidebar-mini"> EP </span>
-                <span class="sidebar-normal"> Edit Profile </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> S </span>
-                <span class="sidebar-normal"> Settings </span>
-              </a>
-            </li>
-          </ul>
-        </div> --}}
+        </a>        
       </div>
     </div>
     <ul class="nav">

@@ -39,8 +39,13 @@
                     <a style="font-size:100%;" href="/contact">
                         Contact Us
                     </a>
-                </li>                
-                <li style="margin-right: 10px;">
+                </li>
+                {{-- <li>
+                    <a style="font-size:100%;" href="#pablo">
+                        Welcome.....
+                    </a>
+                </li> --}}
+                {{-- <li style="margin-right: 10px;">
                     <a class="btn btn-danger btn-default btn-block"
                         style="padding-right: 10px;padding-left: 10px;padding-bottom: 9px;padding-top: 11px;"
                         data-toggle="modal" data-target="#loginModal">
@@ -53,12 +58,32 @@
                         data-toggle="modal" data-target="#signupModal">
                         SignUp
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#" target="_blank" class="btn btn-white btn-simple">
                         <i class="material-icons">shopping_cart</i>
                     </a>
                 </li>                
+                <li class="dropdown">
+                    <a href="#pablo" class="profile-photo dropdown-toggle" data-toggle="dropdown">
+                        <div class="profile-photo-small">
+                            <img src="assets/img/faces/avatar.jpg" alt="Circle Image" class="img-circle img-responsive">
+                        </div>
+                    </a>                    
+                    <ul class="dropdown-menu">                        
+                        <li>
+                            <a href="#pablo">Me</a>
+                        </li>
+                        <li>
+                            <a href="#pablo">Settings and other stuff</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#pablo">Sign out</a></li>
+                    </ul>
+                </li>
+                <li style="margin-left: 10px;padding-top: 15px;">
+                    <span style="font-size:15px;">Nguyễn Đức Hiếu</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -66,4 +91,3 @@
 
 
 </nav>
-@push('js')

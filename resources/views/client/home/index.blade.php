@@ -603,97 +603,76 @@
             </div>
 
             <br>
-            <h2 class="section-title">News in fashion</h2>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-background" style="background-image: url({{asset('client/img/examples/chris9.jpg')}})">
-                        <div class="card-content">
-                            <h6 class="category text-info">Productivy Apps</h6>
-                            <a href="#pablo">
-                                <h3 class="card-title">The best trends in fashion 2017</h3>
-                            </a>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in truth
-                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </p>
-                            <a href="#pablo" class="btn btn-white btn-round">
-                                <i class="material-icons">subject</i> Read
-                            </a>
+            <div class="section">
+                    <h2 class="title text-center">You may also be interested in</h2>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-plain card-blog">
+                                <div class="card-image">
+                                    <a href="#pablo">
+                                        <img class="img img-raised" src="{{ asset('client/img/bg5.jpg') }}" />
+                                    </a>
+                                </div>
+    
+                                <div class="card-content">
+                                    <h6 class="category text-info">Enterprise</h6>
+                                    <h4 class="card-title">
+                                        <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
+                                    </h4>
+                                    <p class="card-description">
+                                        Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div> <!-- end card -->
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card card-background" style="background-image: url({{asset('client/img/examples/color3.jpg')}})">
-                        <div class="card-content">
-                            <h6 class="category text-info">Fashion News</h6>
-                            <h3 class="card-title">Kanye joins the Yeezy team at Adidas</h3>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in truth
-                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </p>
-                            <a href="#pablo" class="btn btn-white btn-round">
-                                <i class="material-icons">subject</i> Read
-                            </a>
+    
+                        <div class="col-md-4">
+                            <div class="card card-plain card-blog">
+                                <div class="card-image">
+                                    <a href="#pablo">
+                                        <img class="img img-raised" src="{{ asset ('client/img/examples/blog5.jpg') }}" />
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <h6 class="category text-success">
+                                        Startups
+                                    </h6>
+                                    <h4 class="card-title">
+                                        <a href="#pablo">Lyft launching cross-platform service this week</a>
+                                    </h4>
+                                    <p class="card-description">
+                                        Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div> <!-- end card -->
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card card-background" style="background-image: url({{asset('client/img/examples/chris1.jpg')}})">
-                        <div class="card-content">
-                            <h6 class="category text-info">Productivy Apps</h6>
-                            <a href="#pablo">
-                                <h3 class="card-title">Learn how to use the new colors of 2017</h3>
-                            </a>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in truth
-                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </p>
-                            <a href="#pablo" class="btn btn-white btn-round">
-                                <i class="material-icons">subject</i> Read
-                            </a>
+    
+                        <div class="col-md-4">
+                            <div class="card card-plain card-blog">
+                                <div class="card-image">
+                                    <a href="#pablo">
+                                        <img class="img img-raised" src="{{ asset ('client/img/examples/blog6.jpg') }}" />
+                                    </a>
+                                </div>
+    
+                                <div class="card-content">
+                                    <h6 class="category text-danger">
+                                        <i class="material-icons">trending_up</i> Enterprise
+                                    </h6>
+                                    <h4 class="card-title">
+                                        <a href="#pablo">6 insights into the French Fashion landscape</a>
+                                    </h4>
+                                    <p class="card-description">
+                                        Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div> <!-- end card -->
+                    </div>
+    
                 </div>
-
-                <div class="col-md-6">
-                    <div class="card card-background" style="background-image: url({{asset('client/img/dg3.jpg')}})">
-                        <div class="card-content">
-                            <h6 class="category text-info">Tutorials</h6>
-                            <a href="#pablo">
-                                <h3 class="card-title">Trending colors of 2017</h3>
-                            </a>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in truth
-                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </p>
-                            <a href="#pablo" class="btn btn-white btn-round">
-                                <i class="material-icons">subject</i> Read
-                            </a>
-                        </div>
-                    </div> <!-- end card -->
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card card-background" style="background-image: url({{asset('client/img/dg1.jpg')}})">
-                        <div class="card-content">
-                            <h6 class="category text-info">Productivy Style</h6>
-                            <a href="#pablo">
-                                <h3 class="card-title">Fashion & Style 2017</h3>
-                            </a>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in truth
-                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                            </p>
-                            <a href="#pablo" class="btn btn-white btn-round">
-                                <i class="material-icons">subject</i> read
-                            </a>
-                        </div>
-                    </div> <!-- end card -->
-                </div>
-            </div>
 
         </div>
     </div><!-- section -->

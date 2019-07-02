@@ -219,6 +219,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-rose">Thêm sản phẩm</button>
+                            
                         </div>
 
                         {{-- end area 3 --}}
