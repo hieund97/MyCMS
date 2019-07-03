@@ -66,7 +66,7 @@
                                         <td class="text-center">
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                         <span class="check"></span>
                                                     </span>

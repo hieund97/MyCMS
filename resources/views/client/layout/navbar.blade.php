@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" "
-    id="sectionsNav">
+    id="sectionsNav" style="height: 95px;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" style=" height: 90px;">
@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" style="padding-top: 0px;" href="/">
-                <img style="width: 200px;" class="img-fluid" src="{{asset ('client/img/logo_transparent.png')}}"></a>
+                <img style="width: 150px;" class="img-fluid" src="{{asset ('client/img/logo_transparent.png')}}"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-example">

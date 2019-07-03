@@ -114,5 +114,22 @@ Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\
      Route::get('/', 'HomeController@index');
      Route::get('/about', 'HomeController@about');
      Route::get('/contact', 'HomeController@contact');
+        
+    //  Client Blog Route
+     Route::group([
+         'prefix' => 'blogs'
+        ], function () {
+            Route::get('/', 'BlogController@index');
+            Route::get('/articles', 'BlogController@articles');
+         
+     });
+
+    //  Client Product Route
+    Route::group([
+        'prefix' => 'products'
+    ], function () {
+        Route::get('/', 'ProductController@index');
+        
+    });
 
  });

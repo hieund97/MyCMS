@@ -3,7 +3,7 @@
 <div class="header-3">
     
     {{-- navbar --}}
-    @include('client.layout.navbar')
+    {{-- @include('client.layout.navbar') --}}
     {{-- End Navbar --}}
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

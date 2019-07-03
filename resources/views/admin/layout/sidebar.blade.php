@@ -11,7 +11,7 @@
     Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="/admin" class="simple-text logo-normal">
+    <a href="/" class="simple-text logo-normal">
       <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
         alt="">
     </a>
@@ -122,6 +122,12 @@
         </div>
       </li>
       <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
+        <a class="nav-link" href="/admin/categories">
+          <i class="material-icons">dns</i>
+          <p> Danh mục sản phẩm </p>
+        </a>
+      </li>
+      {{-- <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
         <a class="nav-link {{Request::segment(2) === 'categories' ? null : 'collapsed'}}" data-toggle="collapse"
           href="#formsExamples" aria-expanded="{{Request::segment(2) === 'categories' ? 'true' : 'false'}}">
           <i class="material-icons">dns</i>
@@ -145,9 +151,8 @@
             </li>
           </ul>
         </div>
-      </li>
-      <li
-        class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
+      </li> --}}
+      <li class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
         <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}"
           data-toggle="collapse" href="#tablesExamples"
           aria-expanded="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'true' : 'false'}}">

@@ -29,11 +29,12 @@
 
 <body>
 
-
+	{{-- Navbar --}}
+	@include('client.layout.navbar')
+	{{-- End navbar --}}
 
 	<!--     *********     HEADER 3      *********      -->
-
-	@include('client.layout.header')
+	@includeWhen((request()->is('/')), 'client.layout.header', ['some' => 'data'])
 
 	<!--     *********    END HEADER 3      *********      -->
 
@@ -46,8 +47,7 @@
 
 
 	<!--     *********    Review 1     *********      -->
-
-	@include('client.layout.review')
+	@includeWhen((request()->is('/')), 'client.layout.review', ['some' => 'data'])
 	<!--     *********    END REVIEW 1      *********      -->
 
 
