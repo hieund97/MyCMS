@@ -17,7 +17,11 @@ class BlogController extends Controller
         return view('client.blog.index', compact('blog_categories', 'blogs', 'users'));
     }
 
-    public function articles(){
-        return view('client.blog.article');
+    public function articles($slug){
+        
+        // $slug = Blog::where('slug', $slug)->first();
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        $users = User::get();
+        return view('client.blog.article', compact('blog', 'users'));
     }
 }

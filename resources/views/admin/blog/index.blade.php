@@ -62,7 +62,7 @@
                                 <tbody>
                                     @foreach ($blogs as $blog)
                                     <tr>
-                                        <td class="text-center">1</td>
+                                        <td class="text-center">{{$blog->id}}</td>
                                         <td class="text-center">
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -94,16 +94,16 @@
                                         </td>
                                         <td class="td-actions"
                                             style="width: 106px;padding-right: 0px;">
-                                            <button type="button" rel="tooltip" class="btn btn-info btn-round btn-del"
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-round"
                                                 data-id="" data-original-title="Xem">
-                                                <i class="material-icons">visibility</i>
+                                                <a style="color:white;" href="/blogs/{{$blog->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
                                                 <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
-                                                data-id="" data-original-title="Xóa">
+                                                data-id="{{$blog->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -132,7 +132,7 @@
             e.preventDefault();
             console.log('im in');
             	
-			let userId = $(this).attr('data-id')
+			let blogId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
 						confirmButton: 'btn btn-success',
@@ -152,7 +152,7 @@
 					}).then((result) => {
 					if (result.value) {
 						$.ajax({
-							url: '/admin/user/' + userId,
+							url: '/admin/blog/' + blogId + '/delete',
 							method: 'POST',
 							data: {
 								_token: "{{csrf_token()}}",

@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Models\Blog;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +80,8 @@ Route::group([
             Route::get('{blog}/edit', 'BlogController@edit');
             Route::put('{blog}/edit', 'BlogController@update');
             Route::post('/', 'BlogController@store');
+            Route::delete('{blog}/delete', 'BlogController@destroy');
+
             
         });
 
@@ -99,8 +103,8 @@ Route::group([
 });
 
 // CK finder
-Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\CKFinderController@examplesAction')
-    ->name('ckfinder_examples');
+// Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\CKFinderController@examplesAction')
+//     ->name('ckfinder_examples');
 
     
 
@@ -120,8 +124,7 @@ Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\
          'prefix' => 'blogs'
         ], function () {
             Route::get('/', 'BlogController@index');
-            Route::get('/articles', 'BlogController@articles');
-         
+            Route::get('/{slug}', 'BlogController@articles');
      });
 
     //  Client Product Route

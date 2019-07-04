@@ -36,12 +36,19 @@ class BlogController extends Controller
             $thumbName = Str::uuid('image'). '.' .$request->thumb->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->thumb->move(public_path('media/thumb'),$thumbName); // di chuyển vào thư mục trên ổ cứng
         }
+        $slug = str_slug($request->title, '-');
+        if (isset($slug)) {
+            while (Blog::where('slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-'.rand(2, 9);
+            }
+        }
         // dd($request->all());
         $blog = Blog::create([
             'title' => $request->title,
             'content' => $request->content,
             'category_id' => $request->category,
             'user_id' => $request->author,
+            'slug'=> $slug,
             'thumbnail' => asset('media/thumb').'/'.$thumbName,
             'short_decription' => $request->short_decription,
         ]);
@@ -51,23 +58,38 @@ class BlogController extends Controller
     }
 
     public function update(Blog $blog, Request $request){
-        $thumbName=Null;
         if ($request->hasFile('thumb')) {
             $thumbName = Str::uuid('image'). '.' .$request->thumb->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->thumb->move(public_path('media/thumb'),$thumbName); // di chuyển vào thư mục trên ổ cứng
+            $blog->update([
+                'thumbnail' => asset('media/thumb').'/'.$thumbName,
+            ]);
+
         }
+        // $slug = str_slug($request->title, '-');
+        // if (isset($slug)) {
+        //     while (Blog::where('slug', $slug)->get()->count() > 0) {
+        //         $slug = $slug .= '-'.rand(2, 9);
+        //     }
+        // }
         // dd($request->all());
         $blog->update([
             'title' => $request->title,
             'content' => $request->content,
             'category_id' => $request->category,
             'user_id' => $request->author,
-            'thumbnail' => asset('media/thumb').'/'.$thumbName,
+            'slug'=> str_slug($request->title, '-'),
             'short_decription' => $request->short_decription,
         ]);
 
         session()->flash('create_blog', 'success');
         return redirect('/admin/blog');
     }
+
+    public function destroy(Blog $blog){
+        $blog->delete();
+        return response()->json([], 204);
+    }
+    
     
 }
