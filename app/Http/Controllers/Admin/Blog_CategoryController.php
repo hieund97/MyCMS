@@ -32,9 +32,18 @@ class Blog_CategoryController extends Controller
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
+
+        $slug = str_slug($request->category, '-');
+        if (isset($slug)) {
+            while (Blog_Category::where('slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-'.rand(2, 9);
+            }
+        }
+
         $blog_category = Blog_Category::create([
             'name' => $request->category,
-            'short_decription' => $request->short_decription
+            'short_decription' => $request->short_decription,
+            'slug' => $slug
         ]);
         session()->flash('create_blog_category', 'success');
         return redirect('/admin/blog-category');
@@ -45,20 +54,11 @@ class Blog_CategoryController extends Controller
     }
 
     public function update(Blog_Category $blog_category, Request $request){
-        $this->validate(
-            $request,
-            [
-                'category' => 'required | unique:blog_category,name'               
-                
-            ],
-            [
-                'require' => 'Trường này trống cmnr',  
-                'unique'  => 'Tên danh mục đã bị trùng'
-            ]
-        );
+       
         $blog_category->update([
             'name' => $request->category,
-            'short_decription' => $request->short_decription
+            'short_decription' => $request->short_decription,
+            'slug' => str_slug($request->category, '-')
         ]);
         session()->flash('update_blog_category', 'success');
         return redirect('/admin/blog-category/');

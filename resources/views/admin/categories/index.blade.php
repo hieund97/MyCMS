@@ -126,7 +126,7 @@
                                     <h4>Danh mục cha</h4>
                                 </label>
 
-                                <select class="selectpicker" data-size="7" name="parent"
+                                <select class="selectpicker" data-size="10" name="parent"
                                     data-style="btn btn-primary btn-round" title="Single Select">
                                     <option selected value="0">Danh mục gốc</option>
                                     {{getCategory($categories, 0, '')}}
@@ -171,7 +171,7 @@
 					text: "Hành động sẽ không thể hoàn tác",
 					type: 'warning',
 					showCancelButton: true,
-					confirmButtonText: 'Có, Xóa người dùng',
+					confirmButtonText: 'Có, Xóa Chủ đề',
 					cancelButtonText: 'Không, Hủy bỏ!',
 					reverseButtons: true
 					}).then((result) => {
@@ -186,7 +186,7 @@
 							success: function(){
 								swalWithBootstrapButtons.fire(
 								'Đã xóa!',
-								'Người dùng đã bị xóa',
+								'Chủ đề đã bị xóa',
 								'success'
 								).then((result2) => {
 									if(result2.value){

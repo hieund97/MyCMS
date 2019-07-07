@@ -40,9 +40,17 @@ class CategoryController extends Controller
             ]
         );
 
+        $slug = str_slug($request->category, '-');
+        if (isset($slug)) {
+            while (Categories::where('slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-'.rand(2, 9);
+            }
+        }
+
         $categories = Categories::create([
             'name' => $request->category,
-            'parent_id' => $request->parent
+            'parent_id' => $request->parent,
+            'slug' => $slug
         ]);
         return redirect('/admin/categories/')->with('create_category', 'Category Created');
     }
@@ -63,7 +71,8 @@ class CategoryController extends Controller
         $category = Categories::find($id);
         $category->update([
             'name' => $request->category,
-            'parent_id' => $request->parent
+            'parent_id' => $request->parent,
+            'slug' => str_slug($request->category, '-')
         ]);
         return redirect('/admin/categories/')->with('update_category', 'Category Updated');
     }

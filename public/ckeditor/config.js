@@ -35,7 +35,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.language = 'en';
 	config.uiColor = '#FFFFFF';
-	config.height = 380;
+	config.height = 500;
 	config.toolbarCanCollapse = true;
 
 	// Simplify the dialog windows.

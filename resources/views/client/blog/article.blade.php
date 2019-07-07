@@ -181,78 +181,27 @@
                 <div class="col-md-12">
                     <h2 class="title text-center">Similar Stories</h2>
                     <br />
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card card-blog">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img img-raised"
-                                            src="{{ asset ('client/img/examples/blog6.jpg') }} " />
-                                    </a>
-                                </div>
+                    <div class="row">                        
 
-                                <div class="card-content">
-                                    <h6 class="category text-info">Enterprise</h6>
-                                    <h4 class="card-title">
-                                        <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
-                                    </h4>
-                                    <p class="card-description">
-                                        Like so many organizations these days, Autodesk is a company in transition. It
-                                        was until recently a traditional boxed software company selling licenses.<a
-                                            href="#pablo"> Read More </a>
-                                    </p>
+                            @foreach ($hots as $hot)
+                            <div class="col-md-4">
+                                    <div class="card card-plain card-blog">
+                                        <div class="card-image">
+                                            <a href="/blogs/{{$blog->slug}}">
+                                                <img class="img img-raised" src=" {{$hot->thumbnail}}" />
+                                            </a>
+                                        </div>
+                
+                                        <div class="card-content">
+                                            <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
+                                            <h4 class="card-title">
+                                                <a href="/blogs/{{$blog->slug}}">{{$hot->title}}</a>
+                                            </h4>
+                                            <p class="card-description"> {{$hot->short_decription}} <b><a href="/blogs/{{$blog->slug}}"> Read More </a></p></b>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card card-blog">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img img-raised"
-                                            src="{{ asset ('client/img/examples/blog8.jpg') }} " />
-                                    </a>
-                                </div>
-                                <div class="card-content">
-                                    <h6 class="category text-success">
-                                        Startups
-                                    </h6>
-                                    <h4 class="card-title">
-                                        <a href="#pablo">Lyft launching cross-platform service this week</a>
-                                    </h4>
-                                    <p class="card-description">
-                                        Like so many organizations these days, Autodesk is a company in transition. It
-                                        was until recently a traditional boxed software company selling licenses.<a
-                                            href="#pablo"> Read More </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card card-blog">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img img-raised"
-                                            src="{{ asset ('client/img/examples/blog7.jpg') }} " />
-                                    </a>
-                                </div>
-
-                                <div class="card-content">
-                                    <h6 class="category text-danger">
-                                        <i class="material-icons">trending_up</i> Enterprise
-                                    </h6>
-                                    <h4 class="card-title">
-                                        <a href="#pablo">6 insights into the French Fashion landscape</a>
-                                    </h4>
-                                    <p class="card-description">
-                                        Like so many organizations these days, Autodesk is a company in transition. It
-                                        was until recently a traditional boxed software company selling licenses.<a
-                                            href="#pablo"> Read More </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
 
 
                     </div>

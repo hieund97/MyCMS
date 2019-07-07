@@ -112,9 +112,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{$blog_categories->links()}}
-                                <a href="/admin/blog-category/create" style="padding-left: 15px; padding-right: 15px;"
-                                    class="btn btn-primary pull-right">Thêm chủ đề</a>
+                                {{$blog_categories->links()}}                                
                             </div>
                         </div>
                     </div>

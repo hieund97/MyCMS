@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryPrivotProductTable extends Migration
+class CreateProductCategoryPrivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCategoryPrivotProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_privot_product', function (Blueprint $table) {
+        Schema::create('product_category_privot', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
             $table->unsignedBigInteger('category_id');
@@ -29,6 +29,6 @@ class CreateCategoryPrivotProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_privot_product');
+        Schema::dropIfExists('product_category_privot');
     }
 }

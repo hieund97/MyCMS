@@ -42,6 +42,12 @@ class UserController extends Controller
             $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng
         }
+        $slug = str_slug($request->username, '-');
+        if (isset($slug)) {
+            while (Users::where('slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-'.rand(2, 9);
+            }
+        }
 
         $user = User::create([
             'company' => $request->company,
@@ -56,7 +62,8 @@ class UserController extends Controller
             'about_me' => $request->aboutme,
             'avatar'=> asset('media/avatar').'/'.$avatarName,
             'password' => bcrypt($request->password),
-            'level'=> $request->level
+            'level'=> $request->level,
+            'slug' => $slug
         ]);
         
         session()->flash('create_user', 'success');
@@ -75,7 +82,7 @@ class UserController extends Controller
         $this->validate($request,
             [
                 'email' => 'required',                
-                'password' => 'min:8|required|required_with:retypepassword|same:retypepassword',
+                'password' => 'min:8|required|required_with:retypepassword|same:retypepassword|same:password',
                 'retypepassword' => 'min:8|required'
             ],
             [
@@ -94,7 +101,9 @@ class UserController extends Controller
             'phone' => $request->phone,
             'about_me' => $request->aboutme,
             'password' => bcrypt($request->password),
-            'level'=> $request->level
+            'level'=> $request->level,
+            'slug' => str_slug($request->username, '-')
+
         ]);
         $user->save();
         session()->flash('update_user', 'success');

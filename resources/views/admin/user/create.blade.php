@@ -60,47 +60,48 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Fist Name</label>
                                         <input type="text" name="firstname" class="form-control chieucao">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Last Name</label>
                                         <input type="text" name="lastname" class="form-control chieucao">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Level</label>
-                                        <input type="text" name="level" class="form-control chieucao">
+                                        <select class="selectpicker" name="level" data-size="7"
+                                            data-style="btn btn-primary btn-round" title="Level">
+                                            <option value="1">Admin</option>
+                                            <option value="2">Member</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Address</label>
                                         <input type="text" name="address" class="form-control chieucao">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">City</label>
                                         <input type="text" name="city" class="form-control chieucao">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Country</label>
                                         <input type="text" name="country" class="form-control chieucao">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Phone</label>
                                         <input type="text" name="phone" class="form-control chieucao">

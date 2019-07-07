@@ -45,39 +45,39 @@
 
                         <div class="col-md-10 col-md-offset-1">
                             
-                            @foreach ($blogs as $blog)
+                            {{-- @foreach ($blog as $blog) --}}
                             <div class="card card-plain card-blog">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="card-image">
-                                                <a href="/blogs/{{$blog->slug}}"><img class="img img-raised"  src=" {{$blog->thumbnail }}" /></a>
+                                                <a href=""><img class="img img-raised"  src=" " /></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="category text-info">
-                                                {{$blog->blog_category['name']}}
+                                                
                                             </h6>
                                             <h3 class="card-title">
-                                            <a href="/blogs/{{$blog->slug}}">{{$blog->title}}</a>
+                                            <a href=""></a>
                                             </h3>
-                                            <p class="card-description"> {{$blog->short_decription}} <a href="/blogs/{{$blog->slug}}"><b> Read More</b> </a>
+                                            <p class="card-description"> <a href=""><b> Read More</b> </a>
                                             </p>
                                             <p class="author">
-                                                by <a href="#pablo"><b>{{$blog->users['last_name']}} {{$blog->users['first_name']}}</b></a>, {{$blog->updated_at}}
+                                                by <a href="#pablo"><b></b></a>,
                                                 </a>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            {{-- @endforeach --}}
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">
+        {{-- <div class="text-center">
             {{$blogs->links()}}
-        </div>
+        </div> --}}
         <!--     *********   END  BLOGS 3      *********      -->
 
 
@@ -86,25 +86,25 @@
             <h2 class="title text-center">Có thể bạn quan tâm</h2>
             <br />
             <div class="row">
-                @foreach ($hots as $hot)
+                {{-- @foreach ($hots as $hot) --}}
                 <div class="col-md-4">
                         <div class="card card-plain card-blog">
                             <div class="card-image">
-                                <a href="/blogs/{{$blog->slug}}">
-                                    <img class="img img-raised" src=" {{$hot->thumbnail}}" />
+                                <a href="">
+                                    <img class="img img-raised" src=" " />
                                 </a>
                             </div>
     
                             <div class="card-content">
-                                <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
+                                <h6 class="category text-info"></h6>
                                 <h4 class="card-title">
-                                    <a href="/blogs/{{$blog->slug}}">{{$hot->title}}</a>
+                                    <a href=""></a>
                                 </h4>
-                                <p class="card-description"> {{$hot->short_decription}} <b><a href="/blogs/{{$blog->slug}}"> Read More </a></p></b>
+                                <p class="card-description">  <b><a href=""> Read More </a></p></b>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                {{-- @endforeach --}}
                 
 
             </div>

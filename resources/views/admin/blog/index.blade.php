@@ -75,17 +75,17 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="photo">
-                                                <a href="/admin/blog/{{$blog->id}}/edit"><img style=" width: 80px; height: 80px;"
+                                                <a href="/admin/blog/{{$blog->id}}/edit"><img style=" width: 100px; height: 80px;"
                                                     src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" /></a>
                                             </div>
                                         </td>
                                         <td><a style="font-weight: bold; font-size: 120%;" href="/admin/blog/{{$blog->id}}/edit">{{$blog->title}}</a>
                                         </td>
                                         <td class="text-center">
-                                            {{ isset($blog->blog_category->name) ? $blog->blog_category->name : '' }}
+                                            {{$blog->blog_category->name}}
                                         </td>
                                         <td class="text-center">
-                                            {{ isset($blog->users->last_name) ? $blog->users->last_name : '' }} {{ isset($blog->users->first_name) ? $blog->users->first_name : '' }}
+                                            {{ $blog->users->last_name  }} {{ $blog->users->first_name }}
                                         </td>
                                         <td class="text-center"> {{$blog->created_at}}</td>
                                         <td class="text-center">
@@ -146,7 +146,7 @@
 					text: "Hành động sẽ không thể hoàn tác",
 					type: 'warning',
 					showCancelButton: true,
-					confirmButtonText: 'Có, Xóa người dùng',
+					confirmButtonText: 'Có, Xóa bài viết',
 					cancelButtonText: 'Không, Hủy bỏ!',
 					reverseButtons: true
 					}).then((result) => {
@@ -161,7 +161,7 @@
 							success: function(){
 								swalWithBootstrapButtons.fire(
 								'Đã xóa!',
-								'Người dùng đã bị xóa',
+								'Bài viết đã bị xóa',
 								'success'
 								).then((result2) => {
 									if(result2.value){

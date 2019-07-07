@@ -11,10 +11,10 @@ use App\Models\Blog_Category;
 class BlogController extends Controller
 {
     public function index(Blog $blogs){
-        $blogs = Blog::with('blog_category:id,name', 'users:id,first_name,last_name')->paginate(5);
-        $blog_categories = Blog_Category::get();
-        $users = User::get();
-        return view('admin.blog.index', compact('blogs', 'users', 'blog_categories'));
+        $blogs = Blog::paginate(5);
+        // $blog_categories = Blog_Category::get();
+        // $users = User::get();
+        return view('admin.blog.index', compact('blogs'));
     }
 
     public function create(Blog $blog){
@@ -30,6 +30,17 @@ class BlogController extends Controller
     }
 
     public function store(Blog $blog, Request $request){
+
+        $this->validate(
+            $request,
+            [
+                'category' => 'required', 
+                'author' => 'required',                
+            ],
+            [
+                'require' => 'Trường này trống cmnr',                
+            ]
+        );
         
         $thumbName=Null;
         if ($request->hasFile('thumb')) {
