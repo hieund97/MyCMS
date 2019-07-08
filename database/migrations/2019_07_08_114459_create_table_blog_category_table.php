@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogCategoryTable extends Migration
+class CreateTableBlogCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateBlogCategoryTable extends Migration
         Schema::create('blog_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('slug')->nullable();
+            $table->string('b_cate_slug')->nullable();
             $table->string('short_decription')->nullable();
             $table->timestamps();
         });

@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
         $blog_categories = Blog_Category::get();
-        $hots = Blog::where('category_id', '=', 3)->inRandomOrder()->paginate(3);
+        $hots = Blog::where('category_id', '=', 2)->inRandomOrder()->paginate(3);
         return view('client.home.index', compact('blog_categories', 'hots'));
     }
 

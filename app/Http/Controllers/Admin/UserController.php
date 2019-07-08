@@ -44,7 +44,7 @@ class UserController extends Controller
         }
         $slug = str_slug($request->username, '-');
         if (isset($slug)) {
-            while (Users::where('slug', $slug)->get()->count() > 0) {
+            while (User::where('slug', $slug)->get()->count() > 0) {
                 $slug = $slug .= '-'.rand(2, 9);
             }
         }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateTableCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable()->unique();
             $table->bigInteger('parent_id')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('p_cate_slug')->nullable();
             $table->timestamps();
         });
     }

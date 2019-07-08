@@ -125,7 +125,7 @@ Route::group([
         ], function () {
             Route::get('/', 'BlogController@index');
             Route::get('/{slug}', 'BlogController@articles');
-            Route::get('/{slug}', 'Blog_CategoryController@index');
+            // Route::get('/{cate_slug}', 'Blog_CategoryController@index');
 
      });
 

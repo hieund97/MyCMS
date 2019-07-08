@@ -35,7 +35,7 @@ class Blog_CategoryController extends Controller
 
         $slug = str_slug($request->category, '-');
         if (isset($slug)) {
-            while (Blog_Category::where('slug', $slug)->get()->count() > 0) {
+            while (Blog_Category::where('b_cate_slug', $slug)->get()->count() > 0) {
                 $slug = $slug .= '-'.rand(2, 9);
             }
         }
@@ -43,7 +43,7 @@ class Blog_CategoryController extends Controller
         $blog_category = Blog_Category::create([
             'name' => $request->category,
             'short_decription' => $request->short_decription,
-            'slug' => $slug
+            'b_cate_slug' => $slug
         ]);
         session()->flash('create_blog_category', 'success');
         return redirect('/admin/blog-category');
@@ -58,7 +58,7 @@ class Blog_CategoryController extends Controller
         $blog_category->update([
             'name' => $request->category,
             'short_decription' => $request->short_decription,
-            'slug' => str_slug($request->category, '-')
+            'b_cate_slug' => str_slug($request->category, '-')
         ]);
         session()->flash('update_blog_category', 'success');
         return redirect('/admin/blog-category/');

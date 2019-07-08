@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductTable extends Migration
+class CreateTableProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateProductTable extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug')->nullable();
+            $table->string('p_slug')->nullable();
             $table->string('product_code')->nullable();
             $table->decimal('price_old')->nullable();
             $table->decimal('price_new');
