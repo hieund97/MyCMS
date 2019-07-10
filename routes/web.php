@@ -56,6 +56,7 @@ Route::group([
             'prefix' => 'products'
         ], function(){
             Route::get('/', 'ProductController@index');
+            Route::get('/value', 'ProductController@value');
             Route::get('/create', 'ProductController@create');
         });
 
@@ -125,9 +126,10 @@ Route::group([
         ], function () {
             Route::get('/', 'BlogController@index');
             Route::get('/{slug}', 'BlogController@articles');
-            // Route::get('/{cate_slug}', 'Blog_CategoryController@index');
 
      });
+     Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
+
 
     
 

@@ -55,6 +55,7 @@
   {{-- avatar css --}}
   <link href="{{asset('manage/css/avatar.css') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
+
   <link href="{{asset('manage/demo/demo.css') }}" rel="stylesheet" />
   <!-- Google Tag Manager -->
   

@@ -66,3 +66,8 @@ function editCategory($mang, $parent, $shift, $active)
         }
     }
 }
+
+function getUpperCase ($value){
+    return strtoupper($value);
+
+}

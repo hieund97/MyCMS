@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         $slug = str_slug($request->category, '-');
         if (isset($slug)) {
-            while (Categories::where('slug', $slug)->get()->count() > 0) {
+            while (Categories::where('p_cate_slug', $slug)->get()->count() > 0) {
                 $slug = $slug .= '-'.rand(2, 9);
             }
         }
@@ -56,17 +56,17 @@ class CategoryController extends Controller
     }
 
     public function update(Categories $categories, Request $request, $id){
-        $this->validate(
-            $request,
-            [
-                'category' => 'required | unique:Categories,name'               
+        // $this->validate(
+        //     $request,
+        //     [
+        //         'category' => 'required | unique:Categories,name'               
                 
-            ],
-            [
-                'require' => 'Trường này trống cmnr',  
-                'unique'  => 'Tên danh mục đã bị trùng'
-            ]
-        );
+        //     ],
+        //     [
+        //         'require' => 'Trường này trống cmnr',  
+        //         'unique'  => 'Tên danh mục đã bị trùng'
+        //     ]
+        // );
         // dd($request->all());
         $category = Categories::find($id);
         $category->update([

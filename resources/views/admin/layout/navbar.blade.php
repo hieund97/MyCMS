@@ -8,7 +8,7 @@
           <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
         </button>
       </div>
-      {{-- <a class="navbar-brand" href="#pablo">Dashboard</a> --}}
+    <a class="navbar-brand" href="/admin/{{(Request::segment(2))}}">{{(request()->is('admin')) ? 'DashBoard' : getUpperCase(Request::segment(2))}}</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
       </form>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="cms.local/">
+          <a class="nav-link" href="/admin">
             <i class="material-icons">home</i>
             <p class="d-lg-none d-md-block">
               Trang chủ

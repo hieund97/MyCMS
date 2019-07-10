@@ -11,7 +11,7 @@
     Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="/" class="simple-text logo-normal">
+    <a href="/" target="_blank" class="simple-text logo-normal">
       <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
         alt="">
     </a>
@@ -116,6 +116,12 @@
               <a class="nav-link" href="../examples/components/buttons.html">
                 <span class="sidebar-mini"> GTC </span>
                 <span class="sidebar-normal"> Giá tùy chỉnh </span>
+              </a>
+            </li>
+            <li class="nav-item padding {{Request::segment(3) === 'value' ? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/value">
+                <span class="sidebar-mini"> QTT </span>
+                <span class="sidebar-normal">Quản lý thuộc tính </span>
               </a>
             </li>
           </ul>
