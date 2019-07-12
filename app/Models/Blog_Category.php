@@ -10,6 +10,6 @@ class Blog_Category extends Model
     protected $guarded = ['id'];
 
     public function blog(){
-        return $this ->hasMany('App\Models\Blog', 'id', 'category_id');
+        return $this ->hasMany('App\Models\Blog', 'category_id', 'id');
     }
 }

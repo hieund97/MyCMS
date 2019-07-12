@@ -68,8 +68,8 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::segment(2) === 'products' ? 'active' : null}}">
-        <a class="nav-link {{Request::segment(2) === 'products' ? null : 'collapsed'}}" data-toggle="collapse"
+      <li class="nav-item {{Request::segment(2) === 'products'    ? 'active' : null}}">
+        <a class="nav-link {{Request::segment(2) === 'products'  ? null : 'collapsed'}}" data-toggle="collapse"
           href="#componentsExamples" aria-expanded="{{Request::segment(2) === 'products' ? 'true' : 'false'}}">
           <i class="material-icons">card_travel</i>
           <p> Sản phẩm
@@ -118,7 +118,7 @@
                 <span class="sidebar-normal"> Giá tùy chỉnh </span>
               </a>
             </li>
-            <li class="nav-item padding {{Request::segment(3) === 'value' ? 'active' : null}}">
+            <li class="nav-item padding {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
               <a class="nav-link" href="/admin/products/value">
                 <span class="sidebar-mini"> QTT </span>
                 <span class="sidebar-normal">Quản lý thuộc tính </span>

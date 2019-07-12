@@ -98,6 +98,26 @@ Route::group([
             Route::delete('{blog_category}/delete', 'Blog_CategoryController@destroy');
 
         });
+
+        // Admin Attribute Route
+        Route::group([
+            'prefix' => 'attribute'
+        ], function () {
+            Route::post('/', 'AttributeController@store');
+            Route::get('{attribute}/edit', 'AttributeController@edit');
+            Route::put('{attribute}/edit', 'AttributeController@update');
+            Route::delete('{attribute}/delete', 'AttributeController@destroy');
+        });
+
+        // Admin Value Route
+        Route::group([
+            'prefix' => 'value'
+        ], function () {
+            Route::post('/', 'ValueController@store');
+            Route::get('{value}/edit', 'ValueController@edit');
+            Route::put('{value}/edit', 'ValueController@update');
+            Route::delete('{value}/delete', 'ValueController@destroy');
+        });
     });
 
 
@@ -128,6 +148,8 @@ Route::group([
             Route::get('/{slug}', 'BlogController@articles');
 
      });
+
+    //  Client Route Blog_category slug
      Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Models\Value;
 
 class ProductController extends Controller
 {
@@ -16,12 +17,13 @@ class ProductController extends Controller
 
     public function create(){
         $categories = Categories::get();
-        $attrs = Attribute::all();
-        return view('admin.product.create', compact('categories', 'attrs'));
+        $attribute = Attribute::all();
+        return view('admin.product.create', compact('categories', 'attribute'));
     }
 
     public function value(){
-        $attrs = Attribute::all();
-        return view('admin.product.value', compact('attrs'));
+        $attribute = Attribute::all();
+        // $values = Value::all();
+        return view('admin.product.value', compact('attribute'));
     }
 }

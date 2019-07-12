@@ -18,9 +18,7 @@ class BlogController extends Controller
         return view('client.blog.index', compact('blog_categories', 'blogs', 'users','hots'));
     }
 
-    public function articles($slug){
-        
-        // $slug = Blog::where('slug', $slug)->first();
+    public function articles($slug){        
         $blog = Blog::where('slug', $slug)->firstOrFail();
         $hots = Blog::where('category_id', '=', 3)->inRandomOrder()->paginate(3);
         $users = User::get();

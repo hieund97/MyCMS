@@ -270,14 +270,15 @@
                 </div>
             </div>
         </div>
-        <h3>Manage Listings</h3>
+        <h3>Bài viết ngẫu nhiên</h3>
         <br>
         <div class="row">
+            @foreach ($blogs as $post)
             <div class="col-md-4">
                 <div class="card card-product">
                     <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="{{ asset('manage/img/card-2.jpg') }}">
+                        <a href="/blogs/{{$post->slug}}" target="_blank">
+                            <img class="img" src="{{$post->thumbnail}}">
                         </a>
                     </div>
                     <div class="card-body">
@@ -287,121 +288,24 @@
                             </button>
                             <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom"
                                 title="View">
-                                <i class="material-icons">art_track</i>
+                                <a href="/blogs/{{$post->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
                             </button>
                             <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom"
                                 title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom"
-                                title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
+                                <a href="/admin/blog/{{$post->id}}/edit"><i class="material-icons">edit</i></a>
+                            </button>                            
                         </div>
                         <h4 class="card-title">
-                            <a href="#pablo">Cozy 5 Stars Apartment</a>
+                            <a href="/blogs/{{$post->slug}} target="_blank"">{{$post->title}}</a>
                         </h4>
                         <div class="card-description">
-                            The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to
-                            "Naviglio" where you can enjoy the main night life in Barcelona.
+                            {{$post->short_decription}}
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$899/night</h4>
-                        </div>
-                        <div class="stats">
-                            <p class="card-category"><i class="material-icons">place</i> Barcelona, Spain</p>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-product">
-                    <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="{{ asset('manage/img/card-3.jpg') }}">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-actions text-center">
-                            <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom"
-                                title="View">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom"
-                                title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom"
-                                title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Office Studio</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio"
-                            where you can enjoy the night life in London, UK.
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$1.119/night</h4>
-                        </div>
-                        <div class="stats">
-                            <p class="card-category"><i class="material-icons">place</i> London, UK</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-product">
-                    <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#pablo">
-                            <img class="img" src="{{ asset('manage/img/card-1.jpg') }}">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-actions text-center">
-                            <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom"
-                                title="View">
-                                <i class="material-icons">art_track</i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom"
-                                title="Edit">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom"
-                                title="Remove">
-                                <i class="material-icons">close</i>
-                            </button>
-                        </div>
-                        <h4 class="card-title">
-                            <a href="#pablo">Beautiful Castle</a>
-                        </h4>
-                        <div class="card-description">
-                            The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio"
-                            where you can enjoy the main night life in Milan.
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="price">
-                            <h4>$459/night</h4>
-                        </div>
-                        <div class="stats">
-                            <p class="card-category"><i class="material-icons">place</i> Milan, Italy</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </div>

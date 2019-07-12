@@ -41,6 +41,9 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng
+            $user = User::create([
+                'avatar'=> asset('media/avatar').'/'.$avatarName,
+            ]);
         }
         $slug = str_slug($request->username, '-');
         if (isset($slug)) {
@@ -60,7 +63,6 @@ class UserController extends Controller
             'country' => $request->country,
             'phone' => $request->phone,
             'about_me' => $request->aboutme,
-            'avatar'=> asset('media/avatar').'/'.$avatarName,
             'password' => bcrypt($request->password),
             'level'=> $request->level,
             'slug' => $slug

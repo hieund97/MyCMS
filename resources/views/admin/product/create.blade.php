@@ -122,7 +122,7 @@
                                         @php
                                         $i = 0;
                                         @endphp
-                                        @foreach ($attrs as $attr)
+                                        @foreach ($attribute as $attr)
                                         <li class="nav-item">
                                             <a class="nav-link {{$i == 0? 'active' : ''}}" data-toggle="tab"
                                                 href="#link{{$attr->id}}" role="tablist">
@@ -137,7 +137,7 @@
                                                 class="material-icons">settings</i></a>
                                     </ul>
                                     <div class="tab-content tab-space">
-                                        @foreach ($attrs as $attr)
+                                        @foreach ($attribute as $attr)
                                         <div class="tab-pane {{$i == 1? 'active' : ''}}" style="padding-left: 40px;"
                                             id="link{{$attr->id}}">
                                             <div class="table-responsive">

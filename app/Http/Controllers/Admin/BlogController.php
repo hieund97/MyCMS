@@ -46,6 +46,9 @@ class BlogController extends Controller
         if ($request->hasFile('thumb')) {
             $thumbName = Str::uuid('image'). '.' .$request->thumb->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->thumb->move(public_path('media/thumb'),$thumbName); // di chuyển vào thư mục trên ổ cứng
+            $blog = Blog::create([
+                'thumbnail' => asset('media/thumb').'/'.$thumbName,
+            ]);
         }
         $slug = str_slug($request->title, '-');
         if (isset($slug)) {
@@ -60,7 +63,6 @@ class BlogController extends Controller
             'category_id' => $request->category,
             'user_id' => $request->author,
             'slug'=> $slug,
-            'thumbnail' => asset('media/thumb').'/'.$thumbName,
             'short_decription' => $request->short_decription,
         ]);
 
