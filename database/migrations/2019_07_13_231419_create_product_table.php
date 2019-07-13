@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProductTable extends Migration
+class CreateProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,14 +18,11 @@ class CreateTableProductTable extends Migration
             $table->string('name');
             $table->string('p_slug')->nullable();
             $table->string('product_code')->nullable();
-            $table->decimal('price_old')->nullable();
-            $table->decimal('price_new');
+            $table->decimal('price')->default(0);
             $table->string('desciption')->nullable();
             $table->text('detail')->nullable();
-            $table->string('color')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('size')->nullable();
             $table->string('brand')->nullable();
             $table->boolean('highlight')->nullable();
             $table->string('status')->nullable();

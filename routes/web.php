@@ -57,7 +57,9 @@ Route::group([
         ], function(){
             Route::get('/', 'ProductController@index');
             Route::get('/value', 'ProductController@value');
+            Route::get('/price', 'ProductController@price');
             Route::get('/create', 'ProductController@create');
+            Route::post('/', 'ProductController@store');
         });
 
         // Admin Product-Category Route

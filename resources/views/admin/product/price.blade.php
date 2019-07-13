@@ -24,15 +24,13 @@
                     <table class="table table-shopping">
                         <thead>
                             <tr>
+                                <th class="th-description" style="width: 46px;">ID</th>
                                 <th class="text-left" style="padding-left: 20px; width: 228px">Ảnh Sản Phẩm</th>
-                                <th style="padding-left: 20px; width: 328px;">Tên sản Phẩm</th>
-                                <th class="th-description">Mã sản phẩm</th>
-                                <th class="text-center" style="width: 176px;">Danh mục</th>
-                                <th class="th-description">Màu sắc</th>
-                                <th class="th-description">Kích cỡ</th>
-                                <th class="th-description" style="width: 116px;">Số lượng</th>
-                                <th class="text-center" style="width: 136px;">Đơn giá</th>
-                                <th class="text-center" style="width: 163px;">Tình trạng</th>
+                                <th style="padding-left: 20px; width: 278px;">Tên sản Phẩm</th>
+                                <th class="text-center" style="width: 186px;">Đơn giá</th>
+                                <th class="th-description" style="width: 86px;">Số lượng biến thể</th>
+                                <th class="text-center" style="padding-left: 20px; width: 428px">Giá theo biến thể</th>
+                                <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
                                 <th class="text-right" style="width: 116px;">Hành động</th>
                                 <th></th>
                             </tr>
@@ -40,8 +38,11 @@
                         <tbody>
                             <tr>
                                 <td>
+                                    1
+                                </td>
+                                <td>
                                     <div class="img-container">
-                                        <img src="{{ asset('manage/img/product3.jpg') }}" alt="...">
+                                        <img src="{{ asset('manage/img/product3.jpg') }}" title="Áo khoác đẹp">
                                     </div>
                                 </td>
                                 <td class="td-name">
@@ -49,28 +50,18 @@
                                     <br />
                                     <small>by Valentino</small>
                                 </td>
-                                <td>
-                                    AK12
-                                </td>
                                 <td class="td-number text-center">
-                                    <a href="#"><b>Áo</b></a>
-                                </td>
-                                <td>
-                                    White
-                                </td>
-                                <td>
-                                    XL
+                                    <small>&euro;</small>799
                                 </td>
                                 <td>
                                     69
                                 </td>
-                                <td class="td-number text-center">
-                                    <small>&euro;</small>799
+                                <td class="text-center">
+                                    Size: M, Color: Đỏ --- Giá: 3.000.000đ
                                 </td>
                                 <td class="td-number text-center">
-                                    <label class="btn btn-danger" style="padding-left: 15px;padding-right: 15px;">Hết
-                                        hàng</label>
-                                </td>
+                                    ngày cập nhật
+                                </td>                               
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-round">
                                         <a style="color:white;" href="#"><i class="material-icons">edit</i></a>
