@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariantTable extends Migration
+class UpdateVariantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateVariantTable extends Migration
      */
     public function up()
     {
-        Schema::create('variant', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->decimal('price',15,2)->default(0);
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('variant', function (Blueprint $table) {
+            $table->decimal('price',15,2)->default(0)->change();
         });
     }
 

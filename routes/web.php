@@ -57,9 +57,14 @@ Route::group([
         ], function(){
             Route::get('/', 'ProductController@index');
             Route::get('/value', 'ProductController@value');
-            Route::get('/price', 'ProductController@price');
+            Route::get('/price/{product}/edit', 'ProductController@editprice');
             Route::get('/create', 'ProductController@create');
+            Route::get('/{product}/edit', 'ProductController@edit');
+            Route::put('/{product}/edit', 'ProductController@update');
+            Route::put('/price/{variant}/edit', 'ProductController@updateprice');
             Route::post('/', 'ProductController@store');
+            Route::delete('/{product}/delete', 'ProductController@destroy');
+            Route::delete('/price/{variant}/delete', 'ProductController@destroyvariant');
         });
 
         // Admin Product-Category Route

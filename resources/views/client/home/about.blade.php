@@ -7,8 +7,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1 class="title">About Us</h1>
-                <h4>Meet the amazing team behind this project and find out more about how we work.</h4>
+                <h1 class="title">Giới thiệu</h1>
+                <h2>CÔNG TY CỔ PHẦN THỜI TRANG MRSPICY</h2>
             </div>
         </div>
     </div>
@@ -18,140 +18,45 @@
     <div class="container">
         <div class="about-description text-center">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h5 class="description">This is the paragraph where you can write more details about your
-                        product. Keep you user engaged by providing meaningful information. Remember that by this
-                        time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you
-                        want the user to see more.</h5>
+                <div class="col-md-8 col-md-offset-2">                    
+                    <h4 style="text-align: justify; margin-top: 60px;">
+                        <p>Công ty thời trang MRSPICY BOUTIQUE được thành lập từ tháng 11 năm 2014</p>
+                        <p>Số ĐKKD 0107756568 do sở KHĐT TP. Hà Nội cấp ngày 10/03/2017</p>
+                        <p>Người đại diện: Nguyễn Đức Hiếu</p>
+                        <p>MRSPICY BOUTIQUE là một trong những thương hiệu thời trang nam dành cho giới trẻ uy tín hàng
+                        đầu Việt Nam. Với sự quản lý chặt chẽ, chuyên nghiệp của đội ngủ quản lý; Nỗ lực sáng tạo không
+                        ngừng của bộ phận thiết kế, Sự tận tâm chuyên nghiệp của nhân viên bán hàng… là những yếu tố làm
+                        nên thương hiệu thời trang MRSPICY BOUTIQUE lớn mạnh như hiện nay.</p>
+
+                        <p>MRSPICY BOUTIQUE luôn quan niệm thời trang là sự tìm tòi và sáng tạo nên những sản phẩm của
+                        Chúng tôi đều được thiết kế riêng với sự trẻ trung, hiện đại, cá tính để mang lại guu thời trang
+                        hợp mốt nhất, cập nhật các xu hướng hot nhất cho các bạn trẻ. Các dòng sản phẩm của MRSPICY
+                        BOUTIQUE không ngừng đa dạng về kiểu dáng, màu sắc và mẫu mã từ áo sơ mi, áo thun, bộ đồ đôi, áo
+                        khoác, quần jean, quần tây, quần kaki… đến các phụ kiện thời trang vô cùng sành điệu như balo,
+                        kính, giày dép…, tất cả tạo nên vẻ đẹp hoàn hảo, trẻ trung, hiện đại, phong cách thành thị cho
+                        phái mạnh.</p>
+
+                        <p>Bên cạnh đó MRSPICY BOUTIQUE luôn đặt mình vào tâm thế và quyền lợi của khách hàng để đưa ra
+                        những dòng sản phẩm thời trang chất lượng tốt, mẫu mã cực đẹp đón các đầu xu hướng thời trang,
+                        mới lạ cá tính nhưng với giá cả cực kì hấp dẫn, cạnh tranh nhất.</p>
+
+                        <p>Hiện nay, thương hiệu thời trang nam MRSPICY BOUTIQUE phát triển ngày càng lớn mạnh thành một
+                        hệ thống với nhiều chi nhánh cửa hàng bán lẻ tại Hà Nội. Ngoài ra, nhằm tạo sự tiện lợi mua sắm
+                        tối đa cho khách hàng, MRSPICY BOUTIQUE phát triển hệ thống bán hàng online qua website; và
+                        fanpag: là Fanpage chính thức của nhãn hàng, chúng tôi giao hàng đến tận tay người tiêu dung
+                        trên toàn quốc. Giờ đây ngay tại nhà bạn cũng có thể chọn cho mình những sản phẩm phù hợp với sở
+                        thích và phong cách qua website:www.mrspicy.vn.</p>
+
+                        <p>Đến với MRSPICY BOUTIQUE, chúng tôi luôn tận tâm tư vấn giúp quý khách tìm được những sản phẩm
+                        yêu thích, phù hợp với nhu cầu và góp phần tạo nên phong cách cho riêng mình!</p>
+                    </h4>
                 </div>
             </div>
-        </div>
-        <div class="about-team team-1">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h2 class="title">We are nerd rockstars</h2>
-                    <h5 class="description">This is the paragraph where you can write more details about your team.
-                        Keep you user engaged by providing meaningful information.</h5>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img" src="{{ asset ('client/img/faces/marc.jpg') }}" />
-                            </a>
-                        </div>
-
-                        <div class="card-content">
-                            <h4 class="card-title">Alec Thompson</h4>
-                            <h6 class="category text-muted">CEO / Co-Founder</h6>
-
-                            <p class="card-description">
-                                And I love you like Kanye loves Kanye. We need to restart the human foundation.
-                            </p>
-                            <div class="footer">
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i
-                                        class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i
-                                        class="fa fa-facebook-square"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i
-                                        class="fa fa-google"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img" src="{{ asset ('client/img/faces/kendall.jpg') }}" />
-                            </a>
-                        </div>
-
-                        <div class="card-content">
-                            <h4 class="card-title">Tania Andrew</h4>
-                            <h6 class="category text-muted">Designer</h6>
-
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation. And I
-                                love you like Kanye loves Kanye.
-                            </p>
-                            <div class="footer">
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i
-                                        class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i
-                                        class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-linkedin"><i
-                                        class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img" src="{{ asset ('client/img/faces/christian.jpg') }}" />
-                            </a>
-                        </div>
-
-                        <div class="card-content">
-                            <h4 class="card-title">Christian Mike</h4>
-                            <h6 class="category text-muted">Web Developer</h6>
-
-                            <p class="card-description">
-                                I love you like Kanye loves Kanye. Don't be scared of the truth because we need to
-                                restart the human foundation.
-                            </p>
-                            <div class="footer">
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i
-                                        class="fa fa-facebook-square"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i
-                                        class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card card-profile card-plain">
-                        <div class="card-avatar">
-                            <a href="#pablo">
-                                <img class="img" src="{{ asset ('client/img/faces/avatar.jpg') }}" />
-                            </a>
-                        </div>
-
-                        <div class="card-content">
-                            <h4 class="card-title">Rebecca Stormvile</h4>
-                            <h6 class="category text-muted">Web Developer</h6>
-
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation.
-                            </p>
-                            <div class="footer">
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i
-                                        class="fa fa-google"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i
-                                        class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i
-                                        class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        </div>        
         <div class="about-services features-2">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
-                    <h2 class="title">We build awesome products</h2>
-                    <h5 class="description">This is the paragraph where you can write more details about your
-                        product. Keep you user engaged by providing meaningful information.</h5>
+                    <h2 class="title">We build awesome products</h2>                    
                 </div>
             </div>
 
@@ -200,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="about-office">
+        <div class="about-office" style="margin-bottom: 60px;">
             <div class="row  text-center">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="title">Our office is our second home</h2>
@@ -232,52 +137,7 @@
 
             </div>
 
-        </div>
-        <div class="about-contact">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="text-center title">Want to work with us?</h2>
-                    <h4 class="text-center description">Divide details about your product or agency work into parts.
-                        Write a few lines about each one and contact us about any further collaboration. We will get
-                        back to you in a couple of hours.</h4>
-                    <form class="contact-form">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Your Name</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Your Email</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Speciality</label>
-                                    <select class="select form-control" placeholder="Speciality">
-                                        <option value="1">I'm a Designer</option>
-                                        <option value="2">I'm a Developer</option>
-                                        <option value="3">I'm a Hero</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4 text-center">
-                                <button class="btn btn-primary btn-round">
-                                    Let's talk
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
+        </div>        
     </div>
 </div>
 @endsection

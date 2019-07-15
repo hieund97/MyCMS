@@ -97,10 +97,6 @@
 </div>
 @endsection
 @push('js')
-
-{{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}"> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
-
 <script>
     $(document).ready(function(){
 		$('.btn-del').click(function(e){		

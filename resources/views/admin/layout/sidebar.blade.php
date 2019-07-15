@@ -88,12 +88,6 @@
                 <span class="sidebar-normal"> Danh sách sản phẩm </span>
               </a>
             </li>            
-            <li class="nav-item pad {{(request()->is('admin/products/price'))? 'active' : null}}">
-              <a class="nav-link" href="/admin/products/price">
-                <span class="sidebar-mini"> GTC </span>
-                <span class="sidebar-normal"> Giá tùy chỉnh </span>
-              </a>
-            </li>
             <li
               class="nav-item pad {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
               <a class="nav-link" href="/admin/products/value">

@@ -27,8 +27,8 @@
                                 <div class="stats">
                                     <button type="button" rel="tooltip" title=""
                                         class="btn btn-just-icon btn-simple btn-rose"
-                                        data-original-title="Saved to Wishlist">
-                                        <i class="material-icons">favorite</i>
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
                                     </button>
                                 </div>
                             </div>
@@ -58,8 +58,8 @@
                                 <div class="stats">
                                     <button type="button" rel="tooltip" title=""
                                         class="btn btn-just-icon btn-simple btn-rose"
-                                        data-original-title="Saved to Wishlist">
-                                        <i class="material-icons">favorite</i>
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
                                     </button>
                                 </div>
                             </div>
@@ -91,8 +91,8 @@
                                 <div class="stats">
                                     <button type="button" rel="tooltip" title=""
                                         class="btn btn-just-icon btn-simple btn-rose"
-                                        data-original-title="Saved to Wishlist">
-                                        <i class="material-icons">favorite</i>
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
                                     </button>
                                 </div>
                             </div>
@@ -446,8 +446,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Remove from wishlist" data-placement="left">
-                                            <i class="material-icons">favorite</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>
@@ -474,8 +474,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Add to wishlist" data-placement="left">
-                                            <i class="material-icons">favorite_border</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>
@@ -502,8 +502,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Add to wishlist" data-placement="left">
-                                            <i class="material-icons">favorite_border</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>
@@ -531,8 +531,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Add to wishlist" data-placement="left">
-                                            <i class="material-icons">favorite_border</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>
@@ -560,8 +560,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Remove from wishlist" data-placement="left">
-                                            <i class="material-icons">favorite</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>
@@ -588,8 +588,8 @@
 
                                         <button
                                             class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                            rel="tooltip" title="Add to wishlist" data-placement="left">
-                                            <i class="material-icons">favorite_border</i>
+                                            rel="tooltip" title="Add to cart" data-placement="left">
+                                            <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>
                                 </div>

@@ -40,10 +40,10 @@ class UserController extends Controller
         $avatarName=Null;
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
-            $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng
-            $user = User::create([
-                'avatar'=> asset('media/avatar').'/'.$avatarName,
-            ]);
+            $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng            
+        }
+        else {
+            $avatarName = 'default-avatar.png';
         }
         $slug = str_slug($request->username, '-');
         if (isset($slug)) {
@@ -65,7 +65,9 @@ class UserController extends Controller
             'about_me' => $request->aboutme,
             'password' => bcrypt($request->password),
             'level'=> $request->level,
-            'slug' => $slug
+            'slug' => $slug,
+            'avatar' => asset('media/avatar').'/'.$avatarName
+            
         ]);
         
         session()->flash('create_user', 'success');

@@ -43,12 +43,12 @@ class BlogController extends Controller
         );
         
         $thumbName=Null;
-        if ($request->hasFile('thumb')) {
-            $thumbName = Str::uuid('image'). '.' .$request->thumb->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
-            $request->thumb->move(public_path('media/thumb'),$thumbName); // di chuyển vào thư mục trên ổ cứng
-            $blog = Blog::create([
-                'thumbnail' => asset('media/thumb').'/'.$thumbName,
-            ]);
+        if ($request->hasFile('avatar')) {
+            $thumbName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'),$thumbName); // di chuyển vào thư mục trên ổ cứng            
+        }
+        else {
+            $thumbName = 'noimage.png';
         }
         $slug = str_slug($request->title, '-');
         if (isset($slug)) {
@@ -79,12 +79,7 @@ class BlogController extends Controller
             ]);
 
         }
-        // $slug = str_slug($request->title, '-');
-        // if (isset($slug)) {
-        //     while (Blog::where('slug', $slug)->get()->count() > 0) {
-        //         $slug = $slug .= '-'.rand(2, 9);
-        //     }
-        // }
+        
         // dd($request->all());
         $blog->update([
             'title' => $request->title,

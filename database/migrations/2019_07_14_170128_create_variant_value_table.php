@@ -18,6 +18,7 @@ class CreateVariantValueTable extends Migration
             $table->foreign('variant_id')->references('id')->on('variant')->onDelete('cascade');
             $table->unsignedBigInteger('value_id');
             $table->foreign('value_id')->references('id')->on('values')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

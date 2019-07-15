@@ -3,25 +3,37 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Categories;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Value;
 use App\Models\Product;
+use App\Models\Variant;
 
 class ProductController extends Controller
 {
     public function index()
     {
+        $products = Product::paginate(5);
         $categories = Categories::get();
-        return view('admin.product.index', compact('categories', 'parentCate'));
+        return view('admin.product.index', compact('categories', 'parentCate', 'products'));
     }
 
     public function create()
     {
         $categories = Categories::get();
         $attribute = Attribute::all();
-        return view('admin.product.create', compact('categories', 'attribute'));
+
+        return view('admin.product.create' ,compact('categories', 'attribute'));
+    }
+
+    public function edit(Product $product){
+        $categories = Categories::get();
+        $attribute = Attribute::all();
+        $data['category'] = Categories::find($product);
+
+        return view('admin.product.edit', $data, compact('product','categories', 'attribute'));
     }
 
     public function value()
@@ -29,26 +41,37 @@ class ProductController extends Controller
         $attribute = Attribute::all();
         // $values = Value::all();
         return view('admin.product.value', compact('attribute'));
-    }
-
-    public function price()
-    {
-        return view('admin.product.price');
-    }
+    }    
 
     public function store(Product $product, Request $request)
     {
+        $this->validate(
+            $request,
+            [
+                'product_code' => 'required | unique:product,product_code',
+                'category'     => 'required',
+                'attr'     => 'required'
+                
+            ],
+            [
+                'require' => 'Trường này trống cmnr',  
+                'unique'  => 'Tên danh mục đã bị trùng'
+            ]
+        );
+        // dd($request->all());
+
         $avatarName = Null;
         if ($request->hasFile('avatar')) {
-            $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
-            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng
-            $user = Product::create([
-                'avatar' => asset('media/avatar') . '/' . $avatarName,
-            ]);
+            $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng            
         }
+        else {
+            $avatarName = 'noimage.png';
+        }
+
         $slug = str_slug($request->name, '-');
         if (isset($slug)) {
-            while (Product::where('slug', $slug)->get()->count() > 0) {
+            while (Product::where('p_slug', $slug)->get()->count() > 0) {
                 $slug = $slug .= '-'.rand(2, 9);
             }
         }
@@ -56,14 +79,71 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'product_code' => $request->product_code,
-            'price' => $request->price,
-            'quatity' => $request->quantity,
-            'decription' => $request->decription,
+            'price' => Intval(str_replace(",","",$request->price)),
+            'quantity' => $request->quantity,
+            'description' => $request->description,
             'detail' => $request->detail,
-            'status' => $request->status,
             'brand' => $request->brand,
-            
+            'p_slug' => $slug,
+            'highlight' => $request->highlight,
+            'avatar' => asset('media/avatar').'/'.$avatarName
         ]);
+        // $product->save();
 
+        $cate_array = array();
+        foreach ($request->category as $cate){            
+                $cate_array[] = $cate;
+            
+        }
+        $product->categories()->Attach($cate_array);
+
+        $value_array = array();
+        foreach ($request->attr as $value){
+            foreach($value as $item){
+                $value_array[] = $item;
+            }
+        }
+        $product->value()->Attach($value_array);
+
+        $variants = get_Combination($request->attr);
+
+        foreach ($variants as $variant){
+            $var = Variant::create([
+                'product_id' => $product->id
+            ]);
+            $var->value()->Attach($variant);
+        }
+
+        session()->flash('create_product', 'success');
+        return redirect('/admin/products/price/'.$product->id.'/edit');
+
+
+    }
+
+    public function editprice(Product $product){
+        return view('admin.product.editprice', compact('product'));
+    }
+
+    public function updateprice(Variant $variant, Request $request){
+        // dd($request->all());
+        foreach ($request->price as $key => $value) {
+            $variant = Variant::find($key);
+            $variant->update([
+                'price' => $value
+            ]);
+        }
+
+        session()->flash('edit_price', 'success');
+        return redirect('/admin/products');
+    }
+
+    public function destroy(Product $product){
+        $product->delete();
+        return response()->json([], 204);
+    }
+    
+    public function destroyvariant(Variant $variant){
+        $variant->delete();
+        return response()->json([], 204);
     }
 }

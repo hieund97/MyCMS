@@ -26,7 +26,7 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Tên sản phẩm</label>
-                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" name="name" class="form-control" value="{{$product->name}}">
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Mã sản phẩm</label>
-                                        <input type="text" name="product_code" class="form-control">
+                                    <input type="text" name="product_code" class="form-control" value="{{$product->product_code}}">
                                     </div>
                                 </div>
                                 @if ($errors->has('product_code'))
@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Giá sản phẩm (Giá chung)</label>
                                         <input onkeyup="this.value=FormatNumber(this.value);" type="text" name="price"
-                                            class="form-control">
+                                    class="form-control" value="{{number_format($product->price)}}">
                                     </div>
                                 </div>
                                 {{-- Hàm định dạng tiền tệ --}}
@@ -135,7 +135,7 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số lượng</label>
-                                        <input type="text" name="quantity" class="form-control">
+                                    <input type="text" name="quantity" class="form-control" value="{{$product->quantity}}">
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Mô tả ngắn</label>
                                     <div class="form-group">
-                                        <textarea name="description" cols="60" rows="5"></textarea>
+                                    <textarea name="description" cols="60" rows="5">{{$product->description}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Chi tiết sản phẩm</label>
                                     <div class="form-group">
-                                        <textarea name="detail" cols="60" rows="7"></textarea>
+                                        <textarea name="detail" cols="60" rows="7">{{$product->detail}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                                     <div class="card card-profile" style="width: 250px;margin-top: 0px;">
                                         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail" style="margin-top: 20px;">
-                                                <img src="{{asset ('manage/img/placeholder.jpg') }}">
+                                                <img src="{{$product->avatar}}">
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                             <div>
@@ -185,7 +185,10 @@
                                 <div class="col-md-9">
                                     <select class="selectpicker" name="category[]" data-style="select-with-transition"
                                         multiple title="Chọn danh mục" data-size="10">
-                                        {{getCategory($categories, 0, '')}}
+                                        {{editCategory($categories, 0, '', $product->category['category_id'])}}
+                                        @php
+                                            print_r($product->category['category_id']);
+                                        @endphp
                                     </select>
                                 </div>
                                 @if ($errors->has('category'))
@@ -211,7 +214,7 @@
                                 <div class="col-md-11 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Thương hiệu</label>
-                                        <input type="text" name="brand" class="form-control">
+                                        <input type="text" name="brand" class="form-control" value="{{$product->brand}}">
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +301,7 @@
                                             bật</b></label>
                                     <div class="togglebutton">
                                         <label>
-                                            <input id="mySelect" onchange="myFunction()" type="checkbox"
+                                            <input id="mySelect" onchange="myFunction()" type="checkbox" {{$product->highlight ==1?'checked': ''}}
                                                 name="highlight" value="1">
                                             <span class="toggle"></span>
                                             <span id="show" style="color: darkgray">Sản phẩm không nổi bật</span>
