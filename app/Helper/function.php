@@ -87,3 +87,13 @@ function get_Combination($array){
     }
     return $result;
 }
+
+function check_value($product, $value_check){
+    foreach ($product->value as $value) {
+       if($value->id == $value_check)
+       {
+           return true;
+       }
+    }
+    return false;
+}
