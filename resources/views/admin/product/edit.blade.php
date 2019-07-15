@@ -5,6 +5,9 @@
     .padding {
         padding-bottom: 40px;
     }
+    .martop {
+        margin-top: 40px;
+    }
 </style>
 <div class="content">
     <div class="col-md-12">
@@ -14,14 +17,14 @@
                     <div class="card-icon">
                         <i class="material-icons">card_travel</i>
                     </div>
-                    <h4 class="card-title">Thêm sản phẩm</h4>
+                    <h4 class="card-title">Sửa sản phẩm</h4>
                 </div>
                 <div class="card-body">
 
                     <form action="/admin/products" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- area 1 --}}
-                        <div class="col-md-5" style="float:left;">
+                        <div class="col-md-5 martop" style="float:left;">
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
@@ -34,7 +37,8 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Mã sản phẩm</label>
-                                    <input type="text" name="product_code" class="form-control" value="{{$product->product_code}}">
+                                        <input type="text" name="product_code" class="form-control"
+                                            value="{{$product->product_code}}">
                                     </div>
                                 </div>
                                 @if ($errors->has('product_code'))
@@ -57,8 +61,9 @@
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Giá sản phẩm (Giá chung)</label>
                                         <input onkeyup="this.value=FormatNumber(this.value);" type="text" name="price"
-                                    class="form-control" value="{{number_format($product->price)}}">
+                                            class="form-control" value="{{number_format($product->price)}}">
                                     </div>
+                                    <span><a style="font-size: 120%" href="/admin/products/price/{{$product->id}}/edit"><b> Giá tùy chỉnh </b><i class="material-icons">assessment</i></a></span>
                                 </div>
                                 {{-- Hàm định dạng tiền tệ --}}
                                 <script>
@@ -135,7 +140,8 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số lượng</label>
-                                    <input type="text" name="quantity" class="form-control" value="{{$product->quantity}}">
+                                        <input type="text" name="quantity" class="form-control"
+                                            value="{{$product->quantity}}">
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +149,8 @@
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Mô tả ngắn</label>
                                     <div class="form-group">
-                                    <textarea name="description" cols="60" rows="5">{{$product->description}}</textarea>
+                                        <textarea name="description" cols="60"
+                                            rows="5">{{$product->description}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +166,7 @@
                         {{-- end area 1 --}}
 
                         {{-- area 2 --}}
-                        <div class="col-md-3" style=" float:left;">
+                        <div class="col-md-3 martop" style=" float:left;">
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="card card-profile" style="width: 250px;margin-top: 0px;">
@@ -182,14 +189,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9">
+                                <div class="col-md-10" style="padding-bottom: 50px;">
                                     <select class="selectpicker" name="category[]" data-style="select-with-transition"
                                         multiple title="Chọn danh mục" data-size="10">
-                                        {{editCategory($categories, 0, '', $product->category['category_id'])}}
-                                        @php
-                                            print_r($product->category['category_id']);
-                                        @endphp
+                                        @foreach ($product->categories as $category)
+                                        {{editCategory($categories, 0, '', $category->id)}}
+                                        @endforeach
                                     </select>
+                                    <a href="/admin/categories" title="Quản lý danh mục"><i style="margin-left: 10px;margin-top: 10px;" class="material-icons">settings</i></a>
                                 </div>
                                 @if ($errors->has('category'))
                                 <div style="width: 300px;" class="alert alert-danger">
@@ -205,19 +212,20 @@
                                 </div>
                                 @endif
                             </div>
+                            <div class="row">
+                                <div class="col-md-9" style="margin-top: 20px;">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Thương hiệu</label>
+                                        <input type="text" name="brand" class="form-control"
+                                            value="{{$product->brand}}">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {{-- end area 2 --}}
 
                         {{-- area 3 --}}
-                        <div class="col-md-4" style="float:left;">
-                            <div class="row">
-                                <div class="col-md-11 padding">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Thương hiệu</label>
-                                        <input type="text" name="brand" class="form-control" value="{{$product->brand}}">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4 martop" style="float:left;">                            
                             <div class="row padding" style="padding-left: 0px;">
                                 <div class="col-md-12">
                                     <div class="card-body" style="padding-left: 0px;">
@@ -258,7 +266,13 @@
                                                                 <td>
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input class="form-check-input"
+                                                                            {{-- @foreach ($product->value as $value_check)
+                                                                            <input {{$value_check->id == $value->id?'checked':''}} class="form-check-input"
+                                                                                type="checkbox"
+                                                                                name="attr[{{$attr->id}}][]"
+                                                                                value="{{$value->id}}">
+                                                                            @endforeach --}}
+                                                                            <input @if (check_value($product,$value->id)) checked @endif class="form-check-input"
                                                                                 type="checkbox"
                                                                                 name="attr[{{$attr->id}}][]"
                                                                                 value="{{$value->id}}">
@@ -301,8 +315,8 @@
                                             bật</b></label>
                                     <div class="togglebutton">
                                         <label>
-                                            <input id="mySelect" onchange="myFunction()" type="checkbox" {{$product->highlight ==1?'checked': ''}}
-                                                name="highlight" value="1">
+                                            <input id="mySelect" onchange="myFunction()" type="checkbox"
+                                                {{$product->highlight ==1?'checked': ''}} name="highlight" value="1">
                                             <span class="toggle"></span>
                                             <span id="show" style="color: darkgray">Sản phẩm không nổi bật</span>
                                         </label>

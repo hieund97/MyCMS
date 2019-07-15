@@ -56,12 +56,14 @@
                             <tr>
                                 <td class="text-center">{{$product->id}}</td>
                                 <td>
-                                    <div class="img-container">
-                                        <img src="{{ $product->avatar }}" alt="...">
-                                    </div>
+                                    <a href="/admin/products/{{$product->id}}/edit">
+                                        <div class="img-container">
+                                            <img src="{{ $product->avatar }}" title="{{$product->name}}">
+                                        </div>
+                                    </a>
                                 </td>
                                 <td class="td-name">
-                                    <a href="#nothing">{{$product->name}}</a>
+                                    <a href="/admin/products/{{$product->id}}/edit">{{$product->name}}</a>
                                     <br />
                                     <small>by {{$product->brand}}</small>
                                 </td>
@@ -98,10 +100,11 @@
                                     </button>
                                     <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                         data-original-title="Chỉnh sửa">
-                                        <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i class="material-icons">edit</i></a>
+                                        <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i
+                                                class="material-icons">edit</i></a>
                                     </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del" data-id="{{$product->id}}"
-                                        data-original-title="Xóa">
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                        data-id="{{$product->id}}" data-original-title="Xóa">
                                         <i class="material-icons">close</i>
                                     </button>
                                 </td>

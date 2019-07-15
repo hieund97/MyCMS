@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" "
-    id="sectionsNav" style="height: 95px;">
+    id="sectionsNav" style="height: 95px; background-color: white;padding-top: 10px;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header" style=" height: 90px;">
@@ -14,16 +14,26 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navigation-example">
-            <ul style=" padding-top: 15px;" class="nav navbar-nav navbar-right">
+            <ul style=" padding-top: 15px; color: black" class="nav navbar-nav navbar-right">
                 <li>
                     <a style="font-size:100%;" href="/">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/products">
-                        Products
+                    <a style="font-size:100%;" href="/" data-toggle="dropdown">
+                        Product<b class="caret"></b>
                     </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li><a href="#pablo">Action</a></li>
+                        <li><a href="#pablo">Another action</a></li>
+                        <li><a href="#pablo">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#pablo">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#pablo">One more separated link</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a style="font-size:100%;" href="/blogs">
@@ -39,7 +49,7 @@
                     <a style="font-size:100%;" href="/contact">
                         Contact Us
                     </a>
-                </li>                
+                </li>
                 <li style="margin-right: 10px;">
                     <a class="btn btn-danger btn-default btn-block"
                         style="padding-right: 10px;padding-left: 10px;padding-bottom: 9px;padding-top: 11px;"
@@ -55,10 +65,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" target="_blank" class="btn btn-white btn-simple">
+                    <a href="#" target="_blank" class="btn btn-rose btn-simple">
                         <i class="material-icons">shopping_cart</i>
                     </a>
-                </li>                
+                </li>
             </ul>
         </div>
     </div>

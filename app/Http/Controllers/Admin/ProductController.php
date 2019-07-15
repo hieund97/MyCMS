@@ -129,7 +129,7 @@ class ProductController extends Controller
         foreach ($request->price as $key => $value) {
             $variant = Variant::find($key);
             $variant->update([
-                'price' => $value
+                'price' => Intval(str_replace(",","",$value)),
             ]);
         }
 

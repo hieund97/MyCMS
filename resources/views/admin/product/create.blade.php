@@ -182,11 +182,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9">
+                                <div class="col-md-10" style="padding-bottom: 50px;">
                                     <select class="selectpicker" name="category[]" data-style="select-with-transition"
                                         multiple title="Chọn danh mục" data-size="10">
                                         {{getCategory($categories, 0, '')}}
                                     </select>
+                                    <a href="/admin/categories" title="Quản lý danh mục"><i
+                                            style="margin-left: 10px;margin-top: 10px;"
+                                            class="material-icons">settings</i></a>
                                 </div>
                                 @if ($errors->has('category'))
                                 <div style="width: 300px;" class="alert alert-danger">
@@ -202,19 +205,19 @@
                                 </div>
                                 @endif
                             </div>
-                        </div>
-                        {{-- end area 2 --}}
-
-                        {{-- area 3 --}}
-                        <div class="col-md-4" style="float:left;">
                             <div class="row">
-                                <div class="col-md-11 padding">
+                                <div class="col-md-9" style="margin-top: 20px;">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Thương hiệu</label>
                                         <input type="text" name="brand" class="form-control">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        {{-- end area 2 --}}
+
+                        {{-- area 3 --}}
+                        <div class="col-md-4" style="float:left;">
                             <div class="row padding" style="padding-left: 0px;">
                                 <div class="col-md-12">
                                     <div class="card-body" style="padding-left: 0px;">

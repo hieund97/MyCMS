@@ -23,8 +23,8 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Thuộc tính sản phẩm: {{$product->name}} </h2>
-                    </div>
+                        <h2 class="card-title">Giá theo biển thể sản phẩm: <span style="color:darkmagenta">{{$product->name}}</span> </h2>                        
+                    </div>                    
                     <div class="card-body">
                         <div class="table-responsive">
                             <form method="POST">
@@ -50,10 +50,80 @@
                                             <td>
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Giá cho biến thể</label>
-                                                    <input style="width: 400px;" type="text"
+                                                    <input style="width: 400px;" type="text" onkeyup="this.value=FormatNumber(this.value);"
                                                         name="price[{{$variant->id}}]" class="form-control"
-                                                        value="{{$variant->price}}">
+                                                        value="{{number_format($variant->price)}}">
                                                 </div>
+                                                {{-- Hàm định dạng tiền tệ --}}
+                                                <script>
+                                                    var inputnumber = 'Giá trị nhập vào không phải là số';
+                                                    function FormatNumber(str) {
+                                                        var strTemp = GetNumber(str);
+                                                        if (strTemp.length <= 3)
+                                                            return strTemp;
+                                                        strResult = "";
+                                                        for (var i = 0; i < strTemp.length; i++)
+                                                            strTemp = strTemp.replace(",", "");
+                                                        var m = strTemp.lastIndexOf(".");
+                                                        if (m == -1) {
+                                                            for (var i = strTemp.length; i >= 0; i--) {
+                                                                if (strResult.length > 0 && (strTemp.length - i - 1) % 3 == 0)
+                                                                    strResult = "," + strResult;
+                                                                strResult = strTemp.substring(i, i + 1) + strResult;
+                                                            }
+                                                        } else {
+                                                            var strphannguyen = strTemp.substring(0, strTemp.lastIndexOf("."));
+                                                            var strphanthapphan = strTemp.substring(strTemp.lastIndexOf("."),
+                                                                    strTemp.length);
+                                                            var tam = 0;
+                                                            for (var i = strphannguyen.length; i >= 0; i--) {
+                
+                                                                if (strResult.length > 0 && tam == 4) {
+                                                                    strResult = "," + strResult;
+                                                                    tam = 1;
+                                                                }
+                
+                                                                strResult = strphannguyen.substring(i, i + 1) + strResult;
+                                                                tam = tam + 1;
+                                                            }
+                                                            strResult = strResult + strphanthapphan;
+                                                        }
+                                                        return strResult;
+                                                    }
+                
+                                                    function GetNumber(str) {
+                                                        var count = 0;
+                                                        for (var i = 0; i < str.length; i++) {
+                                                            var temp = str.substring(i, i + 1);
+                                                            if (!(temp == "," || temp == "." || (temp >= 0 && temp <= 9))) {
+                                                                alert(inputnumber);
+                                                                return str.substring(0, i);
+                                                            }
+                                                            if (temp == " ")
+                                                                return str.substring(0, i);
+                                                            if (temp == ".") {
+                                                                if (count > 0)
+                                                                    return str.substring(0, ipubl_date);
+                                                                count++;
+                                                            }
+                                                        }
+                                                        return str;
+                                                    }
+                
+                                                    function IsNumberInt(str) {
+                                                        for (var i = 0; i < str.length; i++) {
+                                                            var temp = str.substring(i, i + 1);
+                                                            if (!(temp == "." || (temp >= 0 && temp <= 9))) {
+                                                                alert(inputnumber);
+                                                                return str.substring(0, i);
+                                                            }
+                                                            if (temp == ",") {
+                                                                return str.substring(0, i);
+                                                            }
+                                                        }
+                                                        return str;
+                                                    }
+                                                </script>
                                             </td>
                                             <td class="td-actions">
                                                 <button style=" margin-right: 50px;  margin-bottom: 15px;" type="button"
@@ -66,6 +136,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <h4 style="margin-left: 50px; color:crimson">Note *Bạn có thể bỏ qua nếu sản phẩm chỉ dùng MỘT GIÁ DUY NHẤT*</h4>
                                 <div>
                                     <a href="/admin/products" style="padding-left: 15px; padding-right: 15px;"
                                         class="btn btn-warning pull-right"><i class="material-icons">cached</i> Bỏ

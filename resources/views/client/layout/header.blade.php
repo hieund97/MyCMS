@@ -6,7 +6,7 @@
     {{-- @include('client.layout.navbar') --}}
     {{-- End Navbar --}}
 
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top: 95px;">
         <div class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->

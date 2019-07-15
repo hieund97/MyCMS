@@ -65,6 +65,7 @@ Route::group([
             Route::post('/', 'ProductController@store');
             Route::delete('/{product}/delete', 'ProductController@destroy');
             Route::delete('/price/{variant}/delete', 'ProductController@destroyvariant');
+            Route::put('/{product}/edit', 'ProductController@update');
         });
 
         // Admin Product-Category Route
