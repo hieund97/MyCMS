@@ -5,6 +5,10 @@
     .padding {
         padding-bottom: 40px;
     }
+
+    .martop {
+        margin-top: 40px;
+    }
 </style>
 <div class="content">
     <div class="col-md-12">
@@ -21,7 +25,7 @@
                     <form action="/admin/products" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- area 1 --}}
-                        <div class="col-md-5" style="float:left;">
+                        <div class="col-md-5 martop" style="float:left;">
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
@@ -159,7 +163,7 @@
                         {{-- end area 1 --}}
 
                         {{-- area 2 --}}
-                        <div class="col-md-3" style=" float:left;">
+                        <div class="col-md-3 martop" style=" float:left;">
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="card card-profile" style="width: 250px;margin-top: 0px;">
@@ -207,17 +211,21 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-9" style="margin-top: 20px;">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Thương hiệu</label>
-                                        <input type="text" name="brand" class="form-control">
-                                    </div>
+                                    <select class="selectpicker" data-size="7" name="brand" data-style="btn btn-primary btn-round"
+                                        title="Chọn thương hiệu">
+                                        @if (isset($brands))
+                                        @foreach ($brands as $brand)
+                                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                        @endforeach
+                                        @endif                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         {{-- end area 2 --}}
 
                         {{-- area 3 --}}
-                        <div class="col-md-4" style="float:left;">
+                        <div class="col-md-4 martop" style="float:left;">
                             <div class="row padding" style="padding-left: 0px;">
                                 <div class="col-md-12">
                                     <div class="card-body" style="padding-left: 0px;">

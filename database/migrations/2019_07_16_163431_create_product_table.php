@@ -17,15 +17,15 @@ class CreateProductTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('p_slug')->nullable();
-            $table->string('product_code')->nullable();
+            $table->string('product_code')->nullable()->unique();
             $table->unsignedDecimal('price',15,2)->default(0);
             $table->string('description')->nullable();
             $table->text('detail')->nullable();
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brand')->onDelete('cascade');
             $table->integer('quantity')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('brand')->nullable();
             $table->boolean('highlight')->nullable();
-            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

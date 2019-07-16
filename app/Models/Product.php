@@ -17,11 +17,16 @@ class Product extends Model
 
     public function value()
     {
-        return $this->belongsToMany('App\Models\value', 'values_product', 'product_id', 'value_id');
+        return $this->belongsToMany('App\Models\Value', 'values_product', 'product_id', 'value_id');
     }
 
     public function variant()
     {
         return $this->hasMany('App\Models\Variant', 'product_id', 'id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
 }

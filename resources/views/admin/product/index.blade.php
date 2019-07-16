@@ -65,7 +65,7 @@
                                 <td class="td-name">
                                     <a href="/admin/products/{{$product->id}}/edit">{{$product->name}}</a>
                                     <br />
-                                    <small>by {{$product->brand}}</small>
+                                    <small>by {{$product->brand->name}}</small>
                                 </td>
                                 <td>
                                     {{$product->product_code}}

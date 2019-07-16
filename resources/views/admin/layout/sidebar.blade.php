@@ -88,11 +88,16 @@
                 <span class="sidebar-normal"> Danh sách sản phẩm </span>
               </a>
             </li>            
-            <li
-              class="nav-item pad {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
+            <li class="nav-item pad {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
               <a class="nav-link" href="/admin/products/value">
                 <span class="sidebar-mini"> QTT </span>
                 <span class="sidebar-normal">Quản lý thuộc tính </span>
+              </a>
+            </li>
+            <li class="nav-item pad {{(request()->is('admin/products/brand'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/brand">
+                <span class="sidebar-mini"> TH </span>
+                <span class="sidebar-normal">Thương hiệu </span>
               </a>
             </li>
           </ul>

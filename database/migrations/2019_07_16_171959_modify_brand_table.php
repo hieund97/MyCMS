@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateProductTable extends Migration
+class ModifyBrandTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class UpdateProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->string('product_code')->nullable()->unique()->change();
+        Schema::table('brand', function (Blueprint $table) {
+            $table->string('name')->nullable()->unique()->change();
+
         });
     }
 
@@ -25,6 +26,6 @@ class UpdateProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        //
     }
 }

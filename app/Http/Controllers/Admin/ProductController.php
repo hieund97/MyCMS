@@ -10,38 +10,36 @@ use App\Models\Attribute;
 use App\Models\Value;
 use App\Models\Product;
 use App\Models\Variant;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
-    public function index()
+
+    // Product Zone
+    public function index(Product $product)
     {
         $products = Product::paginate(5);
-        $categories = Categories::get();
-        return view('admin.product.index', compact('categories', 'parentCate', 'products'));
+        // $categories = Categories::get();
+        return view('admin.product.index', compact('products'));
     }
 
     public function create()
     {
+        $brands = Brand::all();
         $categories = Categories::get();
         $attribute = Attribute::all();
 
-        return view('admin.product.create' ,compact('categories', 'attribute'));
+        return view('admin.product.create' ,compact('categories', 'attribute', 'brands'));
     }
 
     public function edit(Product $product){
         $categories = Categories::get();
         $attribute = Attribute::all();
+        $brands = Brand::all();
         $data['category'] = Categories::find($product);
 
-        return view('admin.product.edit', $data, compact('product','categories', 'attribute'));
-    }
-
-    public function value()
-    {
-        $attribute = Attribute::all();
-        // $values = Value::all();
-        return view('admin.product.value', compact('attribute'));
-    }    
+        return view('admin.product.edit', $data, compact('product','categories', 'attribute', 'brands'));
+    }        
 
     public function store(Product $product, Request $request)
     {
@@ -83,12 +81,11 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
-            'brand' => $request->brand,
+            'brand_id' => $request->brand,
             'p_slug' => $slug,
             'highlight' => $request->highlight,
             'avatar' => asset('media/avatar').'/'.$avatarName
         ]);
-        // $product->save();
 
         $cate_array = array();
         foreach ($request->category as $cate){            
@@ -120,6 +117,23 @@ class ProductController extends Controller
 
     }
 
+    public function destroy(Product $product){
+        $product->delete();
+        return response()->json([], 204);
+    }
+
+
+    // Value Zone
+    public function value()
+    {
+        $attribute = Attribute::all();
+        // $values = Value::all();
+        return view('admin.product.value', compact('attribute'));
+    }
+
+
+
+    //Price Zone
     public function editprice(Product $product){
         return view('admin.product.editprice', compact('product'));
     }
@@ -137,13 +151,56 @@ class ProductController extends Controller
         return redirect('/admin/products');
     }
 
-    public function destroy(Product $product){
-        $product->delete();
-        return response()->json([], 204);
-    }
     
+    //Variant Zone
     public function destroyvariant(Variant $variant){
         $variant->delete();
         return response()->json([], 204);
+    }
+
+
+
+    // Brand Zone
+    public function brand(Brand $brand){
+        $brands = Brand::all();
+        return view('admin.product.brand', compact('brands'));
+    }
+    
+    public function addbrand(Brand $brand, Request $request){
+        // dd($request->all());
+        $this->validate(
+            $request,
+            [
+                'brand' => 'required | unique:brand,name',
+                
+                
+            ],
+            [
+                'require' => 'Trường này trống cmnr',  
+                'unique'  => 'Tên danh mục đã bị trùng'
+            ]
+        );
+        $brand = Brand::create([
+            'name' => $request->brand
+        ]);
+        session()->flash('add_brand', 'success');
+        return redirect('/admin/products/brand');
+    }
+
+    public function destroybrand(Brand $brand){
+        $brand->delete();
+        return response()->json([], 204);
+    }
+
+    public function editbrand(Brand $brand){
+        return view('admin.product.editbrand', compact('brand'));
+    }
+
+    public function updatebrand(Brand $brand, Request $request){
+        $brand->update([
+            'name' => $request->brand
+        ]);
+        session()->flash('update_brand', 'success');
+        return redirect('/admin/products/brand');
     }
 }

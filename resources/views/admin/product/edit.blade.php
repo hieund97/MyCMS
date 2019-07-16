@@ -5,6 +5,7 @@
     .padding {
         padding-bottom: 40px;
     }
+
     .martop {
         margin-top: 40px;
     }
@@ -63,7 +64,9 @@
                                         <input onkeyup="this.value=FormatNumber(this.value);" type="text" name="price"
                                             class="form-control" value="{{number_format($product->price)}}">
                                     </div>
-                                    <span><a style="font-size: 120%" href="/admin/products/price/{{$product->id}}/edit"><b> Giá tùy chỉnh </b><i class="material-icons">assessment</i></a></span>
+                                    <span><a style="font-size: 120%" href="/admin/products/price/{{$product->id}}/edit"
+                                            title="Giá theo từng biến thể"><b> Giá tùy chỉnh </b><i
+                                                class="material-icons">assessment</i></a></span>
                                 </div>
                                 {{-- Hàm định dạng tiền tệ --}}
                                 <script>
@@ -196,7 +199,9 @@
                                         {{editCategory($categories, 0, '', $category->id)}}
                                         @endforeach
                                     </select>
-                                    <a href="/admin/categories" title="Quản lý danh mục"><i style="margin-left: 10px;margin-top: 10px;" class="material-icons">settings</i></a>
+                                    <a href="/admin/categories" title="Quản lý danh mục"><i
+                                            style="margin-left: 10px;margin-top: 10px;"
+                                            class="material-icons">settings</i></a>
                                 </div>
                                 @if ($errors->has('category'))
                                 <div style="width: 300px;" class="alert alert-danger">
@@ -214,18 +219,21 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-9" style="margin-top: 20px;">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Thương hiệu</label>
-                                        <input type="text" name="brand" class="form-control"
-                                            value="{{$product->brand}}">
-                                    </div>
+                                    <select class="selectpicker" data-size="7" name="brand" data-style="btn btn-primary btn-round"
+                                        title="Chọn thương hiệu">
+                                        @if (isset($brands))
+                                        @foreach ($brands as $brand)
+                                        <option {{$product->brand_id == $brand->id?'selected': ''}} value="{{$brand->id}}">{{$brand->name}}</option>
+                                        @endforeach
+                                        @endif                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         {{-- end area 2 --}}
 
                         {{-- area 3 --}}
-                        <div class="col-md-4 martop" style="float:left;">                            
+                        <div class="col-md-4 martop" style="float:left;">
                             <div class="row padding" style="padding-left: 0px;">
                                 <div class="col-md-12">
                                     <div class="card-body" style="padding-left: 0px;">
@@ -266,16 +274,15 @@
                                                                 <td>
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            {{-- @foreach ($product->value as $value_check)
-                                                                            <input {{$value_check->id == $value->id?'checked':''}} class="form-check-input"
-                                                                                type="checkbox"
-                                                                                name="attr[{{$attr->id}}][]"
-                                                                                value="{{$value->id}}">
-                                                                            @endforeach --}}
-                                                                            <input @if (check_value($product,$value->id)) checked @endif class="form-check-input"
-                                                                                type="checkbox"
-                                                                                name="attr[{{$attr->id}}][]"
-                                                                                value="{{$value->id}}">
+                                                                           
+                                                                            <input  @foreach ($product->value as $value_check)
+                                                                             {{$value_check->id == $value->id?'checked':''}}
+                                                                             @endforeach
+                                                                            class="form-check-input"
+                                                                            type="checkbox"
+                                                                            name="attr[{{$attr->id}}][]"
+                                                                            value="{{$value->id}}">                                                                            
+                                                                            
                                                                             <span class="form-check-sign">
                                                                                 <span class="check"></span>
                                                                             </span>
@@ -335,7 +342,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-rose">Thêm sản phẩm</button>
+                            <button type="submit" class="btn btn-rose">Sửa sản phẩm</button>
                         </div>
                         {{-- end area 3 --}}
                         <div class="clearfix"></div>

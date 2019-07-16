@@ -55,17 +55,30 @@ Route::group([
         Route::group([
             'prefix' => 'products'
         ], function(){
-            Route::get('/', 'ProductController@index');
-            Route::get('/value', 'ProductController@value');
-            Route::get('/price/{product}/edit', 'ProductController@editprice');
+            //product
+            Route::get('/', 'ProductController@index');            
             Route::get('/create', 'ProductController@create');
-            Route::get('/{product}/edit', 'ProductController@edit');
+            Route::get('/{product}/edit', 'ProductController@edit');            
             Route::put('/{product}/edit', 'ProductController@update');
-            Route::put('/price/{variant}/edit', 'ProductController@updateprice');
-            Route::post('/', 'ProductController@store');
             Route::delete('/{product}/delete', 'ProductController@destroy');
+            Route::post('/', 'ProductController@store');
+
+            //price
+            Route::get('/price/{product}/edit', 'ProductController@editprice');
+            Route::put('/price/{product}/edit', 'ProductController@updateprice');
+
+            //value
+            Route::get('/value', 'ProductController@value');
+            
+            //variant
             Route::delete('/price/{variant}/delete', 'ProductController@destroyvariant');
-            Route::put('/{product}/edit', 'ProductController@update');
+            
+            //brand
+            Route::get('/brand', 'ProductController@brand');
+            Route::get('/brand/{brand}/edit', 'ProductController@editbrand');
+            Route::post('/brand', 'ProductController@addbrand');
+            Route::put('/brand/{brand}/edit', 'ProductController@updatebrand');
+            Route::delete('/brand/{brand}/delete', 'ProductController@destroybrand');
         });
 
         // Admin Product-Category Route

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropcolumnStatusProductTable extends Migration
+class CreateBrandTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class DropcolumnStatusProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::create('brand', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();            
+            $table->timestamps();
         });
     }
 
@@ -25,7 +28,6 @@ class DropcolumnStatusProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
-
+        Schema::dropIfExists('brand');
     }
 }
