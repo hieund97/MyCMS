@@ -79,6 +79,13 @@ Route::group([
             Route::post('/brand', 'ProductController@addbrand');
             Route::put('/brand/{brand}/edit', 'ProductController@updatebrand');
             Route::delete('/brand/{brand}/delete', 'ProductController@destroybrand');
+
+            //image
+            Route::get('/image/{product}/add', 'ProductController@image');
+            Route::get('/image/{product}/edit', 'ProductController@editimage');
+            Route::post('/image/add', 'ProductController@addimage');
+            Route::put('/image/{product}/update', 'ProductController@updateimage');
+            
         });
 
         // Admin Product-Category Route

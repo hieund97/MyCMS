@@ -88,3 +88,25 @@ function get_Combination($array){
     return $result;
 }
 
+function check_value($product, $value_check){
+    foreach ($product->value as $value) {
+        if ($value->id == $value_check) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function check_variant($product,$array){
+    foreach ($product->variant as $row) {
+        $mang = array();
+        foreach ($row->value as $value) {
+            $mang[] = $value->id;
+            if (array_diff($mang,$array)==NULL){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+

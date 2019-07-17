@@ -22,7 +22,8 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="/admin/products" method="POST" enctype="multipart/form-data">
+                    <form action="/admin/products/{{$product->id}}/edit" method="POST" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         {{-- area 1 --}}
                         <div class="col-md-5 martop" style="float:left;">
@@ -42,7 +43,7 @@
                                             value="{{$product->product_code}}">
                                     </div>
                                 </div>
-                                @if ($errors->has('product_code'))
+                                {{-- @if ($errors->has('product_code'))
                                 <div style="width: 470px;" class="alert alert-danger">
                                     <div class="container">
                                         <div class="alert-icon">
@@ -54,7 +55,7 @@
                                         <b>LỖI</b> MÃ SẢN PHẨM KHÔNG ĐƯỢC TRÙNG
                                     </div>
                                 </div>
-                                @endif
+                                @endif --}}
                             </div>
 
                             <div class="row">
@@ -281,7 +282,14 @@
                                                                             class="form-check-input"
                                                                             type="checkbox"
                                                                             name="attr[{{$attr->id}}][]"
-                                                                            value="{{$value->id}}">                                                                            
+                                                                            value="{{$value->id}}">
+                                                                            
+                                                                            {{-- <input @if (check_value($product, $value->id))
+                                                                                checked
+                                                                            @endif class="form-check-input"
+                                                                            type="checkbox"
+                                                                            name="attr[{{$attr->id}}][]"
+                                                                            value="{{$value->id}}"> --}}
                                                                             
                                                                             <span class="form-check-sign">
                                                                                 <span class="check"></span>

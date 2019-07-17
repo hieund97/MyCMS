@@ -21,7 +21,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="bmd-label-floating">
-                                        <h4>Tên danh mục</h4>
+                                        <h4>Tên thương hiệu</h4>
                                     </label>
                                     <div class="form-group">
                                         <input type="text" style="" name="brand" class="form-control" required

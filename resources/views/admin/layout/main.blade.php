@@ -59,6 +59,7 @@
   <link href="{{asset('manage/demo/demo.css') }}" rel="stylesheet" />
   <!-- Google Tag Manager -->
   
+  
   <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];

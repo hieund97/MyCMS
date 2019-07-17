@@ -11,6 +11,7 @@ use App\Models\Value;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Brand;
+use App\Models\Image_product;
 
 class ProductController extends Controller
 {
@@ -29,17 +30,18 @@ class ProductController extends Controller
         $categories = Categories::get();
         $attribute = Attribute::all();
 
-        return view('admin.product.create' ,compact('categories', 'attribute', 'brands'));
+        return view('admin.product.create', compact('categories', 'attribute', 'brands'));
     }
 
-    public function edit(Product $product){
+    public function edit(Product $product)
+    {
         $categories = Categories::get();
         $attribute = Attribute::all();
         $brands = Brand::all();
         $data['category'] = Categories::find($product);
 
-        return view('admin.product.edit', $data, compact('product','categories', 'attribute', 'brands'));
-    }        
+        return view('admin.product.edit', $data, compact('product', 'categories', 'attribute', 'brands'));
+    }
 
     public function store(Product $product, Request $request)
     {
@@ -49,10 +51,10 @@ class ProductController extends Controller
                 'product_code' => 'required | unique:product,product_code',
                 'category'     => 'required',
                 'attr'     => 'required'
-                
+
             ],
             [
-                'require' => 'Trường này trống cmnr',  
+                'require' => 'Trường này trống cmnr',
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
@@ -60,64 +62,124 @@ class ProductController extends Controller
 
         $avatarName = Null;
         if ($request->hasFile('avatar')) {
-            $avatarName = Str::uuid('image'). '.' .$request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
-            $request->avatar->move(public_path('media/avatar'),$avatarName); // di chuyển vào thư mục trên ổ cứng            
-        }
-        else {
+            $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng            
+        } else {
             $avatarName = 'noimage.png';
         }
 
         $slug = str_slug($request->name, '-');
         if (isset($slug)) {
             while (Product::where('p_slug', $slug)->get()->count() > 0) {
-                $slug = $slug .= '-'.rand(2, 9);
+                $slug = $slug .= '-' . rand(2, 9);
             }
         }
 
         $product = Product::create([
             'name' => $request->name,
             'product_code' => $request->product_code,
-            'price' => Intval(str_replace(",","",$request->price)),
+            'price' => Intval(str_replace(",", "", $request->price)),
             'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
             'brand_id' => $request->brand,
             'p_slug' => $slug,
             'highlight' => $request->highlight,
-            'avatar' => asset('media/avatar').'/'.$avatarName
+            'avatar' => asset('media/avatar') . '/' . $avatarName
         ]);
 
+        // Add Value
         $cate_array = array();
-        foreach ($request->category as $cate){            
-                $cate_array[] = $cate;
-            
+        foreach ($request->category as $cate) {
+            $cate_array[] = $cate;
         }
-        $product->categories()->Attach($cate_array);
+        $product->categories()->attach($cate_array);
 
         $value_array = array();
-        foreach ($request->attr as $value){
-            foreach($value as $item){
+        foreach ($request->attr as $value) {
+            foreach ($value as $item) {
                 $value_array[] = $item;
             }
         }
         $product->value()->Attach($value_array);
 
-        $variants = get_Combination($request->attr);
 
-        foreach ($variants as $variant){
+        // Add Variant
+        $variants = get_Combination($request->attr);
+        foreach ($variants as $variant) {
             $var = Variant::create([
                 'product_id' => $product->id
             ]);
-            $var->value()->Attach($variant);
+            $var->value()->attach($variant);
         }
 
         session()->flash('create_product', 'success');
-        return redirect('/admin/products/price/'.$product->id.'/edit');
-
-
+        return redirect('/admin/products/price/' . $product->id . '/edit');
     }
 
-    public function destroy(Product $product){
+    public function update(Product $product, Request $request)
+    {
+        // dd($request->all());
+        $avatarName = Null;
+        if ($request->hasFile('avatar')) {
+            $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng
+            $product->update([
+                'avatar' => asset('media/avatar') . '/' . $avatarName
+            ]);
+        }
+
+        $slug = str_slug($request->name, '-');
+        if (isset($slug)) {
+            while (Product::where('p_slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-' . rand(2, 9);
+            }
+        }
+
+        $product->update([
+            'name' => $request->name,
+            'product_code' => $request->product_code,
+            'price' => Intval(str_replace(",", "", $request->price)),
+            'quantity' => $request->quantity,
+            'description' => $request->description,
+            'detail' => $request->detail,
+            'brand_id' => $request->brand,
+            'p_slug' => $slug,
+            'highlight' => $request->highlight,
+        ]);
+
+        // Update value
+        $cate_array = array();
+        foreach ($request->category as $cate) {
+            $cate_array[] = $cate;
+        }
+        $product->categories()->sync($cate_array);
+
+        $value_array = array();
+        foreach ($request->attr as $value) {
+            foreach ($value as $item) {
+                $value_array[] = $item;
+            }
+        }
+        $product->value()->sync($value_array);
+
+        // Update Variant
+        $variants = get_Combination($request->attr);
+        foreach ($variants as $variant) {
+            if (check_variant($product, $variant)) {
+                $var = Variant::create([
+                    'product_id' => $product->id
+                ]);
+                $var->value()->attach($variant);
+            }
+        }
+
+        session()->flash('update_product', 'success');
+        return redirect('/admin/products');
+    }
+
+    public function destroy(Product $product)
+    {
         $product->delete();
         return response()->json([], 204);
     }
@@ -134,26 +196,29 @@ class ProductController extends Controller
 
 
     //Price Zone
-    public function editprice(Product $product){
+    public function editprice(Product $product)
+    {
         return view('admin.product.editprice', compact('product'));
     }
 
-    public function updateprice(Variant $variant, Request $request){
+    public function updateprice(Variant $variant, Product $product, Request $request)
+    {
         // dd($request->all());
         foreach ($request->price as $key => $value) {
             $variant = Variant::find($key);
             $variant->update([
-                'price' => Intval(str_replace(",","",$value)),
+                'price' => Intval(str_replace(",", "", $value)),
             ]);
         }
 
         session()->flash('edit_price', 'success');
-        return redirect('/admin/products');
+        return redirect('/admin/products/image/' . $product->id . '/add');
     }
 
-    
+
     //Variant Zone
-    public function destroyvariant(Variant $variant){
+    public function destroyvariant(Variant $variant)
+    {
         $variant->delete();
         return response()->json([], 204);
     }
@@ -161,22 +226,24 @@ class ProductController extends Controller
 
 
     // Brand Zone
-    public function brand(Brand $brand){
+    public function brand(Brand $brand)
+    {
         $brands = Brand::all();
         return view('admin.product.brand', compact('brands'));
     }
-    
-    public function addbrand(Brand $brand, Request $request){
+
+    public function addbrand(Brand $brand, Request $request)
+    {
         // dd($request->all());
         $this->validate(
             $request,
             [
                 'brand' => 'required | unique:brand,name',
-                
-                
+
+
             ],
             [
-                'require' => 'Trường này trống cmnr',  
+                'require' => 'Trường này trống cmnr',
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
@@ -187,20 +254,116 @@ class ProductController extends Controller
         return redirect('/admin/products/brand');
     }
 
-    public function destroybrand(Brand $brand){
+    public function destroybrand(Brand $brand)
+    {
         $brand->delete();
         return response()->json([], 204);
     }
 
-    public function editbrand(Brand $brand){
+    public function editbrand(Brand $brand)
+    {
         return view('admin.product.editbrand', compact('brand'));
     }
 
-    public function updatebrand(Brand $brand, Request $request){
+    public function updatebrand(Brand $brand, Request $request)
+    {
         $brand->update([
             'name' => $request->brand
         ]);
         session()->flash('update_brand', 'success');
         return redirect('/admin/products/brand');
+    }
+
+    // image Zone
+    public function image(Product $product)
+    {
+        return view('admin.product.addimage', compact('product'));
+    }
+
+    public function editimage(Product $product)
+    {
+        $image_product = Image_product::all();
+        return view('admin.product.editimage', compact('product', 'image_product'));
+    }
+
+    public function updateimage(Product $product,  Request $request)
+    {
+        // dd($request->all());
+        foreach ($request->avatar as $key => $image) {
+            $avatarName = Null;
+            if ($request->hasFile('avatar')) {
+                $avatarName = Str::uuid('image') . '.' . $image->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+                $image->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng      
+                $image_product = Image_product::find($key);
+                $image_product->update([
+                    'image' => asset ('media/avatar') . '/' . $avatarName
+                ]);
+            }
+        }
+        session()->flash('update_image', 'success');
+        return redirect('/admin/products');
+    }
+
+    public function addimage(Image_product $image_product, Request
+     $request){
+        // dd($request->all());
+        $this->validate(
+            $request,
+            [
+                'avatar1' => 'required',
+                'avatar2' => 'required',
+                'avatar3' => 'required',
+                'avatar4' => 'required'
+
+
+
+            ],
+            [
+                'require' => 'Trường này trống cmnr',
+                'unique'  => 'Tên danh mục đã bị trùng'
+            ]
+        );
+        $avatarName1 = Null;
+        if ($request->hasFile('avatar1')) {
+            $avatarName1 = Str::uuid('image'). '.' .$request->avatar1->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar1->move(public_path('media/avatar'),$avatarName1); // di chuyển vào thư mục trên ổ cứng      
+            $image_product = Image_product::create([
+                'image' => asset('media/avatar').'/'.$avatarName1,
+                'product_id' => $request->id
+            ]);
+        }
+
+        $avatarName2 = Null;
+        if ($request->hasFile('avatar2')) {
+            $avatarName2 = Str::uuid('image'). '.' .$request->avatar2->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar2->move(public_path('media/avatar'),$avatarName2); // di chuyển vào thư mục trên ổ cứng      
+            $image_product = Image_product::create([
+                'image' => asset('media/avatar').'/'.$avatarName2,
+                'product_id' => $request->id
+            ]);
+        }
+
+        $avatarName3 = Null;
+        if ($request->hasFile('avatar3')) {
+            $avatarName3 = Str::uuid('image'). '.' .$request->avatar3->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar3->move(public_path('media/avatar'),$avatarName3); // di chuyển vào thư mục trên ổ cứng      
+            $image_product = Image_product::create([
+                'image' => asset('media/avatar').'/'.$avatarName3,
+                'product_id' => $request->id
+            ]);
+        }
+
+        $avatarName4 = Null;
+        if ($request->hasFile('avatar4')) {
+            $avatarName4 = Str::uuid('image'). '.' .$request->avatar4->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar4->move(public_path('media/avatar'),$avatarName4); // di chuyển vào thư mục trên ổ cứng      
+            $image_product = Image_product::create([
+                'image' => asset('media/avatar').'/'.$avatarName4,
+                'product_id' => $request->id
+            ]);
+        }
+
+        session()->flash('upload_image', 'success');
+        return redirect('/admin/products');
     }
 }

@@ -2,8 +2,21 @@
 @section('title', 'User')
 @section('content')
 <div class="content">
-    <div class="col-md-12">
-        @if (session()->has('edit_price'))
+    <div class="col-md-12">        
+        @if (session()->has('update_image'))
+        <div class="alert alert-success">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="material-icons">check</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+            </div>
+        </div>
+        @endif
+        @if (session()->has('upload_image'))
         <div class="alert alert-success">
             <div class="container">
                 <div class="alert-icon">
@@ -13,6 +26,19 @@
                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                 </button>
                 <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+            </div>
+        </div>
+        @endif
+        @if (session()->has('update_product'))
+        <div class="alert alert-success">
+            <div class="container">
+                <div class="alert-icon">
+                    <i class="material-icons">check</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                <b>SỬA THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
             </div>
         </div>
         @endif
@@ -47,7 +73,7 @@
                                 <th class="text-center" style="width: 126px;">Giá chung</th>
                                 <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
                                 <th class="text-center" style="width: 17px;">Tình trạng</th>
-                                <th class="text-center" style="width: 116px;">Hành động</th>
+                                <th class="text-center" style="width: 96px;">Hành động</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -93,10 +119,15 @@
                                         style="padding-left: 15px;padding-right: 15px;">{{$product->quantity ==  0? 'Hết hàng':'Còn hàng'}}</label>
                                 </td>
                                 <td class="td-actions">
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-round"
-                                        data-original-title="Giá tùy chỉnh">
+                                    <button type="button" rel="tooltip" class="btn btn-warning btn-round"
+                                        data-original-title="Giá tùy chỉnh" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/price/{{$product->id}}/edit"><i
                                                 class="material-icons">assessment</i></a>
+                                    </button>
+                                    <button type="button" rel="tooltip" class="btn btn-info btn-round"
+                                        data-original-title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
+                                        <a style="color:white;" href="/admin/products/image/{{$product->id}}/edit"><i
+                                                class="material-icons">pageview</i></a>
                                     </button>
                                     <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                         data-original-title="Chỉnh sửa">

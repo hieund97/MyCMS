@@ -138,7 +138,7 @@
                                 </table>
                                 <h4 style="margin-left: 50px; color:crimson">Note *Bạn có thể bỏ qua nếu sản phẩm chỉ dùng MỘT GIÁ DUY NHẤT*</h4>
                                 <div>
-                                    <a href="/admin/products" style="padding-left: 15px; padding-right: 15px;"
+                                    <a href="/admin/products/image/{{$product->id}}/edit" style="padding-left: 15px; padding-right: 15px;"
                                         class="btn btn-warning pull-right"><i class="material-icons">cached</i> Bỏ
                                         qua</a>
                                     <button type="submit" style="padding-left: 15px; padding-right: 15px;"
