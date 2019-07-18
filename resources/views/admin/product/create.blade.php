@@ -221,6 +221,19 @@
                                     </select>
                                 </div>
                             </div>
+                            @if ($errors->has('brand'))
+                            <div style="width: 300px;" class="alert alert-danger">
+                                <div class="container">
+                                    <div class="alert-icon">
+                                        <i class="material-icons">error_outline</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                    </button>
+                                    <b>LỖI</b> THƯƠNG HIỆU KHÔNG ĐƯỢC ĐỂ TRỐNG
+                                </div>
+                            </div>
+                            @endif
                         </div>
                         {{-- end area 2 --}}
 

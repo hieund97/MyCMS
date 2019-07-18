@@ -161,7 +161,7 @@
                                         <h4>Mô tả ngắn</h4>
                                     </label>
                                     <div class="form-group">                                        
-                                        <textarea class="form-control" name="short_decription"
+                                        <textarea class="form-control" name="short_description"
                                             style="padding-left: 15px; padding-right: 15px;" required rows="8">
                                         </textarea>
                                     </div>

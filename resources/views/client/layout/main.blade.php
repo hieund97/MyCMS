@@ -153,38 +153,45 @@
 							<div class="col-md-5 col-md-offset-1">
 								<div class="info info-horizontal">
 									<div class="icon icon-rose">
-										<i class="material-icons">timeline</i>
+										<i class="material-icons">local_shipping</i>
 									</div>
 									<div class="description">
-										<h4 class="info-title">Marketing</h4>
+										<h4 class="info-title">Giao hàng trong 2 ngày</h4>
 										<p class="description">
-											We've created the marketing campaign of the website. It was a very
-											interesting collaboration.
+											Khi đã là thành viên MrSicy bạn sẽ nhận được gần 200 nghìn mặt hàng
+											trong vòng 2 giờ, không tính phí vận chuyển (không bao gồm phụ phí cồng
+											kềnh) ở tất cả 6
+											thành phố lớn.
 										</p>
 									</div>
 								</div>
 
 								<div class="info info-horizontal">
 									<div class="icon icon-primary">
-										<i class="material-icons">code</i>
+										<i class="material-icons">verified_user</i>
 									</div>
 									<div class="description">
-										<h4 class="info-title">Fully Coded in HTML5</h4>
+										<h4 class="info-title">Đổi trả và hoàn tiền</h4>
 										<p class="description">
-											We've developed the website with HTML5 and CSS3. The client has access to
-											the code using GitHub.
+											Khi đã trở thành thành viên, bạn có thể đổi trả lại bất kỳ sản phẩm
+											của Spicy trong vòng 30 ngày (*), không gặp rắc rối nào. Bạn chỉ cần liên
+											lạc với
+											SpicyCare để trả hàng. SpicyCare sẽ xác nhận và liên lạc với bạn ngay lập
+											tức
 										</p>
 									</div>
 								</div>
 
 								<div class="info info-horizontal">
 									<div class="icon icon-info">
-										<i class="material-icons">group</i>
+										<i class="material-icons">favorite</i>
 									</div>
 									<div class="description">
-										<h4 class="info-title">Built Audience</h4>
+										<h4 class="info-title">Sản phẩm chất lượng</h4>
 										<p class="description">
-											There is also a Fully Customizable CMS Admin Dashboard for this product.
+											Chúng tôi luôn luôn tự hào đem đến cho khách hàng những sản phẩm chất lượng
+											nhất, giá cả ữu đãi.
+											Được khách hàng trên cả nước tin dùng
 										</p>
 									</div>
 								</div>
@@ -210,7 +217,7 @@
 											<span class="input-group-addon">
 												<i class="material-icons">face</i>
 											</span>
-											<input type="text" class="form-control" placeholder="First Name...">
+											<input type="text" class="form-control" placeholder="Họ và Tên...">
 										</div>
 
 										<div class="input-group">
@@ -224,7 +231,7 @@
 											<span class="input-group-addon">
 												<i class="material-icons">lock_outline</i>
 											</span>
-											<input type="password" placeholder="Password..." class="form-control" />
+											<input type="password" placeholder="Mật khẩu..." class="form-control" />
 										</div>
 
 										<!-- If you want to add a checkbox to this form, uncomment this code -->
@@ -232,12 +239,12 @@
 										<div class="checkbox">
 											<label>
 												<input type="checkbox" name="optionsCheckboxes" checked>
-												I agree to the <a href="#something">terms and conditions</a>.
+												Tôi đồng ý với <a href="#something">các điều khoản và điều kiện</a>.
 											</label>
 										</div>
 									</div>
 									<div class="modal-footer text-center">
-										<a href="#pablo" class="btn btn-primary btn-round">Get Started</a>
+										<a href="#pablo" class="btn btn-primary btn-round">Đăng ký</a>
 									</div>
 								</form>
 							</div>
@@ -273,6 +280,9 @@
 
 <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="{{ asset('client/js/jasny-bootstrap.min.js') }}"></script>
+
+<!--	Plugin for Product Gallery, full documentation here: https://9bitstudios.github.io/flexisel/ -->
+<script src="{{ asset ('client/js/jquery.flexisel.js') }}"></script>
 
 <!-- Plugin For Google Maps -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
@@ -340,6 +350,27 @@
 			}
 		});
 		});
+		$(document).ready(function() {
+		$("#flexiselDemo1").flexisel({
+			visibleItems: 4,
+    		itemsToScroll: 1,
+    		animationSpeed: 400,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint:480,
+                    visibleItems: 3
+                },
+                landscape: {
+                    changePoint:640,
+                    visibleItems: 3
+                },
+                tablet: {
+                    changePoint:768,
+                    visibleItems: 3
+                }
+            }
+        });
+    });
 </script>
-
 </html>

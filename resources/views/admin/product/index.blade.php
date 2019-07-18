@@ -82,7 +82,7 @@
                             <tr>
                                 <td class="text-center">{{$product->id}}</td>
                                 <td>
-                                    <a href="/admin/products/{{$product->id}}/edit">
+                                    <a href="/san-pham/{{$product->p_slug}}" target="_blank">
                                         <div class="img-container">
                                             <img src="{{ $product->avatar }}" title="{{$product->name}}">
                                         </div>
@@ -98,7 +98,7 @@
                                 </td>
                                 <td class="text-center">
                                     @foreach ($product->categories as $cate)
-                                    <a href="#"><b>{{$cate->name}},</b></a>
+                                    <a href="#"><b>{{$cate->name}}</b></a>
                                     @endforeach
                                 </td>
                                 <td>

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="page-header header-filter header-small" data-parallax="true"
-    style="background-image: url({{ asset ('client/img/examples/ecommerce-tips2.jpg')}} );">
+    style=" background-image: url({{ asset ('client/img/examples/ecommerce-tips2.jpg')}} );">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

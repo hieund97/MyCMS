@@ -14,12 +14,7 @@ class CategoryController extends Controller
         // $parentCate = Categories::where('parent_id', '=', 0)->get();
 
         return view('admin.categories.index', compact('categories'));
-    }
-
-    public function create(){
-        $categories = Categories::all();
-        return view('admin.categories.create', compact('categories'));
-    }
+    }    
 
     public function edit($id){
         $categories = Categories::all();
@@ -39,7 +34,7 @@ class CategoryController extends Controller
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
-
+        dd($request->all);
         $slug = str_slug($request->category, '-');
         if (isset($slug)) {
             while (Categories::where('p_cate_slug', $slug)->get()->count() > 0) {
@@ -50,6 +45,7 @@ class CategoryController extends Controller
         $categories = Categories::create([
             'name' => $request->category,
             'parent_id' => $request->parent,
+            'short_description' => $request->short_description,
             'p_cate_slug' => $slug
         ]);
         return redirect('/admin/categories/')->with('create_category', 'Category Created');
@@ -72,6 +68,7 @@ class CategoryController extends Controller
         $category->update([
             'name' => $request->category,
             'parent_id' => $request->parent,
+            'short_description' =>$request->short_description,
             'p_cate_slug' => str_slug($request->category, '-')
         ]);
         return redirect('/admin/categories/')->with('update_category', 'Category Updated');

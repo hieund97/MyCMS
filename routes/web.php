@@ -165,30 +165,31 @@ Route::group([
      'namespace' => 'Client'
     ], function () {
      Route::get('/', 'HomeController@index');
-     Route::get('/about', 'HomeController@about');
-     Route::get('/contact', 'HomeController@contact');
+     Route::get('/thong-tin', 'HomeController@about');
+     Route::get('/lien-he', 'HomeController@contact');
+     Route::get('/thanh-vien', 'HomeController@member');
+
         
     //  Client Blog Route
      Route::group([
-         'prefix' => 'blogs'
+         'prefix' => 'bai-viet'
         ], function () {
             Route::get('/', 'BlogController@index');
             Route::get('/{slug}', 'BlogController@articles');
 
-     });
+    });
+
+    Route::group([
+        'prefix' => 'san-pham'
+    ], function () {
+        Route::get('/', 'ProductController@index');
+        Route::get('/{p_slug}', 'ProductController@item');
+    });
 
     //  Client Route Blog_category slug
      Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
-
-
     
 
-    //  Client Product Route
-    Route::group([
-        'prefix' => 'products'
-    ], function () {
-        Route::get('/', 'ProductController@index');
-        
-    });
+    
 
  });

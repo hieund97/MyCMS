@@ -6,41 +6,55 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p>Creative Tim is a startup that creates design tools that make the web development process faster and easier. </p> <p>We love the web and care deeply for how users interact with a digital product. We power businesses and individuals to create better looking web projects around the world. </p>
+                    <h5>Hệ thống cửa hàng</h5>
+                    <a href="">
+                        <p>57 Khâm Thiên</p>
+                    </a>
+                    <a href="">
+                        <p>120 Đại Cồ Việt</p>
+                    </a>
+                    <a href="">
+                        <p>69 Quang Trung</p>
+                    </a>
+                    <a href="">
+                        <p>258 Thái Thịnh</p>
+                    </a>
                 </div>
 
                 <div class="col-md-4">
-                    <h5>Social Feed</h5>
+                    <h5>Theo dõi fanpage</h5>
                     <div class="social-feed">
                         <div class="feed-line">
-                            <i class="fa fa-twitter"></i>
-                            <p>How to handle ethical disagreements with your clients.</p>
+                            <a href="https://twitter.com/CreativeTim">
+                                <i class="fa fa-twitter"></i>
+                                <p>Twitter</p>
+                            </a>
                         </div>
                         <div class="feed-line">
-                            <i class="fa fa-twitter"></i>
-                            <p>The tangible benefits of designing at 1x pixel density.</p>
+                            <a href="https://www.instagram.com/mr.spicy97">
+                                <i class="fa fa-instagram"></i>
+                                <p>Instagram</p>
+                            </a>
                         </div>
                         <div class="feed-line">
-                            <i class="fa fa-facebook-square"></i>
-                            <p>A collection of 25 stunning sites that you can use for inspiration.</p>
+                            <a href="https://www.facebook.com/mrspicy1911">
+                                <i class="fa fa-facebook-square"></i>
+                                <p>Facebook</p>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <h5>Instagram Feed</h5>
-                    <div class="gallery-feed">
-                        <img src="{{ asset ('client/img/faces/card-profile6-square.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/christian.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/card-profile1-square.jpg') }}" class="img img-raised img-rounded" alt="" />
-
-                        <img src="{{ asset ('client/img/faces/marc.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/kendall.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/card-profile5-square.jpg') }}" class="img img-raised img-rounded" alt="" />
-                        <img src="{{ asset ('client/img/faces/card-profile2-square.jpg') }}" class="img img-raised img-rounded" alt="" />
-                    </div>
+                    <h5>Thông tin công ty</h5>
+                    <p>
+                        <p>Công ty Cổ phần thời trang MrSpicy</p>
+                        <p>Số ĐKKD 0106142011 do Sở KHĐT Tp. Hà Nội cấp ngày 04/04/2013</p>
+                        <p>Người đại diện: Nguyễn Đức Hiếu</p>
+                        <p>Địa chỉ: Lô S3-1, cụm làng nghề Tân Triều, Triều Khúc, Thanh Xuân, Hà Nội</p> 
+                        <p> Hotline: 1900.066.826 - 0931064555</p>
+                        <p>Email: saleonline@mrspicy.vn</p>
+                    </p>
 
                 </div>
             </div>
@@ -51,34 +65,41 @@
 
         <ul class="pull-left">
             <li>
-                <a href="#pablo">
-                    Blog
+                <a href="/thong-tin">
+                    Thông tin
+                </a>
+            </li>
+            <li>
+                <a href="/lien-he">
+                    Liên hệ
+                </a>
+            </li>
+            <li>
+                <a href="/bai-viet">
+                    Bài viết
                 </a>
             </li>
             <li>
                 <a href="#pablo">
-                    Presentation
+                    Hỗ trợ khách hàng
                 </a>
             </li>
             <li>
                 <a href="#pablo">
-                    Discover
+                    Hệ thống cửa hàng
                 </a>
             </li>
             <li>
                 <a href="#pablo">
-                    Payment
-                </a>
-            </li>
-            <li>
-                <a href="#pablo">
-                    Contact Us
+                    Tuyển dụng
                 </a>
             </li>
         </ul>
 
         <div class="copyright pull-right">
-            Copyright &copy; <script>document.write(new Date().getFullYear())</script> Creative Tim All Rights Reserved.
+            Copyright &copy; <script>
+                document.write(new Date().getFullYear())
+            </script> MrSpicy Boutique All Rights Reserved.
         </div>
     </div>
 </footer>

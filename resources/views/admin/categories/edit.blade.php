@@ -15,7 +15,8 @@
                     <div class="card-body">
 
                         {{-- form --}}
-                        <form action="/admin/categories/{{$category->id}}/edit" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/categories/{{$category->id}}/edit" method="POST"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="row">
@@ -53,7 +54,19 @@
                                     <option value="0">Danh mục gốc</option>
                                     {{editCategory($categories, 0, '', $category->parent_id)}}
                                 </select>
-
+                            </div>
+                            <div class="row">
+                                <div class="card card-profile">
+                                    <label class="bmd-label-floating">
+                                        <h4>Mô tả ngắn</h4>
+                                    </label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="short_decription"
+                                            style="padding-left: 15px; padding-right: 15px;" required rows="8">
+                                            {{$category->short_description}}
+                                            </textarea>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-rose pull-right">Sửa danh mục</button>
                             <div class="clearfix"></div>

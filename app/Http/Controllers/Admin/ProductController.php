@@ -50,7 +50,8 @@ class ProductController extends Controller
             [
                 'product_code' => 'required | unique:product,product_code',
                 'category'     => 'required',
-                'attr'     => 'required'
+                'attr'         => 'required',
+                'brand'        => 'required'
 
             ],
             [

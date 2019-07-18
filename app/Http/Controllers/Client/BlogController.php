@@ -25,4 +25,5 @@ class BlogController extends Controller
        
         return view('client.blog.article', compact('blog', 'users', 'hots'));
     }
+   
 }

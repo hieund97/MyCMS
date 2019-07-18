@@ -1,10 +1,10 @@
 @extends('client.layout.main')
-@section('title', 'Home')    
+@section('title', 'Home')
 @section('content')
 <div class="main main-raised">
     <div class="section">
         <div class="container">
-            <h2 class="section-title">Latest Offers</h2>
+            <h2 class="section-title">Sản phẩm mới</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-product card-plain">
@@ -105,11 +105,81 @@
         </div>
     </div><!-- section -->
 
+    <div class="cards">
+
+        <div class="container" style="width: 1530px;">
+            <div class="title">
+                <h3>Danh mục hot</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="card card-background"
+                        style="background-image: url({{ asset('client/img/examples/office1.jpg') }}">
+
+                        <div class="card-content">
+                            <h6 class="category text-info">Productivy Apps</h6>
+                            <a href="#pablo">
+                                <h3 class="card-title">The Best Productivity Apps on Market</h3>
+                            </a>
+                            <p class="card-description">
+                                Don't be scared of the truth because we need to restart the human foundation in truth
+                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                            </p>
+                            <a href="#pablo" class="btn btn-danger btn-round">
+                                <i class="material-icons">subject</i> Xem thêm
+                            </a>
+                            {{-- <a href="#pablo" class="btn btn-white btn-simple">
+                                <i class="material-icons">watch_later</i> Watch Later
+                            </a> --}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-background"
+                        style="background-image: url({{ asset('client/img/examples/card-blog3.jpg') }}">
+                        <div class="card-content">
+                            <h6 class="category text-info">Materials</h6>
+                            <h3 class="card-title">The Sculpture Where Details Matter</h3>
+                            <p class="card-description">
+                                Don't be scared of the truth because we need to restart the human foundation in truth
+                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                            </p>
+                            <a href="#pablo" class="btn btn-danger btn-round">
+                                <i class="material-icons">subject</i> Xem thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-background"
+                        style="background-image: url({{ asset('client/img/examples/card-blog3.jpg') }}">
+                        <div class="card-content">
+                            <h6 class="category text-info">Materials</h6>
+                            <h3 class="card-title">The Sculpture Where Details Matter</h3>
+                            <p class="card-description">
+                                Don't be scared of the truth because we need to restart the human foundation in truth
+                                And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                            </p>
+                            <a href="#pablo" class="btn btn-danger btn-round">
+                                <i class="material-icons">subject</i> Xem thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
     <div class="section">
         <div class="container">
-            <h2 class="section-title">Find what you need</h2>
+            <h2 class="section-title">Sản phẩm nổi bật</h2>
             <div class="row">
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <div class="card card-refine card-plain">
                         <div class="card-content">
                             <h4 class="card-title">
@@ -421,9 +491,9 @@
                             </div>
                         </div>
                     </div><!-- end card -->
-                </div>
+                </div> --}}
 
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
@@ -595,47 +665,163 @@
                                 </div>
                             </div> <!-- end card -->
                         </div>
-                        <div class="col-md-3 col-md-offset-4">
-                            <button rel="tooltip" class="btn btn-rose btn-round">Load more...</button>
+                        <div class="col-md-3 col-md-offset-5">
+                            <a href="/san-pham"><button rel="tooltip" class="btn btn-rose btn-round"> Load
+                                    more...</button></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <br>
-
-            <div class="section">
-                    <h2 class="title text-center">Có thể bạn quan tâm</h2>
-                    <br />
-                    <div class="row">
-                        @foreach ($hots as $hot)
-                        <div class="col-md-4">
-                                <div class="card card-plain card-blog">
-                                    <div class="card-image">
-                                        <a href="/blogs/{{$hot->slug}}">
-                                            <img class="img img-raised" src="{{$hot->thumbnail}}" />
-                                        </a>
-                                    </div>
-        
-                                    <div class="card-content">
-                                        <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
-                                        <h4 class="card-title">
-                                            <a href="/blogs/{{$hot->slug}}">{{$hot->title}}</a>
-                                        </h4>
-                                        <p class="card-description">
-                                            {{$hot->short_decription}} <b><a href="/blogs/{{$hot->slug}}"> Read More </a></b>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> 
-                        @endforeach                          
-                        
-                    </div>
-    
-                </div>
-
         </div>
     </div><!-- section -->
 
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">Sản phẩm sale</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-product card-plain">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img src="{{asset ('client/img/examples/gucci.jpg') }}" alt="" />
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="#pablo">Gucci</a>
+                            </h4>
+                            <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
+                                silhouette. Team it with a silk pocket square and leather loafers.</p>
+                            <div class="footer">
+                                <div class="price-container">
+                                    <span class="price price-old"> &euro;1,430</span>
+                                    <span class="price price-new"> &euro;743</span>
+                                </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title=""
+                                        class="btn btn-just-icon btn-simple btn-rose"
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-product card-plain">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img src="{{asset ('client/img/examples/dolce.jpg') }}" alt="" />
+                            </a>
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <h4 class="card-title">Dolce & Gabbana</h4>
+                            </h4>
+                            <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
+                                silhouette. Team it with a silk pocket square and leather loafers.</p>
+                            <div class="footer">
+                                <div class="price-container">
+                                    <span class="price price-old"> &euro;1,430</span>
+                                    <span class="price price-new">&euro;743</span>
+                                </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title=""
+                                        class="btn btn-just-icon btn-simple btn-rose"
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card card-product card-plain">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img src="{{asset ('client/img/examples/tom-ford.jpg') }}" alt="" />
+                            </a>
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <h4 class="card-title">Dolce & Gabbana</h4>
+                            </h4>
+                            <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
+                                silhouette. Team it with a silk pocket square and leather loafers.</p>
+                            <div class="footer">
+                                <div class="price-container">
+                                    <span class="price price-old"> &euro;1,430</span>
+                                    <span class="price price-new">&euro;743</span>
+                                </div>
+                                <div class="stats">
+                                    <button type="button" rel="tooltip" title=""
+                                        class="btn btn-just-icon btn-simple btn-rose"
+                                        data-original-title="Saved to cart">
+                                        <i class="material-icons">shopping_cart</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-info text-center">
+                        <i class="material-icons">local_shipping</i>
+                    </div>
+                    <h4 class="info-title text-center">Giao hàng 2 giờ </h4>
+                    <p class="text-center">Khi đã là thành viên MrSicy bạn sẽ nhận được gần 200 nghìn mặt hàng
+                        trong vòng 2 giờ, không tính phí vận chuyển (không bao gồm phụ phí cồng kềnh) ở tất cả 6
+                        thành phố lớn.
+
+                        Chúng tôi cam kết để đảm bảo luôn có đủ hàng cho các mặt hàng ở kho gần bạn nhất, vì vậy
+                        chúng tôi có thể gửi nhanh đến địa chỉ của bạn.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-success text-center">
+                        <i class="material-icons">verified_user</i>
+                    </div>
+                    <h4 class="info-title text-center">Đổi trả và hoàn tiền</h4>
+                    <p class="text-center">Khi đã trở thành thành viên, bạn có thể đổi trả lại bất kỳ sản phẩm
+                        của Spicy trong vòng 30 ngày (*), không gặp rắc rối nào. Bạn chỉ cần liên lạc với
+                        SpicyCare để trả hàng. SpicyCare sẽ xác nhận và liên lạc với bạn ngay lập tức</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info">
+                    <div class="icon icon-rose text-center">
+                        <i class="material-icons">favorite</i>
+                    </div>
+                    <h4 class="info-title text-center">Sản phẩm chất lượng</h4>
+                    <p class="text-center">Chúng tôi luôn luôn tự hào đem đến cho khách hàng những sản phẩm chất lượng
+                        nhất, giá cả ữu đãi.
+                        Được khách hàng trên cả nước tin dùng
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
 </div>
 @endsection
