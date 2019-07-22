@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
@@ -16,6 +17,11 @@ class CategoryController extends Controller
         return view('admin.categories.index', compact('categories'));
     }    
 
+    public function create(){
+        $categories = Categories::all();
+        return view('admin.categories.create', compact('categories'));
+    }
+
     public function edit($id){
         $categories = Categories::all();
         $data['category'] = Categories::find($id);
@@ -23,6 +29,7 @@ class CategoryController extends Controller
     }
 
     public function store(Categories $categories, Request $request){
+        // dd($request->all);
         $this->validate(
             $request,
             [
@@ -34,7 +41,13 @@ class CategoryController extends Controller
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
-        dd($request->all);
+        $avatarName = Null;
+        if ($request->hasFile('avatar')) {
+            $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng            
+        } else {
+            $avatarName = 'noimage.png';
+        }
         $slug = str_slug($request->category, '-');
         if (isset($slug)) {
             while (Categories::where('p_cate_slug', $slug)->get()->count() > 0) {
@@ -44,31 +57,32 @@ class CategoryController extends Controller
 
         $categories = Categories::create([
             'name' => $request->category,
-            'parent_id' => $request->parent,
+            'parent_id' => $request->parent,            
+            'p_cate_slug' => $slug,
             'short_description' => $request->short_description,
-            'p_cate_slug' => $slug
+            'active' => $request->active,
+            'avatar' => asset('media/avatar') . '/' . $avatarName
         ]);
         return redirect('/admin/categories/')->with('create_category', 'Category Created');
     }
 
-    public function update(Categories $categories, Request $request, $id){
-        // $this->validate(
-        //     $request,
-        //     [
-        //         'category' => 'required | unique:Categories,name'               
-                
-        //     ],
-        //     [
-        //         'require' => 'Trường này trống cmnr',  
-        //         'unique'  => 'Tên danh mục đã bị trùng'
-        //     ]
-        // );
+    public function update(Request $request, $id){        
         // dd($request->all());
+        $avatarName = Null;
+        if ($request->hasFile('avatar')) {
+            $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
+            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng
+            $category = Categories::find($id);
+            $category->update([
+                'avatar' => asset('media/avatar') . '/' . $avatarName
+            ]);
+        }
         $category = Categories::find($id);
         $category->update([
             'name' => $request->category,
             'parent_id' => $request->parent,
             'short_description' =>$request->short_description,
+            'active' => $request->active,
             'p_cate_slug' => str_slug($request->category, '-')
         ]);
         return redirect('/admin/categories/')->with('update_category', 'Category Updated');

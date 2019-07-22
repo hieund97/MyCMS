@@ -11,6 +11,6 @@ class Categories extends Model
 
     public function product()
     {
-        return $this->belongsToMany('App\Models\Product');
+        return $this->belongsToMany('App\Models\Product', 'category_product_privot', 'category_id', 'product_id');
     }
 }

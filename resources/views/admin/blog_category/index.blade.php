@@ -112,7 +112,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{$blog_categories->links()}}                                
+                                {{$blog_categories->links()}}
                             </div>
                         </div>
                     </div>
@@ -160,10 +160,9 @@
                                     <label class="bmd-label-floating">
                                         <h4>Mô tả ngắn</h4>
                                     </label>
-                                    <div class="form-group">                                        
-                                        <textarea class="form-control" name="short_description"
-                                            style="padding-left: 15px; padding-right: 15px;" required rows="8">
-                                        </textarea>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="short_description" required
+                                            rows="8"></textarea>
                                     </div>
                                 </div>
                             </div>

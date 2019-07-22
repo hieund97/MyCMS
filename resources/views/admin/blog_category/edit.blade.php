@@ -12,10 +12,11 @@
                         </div>
                         <h4 class="card-title">Sửa chủ đề</h4>
                     </div>
-                    <div class="card-body">                        
-                        
+                    <div class="card-body">
+
                         {{-- form --}}
-                        <form action="/admin/blog-category/{{$blog_category->id}}/edit" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/blog-category/{{$blog_category->id}}/edit" method="POST"
+                            enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="row">
@@ -24,12 +25,12 @@
                                         <h4>Tên chủ đề</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" style="" name="category" class="form-control" value="{{$blog_category->name}}"
-                                            required>
+                                        <input type="text" style="" name="category" class="form-control"
+                                            value="{{$blog_category->name}}" required>
                                         </<input>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
                             <div class="row">
                                 <div class="card card-profile">
                                     <label class="bmd-label-floating">
@@ -37,8 +38,7 @@
                                     </label>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="short_decription"
-                                                style="padding-left: 15px; padding-right: 15px;" required
+                                            <textarea class="form-control" name="short_decription" required
                                                 rows="8">{{$blog_category->short_decription}}</textarea>
                                         </div>
                                     </div>

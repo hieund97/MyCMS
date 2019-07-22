@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="#pablo">
+                    <a style="font-size:100%;" href="/danh-muc/hang-moi-ve">
                         Hàng mới về
                     </a>
                 </li>
@@ -67,7 +67,7 @@
                         <li class="divider"></li>
                         <li><a href="#pablo">One more separated link</a></li>
                     </ul>
-                </li>                
+                </li>
                 <li>
                     <a style="font-size:100%;" href="/thanh-vien">
                         Membership
@@ -87,31 +87,17 @@
                     <a href="#" target="_blank">
                         <i class="material-icons">shopping_cart</i>
                         <span style=""> Giỏ hàng [0]</span>
-                    </a>                    
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-top: 20px; margin-right: 10px;">
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group form-black">
-                      <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini"><i class="material-icons">search</i></button>
-                  </form>
-                {{-- <li>
-                    <a href="https://twitter.com/CreativeTim">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/mrspicy1911">
-                        <i class="fa fa-facebook-square"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/mr.spicy97">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li> --}}
+                    <button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini"><i
+                            class="material-icons">search</i></button>
+                </form>
             </ul>
         </div>
     </div>

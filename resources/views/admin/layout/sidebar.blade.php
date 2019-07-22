@@ -87,8 +87,9 @@
                 <span class="sidebar-mini"> DSP </span>
                 <span class="sidebar-normal"> Danh sách sản phẩm </span>
               </a>
-            </li>            
-            <li class="nav-item pad {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
+            </li>
+            <li
+              class="nav-item pad {{(request()->is('admin/products/value')) ||(request()->is('admin/attribute'))? 'active' : null}}">
               <a class="nav-link" href="/admin/products/value">
                 <span class="sidebar-mini"> QTT </span>
                 <span class="sidebar-normal">Quản lý thuộc tính </span>
@@ -103,13 +104,38 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
+      <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}} ">
+        <a class="nav-link" data-toggle="collapse" href="#formsExamples">
+          <i class="material-icons">dns</i>
+          <p> Danh mục sản phẩm
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class=" {{Request::segment(2) === 'categories' ? 'collapse show' : 'collapse'}}" id="formsExamples">
+          <ul class="nav">
+            <li class="nav-item {{(request()->is('admin/categories/create'))? 'active' : null}} ">
+              <a class="nav-link" href="/admin/categories/create">
+                <span class="sidebar-mini"> TDM </span>
+                <span class="sidebar-normal">Thêm danh mục</span>
+              </a>
+            </li>
+            <li class="nav-item {{(request()->is('admin/categories'))? 'active' : null}} ">
+              <a class="nav-link" href="/admin/categories">
+                <span class="sidebar-mini"> DSD </span>
+                <span class="sidebar-normal"> Danh sách danh mục </span>
+              </a>
+            </li>            
+          </ul>
+        </div>
+      </li>
+      {{-- <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
         <a class="nav-link" href="/admin/categories">
           <i class="material-icons">dns</i>
           <p> Danh mục sản phẩm </p>
         </a>
-      </li>      
-      <li class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
+      </li> --}}
+      <li
+        class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
         <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}"
           data-toggle="collapse" href="#tablesExamples"
           aria-expanded="{{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'true' : 'false'}}">

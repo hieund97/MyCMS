@@ -44,7 +44,8 @@
                         <h3 class="main-price">{{number_format($item->price)}} ₫</h3>
                         <span>Mã sản phẩm: {{$item->product_code}}</span>
                         <p></p>
-                    <label class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label>
+                        <label
+                            class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label>
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-border panel-default">
@@ -83,22 +84,16 @@
                         </div><!--  end acordeon -->
 
                         <div class="row pick-size">
+                            @foreach ($attribute as $attr)
                             <div class="col-md-6 col-sm-6">
-                                <label>Chọn màu</label>
+                                <label>{{$attr->name}}</label>
                                 <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    <option value="1">Rose </option>
-                                    <option value="2">Gray</option>
-                                    <option value="3">White</option>
+                                    @foreach ($item->value as $value)
+                                    <option value="{{$value->id}}">{{$value->value}} </option>
+                                    @endforeach                                    
                                 </select>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <label>Chọn kích cỡ</label>
-                                <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    <option value="1">Small </option>
-                                    <option value="2">Medium</option>
-                                    <option value="3">Large</option>
-                                </select>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="row text-right">
                             <button class="btn btn-rose btn-round">Thêm vào giỏ hàng &nbsp;<i
@@ -169,7 +164,7 @@
                             <div class="card-content">
 
                                 @foreach ($random->categories as $cate)
-                                <a href="#">
+                                <a href="/danh-muc/{{$cate->p_cate_slug}}">
                                     <h6 class="category text-info">{{$cate->name}}</h6>
                                 </a>
                                 @endforeach

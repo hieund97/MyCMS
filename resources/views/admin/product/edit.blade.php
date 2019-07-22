@@ -282,14 +282,8 @@
                                                                             class="form-check-input"
                                                                             type="checkbox"
                                                                             name="attr[{{$attr->id}}][]"
-                                                                            value="{{$value->id}}">
+                                                                            value="{{$value->id}}">                                                                            
                                                                             
-                                                                            {{-- <input @if (check_value($product, $value->id))
-                                                                                checked
-                                                                            @endif class="form-check-input"
-                                                                            type="checkbox"
-                                                                            name="attr[{{$attr->id}}][]"
-                                                                            value="{{$value->id}}"> --}}
                                                                             
                                                                             <span class="form-check-sign">
                                                                                 <span class="check"></span>

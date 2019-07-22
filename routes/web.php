@@ -93,7 +93,7 @@ Route::group([
             'prefix' => 'categories'
         ], function () {
             Route::get('/', 'CategoryController@index');
-            // Route::get('/create', 'CategoryController@create');
+            Route::get('/create', 'CategoryController@create');
             Route::get('{category}/edit', 'CategoryController@edit');
             Route::put('{category}/edit', 'CategoryController@update');
             Route::post('/','CategoryController@store');
@@ -164,6 +164,7 @@ Route::group([
  Route::group([
      'namespace' => 'Client'
     ], function () {
+    // Client Home Route
      Route::get('/', 'HomeController@index');
      Route::get('/thong-tin', 'HomeController@about');
      Route::get('/lien-he', 'HomeController@contact');
@@ -179,11 +180,20 @@ Route::group([
 
     });
 
+    // Client Product Route
     Route::group([
         'prefix' => 'san-pham'
     ], function () {
         Route::get('/', 'ProductController@index');
         Route::get('/{p_slug}', 'ProductController@item');
+    });
+
+
+    // Client Categories Route
+    Route::group([
+        'prefix' => 'danh-muc'
+    ], function () {
+        Route::get('/{p_cate_slug}', 'CategoryController@category');
     });
 
     //  Client Route Blog_category slug

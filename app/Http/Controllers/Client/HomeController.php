@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Blog_Category;
-use App\Models\Blog;
+use App\Models\Product;
+use App\Models\Categories;
 
 class HomeController extends Controller
 {
     public function index(){
-        $blog_categories = Blog_Category::get();
-        $hots = Blog::where('category_id', '=', 2)->inRandomOrder()->paginate(3);
-        return view('client.home.index', compact('blog_categories', 'hots'));
+        $featureProduct = Product::where('highlight', '=', 1)->inRandomOrder()->paginate(6);
+
+        $newCategory = Categories::find(18);
+        $newProduct = $newCategory->product()->inRandomOrder()->paginate(3);
+        $saleCategory = Categories::find(19);
+        $saleProduct = $saleCategory->product()->inRandomOrder()->paginate(3);
+        $activeCate = Categories::where('active', '=', 1)->get();
+        return view('client.home.index', compact('featureProduct', 'newProduct', 'newCategory', 'saleCategory', 'saleProduct', 'activeCate'));
     }
 
     public function contact(){

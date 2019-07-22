@@ -1,5 +1,7 @@
 <?php
+
 use App\Models\Categories;
+
 function getCategory($mang, $parent, $shift)
 {
     foreach ($mang as $row) {
@@ -15,6 +17,20 @@ function getCategory($mang, $parent, $shift)
 function showCategory($mang, $parent, $shift)
 {
     foreach ($mang as $row) {
+        $active = null;
+        if ($row->active == 1){
+            $active = 'Active';
+        }
+        else {
+            $active = 'Normal';
+        }
+        $classActive = null;
+        if ($row->active == 1){
+            $classActive = 'danger';
+        }
+        else {
+            $classActive = 'success';
+        }
         if ($row->parent_id == $parent) {
             echo "<tr>
             <td class='text-center'>$row->id</td>
@@ -28,6 +44,13 @@ function showCategory($mang, $parent, $shift)
                     </label>
                 </div>
             </td>
+            <td>
+                <a href='' target='_blank'>
+                    <div class='img-container'>
+                        <img src='$row->avatar' title='$row->name' style='width: 150px; border: solid 1px lightgray;'>
+                    </div>
+                </a>
+            </td>
             <td><a style='font-weight: bold; font-size: 120%;' href='/admin/categories/$row->id/edit'>$shift $row->name</a>
             </td>
             <td class='text-center'>$row->created_at</td>
@@ -35,7 +58,7 @@ function showCategory($mang, $parent, $shift)
 
             <td class='text-center'>
                 <label style='padding-right: 10px;padding-left: 10px;'
-                    class='btn btn-info'>Published</label>
+                    class='btn btn-$classActive'>$active</label>
             </td>
             <td class='td-actions'
                 style='width: 106px;padding-right: 0px;padding-left: 20px;'>
@@ -60,21 +83,21 @@ function editCategory($mang, $parent, $shift, $active)
         if ($row->parent_id == $parent) {
             if ($row->id == $active) {
                 echo "<option selected value='$row->id'>" . $shift . $row->name . "</option>";
-            }
-            else{
+            } else {
                 echo "<option value='$row->id'>" . $shift . $row->name . "</option>";
-            }           
-            editCategory($mang, $row->id, $shift . '---|',$active);
+            }
+            editCategory($mang, $row->id, $shift . '---|', $active);
         }
     }
 }
 
-function getUpperCase ($value){
+function getUpperCase($value)
+{
     return strtoupper($value);
-
 }
 
-function get_Combination($array){
+function get_Combination($array)
+{
     $result = array(array());
     foreach ($array as $property => $property_values) {
         $tmp = array();
@@ -88,25 +111,18 @@ function get_Combination($array){
     return $result;
 }
 
-function check_value($product, $value_check){
-    foreach ($product->value as $value) {
-        if ($value->id == $value_check) {
-            return true;
-        }
-    }
-    return false;
-}
 
-function check_variant($product,$array){
+
+function check_variant($product, $array)
+{
     foreach ($product->variant as $row) {
         $mang = array();
         foreach ($row->value as $value) {
             $mang[] = $value->id;
-            if (array_diff($mang,$array)==NULL){
+            if (array_diff($mang, $array) == NULL) {
                 return false;
             }
         }
     }
     return true;
 }
-

@@ -25,19 +25,19 @@
                     <h5>Theo dõi fanpage</h5>
                     <div class="social-feed">
                         <div class="feed-line">
-                            <a href="https://twitter.com/CreativeTim">
+                            <a href="https://twitter.com/CreativeTim" target="_blank">
                                 <i class="fa fa-twitter"></i>
                                 <p>Twitter</p>
                             </a>
                         </div>
                         <div class="feed-line">
-                            <a href="https://www.instagram.com/mr.spicy97">
+                            <a href="https://www.instagram.com/mr.spicy97" target="_blank">
                                 <i class="fa fa-instagram"></i>
                                 <p>Instagram</p>
                             </a>
                         </div>
                         <div class="feed-line">
-                            <a href="https://www.facebook.com/mrspicy1911">
+                            <a href="https://www.facebook.com/mrspicy1911" target="_blank">
                                 <i class="fa fa-facebook-square"></i>
                                 <p>Facebook</p>
                             </a>
