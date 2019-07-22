@@ -54,7 +54,7 @@
 
 	<!--     *********    IMAGE SUBSCRIBE LINE     *********      -->
 
-	@include('client.layout.subcribe')
+	{{-- @include('client.layout.subcribe') --}}
 
 	<!--     *********   IMAGE SUBSCRIBE LINE     *********      -->
 

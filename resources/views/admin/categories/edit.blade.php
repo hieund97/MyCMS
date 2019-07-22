@@ -67,7 +67,7 @@
                                         <h4>Mô tả ngắn</h4>
                                     </label>
                                     <div class="form-group">
-                                        <textarea class="form-control" name="short_description" required
+                                        <textarea class="form-control" name="short_description"
                                             rows="8">{{$category->short_description}}</textarea>
                                     </div>
                                 </div>

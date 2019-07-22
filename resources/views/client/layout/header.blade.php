@@ -1,7 +1,7 @@
 <!--     *********     HEADER 3      *********      -->
 
 <div class="header-3">
-    
+
     {{-- navbar --}}
     {{-- @include('client.layout.navbar') --}}
     {{-- End Navbar --}}
@@ -11,31 +11,34 @@
 
             <!-- Indicators -->
             <ol class="carousel-indicators" style="top: 790px;">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                @php
+                    $i=0;
+                @endphp
+                @foreach ($activeSlider as $slider)
+                <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class=" {{$i == 0? 'active' : ''}}"></li>
+                @php
+                $i=$i+1;
+                @endphp
+                @endforeach
+                
+
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <div class="page-header" style="background-image: url({{ asset('client/img/dg1.jpg')}});"></div>
+                @php
+                $i=0;
+                @endphp
+                @foreach ($activeSlider as $slider)
+                <div class="item {{$i == 0? 'active' : ''}}">
+                    <div class="page-header" style="background-image: url({{ $slider->image}});"></div>
                 </div>
-                <div class="item">
-                    <div class="page-header" style="background-image: url({{ asset('client/img/dg2.jpg')}});"></div>
-                </div>
+                @php
+                $i=1;
+                @endphp
+                @endforeach
 
-                <div class="item">
-                    <div class="page-header" style="background-image: url({{ asset('client/img/dg3.jpg')}});"></div>
-                </div>
-                <div class="item">
-                    <div class="page-header" style="background-image: url({{ asset('client/img/dg4.jpg')}});"></div>
-                </div>
-                <div class="item">
-                    <div class="page-header" style="background-image: url({{ asset('client/img/dg5.jpg')}});"></div>
-                </div>
+
 
             </div>
 

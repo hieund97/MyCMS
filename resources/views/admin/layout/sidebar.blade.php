@@ -205,13 +205,13 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item ">
+      {{-- <li class="nav-item ">
         <a class="nav-link" href="../examples/widgets.html">
           <i class="material-icons">calendar_today</i>
           <p> Subcribe </p>
         </a>
-      </li>
-      <li class="nav-item ">
+      </li> --}}
+      <li class="nav-item {{Request::segment(2) === 'slider' ? 'active' : null}}">
         <a class="nav-link" href="/admin/slider">
           <i class="material-icons">perm_media</i>
           <p> Slider </p>

@@ -45,7 +45,7 @@
                         <label class="bmd-label-floating"
                             style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
                             <h4>Active</h4>
-                            <span>Ảnh chọn active sẽ xuất hiện trên trang chủ (tối đa 3 Ảnh)</span>
+                            <span>Ảnh chọn active sẽ xuất hiện trên trang chủ (tối đa 5 Ảnh)</span>
                         </label>
                         <div class="form-group">
                             <select class="selectpicker" name="active" data-size="7"
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9 padding">
+                    <div class="col-md-12 padding">
                         <label class="bmd-label-floating">
                             <h4>Ảnh</h4>
                         </label>

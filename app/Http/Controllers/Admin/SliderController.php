@@ -70,6 +70,8 @@ class SliderController extends Controller
             'name' => $request->name,
             'active' => $request->active
         ]);
+        session()->flash('update_slider', 'success');
+        return redirect('/admin/slider');
     }
 
     public function destroy(Slider $slider){

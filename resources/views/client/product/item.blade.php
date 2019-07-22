@@ -88,8 +88,8 @@
                             <div class="col-md-6 col-sm-6">
                                 <label>{{$attr->name}}</label>
                                 <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    @foreach ($item->value as $value)
-                                    <option value="{{$value->id}}">{{$value->value}} </option>
+                                    @foreach ($attr->value as $value)                                   
+                                    <option value="{{$value->id}}">{{$value->value}} </option>                                    
                                     @endforeach                                    
                                 </select>
                             </div>

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="page-header header-filter header-small" data-parallax="true"
-    style="background-image: url({{ asset ('client/img/bg9.jpg')}});">
+    style="background-image: url({{ asset ('client/img/bg7.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -14,11 +14,11 @@
     </div>
 </div>
 
-<div class="main main-raised">
+<div class="main main-raised" >
     <div class="container">
         <div class="about-description text-center">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">                    
+                <div class="col-md-8 col-md-offset-2" style="margin-bottom: 60px;">                    
                     <h4 style="text-align: justify; margin-top: 60px;">
                         <p>Công ty thời trang MRSPICY BOUTIQUE được thành lập từ tháng 11 năm 2014</p>
                         <p>Số ĐKKD 0107756568 do sở KHĐT TP. Hà Nội cấp ngày 10/03/2017</p>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>        
-        <div class="about-services features-2">
+        {{-- <div class="about-services features-2">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <h2 class="title">We build awesome products</h2>                    
@@ -137,7 +137,7 @@
 
             </div>
 
-        </div>        
+        </div>         --}}
     </div>
 </div>
 @endsection

@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 @endif
-                @if (session()->has("update_category"))
+                @if (session()->has("update_slider"))
                 <div class="alert alert-success">
                     <div class="container">
                         <div class="alert-icon">
