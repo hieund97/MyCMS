@@ -212,7 +212,7 @@
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="../examples/charts.html">
+        <a class="nav-link" href="/admin/slider">
           <i class="material-icons">perm_media</i>
           <p> Slider </p>
         </a>

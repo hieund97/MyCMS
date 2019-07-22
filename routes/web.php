@@ -146,6 +146,19 @@ Route::group([
             Route::put('{value}/edit', 'ValueController@update');
             Route::delete('{value}/delete', 'ValueController@destroy');
         });
+
+        // Admin Slider Route
+        Route::group([
+            'prefix' => 'slider'
+        ], function () {
+            Route::get('/', 'SliderController@index');
+            Route::get('/create', 'SliderController@create');
+            Route::get('/{slider}/edit', 'SliderController@edit');
+            Route::post('/', 'SliderController@store');
+            Route::put('/{slider}/edit', 'SliderController@update');
+            Route::delete('/{slider}/delete', 'SliderController@destroy');
+            
+        });
     });
 
 
