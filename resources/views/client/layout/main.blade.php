@@ -23,14 +23,23 @@
 	<link href="{{ asset ('client/css/material-kit.css?v=1.2.') }}1" rel="stylesheet" />
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="{{ asset ('client/assets-for-demo/vertical-nav.css') }}" rel="stylesheet" />
-	<link href="{{ asset ('client/assets-for-demo/demo.css') }}" rel="stylesheet" />
+	{{-- <link href="{{ asset ('client/assets-for-demo/vertical-nav.css') }}" rel="stylesheet" />
+	<link href="{{ asset ('client/assets-for-demo/demo.css') }}" rel="stylesheet" /> --}}
+
+	
 </head>
 
 <body>
 
 	{{-- Navbar --}}
+	@auth
+	@include('client.layout.navbarsignedin')
+	@endauth
+
+	@guest
 	@include('client.layout.navbar')
+	@endguest
+
 	{{-- End navbar --}}
 
 	<!--     *********     HEADER 3      *********      -->
@@ -47,14 +56,14 @@
 
 
 	<!--     *********    Review 1     *********      -->
-	@includeWhen((request()->is('/')), 'client.layout.review', ['some' => 'data'])
+	{{-- @includeWhen((request()->is('/')), 'client.layout.review', ['some' => 'data']) --}}
 	<!--     *********    END REVIEW 1      *********      -->
 
 
 
 	<!--     *********    IMAGE SUBSCRIBE LINE     *********      -->
 
-	{{-- @include('client.layout.subcribe') --}}
+	@include('client.layout.subcribe')
 
 	<!--     *********   IMAGE SUBSCRIBE LINE     *********      -->
 
@@ -77,7 +86,7 @@
 								class="material-icons">clear</i></button>
 
 						<div class="header header-primary text-center">
-							<h4 class="card-title">Log in</h4>
+							<h4 class="card-title">Đăng nhập</h4>
 							<div class="social-line">
 								<a href="#pablo" class="btn btn-just-icon btn-simple">
 									<i class="fa fa-facebook-square"></i>
@@ -92,7 +101,8 @@
 						</div>
 					</div>
 					<div class="modal-body">
-						<form class="form" method="" action="">
+						<form class="form" method="POST" action="/login">
+							@csrf
 							<p class="description text-center">Or Be Classical</p>
 							<div class="card-content">
 
@@ -107,14 +117,15 @@
 									<span class="input-group-addon">
 										<i class="material-icons">email</i>
 									</span>
-									<input type="text" class="form-control" placeholder="Email...">
+									<input type="text" name="email" class="form-control" placeholder="Email...">
 								</div>
 
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="material-icons">lock_outline</i>
 									</span>
-									<input type="password" placeholder="Password..." class="form-control" />
+									<input type="password" name="password" placeholder="Mật khẩu..."
+										class="form-control" />
 								</div>
 
 								{{-- If you want to add a checkbox to this form, uncomment this code --}}
@@ -122,15 +133,17 @@
 								<div class="checkbox">
 									<label>
 										<input type="checkbox" name="optionsCheckboxes">
-										Remeber me
+										Ghi nhớ đăng nhập
 									</label>
 								</div>
 							</div>
-						</form>
+
 					</div>
 					<div class="modal-footer text-center">
-						<a href="#pablo" class="btn btn-primary btn-simple btn-wd btn-lg">Get Started</a>
+						<button type="submit" href="#pablo" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng
+							nhập</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -146,7 +159,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
 								class="material-icons">clear</i></button>
-						<h2 class="modal-title card-title text-center" id="myModalLabel">Register</h2>
+						<h2 class="modal-title card-title text-center" id="myModalLabel">Đăng ký thành viên</h2>
 					</div>
 					<div class="modal-body">
 						<div class="row">
@@ -211,27 +224,49 @@
 									<h4> or be classical </h4>
 								</div>
 
-								<form class="form" method="" action="">
+								<form class="form" method="POST" action="/register">
+									@csrf
 									<div class="card-content">
 										<div class="input-group">
 											<span class="input-group-addon">
 												<i class="material-icons">face</i>
 											</span>
-											<input type="text" class="form-control" placeholder="Họ và Tên...">
+											<input type="text" name="firstname" class="form-control" placeholder="Họ">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">assignment_ind</i>
+											</span>
+											<input type="text" name="lastname" class="form-control" placeholder="Tên">
+										</div>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">sentiment_satisfied_alt</i>
+											</span>
+											<input type="text" name="username" class="form-control" placeholder="Username">
 										</div>
 
 										<div class="input-group">
 											<span class="input-group-addon">
 												<i class="material-icons">email</i>
 											</span>
-											<input type="text" class="form-control" placeholder="Email...">
+											<input type="text" name="email" class="form-control" placeholder="Email...">
 										</div>
 
 										<div class="input-group">
 											<span class="input-group-addon">
 												<i class="material-icons">lock_outline</i>
 											</span>
-											<input type="password" placeholder="Mật khẩu..." class="form-control" />
+											<input type="password" name="password" placeholder="Mật khẩu..."
+												class="form-control" />
+										</div>
+
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">https</i>
+											</span>
+											<input type="password" name="retypepassword"
+												placeholder="Nhập lại mật khẩu..." class="form-control" />
 										</div>
 
 										<!-- If you want to add a checkbox to this form, uncomment this code -->
@@ -242,9 +277,11 @@
 												Tôi đồng ý với <a href="#something">các điều khoản và điều kiện</a>.
 											</label>
 										</div>
+
 									</div>
 									<div class="modal-footer text-center">
-										<a href="#pablo" class="btn btn-primary btn-round">Đăng ký</a>
+										<button type="submit" href="#pablo" class="btn btn-primary btn-round">Đăng
+											ký</button>
 									</div>
 								</form>
 							</div>
@@ -259,6 +296,7 @@
 
 </body>
 <!--   Core JS Files   -->
+
 <script src="{{ asset('client/js/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('client/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('client/js/material.min.js') }}"></script>
@@ -293,9 +331,9 @@
 <script src="{{ asset('client/js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
 
 <!-- Fixed Sidebar Nav - JS For Demo Purpose, Don't Include it in your project -->
-<script src="{{ asset('client/assets-for-demo/modernizr.js') }}" type="text/javascript"></script>
-<script src="{{ asset('client/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script>
-@stack('js')
+{{-- <script src="{{ asset('client/assets-for-demo/modernizr.js') }}" type="text/javascript"></script>
+<script src="{{ asset('client/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script> --}}
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -349,8 +387,8 @@
 				limitFieldMin.innerHTML= $('#price-left').data('currency') + Math.round(values[handle]);
 			}
 		});
-		});
-		$(document).ready(function() {
+	});
+	$(document).ready(function() {
 		$("#flexiselDemo1").flexisel({
 			visibleItems: 4,
     		itemsToScroll: 1,
@@ -373,4 +411,5 @@
         });
     });
 </script>
+@stack('js')
 </html>

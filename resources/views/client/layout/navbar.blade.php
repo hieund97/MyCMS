@@ -29,7 +29,7 @@
         background-color: #e5e5e5
     }
 
-    
+
 
     .attrli {
         display: list-item;
@@ -37,7 +37,7 @@
         height: 40px;
     }
 
-    
+
 
     .dropdown-menu-right {
 
@@ -80,6 +80,71 @@
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
 <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
+    @if (session()->has('add_user'))
+    <div class="alert alert-success">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">check</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <b>Đăng ký thành công - TIẾN HÀNH ĐĂNG NHẬP NGAY</b>
+        </div>
+    </div>
+    @endif
+    @if ($errors->has('retypepassword'))
+    <div class="alert alert-danger">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <b>Có lỗi xảy ra Mật khẩu không khớp </b>
+        </div>
+    </div>
+    @endif
+    @if ($errors->has('optionsCheckboxes'))
+    <div class="alert alert-danger">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <b>Có lỗi xảy ra - Bạn chưa đồng ý với điều khoản của chúng tôi</b>
+        </div>
+    </div>
+    @endif
+    @if ($errors->has('username'))
+    <div class="alert alert-danger">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <b>Có lỗi xảy ra - Tên người dùng đã được sử dụng</b>
+        </div>
+    </div>
+    @endif
+    @if ($errors->has('email') || $errors->has('password'))
+    <div class="alert alert-danger">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+            </button>
+            <b>Có lỗi xảy ra</b> <br> Sai thông tin đăng nhập
+        </div>
+    </div>
+    @endif
     <div class="container" style="width: auto;">
         <div class="collapse navbar-collapse" id="navigation-example">
             <ul class="nav navbar-nav navbar-left" style=" margin-top: 10px;margin-left: 60px;">
@@ -94,7 +159,7 @@
             <ul class="nav navbar-nav navbar-center" style="margin-top: 20px;">
                 <li>
                     <a style="font-size:100%;" href="/">
-                        Trang chủ
+                        <i class="material-icons">home</i>
                     </a>
                 </li>
                 <li>
@@ -150,7 +215,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/thanh-vien">
+                    <a style="font-size:100%;" href="/thanh-vien/uu-dai">
                         Membership
                     </a>
                 </li>

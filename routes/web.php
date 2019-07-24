@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
 
@@ -27,10 +28,8 @@ Route::group([
     Route::group([
         'middleware' => 'guest'
     ], function () {
-        Route::get('login', "LoginController@showLoginForm");        
+        Route::get('login', "LoginController@showLoginForm");
         Route::post('login', "LoginController@login");
-        
-
     });
 
     Route::group([
@@ -54,11 +53,11 @@ Route::group([
         // Admin Product Route
         Route::group([
             'prefix' => 'products'
-        ], function(){
+        ], function () {
             //product
-            Route::get('/', 'ProductController@index');            
+            Route::get('/', 'ProductController@index');
             Route::get('/create', 'ProductController@create');
-            Route::get('/{product}/edit', 'ProductController@edit');            
+            Route::get('/{product}/edit', 'ProductController@edit');
             Route::put('/{product}/edit', 'ProductController@update');
             Route::delete('/{product}/delete', 'ProductController@destroy');
             Route::post('/', 'ProductController@store');
@@ -69,10 +68,10 @@ Route::group([
 
             //value
             Route::get('/value', 'ProductController@value');
-            
+
             //variant
             Route::delete('/price/{variant}/delete', 'ProductController@destroyvariant');
-            
+
             //brand
             Route::get('/brand', 'ProductController@brand');
             Route::get('/brand/{brand}/edit', 'ProductController@editbrand');
@@ -85,7 +84,6 @@ Route::group([
             Route::get('/image/{product}/edit', 'ProductController@editimage');
             Route::post('/image/add', 'ProductController@addimage');
             Route::put('/image/{product}/update', 'ProductController@updateimage');
-            
         });
 
         // Admin Product-Category Route
@@ -96,7 +94,7 @@ Route::group([
             Route::get('/create', 'CategoryController@create');
             Route::get('{category}/edit', 'CategoryController@edit');
             Route::put('{category}/edit', 'CategoryController@update');
-            Route::post('/','CategoryController@store');
+            Route::post('/', 'CategoryController@store');
             Route::delete('{categories}/delete', 'CategoryController@destroy');
         });
 
@@ -110,8 +108,6 @@ Route::group([
             Route::put('{blog}/edit', 'BlogController@update');
             Route::post('/', 'BlogController@store');
             Route::delete('{blog}/delete', 'BlogController@destroy');
-
-            
         });
 
         // Admin Blog-Category Route
@@ -124,7 +120,6 @@ Route::group([
             Route::get('{blog_category}/edit', 'Blog_CategoryController@edit');
             Route::put('{blog_category}/edit', 'Blog_CategoryController@update');
             Route::delete('{blog_category}/delete', 'Blog_CategoryController@destroy');
-
         });
 
         // Admin Attribute Route
@@ -157,40 +152,42 @@ Route::group([
             Route::post('/', 'SliderController@store');
             Route::put('/{slider}/edit', 'SliderController@update');
             Route::delete('/{slider}/delete', 'SliderController@destroy');
-            
         });
     });
-
-
 });
 
 // CK finder
 // Route::any('/ckfinder/examples/{example?}', 'CKSource\CKFinderBridge\Controller\CKFinderController@examplesAction')
 //     ->name('ckfinder_examples');
 
-    
+
 
 /**
  * CLient Zone
  */
 
- Route::group([
-     'namespace' => 'Client'
-    ], function () {
+Route::group([
+    'namespace' => 'Client'
+], function () {
     // Client Home Route
-     Route::get('/', 'HomeController@index');
-     Route::get('/thong-tin', 'HomeController@about');
-     Route::get('/lien-he', 'HomeController@contact');
-     Route::get('/thanh-vien', 'HomeController@member');
+    Route::get('/', 'HomeController@index');
+    Route::get('/thong-tin', 'HomeController@about');
+    Route::get('/lien-he', 'HomeController@contact');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout');
+    Route::post('/register', 'RegisterController@store');
 
-        
+    // test Route
+    Route::get('/test', 'HomeController@test');
+
+
+
     //  Client Blog Route
-     Route::group([
-         'prefix' => 'bai-viet'
-        ], function () {
-            Route::get('/', 'BlogController@index');
-            Route::get('/{slug}', 'BlogController@articles');
-
+    Route::group([
+        'prefix' => 'bai-viet'
+    ], function () {
+        Route::get('/', 'BlogController@index');
+        Route::get('/{slug}', 'BlogController@articles');
     });
 
     // Client Product Route
@@ -210,9 +207,14 @@ Route::group([
     });
 
     //  Client Route Blog_category slug
-     Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
-    
+    Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
 
-    
 
- });
+    // Client User Route
+    Route::group([
+        'prefix' => 'thanh-vien'
+    ], function () {
+        Route::get('/uu-dai', 'HomeController@member');
+        Route::get('/{slug}', 'UserController@detail');
+    });
+});

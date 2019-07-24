@@ -132,7 +132,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true"><i class="material-icons">clear</i></span>
                 </button>
-                <b>Có lỗi xảy ra</b> </br> Sai thông tin đăng nhập
+                <b>Có lỗi xảy ra</b> <br> Sai thông tin đăng nhập
               </div>
             </div>
             @endif

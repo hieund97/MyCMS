@@ -41,8 +41,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Company</label>
-                                        <input type="text" name="company" class="form-control chieucao"
-                                            value="ILOVEU3000" readonly>
+                                        <input type="text" name="company" class="form-control chieucao">
                                     </div>
                                 </div>
                                 <div class="col-md-3">

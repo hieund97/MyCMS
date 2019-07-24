@@ -3,13 +3,10 @@
 <div class="subscribe-line subscribe-line-white">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h3 class="title">Get Tips & Tricks every Week!</h3>
-                <p class="description">
-                    Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
-                </p>
+            <div class="col-md-5">
+                <h3 style="margin-top:50px;" class="title">Đăng ký nhận thông tin khuyến mại</h3>                
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card card-plain card-form-horizontal">
                     <div class="card-content">
                         <form method="" action="">
@@ -20,11 +17,11 @@
                                         <span class="input-group-addon">
                                             <i class="material-icons">mail</i>
                                         </span>
-                                        <input type="email" value="" placeholder="Your Email..." class="form-control" />
+                                        <input type="email" value="" placeholder="Email của bạn..." class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-rose btn-round btn-block">Subscribe</button>
+                                    <button type="button" class="btn btn-rose btn-round btn-block">Đăng ký</button>
                                 </div>
                             </div>
                         </form>

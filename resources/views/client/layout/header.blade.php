@@ -2,26 +2,29 @@
 
 <div class="header-3">
 
+
     {{-- navbar --}}
     {{-- @include('client.layout.navbar') --}}
     {{-- End Navbar --}}
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
         <div class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
             <ol class="carousel-indicators" style="top: 790px;">
                 @php
-                    $i=0;
+                $i=0;
                 @endphp
                 @foreach ($activeSlider as $slider)
-                <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class=" {{$i == 0? 'active' : ''}}"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class=" {{$i == 0? 'active' : ''}}">
+                </li>
                 @php
                 $i=$i+1;
                 @endphp
                 @endforeach
-                
 
+                
             </ol>
 
             <!-- Wrapper for slides -->
