@@ -11,12 +11,12 @@ use App\Models\Categories;
 class HomeController extends Controller
 {
     public function index(){
-        $featureProduct = Product::where('highlight', '=', 1)->paginate(12);
+        $featureProduct = Product::where('highlight', '=', 1)->inRandomOrder()->paginate(12);
 
         $newCategory = Categories::find(18);
-        $newProduct = $newCategory->product()->paginate(6);
+        $newProduct = $newCategory->product()->get();
         $saleCategory = Categories::find(19);
-        $saleProduct = $saleCategory->product()->inRandomOrder()->paginate(6);
+        $saleProduct = $saleCategory->product()->get();
         $activeCate = Categories::where('active', '=', 1)->get();
         $activeSlider = Slider::where('active', '=', 1)->get();
         return view('client.home.index', compact('featureProduct', 'newProduct', 'newCategory', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));

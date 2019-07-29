@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'Create-Category')
+@section('title', 'Edit Brand')
 @section('content')
 <div class="content">
     <div class="container-fluid">

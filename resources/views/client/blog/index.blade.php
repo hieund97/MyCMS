@@ -1,11 +1,10 @@
 @extends('client.layout.main')
-@section('title', 'Blogs')
+@section('title', 'Bài viết')
 @section('content')
 
 
-<div class="page-header header-filter" data-parallax="true"
-    style="background-image: url({{ asset ('client/img/bg10.jpg')}} ); height: 200px;">
-</div>
+@include('client.partial.header')
+
 
 <div class="main main-raised">
     <div class="container">

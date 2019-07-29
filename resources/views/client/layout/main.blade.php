@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" href="{{asset ('client/img/favicon.png') }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>MrSpicy Boutique</title>
+	<title>@yield('title')</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -20,13 +20,17 @@
 
 	<!-- CSS Files -->
 	<link href="{{ asset ('client/css/bootstrap.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset ('client/css/material-kit.css?v=1.2.') }}1" rel="stylesheet" />
+	<link href="{{ asset ('client/css/material-kit.css?v=1.2.') }}" rel="stylesheet" />
+	{{-- hover Product CSS --}}
+	<link rel="stylesheet" href="{{asset ('client/css/hoverProduct.css') }}">
+	
+
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	{{-- <link href="{{ asset ('client/assets-for-demo/vertical-nav.css') }}" rel="stylesheet" />
 	<link href="{{ asset ('client/assets-for-demo/demo.css') }}" rel="stylesheet" /> --}}
 
-	
+
 </head>
 
 <body>
@@ -74,6 +78,30 @@
 	@include('client.layout.footer')
 
 	<!--     *********   END BIG FOOTER     *********      -->
+
+	<!-- small modal -->
+	<div class="modal fade" id="smallAlertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-small ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+							class="material-icons">clear</i></button>
+				</div>
+				<div class="modal-body text-center">
+					<h5>Bạn phải đăng nhập để xem giỏ hàng</h5>
+				</div>
+				<div class="modal-footer text-center">
+					<a class="btn btn-danger" href="#pablo" style="padding-left: 15px;padding-right: 15px;"
+						data-toggle="modal" data-target="#signupModal">Đăng ký</a>
+					<a class="btn btn-success" href="#pablo"
+						style="margin-top: 0px;padding-left: 15px;padding-right: 15px;" data-toggle="modal"
+						data-target="#loginModal">Đăng nhập</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--    end small modal -->
 
 	<!-- Login Modal -->
 	<div class="modal fade" id="loginModal" style="display:none;" tabindex="-1" role="dialog"
@@ -243,7 +271,8 @@
 											<span class="input-group-addon">
 												<i class="material-icons">sentiment_satisfied_alt</i>
 											</span>
-											<input type="text" name="username" class="form-control" placeholder="Username">
+											<input type="text" name="username" class="form-control"
+												placeholder="Username">
 										</div>
 
 										<div class="input-group">
@@ -292,6 +321,8 @@
 		</div>
 	</div>
 	<!--  End Modal -->
+
+
 
 
 </body>
@@ -412,4 +443,5 @@
     });
 </script>
 @stack('js')
+
 </html>

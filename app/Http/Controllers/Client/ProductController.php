@@ -11,8 +11,11 @@ use App\Models\Image_product;
 class ProductController extends Controller
 {
     public function index(){
-        $featureProduct = Product::where('highlight', '=', 1)->inRandomOrder()->paginate(6);
-        return view('client.product.index', compact('featureProduct'));
+        $products = Product::paginate(12);
+        // $hoverImage = Image_product::paginate(1);
+        // dd($products);
+        
+        return view('client.product.index', compact('products'));
     }
 
     public function item($p_slug){

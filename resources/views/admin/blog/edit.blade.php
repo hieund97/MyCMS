@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'Create Blog')
+@section('title', 'Edit Blog')
 @section('content')
 <div class="content">
     <form action="/admin/blog/{{$blog->id}}/edit" method="POST" enctype="multipart/form-data">

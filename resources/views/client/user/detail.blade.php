@@ -1,5 +1,5 @@
 @extends('client.layout.main')
-@section('title', 'Blogs')
+@section('title', 'Tài khoản')
 @section('content')
 
 

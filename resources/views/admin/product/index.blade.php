@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Product')
 @section('content')
 <div class="content">
     <div class="col-md-12">        

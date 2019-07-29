@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Add Image Product')
 @section('content')
 
 
@@ -79,6 +79,7 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <p>Im here</p>
                                                 <div class="card card-profile"
                                                     style="width: 210px; float:left; margin-right: 30px; margin-left: 40px;">
                                                     <div class="fileinput fileinput-new text-center"

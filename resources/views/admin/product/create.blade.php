@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Create Product')
 @section('content')
 <style>
     .padding {

@@ -1,5 +1,5 @@
 @extends('client.layout.main')
-@section('title', 'Blogs')
+@section('title', $item->name)
 @section('content')
 
 <body class="product-page">
@@ -89,7 +89,7 @@
                                 <label>{{$attr->name}}</label>
                                 <select class="selectpicker" data-style="select-with-transition" data-size="7">
                                     @foreach ($attr->value as $value)                                   
-                                    <option value="{{$value->id}}">{{$value->value}} </option>                                    
+                                    <option value="{{$value->id}}">{{$value->value}} </option>                                   
                                     @endforeach                                    
                                 </select>
                             </div>

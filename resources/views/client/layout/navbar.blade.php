@@ -79,7 +79,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
+<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
     @if (session()->has('add_user'))
     <div class="alert alert-success">
         <div class="container">
@@ -168,7 +168,7 @@
                     </a>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/">
+                    <a style="font-size:100%;" href="/danh-muc/ao">
                         Áo<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -183,7 +183,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/" data-toggle="dropdown">
+                    <a style="font-size:100%;" href="/danh-muc/quan" >
                         Quần<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -199,7 +199,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/" data-toggle="dropdown">
+                    <a style="font-size:100%;" href="/danh-muc/phu-kien" >
                         Phụ kiện<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -230,7 +230,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" target="_blank">
+                    <a href="#" data-toggle="modal" data-target="#smallAlertModal">
                         <i class="material-icons">shopping_cart</i>
                         <span style=""> Giỏ hàng [0]</span>
                     </a>

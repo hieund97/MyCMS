@@ -1,11 +1,9 @@
 @extends('client.layout.main')
-@section('title', 'Blogs')
+@section('title', $blog_category->name)
 @section('content')
 
+@include('client.partial.header')
 
-<div class="page-header header-filter" data-parallax="true"
-    style="background-image: url({{ asset ('client/img/bg10.jpg')}} ); height: 200px;">
-</div>
 
 <div class="main main-raised">
     <div class="container">

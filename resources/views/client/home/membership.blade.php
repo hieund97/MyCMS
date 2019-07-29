@@ -1,5 +1,5 @@
 @extends('client.layout.main')
-@section('title', 'Contact')
+@section('title', 'Thành viên')
 @section('content')
 
 

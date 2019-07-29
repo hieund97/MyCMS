@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Attribute')
 @section('content')
 <div class="content">
     <div class="container-fluid">

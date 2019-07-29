@@ -1,5 +1,5 @@
 @extends('client.layout.main')
-@section('title', 'About')
+@section('title', 'Thông tin')
 @section('content')
 
 <div class="page-header header-filter header-small" data-parallax="true"

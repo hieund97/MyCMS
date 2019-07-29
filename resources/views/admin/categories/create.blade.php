@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'Category')
+@section('title', 'Create-Category')
 @section('content')
 <div class="col-md-6 ml-auto mr-auto">
     <div class="card">

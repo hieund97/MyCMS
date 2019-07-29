@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'User')
+@section('title', 'Value')
 @section('content')
 <style type="text/css">
     .bor {

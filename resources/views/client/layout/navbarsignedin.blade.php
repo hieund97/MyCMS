@@ -79,10 +79,10 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
+<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
     <div class="container" style="width: auto;">
         <div class="collapse navbar-collapse" id="navigation-example">
-            <ul class="nav navbar-nav navbar-left" style=" margin-top: 10px;margin-left: 60px;">
+            <ul class="nav navbar-nav navbar-left" style="margin-left: 60px;">
                 <li>
                     <a class="navbar-brand" href="/" style="font-family: 'Sigmar One', cursive; font-size: 23px;">
                         {{-- <img style="width: 150px;" class="img-fluid" src="{{asset ('client/img/logo_transparent.png')}}"
@@ -91,7 +91,7 @@
                     </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-center" style="margin-top: 20px;">
+            <ul class="nav navbar-nav navbar-center" style="margin-top: 10px;">
                 <li>
                     <a style="font-size:100%;" href="/">
                         <i class="material-icons">home</i>
@@ -103,7 +103,7 @@
                     </a>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/">
+                    <a style="font-size:100%;" href="/danh-muc/ao">
                         Áo<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -118,7 +118,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/" data-toggle="dropdown">
+                    <a style="font-size:100%;" href="/danh-muc/quan">
                         Quần<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -134,7 +134,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/" data-toggle="dropdown">
+                    <a style="font-size:100%;" href="/danh-muc/phu-kien">
                         Phụ kiện<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -161,26 +161,26 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
-                        </li>                        
+                        </li>                                                
                         <li class="divider"></li>
                         <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Đăng xuất</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" style="margin-right:40px;">
-                    <a href="#pablo" class="profile-photo dropdown-toggle">
+                    <a href="/thanh-vien/{{auth()->user()->slug}}" class="profile-photo dropdown-toggle">
                         <div class="profile-photo-small">
                             <img style="height: 40px;width: 50px;" src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}" alt="Circle Image" class="img-circle img-responsive">
                         </div>
                     </a>                    
                 </li>
                 <li>
-                    <a href="#" target="_blank">
+                    <a href="#">
                         <i class="material-icons">shopping_cart</i>
                         <span style=""> Giỏ hàng [0]</span>
                     </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" style="margin-top: 20px; margin-right: 10px;">
+            <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: 10px;">
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group form-black">
                         <input type="text" class="form-control" placeholder="Search">
