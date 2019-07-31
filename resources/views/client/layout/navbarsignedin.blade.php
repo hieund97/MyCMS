@@ -87,19 +87,13 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>               
             </button>
+            <a class="navbar-brand" href="/" style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">                        
+                MrSpicy Boutique
+            </a>
         </div>
-        <div class="collapse navbar-collapse" id="navigation-example">
-            <ul class="nav navbar-nav navbar-left" style="margin-left: 60px;">
-                <li>
-                    <a class="navbar-brand" href="/" style="font-family: 'Sigmar One', cursive; font-size: 23px;">
-                        {{-- <img style="width: 150px;" class="img-fluid" src="{{asset ('client/img/logo_transparent.png')}}"
-                        alt=""> --}}
-                        MrSpicy Boutique
-                    </a>
-                </li>
-            </ul>
+        <div class="collapse navbar-collapse" id="navigation-example">            
             <ul class="nav navbar-nav navbar-center" style="margin-top: 10px;">
                 <li>
                     <a style="font-size:100%;" href="/">
