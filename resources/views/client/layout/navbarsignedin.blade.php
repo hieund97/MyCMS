@@ -29,7 +29,7 @@
         background-color: #e5e5e5
     }
 
-    
+
 
     .attrli {
         display: list-item;
@@ -37,7 +37,7 @@
         height: 40px;
     }
 
-    
+
 
     .dropdown-menu-right {
 
@@ -79,8 +79,17 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
-<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
-    <div class="container" style="width: auto;">
+<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" "
+    id="sectionsNav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="navigation-example">
             <ul class="nav navbar-nav navbar-left" style="margin-left: 60px;">
                 <li>
@@ -161,17 +170,21 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
-                        </li>                                                
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Đăng xuất</a></li>
+                        <li><a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Đăng
+                                xuất</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" style="margin-right:40px;">
                     <a href="/thanh-vien/{{auth()->user()->slug}}" class="profile-photo dropdown-toggle">
                         <div class="profile-photo-small">
-                            <img style="height: 40px;width: 50px;" src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}" alt="Circle Image" class="img-circle img-responsive">
+                            <img style="height: 40px;width: 50px;"
+                                src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}"
+                                alt="Circle Image" class="img-circle img-responsive">
                         </div>
-                    </a>                    
+                    </a>
                 </li>
                 <li>
                     <a href="#">
@@ -194,4 +207,4 @@
 </nav>
 <form action="/logout" method="POST" id="logout-form">
     @csrf
-  </form>
+</form>

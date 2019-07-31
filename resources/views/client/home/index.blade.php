@@ -9,7 +9,7 @@
 <div class="main main-raised">
 
     {{-- New arrival --}}
-    <div class="container" style="width: 1560px;">
+    <div class="container-fluid">
         <h2 class="section-title">Sản phẩm mới</h2>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -95,12 +95,12 @@
     {{-- Danh mục --}}
     <div class="cards ">
 
-        <div class="container" style="width: 1530px;">
+        <div class="container-fluid">
             <div class="title">
                 <h2>Danh mục hot</h2>
             </div>
 
-            <div class="row">
+            <div class="row" style="display: flex; flex-wrap:wrap;">
                 @foreach ($activeCate as $cate)
                 <div class="col-md-4">
                     <div class="card card-plain">
@@ -109,11 +109,11 @@
                                 <img src="{{$cate->avatar}}" />
                             </div>
                         </a>
-                        <div class="card-content text-center">
+                        {{-- <div class="card-content text-center">
                             <a href="/danh-muc/{{$cate->p_cate_slug}}">
                                 <h3 class="card-title">{{$cate->name}}</h3>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 @endforeach
@@ -124,7 +124,7 @@
 
     {{-- Sản phẩm nổi bật --}}
     <div class="section">
-        <div class="container" style="width: 1530px;">
+        <div class="container-fluid">
             <h2 class="section-title" style="margin-left: 20px; ">Sản phẩm nổi bật</h2>
             <div class="row" style="display: flex; flex-wrap:wrap;">
                 @foreach ($featureProduct as $feature)
@@ -173,7 +173,7 @@
     </div><!-- section -->
 
     {{-- Sản phẩm sale --}}
-    <div class="container" style="width: 1560px;">
+    {{-- <div class="container">
         <h2 class="section-title">Sản phẩm sale</h2>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -199,9 +199,9 @@
                                         </a>
                                         <p class="card-description">{{$sale->description}}</p>
                                         <div class="footer">
-                                            <div class="price-container">
+                                            <div class="price-container"> --}}
                                                 {{-- <span class="price price-old"> &euro;1,430</span> --}}
-                                                <span class="price price-new">{{number_format($sale->price)}} ₫</span>
+                                                {{-- <span class="price price-new">{{number_format($sale->price)}} ₫</span>
                                             </div>
                                             <div class="stats">
                                                 <button type="button" rel="tooltip" title=""
@@ -219,9 +219,9 @@
                         $i =1;
                         @endphp
                         @endforeach
-                    </div>
+                    </div> --}}
                     <!-- left,right control -->
-                    <div id="slider-control">
+                    {{-- <div id="slider-control">
                         <a class="left carousel-control" style="background: darkgrey; margin-top: 190px;"
                             href="#itemslider2" data-slide="prev"> <i class="material-icons">keyboard_arrow_left</i></a>
                         <a class="right carousel-control" style="background: darkgrey; margin-top: 190px;"
@@ -231,7 +231,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Giới thiệu --}}
     <div class="section" style="padding-top:0px;">

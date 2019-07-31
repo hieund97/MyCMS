@@ -51,7 +51,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <h3 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Danh mục
-                                chọn active sẽ xuất hiện trên trang chủ (tối đa 3 danh
+                                chọn active sẽ xuất hiện trên trang chủ (tối đa 6 danh
                                 mục)*</h3>
                             <table class="table table-striped">
                                 <thead>

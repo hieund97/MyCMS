@@ -12,7 +12,7 @@
         <div class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
-            <ol class="carousel-indicators" style="top: 790px;">
+            <ol class="carousel-indicators">
                 @php
                 $i=0;
                 @endphp
