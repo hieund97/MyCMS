@@ -153,6 +153,9 @@ Route::group([
             Route::put('/{slider}/edit', 'SliderController@update');
             Route::delete('/{slider}/delete', 'SliderController@destroy');
         });
+
+        // Admin Subcribe Route
+        Route::get('/subcribe', 'SubcribeController@index');
     });
 });
 
@@ -217,4 +220,7 @@ Route::group([
         Route::get('/uu-dai', 'HomeController@member');
         Route::get('/{slug}', 'UserController@detail');
     });
+
+    // Client Subcribe Route
+    Route::post('/dang-ky', 'SubcribeController@store');
 });

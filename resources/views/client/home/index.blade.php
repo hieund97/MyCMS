@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="stats">
                                                 <button type="button" rel="tooltip" title=""
-                                                    class="btn btn-just-icon btn-simple btn-rose"
+                                                    class="btn btn-just-icon btn-simple btn-rose btn__primary"
                                                     data-original-title="Saved to cart">
                                                     <i class="material-icons">shopping_cart</i>
                                                 </button>
@@ -154,7 +154,7 @@
                                     <span class="price price-new">{{number_format($feature->price)}} ₫</span>
                                 </div>
 
-                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
+                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary"
                                     rel="tooltip" title="Add to cart" data-placement="left">
                                     <i class="material-icons">shopping_cart</i>
                                 </button>

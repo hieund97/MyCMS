@@ -229,4 +229,5 @@
         <!-- section -->
 
     </div> <!-- end-main-raised -->
-    @endsection
+</div>
+@endsection

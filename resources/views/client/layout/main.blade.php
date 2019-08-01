@@ -23,7 +23,9 @@
 	<link href="{{ asset ('client/css/material-kit.css?v=1.2.') }}" rel="stylesheet" />
 	{{-- hover Product CSS --}}
 	<link rel="stylesheet" href="{{asset ('client/css/hoverProduct.css') }}">
-	
+	{{-- cart animation --}}
+	<link rel="stylesheet" href="{{ asset ('client/css/cartanimation.css') }}">
+
 
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
@@ -89,7 +91,7 @@
 							class="material-icons">clear</i></button>
 				</div>
 				<div class="modal-body text-center">
-					<h5>Bạn phải đăng nhập để xem giỏ hàng</h5>
+					<h5>Bạn phải đăng nhập để .....</h5>
 				</div>
 				<div class="modal-footer text-center">
 					<a class="btn btn-danger" href="#pablo" style="padding-left: 15px;padding-right: 15px;"
@@ -441,6 +443,16 @@
             }
         });
     });
+</script>
+<script>
+	$(window).on('load', function(){
+		$('.btn__primary').on('click',function(){
+			$('.added__animation').addClass('clicked');
+			setTimeout(function(){
+			$('.added__animation').removeClass('clicked');
+			},600);
+		});
+		});
 </script>
 @stack('js')
 

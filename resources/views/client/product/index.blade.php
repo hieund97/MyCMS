@@ -4,6 +4,7 @@
 
 @include('client.partial.header')
 
+
 <div class="main main-raised">
     <div class="section">
         <div class="container">
@@ -51,12 +52,12 @@
                                         </div>
 
                                         <button
-                                            class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
+                                            class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary"
                                             rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left"
                                             style="position: relative;">
                                             <i class="material-icons">shopping_cart</i>
                                         </button>
-
+                                        
                                     </div>
                                 </div>
                             </div> <!-- end card -->
@@ -76,3 +77,4 @@
 
 </div> <!-- end-main-raised -->
 @endsection
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

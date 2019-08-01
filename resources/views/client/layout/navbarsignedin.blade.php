@@ -87,13 +87,14 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>               
+                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">                        
+            <a class="navbar-brand" href="/"
+                style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">
                 MrSpicy Boutique
             </a>
         </div>
-        <div class="collapse navbar-collapse" id="navigation-example">            
+        <div class="collapse navbar-collapse" id="navigation-example">
             <ul class="nav navbar-nav navbar-center" style="margin-top: 10px;">
                 <li>
                     <a style="font-size:100%;" href="/">
@@ -157,7 +158,7 @@
                         Membership
                     </a>
                 </li>
-                <li style="margin-left:40px;">
+                <li style="margin-left:10px;">
                     <a style="font-size:100%;" href="/thanh-vien/{{auth()->user()->slug}}">
                         {{auth()->user()->last_name}} {{auth()->user()->first_name}} <b class="caret"></b>
                     </a>
@@ -171,7 +172,7 @@
                                 xuất</a></li>
                     </ul>
                 </li>
-                <li class="dropdown" style="margin-right:40px;">
+                <li class="dropdown" style="margin-right:20px;">
                     <a href="/thanh-vien/{{auth()->user()->slug}}" class="profile-photo dropdown-toggle">
                         <div class="profile-photo-small">
                             <img style="height: 40px;width: 50px;"
@@ -185,6 +186,11 @@
                         <i class="material-icons">shopping_cart</i>
                         <span style=""> Giỏ hàng [0]</span>
                     </a>
+                </li>
+                <li class="li-mar">
+                    <div class="added__animation">
+                        <span>+1</span>
+                    </div>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: 10px;">

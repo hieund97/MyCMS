@@ -223,6 +223,12 @@
           <p> Contact</p>
         </a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/admin/subcribe">
+          <i class="material-icons">aspect_ratio</i>
+          <p> Subcribe</p>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

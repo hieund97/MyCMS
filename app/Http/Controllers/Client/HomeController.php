@@ -12,7 +12,6 @@ class HomeController extends Controller
 {
     public function index(){
         $featureProduct = Product::where('highlight', '=', 1)->inRandomOrder()->paginate(12);
-
         $newCategory = Categories::find(18);
         $newProduct = $newCategory->product()->get();
         $saleCategory = Categories::find(19);

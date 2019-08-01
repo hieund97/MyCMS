@@ -1,0 +1,87 @@
+@extends("admin.layout.main")
+@section("title", "Subcribe")
+@section("content")
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon" style="height: 80px;">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <h2 class="card-title">Danh sách email đăng ký</h2>
+
+                        <div style="float:right;">
+                            <div id="datatables_filter" class="dataTables_filter">
+                                <label>
+                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
+                                            class="form-control form-control-sm" placeholder="Search records"
+                                            aria-controls="datatables"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;">id</th>
+                                        <th style="width: 46px;">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </th>
+                                        <th class="text-center" style="width: 516px;">Tên chủ đề </th>
+                                        <th class="text-center" style="width: 316px;">Ngày tạo</th>
+                                        <th class="text-center" style="width: 316px;">Ngày cập nhật</th>
+                                        <th class="text-center">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($subcribe as $sub)
+                                    <tr>
+                                    <td class="text-center">{{$sub->id}}</td>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center"><b>{{$sub->email}}</b></td>
+                                        <td class="text-center">{{$sub->created_at}}</td>
+                                        <td class="text-center">{{$sub->updated_at}}</td>
+                                        <td class="td-actions text-center">
+                                            <button type="button" rel="tooltip" class="btn btn-success"
+                                                data-original-title="Gửi">
+                                                <a style="color:white;" href="#">Gửi thông tin khuyến mãi</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <div>
+                                {{$subcribe->links()}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
+@push("js")
+@endpush

@@ -79,7 +79,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
-<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
+<nav class="navbar navbar-inverse navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" "
+    id="sectionsNav">
     @if (session()->has('add_user'))
     <div class="alert alert-success">
         <div class="container">
@@ -146,16 +147,19 @@
     </div>
     @endif
     <div class="container" style="width: auto;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"
+                style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">
+                MrSpicy Boutique
+            </a>
+        </div>
         <div class="collapse navbar-collapse" id="navigation-example">
-            <ul class="nav navbar-nav navbar-left" style=" margin-top: 10px;margin-left: 60px;">
-                <li>
-                    <a class="navbar-brand" href="/" style="font-family: 'Sigmar One', cursive; font-size: 23px;">
-                        {{-- <img style="width: 150px;" class="img-fluid" src="{{asset ('client/img/logo_transparent.png')}}"
-                        alt=""> --}}
-                        MrSpicy Boutique
-                    </a>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-center" style="margin-top: 20px;">
                 <li>
                     <a style="font-size:100%;" href="/">
@@ -183,7 +187,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/danh-muc/quan" >
+                    <a style="font-size:100%;" href="/danh-muc/quan">
                         Quần<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -199,7 +203,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/danh-muc/phu-kien" >
+                    <a style="font-size:100%;" href="/danh-muc/phu-kien">
                         Phụ kiện<b class="caret"></b>
                     </a>
                     <ul class="hover-menu dropdown-menu-right">
@@ -230,10 +234,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-toggle="modal" data-target="#smallAlertModal">
+                    <a href="#">
                         <i class="material-icons">shopping_cart</i>
                         <span style=""> Giỏ hàng [0]</span>
                     </a>
+                </li>
+                <li class="li-mar">
+                    <div class="added__animation">
+                        <span>+1</span>
+                    </div>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-top: 20px; margin-right: 10px;">
