@@ -110,7 +110,7 @@
                     <a style="font-size:100%;" href="/danh-muc/ao">
                         Áo<b class="caret"></b>
                     </a>
-                    <ul class="hover-menu dropdown-menu-right">
+                    <ul class="dropdown-menu" style="margin-top: 0px;">
                         <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
                         <li class="divider"></li>
                         <li class="attrli"><a href="#pablo">> Action</a></li>
@@ -125,7 +125,7 @@
                     <a style="font-size:100%;" href="/danh-muc/quan">
                         Quần<b class="caret"></b>
                     </a>
-                    <ul class="hover-menu dropdown-menu-right">
+                    <ul class="dropdown-menu" style="margin-top: 0px;">
                         <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
                         <li class="divider"></li>
                         <li class="attrli"><a href="#pablo">Action</a></li>
@@ -141,7 +141,7 @@
                     <a style="font-size:100%;" href="/danh-muc/phu-kien">
                         Phụ kiện<b class="caret"></b>
                     </a>
-                    <ul class="hover-menu dropdown-menu-right">
+                    <ul class="dropdown-menu" style="margin-top: 0px;">
                         <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
                         <li class="divider"></li>
                         <li class="attrli"><a href="#pablo">Action</a></li>
@@ -162,9 +162,12 @@
                     <a style="font-size:100%;" href="/thanh-vien/{{auth()->user()->slug}}">
                         {{auth()->user()->last_name}} {{auth()->user()->first_name}} <b class="caret"></b>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="margin-top: 0px;">
                         <li>
                             <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
+                        </li>
+                        <li>
+                            <a href="/">Đơn hàng của tôi</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="#"
@@ -182,10 +185,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="material-icons">shopping_cart</i>
-                        <span style=""> Giỏ hàng [0]</span>
-                    </a>
+                    <a href="/gio-hang"><i class="material-icons">shopping_cart</i> 0
+                        sản phẩm</a>
                 </li>
                 <li class="li-mar">
                     <div class="added__animation">

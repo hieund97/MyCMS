@@ -189,8 +189,6 @@ Route::group([
     // test Route
     Route::get('/test', 'HomeController@test');
 
-
-
     //  Client Blog Route
     Route::group([
         'prefix' => 'bai-viet'
@@ -215,10 +213,6 @@ Route::group([
         Route::get('/{p_cate_slug}', 'CategoryController@category');
     });
 
-    //  Client Route Blog_category slug
-    Route::get('/{b_cate_slug}', 'Blog_CategoryController@index');
-
-
     // Client User Route
     Route::group([
         'prefix' => 'thanh-vien'
@@ -227,6 +221,15 @@ Route::group([
         Route::get('/{slug}', 'UserController@detail');
     });
 
+    Route::group([
+        'prefix' => 'gio-hang'
+    ], function () {
+        Route::get('/', 'CartController@index');
+    });
+
     // Client Subcribe Route
     Route::post('/dang-ky', 'SubcribeController@store');
+
+    
+
 });

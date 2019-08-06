@@ -113,13 +113,13 @@
         </a>
         <div class=" {{Request::segment(2) === 'categories' ? 'collapse show' : 'collapse'}}" id="formsExamples">
           <ul class="nav">
-            <li class="nav-item {{(request()->is('admin/categories/create'))? 'active' : null}} ">
+            <li class="nav-item {{(request()->is('admin/categories/create'))? 'active' : null}} pad">
               <a class="nav-link" href="/admin/categories/create">
                 <span class="sidebar-mini"> TDM </span>
                 <span class="sidebar-normal">Thêm danh mục</span>
               </a>
             </li>
-            <li class="nav-item {{(request()->is('admin/categories'))? 'active' : null}} ">
+            <li class="nav-item {{(request()->is('admin/categories'))? 'active' : null}} pad">
               <a class="nav-link" href="/admin/categories">
                 <span class="sidebar-mini"> DSD </span>
                 <span class="sidebar-normal"> Danh sách danh mục </span>

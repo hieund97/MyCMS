@@ -14,7 +14,7 @@ class BlogController extends Controller
         $blog_categories = Blog_Category::get();
         $blogs = Blog::inRandomOrder()->paginate(3);
         $users = User::get();
-        $hots = Blog::where('category_id', '=', 2)->inRandomOrder()->paginate(3);
+        $hots = Blog::where('category_id', '=', 2)->paginate(3);
         return view('client.blog.index', compact('blog_categories', 'blogs', 'users','hots'));
     }
 

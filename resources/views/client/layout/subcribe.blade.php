@@ -24,7 +24,6 @@
                                 <div class="col-sm-4">
                                     <button type="submit" class="btn btn-rose btn-round btn-block btnsub">Đăng
                                         ký</button>
-                                    {{-- <button type="button" class="btnbtn">test</button> --}}
                                 </div>
                             </div>
                         </form>
@@ -92,7 +91,8 @@
                     Swal.fire({
                     type: 'error',
                     title: 'Oops...',
-                    text: 'Email này bạn đã đăng ký rồi!',                   
+                    text: 'Email này bạn đã đăng ký rồi!', 
+                    timer: 3000                  
                     })
                 }
             })
@@ -100,30 +100,4 @@
         });
     });
 </script>
-{{-- <script>
-    $(document).ready(function(){
-        $('.btnbtn').click(function(e){
-            e.preventDefault();
-            console.log('im in');
-
-            Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-            })
-        })
-    })
-</script> --}}
 

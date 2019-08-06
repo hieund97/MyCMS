@@ -36,7 +36,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="card-image">
-                                                        <a href="/blogs/{{$post->slug}}"><img class="img img-raised"
+                                                        <a href="/bai-viet/{{$post->slug}}"><img class="img img-raised"
                                                                 src=" {{$post->thumbnail&&$post->thumbnail!==''?$post->thumbnail:asset ('client/img/noimage.png') }}" /></a>
                                                     </div>
                                                 </div>
@@ -45,10 +45,10 @@
                                                             {{$post->blog_category->name}}
                                                     </h6>
                                                     <h3 class="card-title">
-                                                        <a href="/blogs/{{$post->slug}}">{{$post->title}}</a>
+                                                        <a href="/bai-viet/{{$post->slug}}">{{$post->title}}</a>
                                                     </h3>
                                                     <p class="card-description"> {{$post->short_decription}} <a
-                                                            href="/blogs/{{$post->slug}}"><b> Read More</b> </a>
+                                                            href="/bai-viet/{{$post->slug}}"><b> Read More</b> </a>
                                                     </p>
                                                     <p class="author">
                                                         by <a href="#pablo"><b>{{$post->users['last_name']}}
@@ -116,7 +116,7 @@
                         <div class="col-md-4">
                             <div class="card card-plain card-blog">
                                 <div class="card-image">
-                                    <a href="/blogs/{{$hot->slug}}">
+                                    <a href="/bai-viet/{{$hot->slug}}">
                                         <img class="img img-raised" src=" {{$hot->thumbnail}}" />
                                     </a>
                                 </div>
@@ -124,10 +124,10 @@
                                 <div class="card-content">
                                     <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
                                     <h4 class="card-title">
-                                        <a href="/blogs/{{$hot->slug}}">{{$hot->title}}</a>
+                                        <a href="/bai-viet/{{$hot->slug}}">{{$hot->title}}</a>
                                     </h4>
                                     <p class="card-description"> {{$hot->short_decription}} <b><a
-                                                href="/blogs/{{$hot->slug}}">
+                                                href="/bai-viet/{{$hot->slug}}">
                                                 Read More </a></p></b>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 @extends('client.layout.main')
 @section('title', $item->name)
 @section('content')
-
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 <body class="product-page">
     <div class="page-header header-filter header-small" data-parallax="true"
         style="background-image: url({{ asset('client/img/bg6.jpg') }});">
@@ -82,21 +82,33 @@
                                 </div>
                             </div>
                         </div><!--  end acordeon -->
+                        <div class="row pick-size" style="padding-left: 15px;">
+                            <h4 class="panel-title">
+                                Số lượng
+                            </h4>
+                            <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
+                            <div class="btn-group">
+                                <button class="btn btn-round btn-rose btn-xs"> <i class="material-icons">remove</i>
+                                </button>
+                                <button class="btn btn-round btn-rose btn-xs"> <i class="material-icons">add</i>
+                                </button>
+                            </div>
+                        </div>
 
                         <div class="row pick-size">
                             @foreach ($attribute as $attr)
                             <div class="col-md-6 col-sm-6">
                                 <label>{{$attr->name}}</label>
                                 <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    @foreach ($attr->value as $value)                                   
-                                    <option value="{{$value->id}}">{{$value->value}} </option>                                   
-                                    @endforeach                                    
+                                    @foreach ($attr->value as $value)
+                                    <option value="{{$value->id}}">{{$value->value}} </option>
+                                    @endforeach
                                 </select>
                             </div>
                             @endforeach
                         </div>
                         <div class="row text-right">
-                            <button class="btn btn-rose btn-round">Thêm vào giỏ hàng &nbsp;<i
+                            <button class="btn btn-rose btn-round btn__primary">Thêm vào giỏ hàng &nbsp;<i
                                     class="material-icons">shopping_cart</i></button>
                         </div>
                     </div>
@@ -163,11 +175,11 @@
 
                             <div class="card-content">
 
-                                @foreach ($random->categories as $cate)
+                                {{-- @foreach ($random->categories as $cate)
                                 <a href="/danh-muc/{{$cate->p_cate_slug}}">
                                     <h6 class="category text-info">{{$cate->name}}</h6>
                                 </a>
-                                @endforeach
+                                @endforeach --}}
                                 <h4 class="card-title">
                                     <a href="#pablo">{{$random->name}}</a>
                                 </h4>
@@ -179,8 +191,8 @@
                                         <h4>{{number_format($random->price)}} ₫</h4>
                                     </div>
                                     <div class="stats">
-                                        <button type="button" rel="tooltip" title="Saved to Wishlist"
-                                            class="btn btn-just-icon btn-simple btn-rose">
+                                        <button type="button" rel="tooltip" title="Saved to cart"
+                                            class="btn btn-just-icon btn-simple btn-rose btn__primary">
                                             <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>

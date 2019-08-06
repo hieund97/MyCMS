@@ -1,6 +1,7 @@
 @extends('client.layout.main')
 @section('title', 'Giỏ hàng')
 @section('content')
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 @include('client.partial.header')
 <div class="main main-raised">
     <div class="row">
@@ -40,7 +41,7 @@
                                 <small>&euro;</small>549
                             </td>
                             <td class="td-number">
-                                1
+                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
                                 <div class="btn-group">
                                     <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
                                     </button>
@@ -79,7 +80,7 @@
                                 <small>&euro;</small>499
                             </td>
                             <td class="td-number">
-                                2
+                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
                                 <div class="btn-group">
                                     <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
                                     </button>
@@ -118,7 +119,7 @@
                                 <small>&euro;</small>799
                             </td>
                             <td class="td-number">
-                                1
+                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
                                 <div class="btn-group">
                                     <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
                                     </button>
@@ -137,6 +138,8 @@
                         </tr>
                         <tr>
                             <td colspan="3">
+                                <a href="/san-pham" type="button" class="btn btn-warning btn-round"><i
+                                    class="material-icons">keyboard_arrow_left</i>Tiếp tục mua sắm</a>
                             </td>
                             <td class="td-total">
                                 Total

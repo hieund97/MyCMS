@@ -25,6 +25,8 @@
 	<link rel="stylesheet" href="{{asset ('client/css/hoverProduct.css') }}">
 	{{-- cart animation --}}
 	<link rel="stylesheet" href="{{ asset ('client/css/cartanimation.css') }}">
+	{{-- Cart css --}}
+	{{-- <link rel="stylesheet" href="{{ asset ('client/css/cartstyle.css') }}"> --}}
 
 
 
@@ -357,6 +359,9 @@
 
 <!-- Plugin sweet alert -->
 <script src="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+
+{{-- Cart JS --}}
+{{-- <script  src="{{ asset ('client/js/cartscript.js') }}"></script> --}}
 
 <!-- Plugin For Google Maps -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
