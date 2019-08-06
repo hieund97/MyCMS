@@ -12,4 +12,9 @@ class SubcribeController extends Controller
         $subcribe = Subcribe::paginate(10);
         return view('admin.subcribe.index', compact('subcribe'));
     }
+
+    public function destroy(Subcribe $subcribe){
+        $subcribe->delete();
+        return response()->json([], 204);
+    }
 }

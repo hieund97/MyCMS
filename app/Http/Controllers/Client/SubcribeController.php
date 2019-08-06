@@ -9,6 +9,7 @@ use App\Models\Subcribe;
 class SubcribeController extends Controller
 {
     public function store(Subcribe $subcribe, Request $request){
+        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -24,6 +25,6 @@ class SubcribeController extends Controller
         $subcribe = Subcribe::create([
             'email' => $request->email
         ]);
-        return redirect('/')->with('subcribed', 'success');
+        return response()->json([], 204);
     }
 }

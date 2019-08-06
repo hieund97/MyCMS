@@ -155,7 +155,13 @@ Route::group([
         });
 
         // Admin Subcribe Route
-        Route::get('/subcribe', 'SubcribeController@index');
+        Route::group([
+            'prefix' => 'subcribe'
+        ], function () {
+            Route::get('/', 'SubcribeController@index');
+            Route::delete('/{subcribe}/delete','SubcribeController@destroy' );
+        });
+        
     });
 });
 

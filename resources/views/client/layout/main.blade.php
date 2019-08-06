@@ -355,6 +355,9 @@
 <!--	Plugin for Product Gallery, full documentation here: https://9bitstudios.github.io/flexisel/ -->
 <script src="{{ asset ('client/js/jquery.flexisel.js') }}"></script>
 
+<!-- Plugin sweet alert -->
+<script src="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+
 <!-- Plugin For Google Maps -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
@@ -367,7 +370,7 @@
 {{-- <script src="{{ asset('client/assets-for-demo/modernizr.js') }}" type="text/javascript"></script>
 <script src="{{ asset('client/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script> --}}
 
-
+@stack('js')
 <script type="text/javascript">
 	$(document).ready(function(){
 		var slider = document.getElementById('sliderRegular');
@@ -454,6 +457,6 @@
 		});
 		});
 </script>
-@stack('js')
+
 
 </html>
