@@ -16,7 +16,7 @@
                 {{-- <div class="col-md-12"> --}}
                 <div class="col-md-3">
                     <img src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}"
-                        alt="Circle Image" class="img-circle img-responsive img-raised"
+                        alt="Circle Image" class="img-rounded img-responsive img-raised"
                         style="height: 250px; width: 250px;">
                 </div>
                 <div class="col-md-9">

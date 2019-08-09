@@ -25,14 +25,6 @@
 	<link rel="stylesheet" href="{{asset ('client/css/hoverProduct.css') }}">
 	{{-- cart animation --}}
 	<link rel="stylesheet" href="{{ asset ('client/css/cartanimation.css') }}">
-	{{-- Cart css --}}
-	{{-- <link rel="stylesheet" href="{{ asset ('client/css/cartstyle.css') }}"> --}}
-
-
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	{{-- <link href="{{ asset ('client/assets-for-demo/vertical-nav.css') }}" rel="stylesheet" />
-	<link href="{{ asset ('client/assets-for-demo/demo.css') }}" rel="stylesheet" /> --}}
 
 
 </head>

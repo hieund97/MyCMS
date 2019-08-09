@@ -12,13 +12,12 @@ class HomeController extends Controller
 {
     public function index(){
         $featureProduct = Product::where('highlight', '=', 1)->inRandomOrder()->paginate(12);
-        $newCategory = Categories::find(18);
-        $newProduct = $newCategory->product()->get();
+        
         $saleCategory = Categories::find(19);
         $saleProduct = $saleCategory->product()->get();
         $activeCate = Categories::where('active', '=', 1)->get();
         $activeSlider = Slider::where('active', '=', 1)->get();
-        return view('client.home.index', compact('featureProduct', 'newProduct', 'newCategory', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));
+        return view('client.home.index', compact('featureProduct', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));
     }
 
     public function contact(){
@@ -31,6 +30,10 @@ class HomeController extends Controller
 
     public function member(){
         return view('client.home.membership');
+    }
+
+    public function support(){
+        return view('client.home.support');
     }
 
     public function test(){

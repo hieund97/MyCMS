@@ -29,29 +29,21 @@
       </form> --}}
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/admin">
+          <a class="nav-link" href="/">
             <i class="material-icons">home</i>
-            <p class="d-lg-none d-md-block">
-              Trang chủ
-            </p>
+            <span>
+              Xem trang web
+            </span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#pablo">
-            <i class="material-icons">dashboard</i>
-            <p class="d-lg-none d-md-block">
-              Stats
-            </p>
-          </a>
-        </li>
+        </li>        
         <li class="nav-item dropdown">
           <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
-            <span class="notification">5</span>
-            <p class="d-lg-none d-md-block">
-              Some Actions
-            </p>
+            <span class="notification" style="right:80px;">5</span>
+            <span>
+              Thống báo
+            </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Mike John responded to your email</a>
@@ -65,9 +57,9 @@
           <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="material-icons">person</i>
-            <p class="d-lg-none d-md-block">
-              Account
-            </p>
+            <span>
+              Tải khoản
+            </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
             <a class="dropdown-item" href="/admin/user/{{auth()->user()->id}}/edit">Profile</a>

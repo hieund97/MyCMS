@@ -11,12 +11,12 @@
                     <thead>
                         <tr>
                             <th class="text-center"></th>
-                            <th>Product</th>
-                            <th class="th-description">Color</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="th-description">Màu sắc</th>
                             <th class="th-description">Size</th>
-                            <th class="text-right">Price</th>
-                            <th class="text-right">Qty</th>
-                            <th class="text-right">Amount</th>
+                            <th class="text-right">Đơn giá</th>
+                            <th class="text-right">Số lượng</th>
+                            <th class="text-right">Thành tiền</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -148,7 +148,7 @@
                                 <small>&euro;</small>2,346
                             </td>
                             <td colspan="3" class="text-right"> <button type="button"
-                                    class="btn btn-info btn-round">Complete Purchase <i
+                                    class="btn btn-info btn-round">Đi đến thanh toán <i
                                         class="material-icons">keyboard_arrow_right</i></button></td>
 
                         </tr>

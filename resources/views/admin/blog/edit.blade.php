@@ -31,7 +31,7 @@
                             </div>
                             <div class="row" style="margin-top: 20px;margin-left: 0px;margin-bottom: 20px;">
                                 <span><b>Permalink: </b><a
-                                        href="/blogs/{{$blog->slug}}" target="_blank">http://cms.local/blogs/{{$blog->slug}}</a></span>
+                                        href="/bai-viet/{{$blog->slug}}" target="_blank">http://cms.local/bai-viet/{{$blog->slug}}</a></span>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">

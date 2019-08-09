@@ -185,6 +185,7 @@ Route::group([
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout');
     Route::post('/register', 'RegisterController@store');
+    Route::get('/ho-tro-khach-hang', 'HomeController@support');
 
     // test Route
     Route::get('/test', 'HomeController@test');

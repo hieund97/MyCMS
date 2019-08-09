@@ -1,0 +1,94 @@
+.hover-menu {
+    position: absolute;
+    top: 100%;
+
+    display: none;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175)
+}
+
+.divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5
+}
+
+
+
+.attrli {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    height: 40px;
+}
+
+
+
+.dropdown-menu-right {
+
+    left: auto;
+}
+
+.hover-menu li {
+    position: relative;
+}
+
+.hover-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+
+}
+
+.hover-menu li a {
+    font-size: 13px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 2px;
+    transition: all 150ms linear;
+}
+
+.hover-menu li a:hover {
+    background-color: #9c27b0;
+    color: #FFFFFF;
+}
+
+ul li:hover ul {
+    display: block;
+}
+
+.notification_cart {
+    position: absolute;
+    left: 85px;
+    top: 0px;
+    right: 10px;
+    font-size: 9px;
+    background: #f44336;
+    color: #fff;
+    min-width: 20px;
+    padding: 0 5px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 19px;
+    vertical-align: middle;
+    display: block;
+}

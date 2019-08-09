@@ -27,14 +27,8 @@
                                 <div class="hover-img">
                                     <a href="/san-pham/{{$product->p_slug}}">
                                         <div class="card-image">
-
-
                                             <img src="{{$product->image_product->first()->image}}"
                                                 title="{{$product->name}}" />
-
-
-
-
                                         </div>
                                     </a>
                                 </div>

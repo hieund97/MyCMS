@@ -7,16 +7,16 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>Hệ thống cửa hàng</h5>
-                    <a href="">
+                    <a href="/">
                         <p>57 Khâm Thiên</p>
                     </a>
-                    <a href="">
+                    <a href="/">
                         <p>120 Đại Cồ Việt</p>
                     </a>
-                    <a href="">
+                    <a href="/">
                         <p>69 Quang Trung</p>
                     </a>
-                    <a href="">
+                    <a href="/">
                         <p>258 Thái Thịnh</p>
                     </a>
                 </div>
@@ -80,17 +80,12 @@
                 </a>
             </li>
             <li>
-                <a href="#pablo">
+                <a href="/ho-tro-khach-hang">
                     Hỗ trợ khách hàng
                 </a>
-            </li>
+            </li>            
             <li>
-                <a href="#pablo">
-                    Hệ thống cửa hàng
-                </a>
-            </li>
-            <li>
-                <a href="#pablo">
+                <a href="/">
                     Tuyển dụng
                 </a>
             </li>

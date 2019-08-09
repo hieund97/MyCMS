@@ -3,91 +3,89 @@
 @section('content')
 
 
-<div class="page-header header-filter header-small" data-parallax="true"
-	style="background-image: url({{ asset ('client/img/bg8.jpg')}});">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<h1 class="title">Contact Us</h1>
-				<h4>Meet the amazing team behind this project and find out more about how we work.</h4>
+@include('client.partial.header')
+
+<div class="main main-raised">
+	<div class="contact-content">
+		<div class="container-fluid" style="padding-top: 30px;padding-bottom: 30px;">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-xs-12 box-heading-contact">
+
+					<div class="box-map">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.9535674349904!2d106.71301411533402!3d10.7380621628357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f222dc4cac3%3A0xed02c790aba9167a!2zSlVOTyBOZ3V54buFbiBUaOG7iyBUaOG6rXA!5e0!3m2!1svi!2s!4v1555663624868!5m2!1svi!2s"
+							width="100%" height="700" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+					</div>
+
+
+				</div>
+				<div class="col-md-6 col-sm-12 col-xs-12  wrapbox-content-page-contact">
+					<div class="row">
+
+						<div class="col-md-7" style="margin-right:40px; margin-left:30px;">
+							<h3 class="title">Gửi thắc mắc cho chúng tôi</h3>
+							<form role="form" id="contact-form" method="post">
+								<div class="form-group label-floating">
+									<label class="control-label">Họ và tên</label>
+									<input type="text" name="name" class="form-control">
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Email</label>
+									<input type="email" name="email" class="form-control" />
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Số điện thoại</label>
+									<input type="text" name="phone" class="form-control" />
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Nội dung</label>
+									<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+								</div>
+								<div class="submit text-center">
+									<button type="submit" class="btn btn-primary btn-raised btn-round">Gửi cho chúng
+										tôi</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-4">
+							<h3 class="title">Liên hệ</h3>
+
+							<div class=" info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">pin_drop</i>
+								</div>
+								<div class="description">
+									<h4 class="info-title"> Địa chỉ chúng tôi</h4>
+									<p>313 Nguyễn Thị Thập, Phường Tân Phú, Quận 7, Tp. Hồ Chí Minh.</p>
+								</div>
+							</div>
+							<div class=" info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">phone</i>
+								</div>
+								<div class="description">
+									<h4 class="info-title">Điện thoại</h4>
+									<p> 1800 1160</p>
+								</div>
+							</div>
+							<div class=" info-horizontal">
+								<div class="icon icon-primary">
+									<i class="material-icons">business_center</i>
+								</div>
+								<div class="description">
+									<h4 class="info-title">Thời gian làm việc</h4>
+									<p> Thứ 2 đến Thứ 6 từ 8h30 đến 17h30</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div class="main main-raised">
-	<div class="contact-content">
-		<div class="container">
-			<h2 class="title">Send us a message</h2>
-			<div class="row">
-				<div class="col-md-6">
-					<p class="description">You can contact us with anything related to our Products. We'll get in touch
-						with you as soon as possible.<br><br>
-					</p>
-					<form role="form" id="contact-form" method="post">
-						<div class="form-group label-floating">
-							<label class="control-label">Your name</label>
-							<input type="text" name="name" class="form-control">
-						</div>
-						<div class="form-group label-floating">
-							<label class="control-label">Email address</label>
-							<input type="email" name="email" class="form-control" />
-						</div>
-						<div class="form-group label-floating">
-							<label class="control-label">Phone</label>
-							<input type="text" name="phone" class="form-control" />
-						</div>
-						<div class="form-group label-floating">
-							<label class="control-label">Your message</label>
-							<textarea name="message" class="form-control" id="message" rows="6"></textarea>
-						</div>
-						<div class="submit text-center">
-							<input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us" />
-						</div>
-					</form>
-				</div>
-				<div class="col-md-4 col-md-offset-2">
-					<div class="info info-horizontal">
-						<div class="icon icon-primary">
-							<i class="material-icons">pin_drop</i>
-						</div>
-						<div class="description">
-							<h4 class="info-title">Find us at the office</h4>
-							<p> Bld Mihail Kogalniceanu, nr. 8,<br>
-								7652 Bucharest,<br>
-								Romania
-							</p>
-						</div>
-					</div>
-					<div class="info info-horizontal">
-						<div class="icon icon-primary">
-							<i class="material-icons">phone</i>
-						</div>
-						<div class="description">
-							<h4 class="info-title">Give us a ring</h4>
-							<p> Michael Jordan<br>
-								+40 762 321 762<br>
-								Mon - Fri, 8:00-22:00
-							</p>
-						</div>
-					</div>
-					<div class="info info-horizontal">
-						<div class="icon icon-primary">
-							<i class="material-icons">business_center</i>
-						</div>
-						<div class="description">
-							<h4 class="info-title">Legal Information</h4>
-							<p> Creative Tim Ltd.<br>
-								VAT &middot; EN2341241<br>
-								IBAN &middot; EN8732ENGB2300099123<br>
-								Bank &middot; Great Britain Bank
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
+</div>
 </div>
 
 @endsection

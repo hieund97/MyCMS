@@ -23,7 +23,7 @@
                                         <h2>Tiêu đề</h2>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" name="title" class="form-control" required></<input>
+                                        <input type="text" name="title" class="form-control" required style="font-size: 30px;">
                                     </div>
                                 </div>
                             </div>

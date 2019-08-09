@@ -96,7 +96,7 @@
                                             style="width: 106px;padding-right: 0px;">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-round"
                                                 data-id="" data-original-title="Xem">
-                                                <a style="color:white;" href="/blogs/{{$blog->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
+                                                <a style="color:white;" href="/bai-viet/{{$blog->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">

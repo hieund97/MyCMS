@@ -1,81 +1,5 @@
-<style type="text/css">
-    .hover-menu {
-        position: absolute;
-        top: 100%;
+<link rel="stylesheet" href="{{ asset ('client/css/navbar.css') }}">
 
-        display: none;
-        z-index: 1000;
-        float: left;
-        min-width: 160px;
-        padding: 5px 0;
-        margin: 2px 0 0;
-        font-size: 14px;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 4px;
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175)
-    }
-
-    .divider {
-        height: 1px;
-        margin: 9px 0;
-        overflow: hidden;
-        background-color: #e5e5e5
-    }
-
-
-
-    .attrli {
-        display: list-item;
-        text-align: -webkit-match-parent;
-        height: 40px;
-    }
-
-
-
-    .dropdown-menu-right {
-
-        left: auto;
-    }
-
-    .hover-menu li {
-        position: relative;
-    }
-
-    .hover-menu>li>a {
-        display: block;
-        padding: 3px 20px;
-        clear: both;
-        font-weight: 400;
-        line-height: 1.42857143;
-        color: #333;
-        white-space: nowrap;
-
-    }
-
-    .hover-menu li a {
-        font-size: 13px;
-        padding: 10px 20px;
-        margin: 0 5px;
-        border-radius: 2px;
-        transition: all 150ms linear;
-    }
-
-    .hover-menu li a:hover {
-        background-color: #9c27b0;
-        color: #FFFFFF;
-    }
-
-    ul li:hover ul {
-        display: block;
-    }
-</style>
 
 <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
 
@@ -203,7 +127,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a style="font-size:100%;" href="/danh-muc/phu-kien">
+                    <a style="font-size:100%;" href="/danh-muc/phu-kien-thoi-trang">
                         Phụ kiện<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" style="margin-top: 0px;">
@@ -233,10 +157,16 @@
                         Đăng ký
                     </a>
                 </li>
-                <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gio-hang">Giỏ hàng
+                        <i class="material-icons">shopping_cart</i>
+                        <span class="notification_cart">5</span>
+                    </a>
+                </li>
+                {{-- <li>
                     <a href="/gio-hang"><i class="material-icons">shopping_cart</i> 0
                         sản phẩm</a>
-                </li>
+                </li> --}}
                 <li class="li-mar">
                     <div class="added__animation">
                         <span>+1</span>

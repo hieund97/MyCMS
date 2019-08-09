@@ -2,49 +2,49 @@
 <link href="{{ asset ('client/css/product-carousel.css') }}" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 @extends('client.layout.main')
-@section('title', 'MrSpicy Boutique')
+@section('title', 'Shop Quần Áo Nam, Phụ Kiện Thời Trang Mới Nhất')
 @section('content')
 
 
 <div class="main main-raised">
 
-    {{-- New arrival --}}
+    {{-- Sản phẩm sale --}}
     <div class="container-fluid">
-        <h2 class="section-title">Sản phẩm mới</h2>
+        <h2 class="section-title">Sản phẩm sale</h2>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+                <div class="carousel carousel-showmanymoveone slide" id="itemslider2">
                     <div class="carousel-inner">
                         @php
                         $i =0;
                         @endphp
-                        @foreach ($newProduct as $new)
+                        @foreach ($saleProduct as $sale)
                         <div class="item {{ $i == 0? 'active' : ''}} ">
                             <div class="col-md-2">
                                 <div class="card card-product card-plain">
-                                    <a href="/san-pham/{{$new->p_slug}}">
+                                    <a href="/san-pham/{{$sale->p_slug}}">
                                         <div class="">
-                                            <img src="{{$new->avatar}}" title="{{$new->name}}" />
+                                            <img src="{{$sale->avatar}}" title="{{$sale->name}}" />
                                         </div>
                                     </a>
                                     <div class="card-content">
-                                        <a href="/san-pham/{{$new->p_slug}}">
+                                        <a href="/san-pham/{{$sale->p_slug}}">
                                             <h4
                                                 style="font-family: 'Roboto Slab', 'Times New Roman', serif; font-weight: 700;    font-size: 1.3em;">
-                                                {{$new->name}}</h4>
+                                                {{$sale->name}}</h4>
                                         </a>
-                                        <p class="card-description">{{$new->description}}</p>
+                                        <p class="card-description">{{$sale->description}}</p>
                                         <div class="footer">
                                             <div class="price-container">
-                                                {{-- <span class="price price-old"> &euro;1,430</span> --}}
-                                                <span class="price price-new">{{number_format($new->price)}} ₫</span>
+                                                <span class="price price-new">{{number_format($sale->price)}} ₫</span>
                                             </div>
                                             <div class="stats">
                                                 <button type="button" rel="tooltip" title=""
                                                     class="btn btn-just-icon btn-simple btn-rose btn__primary"
-                                                    data-original-title="Saved to cart">
+                                                    data-original-title="Thêm vào giỏ hàng">
                                                     <i class="material-icons">shopping_cart</i>
                                                 </button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -59,9 +59,10 @@
                     <!-- left,right control -->
                     <div id="slider-control">
                         <a class="left carousel-control" style="background: darkgrey; margin-top: 190px;"
-                            href="#itemslider" data-slide="prev"> <i class="material-icons">keyboard_arrow_left</i></a>
+                            href="#itemslider2" data-slide="prev"> <i class="material-icons">keyboard_arrow_left</i></a>
                         <a class="right carousel-control" style="background: darkgrey; margin-top: 190px;"
-                            href="#itemslider" data-slide="next"> <i class="material-icons">keyboard_arrow_right</i></a>
+                            href="#itemslider2" data-slide="next"> <i
+                                class="material-icons">keyboard_arrow_right</i></a>
                     </div>
                 </div>
             </div>
@@ -109,11 +110,6 @@
                                 <img src="{{$cate->avatar}}" />
                             </div>
                         </a>
-                        {{-- <div class="card-content text-center">
-                            <a href="/danh-muc/{{$cate->p_cate_slug}}">
-                                <h3 class="card-title">{{$cate->name}}</h3>
-                            </a>
-                        </div> --}}
                     </div>
                 </div>
                 @endforeach
@@ -154,10 +150,17 @@
                                     <span class="price price-new">{{number_format($feature->price)}} ₫</span>
                                 </div>
 
-                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary"
-                                    rel="tooltip" title="Add to cart" data-placement="left">
+                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary" 
+                                    rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left">
                                     <i class="material-icons">shopping_cart</i>
                                 </button>
+                                {{-- <script>
+                                    $(document).ready(function(){
+                                        $("#cart").on("click",function(){
+                                            $("button").addClass("btn-rose");
+                                        });
+                                    });                                                        
+                                </script> --}}
                             </div>
                         </div>
                     </div> <!-- end card -->
@@ -171,67 +174,6 @@
             </div>
         </div>
     </div><!-- section -->
-
-    {{-- Sản phẩm sale --}}
-    {{-- <div class="container">
-        <h2 class="section-title">Sản phẩm sale</h2>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="carousel carousel-showmanymoveone slide" id="itemslider2">
-                    <div class="carousel-inner">
-                        @php
-                        $i =0;
-                        @endphp
-                        @foreach ($saleProduct as $sale)
-                        <div class="item {{ $i == 0? 'active' : ''}} ">
-                            <div class="col-md-2">
-                                <div class="card card-product card-plain">
-                                    <a href="/san-pham/{{$sale->p_slug}}">
-                                        <div class="">
-                                            <img src="{{$sale->avatar}}" title="{{$sale->name}}" />
-                                        </div>
-                                    </a>
-                                    <div class="card-content">
-                                        <a href="/san-pham/{{$sale->p_slug}}">
-                                            <h4
-                                                style="font-family: 'Roboto Slab', 'Times New Roman', serif; font-weight: 700;    font-size: 1.3em;">
-                                                {{$sale->name}}</h4>
-                                        </a>
-                                        <p class="card-description">{{$sale->description}}</p>
-                                        <div class="footer">
-                                            <div class="price-container"> --}}
-                                                {{-- <span class="price price-old"> &euro;1,430</span> --}}
-                                                {{-- <span class="price price-new">{{number_format($sale->price)}} ₫</span>
-                                            </div>
-                                            <div class="stats">
-                                                <button type="button" rel="tooltip" title=""
-                                                    class="btn btn-just-icon btn-simple btn-rose"
-                                                    data-original-title="Saved to cart">
-                                                    <i class="material-icons">shopping_cart</i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @php
-                        $i =1;
-                        @endphp
-                        @endforeach
-                    </div> --}}
-                    <!-- left,right control -->
-                    {{-- <div id="slider-control">
-                        <a class="left carousel-control" style="background: darkgrey; margin-top: 190px;"
-                            href="#itemslider2" data-slide="prev"> <i class="material-icons">keyboard_arrow_left</i></a>
-                        <a class="right carousel-control" style="background: darkgrey; margin-top: 190px;"
-                            href="#itemslider2" data-slide="next"> <i
-                                class="material-icons">keyboard_arrow_right</i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     {{-- Giới thiệu --}}
     <div class="section" style="padding-top:0px;">
@@ -281,5 +223,3 @@
 
 </div>
 @endsection
-{{-- <script src=" {{ asset ('client/owlcarousel/highlight.js') }}"></script>
-<script src=" {{ asset ('client/owlcarousel/app.js') }}"></script> --}}

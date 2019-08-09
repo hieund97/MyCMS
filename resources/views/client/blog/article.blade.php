@@ -8,7 +8,7 @@
     <div class="container">
         <div class="section section-text">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12" style="text-align: justify">
                     <h3 class="title">{{$blog->title}}</h3>
                     {!!$blog->content!!}
                 </div>
