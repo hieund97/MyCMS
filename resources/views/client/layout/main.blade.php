@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="{{ asset ('client/css/cartanimation.css') }}">
 	{{-- 404 css --}}
 	<link rel="stylesheet" href="{{ asset ('client/css/404.css') }}">
-	
+
 
 
 
@@ -362,12 +362,6 @@
 <!-- Plugin For Google Maps -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
-<!--  Notifications Plugin    -->
-<script src="{{asset ('manage/js/plugins/bootstrap-notify.js') }}"></script>
-<script src="{{asset ('manage/js/core/bootstrap-material-design.min.js') }}"></script>
-<script src="{{asset ('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
-
-
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="{{ asset('client/js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
@@ -463,6 +457,21 @@
 			},600);
 		});
 		});
+</script>
+<script>
+	$(document).ready(function(){
+			$('.btn-cart').click(function(e){
+				e.preventDefault();
+				console.log('im in');
+				Swal.fire({
+				position: 'center',
+				type: 'success',
+				title: 'Thêm vào giỏ hàng thành công',
+				showConfirmButton: false,
+				timer: 1300
+				})
+			});
+	});   
 </script>
 
 

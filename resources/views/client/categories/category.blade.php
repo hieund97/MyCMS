@@ -61,7 +61,7 @@
                                         </div>
 
                                         <button type="button" id="cart"
-                                            class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary"
+                                            class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary btn-cart"
                                             rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left">
                                             <i class="material-icons">shopping_cart</i>
                                         </button>
