@@ -248,8 +248,15 @@ class ProductController extends Controller
                 'unique'  => 'Tên danh mục đã bị trùng'
             ]
         );
+        $slug = str_slug($request->brand, '-');
+        if (isset($slug)) {
+            while (Brand::where('slug', $slug)->get()->count() > 0) {
+                $slug = $slug .= '-'.rand(2, 9);
+            }
+        }
         $brand = Brand::create([
-            'name' => $request->brand
+            'name' => $request->brand,
+            'slug'=> $slug
         ]);
         session()->flash('add_brand', 'success');
         return redirect('/admin/products/brand');
@@ -269,7 +276,8 @@ class ProductController extends Controller
     public function updatebrand(Brand $brand, Request $request)
     {
         $brand->update([
-            'name' => $request->brand
+            'name' => $request->brand,
+            'slug'=> str_slug($request->brand, '-'),
         ]);
         session()->flash('update_brand', 'success');
         return redirect('/admin/products/brand');
