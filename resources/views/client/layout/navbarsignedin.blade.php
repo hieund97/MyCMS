@@ -90,7 +90,7 @@
                             <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
                         </li>
                         <li>
-                            <a href="/">Đơn hàng của tôi</a>
+                            <a href="/don-hang">Đơn hàng của tôi</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="#"

@@ -59,8 +59,10 @@
 								<div class="submit text-center">
 									<button type="submit" class="btn btn-primary btn-raised btn-round">Gửi cho chúng
 										tôi</button>
+										
 								</div>
 							</form>
+							
 						</div>
 						<div class="col-md-4">
 							<h3 class="title">Liên hệ</h3>

@@ -46,6 +46,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            // bị lỗi ở admin
+            if ($request->is('admin/*')) {
+                return response()->view('admin.errors.404', [], 404);
+            }
+            return response()->view('client.errors.404', [], 404);
+        }
         return parent::render($request, $exception);
     }
 }

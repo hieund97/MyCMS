@@ -25,6 +25,10 @@
 	<link rel="stylesheet" href="{{asset ('client/css/hoverProduct.css') }}">
 	{{-- cart animation --}}
 	<link rel="stylesheet" href="{{ asset ('client/css/cartanimation.css') }}">
+	{{-- 404 css --}}
+	<link rel="stylesheet" href="{{ asset ('client/css/404.css') }}">
+	
+
 
 
 </head>
@@ -358,6 +362,11 @@
 <!-- Plugin For Google Maps -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
+<!--  Notifications Plugin    -->
+<script src="{{asset ('manage/js/plugins/bootstrap-notify.js') }}"></script>
+<script src="{{asset ('manage/js/core/bootstrap-material-design.min.js') }}"></script>
+<script src="{{asset ('manage/js/material-dashboard.min.js?v=2.1.0" type="text/javascript') }}"></script>
+
 
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
@@ -368,6 +377,7 @@
 <script src="{{ asset('client/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script> --}}
 
 @stack('js')
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		var slider = document.getElementById('sliderRegular');
@@ -454,6 +464,7 @@
 		});
 		});
 </script>
+
 
 
 </html>
