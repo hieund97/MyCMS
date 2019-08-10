@@ -66,8 +66,8 @@
                                                 </label>
                                             </div>
                                         </th>
-                                        <th class="text-left" style="width: 466px">Ảnh Sản Phẩm</th>
-                                        <th class="text-center" style="width: 216px;">Tên chủ đề </th>
+                                        <th class="text-left" style="width: 466px">Ảnh</th>
+                                        <th class="text-center" style="width: 216px;">Tên ảnh </th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>

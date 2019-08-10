@@ -84,6 +84,10 @@
                     title: 'Cám ơn bạn đã tham gia đăng ký nhận tin khuyến mãi của chúng tôi',
                     showConfirmButton: true,
                     timer: 3000
+                    }).then((result) => {
+                        if(result.value){
+						    window.location.reload();
+						}
                     })
                 },
                 
@@ -100,4 +104,3 @@
         });
     });
 </script>
-

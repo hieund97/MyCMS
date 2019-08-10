@@ -25,13 +25,13 @@
                                     </label>
                                     <div class="form-group">
                                         <input type="text" value="{{$blog->title}}" name="title" class="form-control"
-                                            required></<input>
+                                            style="font-size: 30px; " required></<input>
                                     </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 20px;margin-left: 0px;margin-bottom: 20px;">
-                                <span><b>Permalink: </b><a
-                                        href="/bai-viet/{{$blog->slug}}" target="_blank">http://cms.local/bai-viet/{{$blog->slug}}</a></span>
+                                <span><b>Permalink: </b><a href="/bai-viet/{{$blog->slug}}"
+                                        target="_blank">http://cms.local/bai-viet/{{$blog->slug}}</a></span>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -78,10 +78,11 @@
                         <div class="dropdown bootstrap-select" style="width: 240px;">
                             <select class="selectpicker" name="category" data-size="7"
                                 data-style="btn btn-primary btn-round" title="Single Select">
-                                <option disabled >Chọn chủ đề</option>
+                                <option disabled>Chọn chủ đề</option>
                                 @if (isset($blog_categories))
                                 @foreach ($blog_categories as $blog_category)
-                                <option {{$blog->category_id === $blog_category->id?'selected':""}} value="{{$blog_category->id}}">{{$blog_category->name}}</option>
+                                <option {{$blog->category_id === $blog_category->id?'selected':""}}
+                                    value="{{$blog_category->id}}">{{$blog_category->name}}</option>
                                 @endforeach
                                 @endif
 
@@ -98,7 +99,8 @@
                                 <option disabled selected>Chọn tác giả</option>
                                 @if (isset($users))
                                 @foreach ($users as $user)
-                                <option {{$blog->user_id === $user->id?'selected':""}} value="{{$user->id}}">{{$user->last_name}} {{$user->first_name}}</option>
+                                <option {{$blog->user_id === $user->id?'selected':""}} value="{{$user->id}}">
+                                    {{$user->last_name}} {{$user->first_name}}</option>
                                 @endforeach
                                 @endif
                             </select>

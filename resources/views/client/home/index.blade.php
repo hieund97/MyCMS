@@ -153,14 +153,7 @@
                                 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary" 
                                     rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left">
                                     <i class="material-icons">shopping_cart</i>
-                                </button>
-                                {{-- <script>
-                                    $(document).ready(function(){
-                                        $("#cart").on("click",function(){
-                                            $("button").addClass("btn-rose");
-                                        });
-                                    });                                                        
-                                </script> --}}
+                                </button>                                
                             </div>
                         </div>
                     </div> <!-- end card -->

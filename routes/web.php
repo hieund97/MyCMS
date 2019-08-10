@@ -161,6 +161,14 @@ Route::group([
             Route::get('/', 'SubcribeController@index');
             Route::delete('/{subcribe}/delete','SubcribeController@destroy' );
         });
+
+        // Admin Contact Controller
+        Route::group([
+            'prefix' => 'contact'
+        ], function () {
+            Route::get('/', 'ContactController@index');
+            Route::delete('/{contact}/delete','ContactController@destroy');
+        });
         
     });
 });
@@ -180,8 +188,7 @@ Route::group([
 ], function () {
     // Client Home Route
     Route::get('/', 'HomeController@index');
-    Route::get('/thong-tin', 'HomeController@about');
-    Route::get('/lien-he', 'HomeController@contact');
+    Route::get('/thong-tin', 'HomeController@about');    
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout');
     Route::post('/register', 'RegisterController@store');
@@ -230,6 +237,15 @@ Route::group([
 
     // Client Subcribe Route
     Route::post('/dang-ky', 'SubcribeController@store');
+
+    // Client Contact Route
+    Route::group([
+        'prefix' => 'lien-he'
+    ], function () {
+        Route::get('/', 'HomeController@contact');
+        Route::post('/', 'ContactController@store');
+    });
+   
 
     
 

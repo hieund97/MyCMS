@@ -24,22 +24,37 @@
 
 						<div class="col-md-7" style="margin-right:40px; margin-left:30px;">
 							<h3 class="title">Gửi thắc mắc cho chúng tôi</h3>
-							<form role="form" id="contact-form" method="post">
+							@if (session()->has('create_contact'))
+							<div class="alert alert-success">
+								<div class="container">
+									<div class="alert-icon">
+										<i class="material-icons">check</i>
+									</div>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true"><i class="material-icons">clear</i></span>
+									</button>
+									<b>CÁM ƠN BẠN ĐÃ GỬI THÔNG TIN CHO CHÚNG TÔI <br> CHÚNG TÔI CỐ GẮNG SẼ PHẢN HỒI TỚI BẠN MỘT CÁCH SỚM NHẤT</b>
+								</div>
+							</div>
+							@endif
+							<form role="form" id="contact-form" method="POST" action="/lien-he">
+								@csrf
 								<div class="form-group label-floating">
 									<label class="control-label">Họ và tên</label>
-									<input type="text" name="name" class="form-control">
+									<input type="text" name="name" class="form-control" required>
 								</div>
 								<div class="form-group label-floating">
 									<label class="control-label">Email</label>
-									<input type="email" name="email" class="form-control" />
+									<input type="email" name="email" class="form-control" required />
 								</div>
 								<div class="form-group label-floating">
 									<label class="control-label">Số điện thoại</label>
-									<input type="text" name="phone" class="form-control" />
+									<input type="text" name="phone" class="form-control" required />
 								</div>
 								<div class="form-group label-floating">
 									<label class="control-label">Nội dung</label>
-									<textarea name="message" class="form-control" id="message" rows="6"></textarea>
+									<textarea name="message" class="form-control" id="message" rows="6"
+										required></textarea>
 								</div>
 								<div class="submit text-center">
 									<button type="submit" class="btn btn-primary btn-raised btn-round">Gửi cho chúng

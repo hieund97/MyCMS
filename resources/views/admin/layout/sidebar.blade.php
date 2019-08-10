@@ -4,14 +4,9 @@
   }
 </style>
 <div class="sidebar" data-color="rose" data-background-color="black"
-  data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">
-  <!--
-    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-    Tip 2: you can also add an image using data-image tag
-  -->
+  data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">  
   <div class="logo">
-    <a href="/" target="_blank" class="simple-text logo-normal">
+    <a href="/admin" class="simple-text logo-normal">
       <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
         alt="">
     </a>
@@ -127,13 +122,7 @@
             </li>            
           </ul>
         </div>
-      </li>
-      {{-- <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}">
-        <a class="nav-link" href="/admin/categories">
-          <i class="material-icons">dns</i>
-          <p> Danh mục sản phẩm </p>
-        </a>
-      </li> --}}
+      </li>      
       <li
         class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
         <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}"
@@ -206,7 +195,7 @@
         </div>
       </li> --}}
       <li class="nav-item ">
-        <a class="nav-link" href="../examples/widgets.html">
+        <a class="nav-link" href="/admin/order">
           <i class="material-icons">calendar_today</i>
           <p> Đơn hàng </p>
         </a>
@@ -217,13 +206,13 @@
           <p> Slider </p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../examples/calendar.html">
-          <i class="material-icons">aspect_ratio</i>
-          <p> Contact</p>
+      <li class="nav-item {{Request::segment(2) === 'contact'    ? 'active' : null}}">
+        <a class="nav-link" href="/admin/contact">
+          <i class="material-icons">perm_contact_calendar</i>
+          <p>Khách hàng liên hệ</p>
         </a>
       </li>
-      <li class="nav-item ">
+      <li class="nav-item {{Request::segment(2) === 'subcribe'    ? 'active' : null}}">
         <a class="nav-link" href="/admin/subcribe">
           <i class="material-icons">aspect_ratio</i>
           <p> Subcribe</p>
