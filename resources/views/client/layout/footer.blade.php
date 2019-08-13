@@ -85,7 +85,7 @@
                 </a>
             </li>            
             <li>
-                <a href="/">
+                <a href="/bai-viet/danh-muc/tuyen-dung">
                     Tuyển dụng
                 </a>
             </li>

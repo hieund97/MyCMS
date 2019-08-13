@@ -1,130 +1,85 @@
 @extends('client.layout.main')
-@section('title', $blog_category->name)
+@section('title', 'Bài viết')
 @section('content')
+
 
 @include('client.partial.header')
 
 
 <div class="main main-raised">
     <div class="container">
+        <div class="section">
+            <h2 class="section-title text-center">{{$blog_categories->name}}</h2>
+            
 
-        <div class="section" style="padding-bottom: 0px;">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-2 text-center">
-                    <ul class="nav nav-pills nav-pills-primary">
-                        <li class="active"><a href="#pill1" data-toggle="tab">All</a></li>
-                        @foreach ($blog_categories as $blog_category)
-                        <li><a href="#pill2" data-toggle="tab">{{$blog_category->name}}</a></li>
-                        @endforeach
-
-                    </ul>
-                    <div class="tab-content tab-space">
-                        <div class="tab-pane active" id="pill1">
-                            <div class="col-sm-10 checkbox-radios">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value=""> S
-                                        <span class="form-check-sign">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value=""> M
-                                        <span class="form-check-sign">
-                                            <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="pill2">
-
-                        </div>
-                        <div class="tab-pane" id="pill3">
-
-                        </div>
-                        <div class="tab-pane" id="pill4">
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!--     *********     BLOGS 3      *********      -->
-
+            @foreach ($b_cate as $post)
             <div class="blogs-3" style="padding-bottom: 0px; padding-top: 0px;">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-md-10 col-md-offset-1">
-
-                            {{-- @foreach ($blog as $blog) --}}
                             <div class="card card-plain card-blog">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="card-image">
-                                            <a href=""><img class="img img-raised" src=" " /></a>
+                                            <a href="/bai-viet/{{$post->slug}}"><img class="img img-raised"
+                                                    src=" {{$post->thumbnail&&$post->thumbnail!==''?$post->thumbnail:asset ('client/img/noimage.png') }}" /></a>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="category text-info">
-
+                                            {{$post->blog_category->name}}
                                         </h6>
                                         <h3 class="card-title">
-                                            <a href=""></a>
+                                            <a href="/bai-viet/{{$post->slug}}">{{$post->title}}</a>
                                         </h3>
-                                        <p class="card-description"> <a href=""><b> Read More</b> </a>
+                                        <p class="card-description"> {{$post->short_decription}} <a
+                                                href="/bai-viet/{{$post->slug}}"><b> Read More</b> </a>
                                         </p>
                                         <p class="author">
-                                            by <a href="#pablo"><b></b></a>,
+                                            by <a href="#pablo"><b>{{$post->users['last_name']}}
+                                                    {{$post->users['first_name']}}</b></a>,
+                                            {{$post->updated_at}}
                                             </a>
                                     </div>
                                 </div>
                             </div>
-                            {{-- @endforeach --}}
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{-- <div class="text-center">
-            {{$blogs->links()}}
-    </div> --}}
-    <!--     *********   END  BLOGS 3      *********      -->
+            @endforeach
+            <div class="text-center">
+                {{$b_cate->links()}}
+            </div>
 
+            <div class="section" style="padding-top: 30px;">
+                <h2 class="title text-center">Có thể bạn quan tâm</h2>
+                <br />
+                <div class="row">
+                    @foreach ($hots as $hot)
+                    <div class="col-md-4">
+                        <div class="card card-plain card-blog">
+                            <div class="card-image">
+                                <a href="/bai-viet/{{$hot->slug}}">
+                                    <img class="img img-raised" src=" {{$hot->thumbnail}}" />
+                                </a>
+                            </div>
 
-
-    <div class="section" style="padding-top: 30px;">
-        <h2 class="title text-center">Có thể bạn quan tâm</h2>
-        <br />
-        <div class="row">
-            {{-- @foreach ($hots as $hot) --}}
-            <div class="col-md-4">
-                <div class="card card-plain card-blog">
-                    <div class="card-image">
-                        <a href="">
-                            <img class="img img-raised" src=" " />
-                        </a>
+                            <div class="card-content">
+                                <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
+                                <h4 class="card-title">
+                                    <a href="/bai-viet/{{$hot->slug}}">{{$hot->title}}</a>
+                                </h4>
+                                <p class="card-description"> {{$hot->short_decription}} <b><a
+                                            href="/bai-viet/{{$hot->slug}}">
+                                            Read More </a></p></b>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="card-content">
-                        <h6 class="category text-info"></h6>
-                        <h4 class="card-title">
-                            <a href=""></a>
-                        </h4>
-                        <p class="card-description"> <b><a href=""> Read More </a></p></b>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            {{-- @endforeach --}}
-
-
         </div>
-
     </div>
 </div>
 </div>

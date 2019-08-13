@@ -16,48 +16,8 @@
 
             <div class="section section-blog-info">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="#pablo" class="btn btn-google btn-round pull-right">
-                                    <i class="fa fa-google"></i> 232
-                                </a>
-                                <a href="#pablo" class="btn btn-twitter btn-round pull-right">
-                                    <i class="fa fa-twitter"></i> 910
-                                </a>
-                                <a href="#pablo" class="btn btn-facebook btn-round pull-right">
-                                    <i class="fa fa-facebook-square"></i> 872
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <hr />
-
-                        <div class="card card-profile card-plain">
-                            <div class="row">
-                                <h3>Tác giả</h3>
-                                <div class="col-md-2">
-                                    <div class="card-avatar">
-                                        <a href="#pablo">
-                                            <img class="img"
-                                                src="{{$blog->users['avatar']&&$blog->users['avatar']!==''?$blog->users['avatar']:asset ('manage/img/default-avatar.png') }}">
-                                        </a>
-                                        <div class="ripple-container"></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <h4 class="card-title">{{$blog->users['last_name']}} {{$blog->users['first_name']}}
-                                    </h4>
-                                    <p class="description">{{$blog->users['about_me']}}</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
+                    <hr />
+                    <h3>Tác giả: {{$blog->users->last_name}} {{$blog->users->first_name}}</h3>                    
                 </div>
             </div>
 
@@ -179,27 +139,28 @@
                 <div class="col-md-12">
                     <h2 class="title text-center">Similar Stories</h2>
                     <br />
-                    <div class="row">                        
+                    <div class="row">
 
-                            @foreach ($hots as $hot)
-                            <div class="col-md-4">
-                                    <div class="card card-plain card-blog">
-                                        <div class="card-image">
-                                            <a href="/blogs/{{$blog->slug}}">
-                                                <img class="img img-raised" src=" {{$hot->thumbnail}}" />
-                                            </a>
-                                        </div>
-                
-                                        <div class="card-content">
-                                            <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
-                                            <h4 class="card-title">
-                                                <a href="/blogs/{{$blog->slug}}">{{$hot->title}}</a>
-                                            </h4>
-                                            <p class="card-description"> {{$hot->short_decription}} <b><a href="/blogs/{{$blog->slug}}"> Read More </a></p></b>
-                                        </div>
-                                    </div>
+                        @foreach ($hots as $hot)
+                        <div class="col-md-4">
+                            <div class="card card-plain card-blog">
+                                <div class="card-image">
+                                    <a href="/blogs/{{$blog->slug}}">
+                                        <img class="img img-raised" src=" {{$hot->thumbnail}}" />
+                                    </a>
                                 </div>
-                            @endforeach
+
+                                <div class="card-content">
+                                    <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
+                                    <h4 class="card-title">
+                                        <a href="/blogs/{{$blog->slug}}">{{$hot->title}}</a>
+                                    </h4>
+                                    <p class="card-description"> {{$hot->short_decription}} <b><a
+                                                href="/blogs/{{$blog->slug}}"> Read More </a></p></b>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
 
 
                     </div>

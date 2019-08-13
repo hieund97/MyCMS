@@ -12,18 +12,19 @@ class BlogController extends Controller
 {
     public function index(){
         $blog_categories = Blog_Category::get();
-        $blogs = Blog::inRandomOrder()->paginate(3);
-        $users = User::get();
-        $hots = Blog::where('category_id', '=', 2)->paginate(3);
-        return view('client.blog.index', compact('blog_categories', 'blogs', 'users','hots'));
+        $blogs = Blog::inRandomOrder()->paginate(3);        
+        return view('client.blog.index', compact('blog_categories', 'blogs'));
+    }
+
+    public function category($b_cate_slug){
+        $blog_categories = Blog_Category::where('b_cate_slug', $b_cate_slug)->firstOrFail();
+        $b_cate = $blog_categories->blog()->paginate(3);
+        return view('client.blog.category', compact('blog_categories', 'b_cate'));
     }
 
     public function articles($slug){        
-        $blog = Blog::where('slug', $slug)->firstOrFail();
-        $hots = Blog::where('category_id', '=', 3)->inRandomOrder()->paginate(3);
-        $users = User::get();
-       
-        return view('client.blog.article', compact('blog', 'users', 'hots'));
+        $blog = Blog::where('slug', $slug)->firstOrFail();       
+        return view('client.blog.article', compact('blog'));
     }
    
 }

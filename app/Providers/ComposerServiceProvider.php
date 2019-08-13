@@ -44,6 +44,16 @@ class ComposerServiceProvider extends ServiceProvider
             '*', 'App\Http\ViewComposers\CustomCategoryComposer'
         );
 
+        // Hot Blog Category Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\HotBlogCategoryComposer'
+        );
+
+        // User Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\UserComposer'
+        );
+
         
     }
 }

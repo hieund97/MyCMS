@@ -201,9 +201,12 @@ Route::group([
     Route::group([
         'prefix' => 'bai-viet'
     ], function () {
-        Route::get('/', 'BlogController@index');
+        Route::get('/', 'BlogController@index');       
         Route::get('/{slug}', 'BlogController@articles');
+        Route::get('/danh-muc/{b_cate_slug}', 'BlogController@category');
     });
+
+    
 
     // Client Product Route
     Route::group([
@@ -213,12 +216,15 @@ Route::group([
         Route::get('/{p_slug}', 'ProductController@item');
     });
 
+    // Client Blog Category Route
+    // Route::get('{b_cate_slug}', 'Blog_CategoryController@index');
+
 
     // Client Categories Route
     Route::group([
         'prefix' => 'danh-muc'
     ], function () {
-        Route::get('/{p_cate_slug}', 'CategoryController@category');
+        Route::get('/{p_cate_slug}', 'CategoryController@category');        
     });
 
     // Client User Route

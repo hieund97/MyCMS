@@ -15,17 +15,17 @@
             <div class="row" style="margin-top: 30px;">
                 {{-- <div class="col-md-12"> --}}
                 <div class="col-md-3">
-                    <img src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}"
+                    <img src="{{$user->avatar}}"
                         alt="Circle Image" class="img-rounded img-responsive img-raised"
                         style="height: 250px; width: 250px;">
                 </div>
                 <div class="col-md-9">
                     <div class="name">
-                        <h3 class="title">{{auth()->user()->last_name}} {{auth()->user()->first_name}}</h3>
-                        <h6>@ {{auth()->user()->user_name}}</h6>
+                        <h3 class="title">{{$user->last_name}} {{$user->first_name}}</h3>
+                        <h6>@ {{$user->user_name}}</h6>
                     </div>
                     <div>
-                        <p>{{auth()->user()->about_me}}</p>
+                        <p>{{$user->about_me}}</p>
                     </div>
                 </div>
 

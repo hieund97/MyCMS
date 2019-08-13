@@ -7,8 +7,8 @@
 <div class="main main-raised">
     <div class="section" style="padding-bottom:0px;">
         <div class="container">
-            <h2 style="position: relative" class="section-title text-center">{{$cate->name}}</h2>
-            <div class="row" style="position: relative">
+            <h2 class="section-title text-center">{{$cate->name}}</h2>
+            <div class="row">
 
                 <ul class="nav nav-pills-primary text-center ">
                     @if ($cate->childs->count() > 0)
