@@ -32,10 +32,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <label class="bmd-label-floating"
-                                        style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
+                                <div class="col-md-4">
+                                    <label class="bmd-label-floating">
                                         <h4>Danh mục cha</h4>
+                                        <span>Chọn danh mục cấp bậc cao hơn của danh mục hiện tại. Để trống nếu muốn tạo
+                                            danh mục gốc</span>
                                     </label>
                                     <select class="selectpicker" name="parent" data-size="7"
                                         data-style="btn btn-primary btn-round" title="Danh mục">
@@ -45,9 +46,8 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-7">
-                                    <label class="bmd-label-floating"
-                                        style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
+                                <div class="col-md-4">
+                                    <label class="bmd-label-floating">
                                         <h4>Active</h4>
                                         <span>Danh mục chọn active sẽ xuất hiện trên trang chủ (tối đa 3 danh
                                             mục)</span>
@@ -57,6 +57,20 @@
                                             data-style="btn btn-primary btn-round" title="Active">
                                             <option {{$category->active == 0? 'Selected':''}} value="0">Normal</option>
                                             <option {{$category->active == 1? 'Selected':''}} value="1">Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="bmd-label-floating">
+                                        <h4>Navbar Active</h4>
+                                        <span>Danh mục chọn Navbar active sẽ xuất hiện trên thanh navbar trên trang chủ
+                                            (tối đa 4 danh mục)</span>
+                                    </label>
+                                    <div class="form-group">
+                                        <select class="selectpicker" name="navactive" data-size="7"
+                                            data-style="btn btn-primary btn-round" title="Active">
+                                            <option {{$category->navactive == 0? 'Selected':''}} value="0">Normal</option>
+                                            <option {{$category->navactive == 1? 'Selected':''}} value="1">Active</option>
                                         </select>
                                     </div>
                                 </div>

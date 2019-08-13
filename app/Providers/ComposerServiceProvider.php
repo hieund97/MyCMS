@@ -39,6 +39,11 @@ class ComposerServiceProvider extends ServiceProvider
             '*', 'App\Http\ViewComposers\BrandComposer'
         );
 
+        // Custom Category Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\CustomCategoryComposer'
+        );
+
         
     }
 }

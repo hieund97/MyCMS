@@ -18,7 +18,7 @@ function showCategory($mang, $parent, $shift)
 {
     foreach ($mang as $row) {
         $active = null;
-        if ($row->active == 1){
+        if ($row->active  == 1){
             $active = 'Active';
         }
         else {
@@ -30,6 +30,22 @@ function showCategory($mang, $parent, $shift)
         }
         else {
             $classActive = 'success';
+        }
+
+
+        $navActive = null;
+        if ($row->navactive  == 1){
+            $navActive = 'Active';
+        }
+        else {
+            $navActive = 'Normal';
+        }
+        $classNavActive = null;
+        if ($row->navactive == 1){
+            $classNavActive = 'danger';
+        }
+        else {
+            $classNavActive = 'success';
         }
         if ($row->parent_id == $parent) {
             echo "<tr>
@@ -59,6 +75,10 @@ function showCategory($mang, $parent, $shift)
             <td class='text-center'>
                 <label style='padding-right: 10px;padding-left: 10px;'
                     class='btn btn-$classActive'>$active</label>
+            </td>
+            <td class='text-center'>
+                <label style='padding-right: 10px;padding-left: 10px;'
+                    class='btn btn-$classNavActive'>$navActive</label>
             </td>
             <td class='td-actions'
                 style='width: 106px;padding-right: 0px;padding-left: 20px;'>

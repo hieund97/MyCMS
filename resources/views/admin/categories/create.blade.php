@@ -39,10 +39,10 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-5">
-                        <label class="bmd-label-floating"
-                            style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
+                    <div class="col-md-4">
+                        <label class="bmd-label-floating">
                             <h4>Danh mục cha</h4>
+                            <span>Chọn danh mục cấp bậc cao hơn của danh mục hiện tại. Để trống nếu muốn tạo danh mục gốc</span>
                         </label>
                         <select class="selectpicker" data-size="10" name="parent" data-style="btn btn-primary btn-round"
                             title="Single Select">
@@ -51,9 +51,8 @@
                         </select>
                     </div>
 
-                    <div class="col-md-7">
-                        <label class="bmd-label-floating"
-                            style="padding-left: 15px; padding-right: 30px;padding-top: 15px;">
+                    <div class="col-md-4">
+                        <label class="bmd-label-floating">
                             <h4>Active</h4>
                             <span>Danh mục chọn active sẽ xuất hiện trên trang chủ (tối đa 3 danh mục)</span>
                         </label>
@@ -65,11 +64,24 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <label class="bmd-label-floating">
+                            <h4>Navbar Active</h4>
+                            <span>Danh mục chọn Navbar active sẽ xuất hiện trên thanh navbar trên trang chủ (tối đa 4 danh mục)</span>
+                        </label>
+                        <div class="form-group">
+                            <select class="selectpicker" name="navactive" data-size="7"
+                                data-style="btn btn-primary btn-round" title="Active">
+                                <option value="1">Active</option>
+                                <option value="0">Normal</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="card card-profile">
                         <label class="bmd-label-floating">
-                            <h4>Mô tả ngắn</h4>                            
+                            <h4>Mô tả ngắn</h4>
                         </label>
                         <div class="form-group">
                             <textarea class="form-control" name="short_description" required rows="8"></textarea>

@@ -50,9 +50,12 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <h3 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Danh mục
+                            <h4 style="color:crimson;margin-left: 60px;">*Danh mục
                                 chọn active sẽ xuất hiện trên trang chủ (tối đa 6 danh
-                                mục)*</h3>
+                                mục)*</h4>
+                            <h4 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Danh mục chọn Navbar
+                                active sẽ xuất hiện trên thanh navbar trên trang chủ (tối đa 4 danh
+                                mục)*</h4>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -72,6 +75,7 @@
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th class="text-center" style="width: 156px;">Trạng thái</th>
+                                        <th class="text-center" style="width: 156px;">Navbar</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>

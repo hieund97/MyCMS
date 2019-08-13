@@ -24,58 +24,26 @@
                         <i class="material-icons">home</i>
                     </a>
                 </li>
+                @foreach ($navCategory as $navCate)
                 <li>
-                    <a style="font-size:100%;" href="/danh-muc/hang-moi-ve">
-                        Hàng mới về
+                    <a style="font-size:100%;" href="/danh-muc/{{$navCate->p_cate_slug}}">
+                        {{$navCate->name}}
+                        @if ($navCate->childs->count() > 0)
+                        <b class="caret"></b>
+                        @endif
+
                     </a>
-                </li>
-                <li>
-                    <a style="font-size:100%;" href="/danh-muc/ao">
-                        Áo<b class="caret"></b>
-                    </a>
+                    @if ($navCate->childs->count() > 0)
                     <ul class="dropdown-menu" style="margin-top: 0px;">
-                        <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
+                        @foreach ($navCate->childs as $item)                        
+                        <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>
                         <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">> Action</a></li>
-                        <li class="attrli"><a href="#pablo">> Another action</a></li>
-                        <li class="attrli"><a href="#pablo">> Something else here</a></li>
-                        <li class="attrli"><a href="#pablo">> Separated link</a></li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">> One more separated link</a></li>
+                        @endforeach
                     </ul>
+                    @endif
                 </li>
-                <li>
-                    <a style="font-size:100%;" href="/danh-muc/quan">
-                        Quần<b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" style="margin-top: 0px;">
-                        <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">Action</a></li>
-                        <li class="attrli"><a href="#pablo">Another action</a></li>
-                        <li class="attrli"><a href="#pablo">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">One more separated link</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a style="font-size:100%;" href="/danh-muc/phu-kien-thoi-trang">
-                        Phụ kiện<b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" style="margin-top: 0px;">
-                        <li class="attrli dropdown-header" style="height: 26px;">Dropdown header</li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">Action</a></li>
-                        <li class="attrli"><a href="#pablo">Another action</a></li>
-                        <li class="attrli"><a href="#pablo">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li class="attrli"><a href="#pablo">One more separated link</a></li>
-                    </ul>
-                </li>
+                @endforeach
+
                 <li>
                     <a style="font-size:100%;" href="/thanh-vien/uu-dai">
                         Membership
