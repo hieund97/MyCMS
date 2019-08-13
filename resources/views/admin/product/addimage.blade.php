@@ -176,7 +176,7 @@
                                 </div>
                         </div>
                         <div>
-                            <a href="/admin/products" style="padding-left: 15px; padding-right: 15px;"
+                            <a href="/admin/products/price/{{$product->id}}/edit" style="padding-left: 15px; padding-right: 15px;"
                                 class="btn btn-warning pull-right"><i class="material-icons">cached</i> Bỏ
                                 qua</a>
                             <button type="submit" style="padding-left: 15px; padding-right: 15px;"

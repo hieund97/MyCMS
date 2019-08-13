@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Categories::all();
+        // $categories = Categories::all();
         
         // $parentCate = Categories::where('parent_id', '=', 0)->get();
 
@@ -18,12 +18,12 @@ class CategoryController extends Controller
     }    
 
     public function create(){
-        $categories = Categories::all();
+        // $categories = Categories::all();
         return view('admin.categories.create', compact('categories'));
     }
 
     public function edit($id){
-        $categories = Categories::all();
+        // $categories = Categories::all();
         $data['category'] = Categories::find($id);
         return view('admin.categories.edit', $data, compact('categories'));
     }

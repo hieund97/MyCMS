@@ -4,21 +4,22 @@
 
 @include('client.partial.header')
 
-
 <div class="main main-raised">
     <div class="section" style="padding-bottom:0px;">
         <div class="container">
-            <h2 class="section-title text-center">{{$cate->name}}</h2>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <ul class="nav nav-pills nav-pills-primary">
-                        <li><a href="#pillall">Tất cả</a></li>
-                        <li><a href="#pill2">World</a></li>
-                        <li><a href="#pill3">Arts</a></li>
-                        <li><a href="#pill4">Tech</a></li>
-                        <li><a href="#pill5">Business</a></li>
-                    </ul>
-                </div>
+            <h2 style="position: relative" class="section-title text-center">{{$cate->name}}</h2>
+            <div class="row" style="position: relative">
+
+                <ul class="nav nav-pills-primary text-center ">
+                    @if ($cate->childs->count() > 0)
+                    @foreach ($cate->childs as $subCate)
+                    <li style="display: inline-block"><a
+                            style="text-transform: uppercase;font-weight: 500;color: #555555;"
+                            href="/danh-muc/{{$subCate->p_cate_slug}}">{{$subCate->name}}</a></li>
+                    @endforeach
+                    @endif
+                </ul>
+
             </div>
         </div>
     </div><!-- section -->
@@ -65,20 +66,23 @@
                                             rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left">
                                             <i class="material-icons">shopping_cart</i>
                                         </button>
-                                        
+
                                     </div>
                                 </div>
                             </div> <!-- end card -->
                         </div>
                         @endforeach
                     </div>
+                    <hr>
+                    <div class="col-md-3 col-md-offset-3">
+                        {{$category->links()}}
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3 col-md-offset-6">
-                {{$category->links()}}
-            </div>
+
         </div>
         <!-- section -->
     </div> <!-- end-main-raised -->
 </div>
+@include('client.partial.tag')
 @endsection

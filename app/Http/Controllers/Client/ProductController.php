@@ -12,16 +12,13 @@ class ProductController extends Controller
 {
     public function index(){
         $products = Product::paginate(12);
-        // $hoverImage = Image_product::paginate(1);
-        // dd($products);
-        
-        return view('client.product.index', compact('products'));
+        // dd($products);        
+        return view('client.product.index', compact('products','attribute'));
     }
 
     public function item($p_slug){
         $item = Product::where('p_slug', $p_slug)->firstOrFail();
-        $randomProduct = Product::inRandomOrder()->paginate(4);
-        $attribute = Attribute::all();
+        $randomProduct = Product::inRandomOrder()->paginate(4);        
         return view('client.product.item', compact('item', 'randomProduct', 'attribute'));
     }
 }

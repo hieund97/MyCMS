@@ -24,13 +24,21 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Category Variable
         View::composer(
-            ['index', 'create', 'edit', 'sidebar'], 'App\Http\View\Composers\CategoryPartialComposer'
+            '*', 'App\Http\ViewComposers\CategoryComposer'
         );
 
-        // Using Closure based composers...
-        // View::composer('*', function ($view) {
-        //     //
-        // });
+        // Attribute Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\AttributeComposer'
+        );
+
+        // Brand Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\BrandComposer'
+        );
+
+        
     }
 }

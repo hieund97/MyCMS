@@ -26,21 +26,21 @@ class ProductController extends Controller
 
     public function create()
     {
-        $brands = Brand::all();
-        $categories = Categories::get();
-        $attribute = Attribute::all();
+        // $brands = Brand::all();
+        // $categories = Categories::get();
+        // $attribute = Attribute::all();
 
-        return view('admin.product.create', compact('categories', 'attribute', 'brands'));
+        return view('admin.product.create');
     }
 
     public function edit(Product $product)
     {
-        $categories = Categories::get();
-        $attribute = Attribute::all();
-        $brands = Brand::all();
+        // $categories = Categories::get();
+        // $attribute = Attribute::all();
+        // $brands = Brand::all();
         $data['category'] = Categories::find($product);
 
-        return view('admin.product.edit', $data, compact('product', 'categories', 'attribute', 'brands'));
+        return view('admin.product.edit', $data, compact('product'));
     }
 
     public function store(Product $product, Request $request)
@@ -115,7 +115,7 @@ class ProductController extends Controller
         }
 
         session()->flash('create_product', 'success');
-        return redirect('/admin/products/price/' . $product->id . '/edit');
+        return redirect('/admin/products/image/' . $product->id . '/add');
     }
 
     public function update(Product $product, Request $request)
@@ -189,9 +189,9 @@ class ProductController extends Controller
     // Value Zone
     public function value()
     {
-        $attribute = Attribute::all();
+        // $attribute = Attribute::all();
         // $values = Value::all();
-        return view('admin.product.value', compact('attribute'));
+        return view('admin.product.value');
     }
 
 
@@ -227,13 +227,13 @@ class ProductController extends Controller
 
 
     // Brand Zone
-    public function brand(Brand $brand)
+    public function brand()
     {
-        $brands = Brand::all();
-        return view('admin.product.brand', compact('brands'));
+        
+        return view('admin.product.brand');
     }
 
-    public function addbrand(Brand $brand, Request $request)
+    public function addbrand(Request $request)
     {
         // dd($request->all());
         $this->validate(

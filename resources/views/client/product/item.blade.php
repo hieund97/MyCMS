@@ -7,7 +7,7 @@
         style="background-image: url({{ asset('client/img/bg6.jpg') }});">
     </div>
 
-    <div class="section section-gray">
+    <div class="section" style="background: white">
         <div class="container">
             <div class="main main-raised main-product">
                 <div class="row">
@@ -87,12 +87,7 @@
                                 Số lượng
                             </h4>
                             <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
-                            <div class="btn-group">
-                                <button class="btn btn-round btn-rose btn-xs"> <i class="material-icons">remove</i>
-                                </button>
-                                <button class="btn btn-round btn-rose btn-xs"> <i class="material-icons">add</i>
-                                </button>
-                            </div>
+                            
                         </div>
 
                         <div class="row pick-size">

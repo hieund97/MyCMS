@@ -59,11 +59,13 @@
                         @endforeach
 
                     </div>
+                    <hr>
+                    <div class="col-md-3 col-md-offset-3">
+                        {{$products->links()}}
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3 col-md-offset-6">
-                {{$products->links()}}
-            </div>
+
 
 
         </div>
