@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function index(){
         $blog_categories = Blog_Category::get();
-        $blogs = Blog::inRandomOrder()->paginate(3);        
+        $blogs = Blog::latest()->paginate(3);        
         return view('client.blog.index', compact('blog_categories', 'blogs'));
     }
 
