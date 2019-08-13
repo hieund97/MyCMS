@@ -51,31 +51,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($user as $member)
                                     <tr>
-                                        <td class="text-center">{{$user->id}}</td>
-                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/user/{{$user->id}}/edit">{{$user->last_name}} {{$user->first_name}}</a></td>
-                                        <td>{{$user->user_name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
+                                        <td class="text-center">{{$member->id}}</td>
+                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/user/{{$member->id}}/edit">{{$member->last_name}} {{$member->first_name}}</a></td>
+                                        <td>{{$member->user_name}}</td>
+                                        <td>{{$member->email}}</td>
+                                        <td>{{$member->phone}}</td>
                                         <td>
                                             <label style="width: 110px;"
-                                                class="btn btn-{{$user->level==1?'danger':'success'}}">{{$user->level==1?'Admin':'Member'}}</label>
+                                                class="btn btn-{{$member->level==1?'danger':'success'}}">{{$member->level==1?'Admin':'Member'}}</label>
                                         </td>
                                         <td>
                                             <div class="photo">
                                                 <img style=" width: 50px; height: 50px; border-radius: 25px;"
-                                                    src="{{$user->avatar&&$user->avatar!==''?$user->avatar:asset ('manage/img/default-avatar.png') }}" />
+                                                    src="{{$member->avatar&&$member->avatar!==''?$member->avatar:asset ('manage/img/default-avatar.png') }}" />
                                             </div>
                                         </td>
                                         <td class="td-actions text-right" style="padding-right: 15px;">
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
-                                                <a style="color:white;" href="/admin/user/{{$user->id}}/edit"><i
+                                                <a style="color:white;" href="/admin/user/{{$member->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
-                                                data-id="{{$user->id}}" data-original-title="Xóa">
+                                                data-id="{{$member->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -84,7 +84,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{$users->links()}}
+                                {{$user->links()}}
                                 <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm thành viên</a>
                                     

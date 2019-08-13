@@ -10,8 +10,8 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     public function index(User $user){
-        $users = User::paginate(5);
-        return view('admin.user.index', compact('users'));
+        $user = User::paginate(5);
+        return view('admin.user.index', compact('user'));
     }
 
     public function edit(User $user){

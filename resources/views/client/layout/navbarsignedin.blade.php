@@ -35,7 +35,7 @@
                     </a>
                     @if ($navCate->childs->count() > 0)
                     <ul class="dropdown-menu" style="margin-top: 0px;">
-                        @foreach ($navCate->childs as $item)                        
+                        @foreach ($navCate->childs as $item)
                         <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>
                         <li class="divider"></li>
                         @endforeach
@@ -60,6 +60,9 @@
                         <li>
                             <a href="/don-hang">Đơn hàng của tôi</a>
                         </li>
+                        <li style="display: {{auth()->user()->level == 1? 'block':'none'}}">
+                            <a href="/admin">Trang quản trị</a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Đăng
@@ -80,11 +83,7 @@
                         <i class="material-icons">shopping_cart</i>
                         <span class="notification_cart">5</span>
                     </a>
-                </li>
-                {{-- <li>
-                    <a href="/gio-hang"><i class="material-icons">shopping_cart</i> 0
-                        sản phẩm</a>
-                </li> --}}
+                </li>                
                 <li class="li-mar">
                     <div class="added__animation">
                         <span>+1</span>

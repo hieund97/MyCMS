@@ -129,11 +129,7 @@
                         <i class="material-icons">shopping_cart</i>
                         <span class="notification_cart">5</span>
                     </a>
-                </li>
-                {{-- <li>
-                    <a href="/gio-hang"><i class="material-icons">shopping_cart</i> 0
-                        sản phẩm</a>
-                </li> --}}
+                </li>                
                 <li class="li-mar">
                     <div class="added__animation">
                         <span>+1</span>
