@@ -61,6 +61,7 @@ class CategoryController extends Controller
             'p_cate_slug' => $slug,
             'short_description' => $request->short_description,
             'active' => $request->active,
+            'navactive' => $request->navactive,
             'avatar' => asset('media/avatar') . '/' . $avatarName
         ]);
         return redirect('/admin/categories/')->with('create_category', 'Category Created');
@@ -83,6 +84,7 @@ class CategoryController extends Controller
             'parent_id' => $request->parent,
             'short_description' =>$request->short_description,
             'active' => $request->active,
+            'navactive' => $request->navactive,
             'p_cate_slug' => str_slug($request->category, '-')
         ]);
         return redirect('/admin/categories/')->with('update_category', 'Category Updated');
