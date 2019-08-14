@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Attribute;
-use App\Models\Image_product;
 
 class ProductController extends Controller
 {
@@ -20,5 +18,11 @@ class ProductController extends Controller
         $item = Product::where('p_slug', $p_slug)->firstOrFail();
         $randomProduct = Product::inRandomOrder()->paginate(4);        
         return view('client.product.item', compact('item', 'randomProduct', 'attribute'));
+    }
+
+    public function filter(Request $request){
+        // dd($request->all());
+        $filterProducts = Product::whereBetween('price',[substr($request->start, 0, -1),substr($request->end, 0, -1)])->get();
+        return view('client.product.filter', compact('filterProducts'));
     }
 }

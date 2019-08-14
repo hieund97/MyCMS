@@ -206,15 +206,19 @@ Route::group([
         Route::get('/danh-muc/{b_cate_slug}', 'BlogController@category');
     });
 
-    
 
     // Client Product Route
     Route::group([
         'prefix' => 'san-pham'
     ], function () {
-        Route::get('/', 'ProductController@index');
+        Route::get('/', 'ProductController@index');       
         Route::get('/{p_slug}', 'ProductController@item');
-    });
+        Route::get('/loc-san-pham', 'ProductController@filter');
+    });   
+    
+    // Client Filter Product
+    Route::get('/loc-san-pham', 'ProductController@filter');
+    
 
     // Client Blog Category Route
     // Route::get('{b_cate_slug}', 'Blog_CategoryController@index');

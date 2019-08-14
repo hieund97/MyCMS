@@ -2,6 +2,11 @@
   .pad {
     padding-left: 20px;
   }
+
+  .disabled {
+    pointer-events:none; 
+    opacity:0.6;         
+  }
 </style>
 <div class="sidebar" data-color="rose" data-background-color="black"
   data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">  

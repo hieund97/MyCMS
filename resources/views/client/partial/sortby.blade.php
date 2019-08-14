@@ -12,34 +12,46 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
+
+                        @foreach ($parentCate as $category)
                         <div class="checkbox">
-                            <label style="font-size: 20px;">
-                                <input type="checkbox" value="" data-toggle="checkbox">
-                                Áo
+                            <label style="font-size: 18px;">
+                                <a href="/danh-muc/{{$category->p_cate_slug}}">{{$category->name}}</a>
                             </label>
-                            <span style="float: right">(100)</span>
-                            <div class="checkbox" style="padding-left: 30px;">
-                                <label>
-                                    <input type="checkbox" value="" data-toggle="checkbox">
-                                    > Áo phông
-                                </label>
-                                <span style="float: right">(100)</span>
-                            </div>
+                            <span style="float: right">({{$category->product->count()}})</span>
                         </div>
-                        <div class="checkbox">
-                            <label style="font-size: 20px;">
-                                <input type="checkbox" value="" data-toggle="checkbox">
-                                Quần
-                            </label>
-                            <span style="float: right">(100)</span>
-                            <div class="checkbox" style="padding-left: 30px;">
-                                <label>
-                                    <input type="checkbox" value="" data-toggle="checkbox">
-                                    > Quần jean
-                                </label>
-                                <span style="float: right">(100)</span>
-                            </div>
-                        </div>
+
+                        <ul class="nav" style="padding-left: 30px;">
+                            @forelse ($category->childs as $subcate)
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <a href="/danh-muc/{{$subcate->p_cate_slug}}"> > {{$subcate->name}}</a>
+                                    </label>
+                                    <span style="float: right">({{$subcate->product->count()}})</span>
+                                </div>
+                            </li>
+                            @forelse ($subcate->childs as $childSub)
+                            <ul class="nav" style="padding-left: 30px;">
+                                <li>
+                                    <div class="checkbox">
+                                        <label>
+                                            <a href="/danh-muc/{{$childSub->p_cate_slug}}"> > {{$childSub->name}}</a>
+                                        </label>
+                                        <span style="float: right">({{$childSub->product->count()}})</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            @empty
+
+                            @endforelse
+                            @empty
+
+                            @endforelse
+                        </ul>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>
@@ -54,15 +66,21 @@
                         <i class="material-icons">keyboard_arrow_down</i>
                     </a>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body panel-refine">
-                        <span id="price-left" class="price-left pull-left" data-currency="&euro;">100</span>
-                        <span id="price-right" class="price-right pull-right" data-currency="&euro;">850</span>
-                        <div class="clearfix"></div>
-                        <div id="sliderRefine" class="slider slider-rose"></div>
-                        <button class="btn btn-rose pull-right">LỌC</button>
+
+
+                <form action="/loc-san-pham" method="GET">
+                    @csrf
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                        aria-labelledby="headingOne">
+                        <div class="panel-body panel-refine">
+                            <input type="text" name="start" id="price-left" class=" price-left pull-left" data-currency="₫" style="width: 80px; border: none">
+                            <input type="text" name="end" id="price-right" class=" price-right pull-right" data-currency="₫" style="width: 80px; border: none">                            
+                            <div class="clearfix"></div>
+                            <div id="sliderRefine" class="slider slider-rose"></div>
+                            <button type="submit" class="btn btn-rose pull-right">LỌC</button>
+                        </div>
                     </div>
-                </div>                
+                </form>
             </div>
 
             {{-- Lọc theo thuộc tính --}}

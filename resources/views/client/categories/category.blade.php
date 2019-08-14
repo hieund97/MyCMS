@@ -11,13 +11,13 @@
             <div class="row">
 
                 <ul class="nav nav-pills-primary text-center ">
-                    @if ($cate->childs->count() > 0)
-                    @foreach ($cate->childs as $subCate)
+                    @forelse ($cate->childs as $subCate)
                     <li style="display: inline-block"><a
                             style="text-transform: uppercase;font-weight: 500;color: #555555;"
                             href="/danh-muc/{{$subCate->p_cate_slug}}">{{$subCate->name}}</a></li>
-                    @endforeach
-                    @endif
+                    @empty
+
+                    @endforelse                   
                 </ul>
 
             </div>
@@ -31,9 +31,9 @@
                 @include('client.partial.sortby')
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">
-                        @if ($category->count() > 0)
-                        @foreach ($category as $item)
 
+
+                        @forelse ($category as $item)
                         <div class="col-md-3 ">
                             <div class="card card-product card-plain no-shadow main-img" data-colored-shadow="false">
                                 <div>
@@ -73,13 +73,13 @@
                                 </div>
                             </div> <!-- end card -->
                         </div>
-                        @endforeach
-                        @else
+                        @empty
                         <div class="col-md-3 ">
                             <p class="text-center">Không có sản phẩm nào</p>
                         </div>
-                        @endif
-                        
+                        @endforelse
+
+
                     </div>
                     <hr>
                     <div class="col-md-3 col-md-offset-3">

@@ -406,22 +406,22 @@
 		var slider2 = document.getElementById('sliderRefine');
 
 		noUiSlider.create(slider2, {
-			start: [42, 880],
+			start: [100000, 300000],
 			connect: true,
 			range: {
-			'min': [30],
-			'max': [900]
+			'min': [50000],
+			'max': [1000000]
 			}
 		});
 
-		var limitFieldMin = document.getElementById('price-left');
-		var limitFieldMax = document.getElementById('price-right');
+		var limitFieldMin = $('#price-left').val(); 
+		var limitFieldMax = $('#price-right').val();
 
 		slider2.noUiSlider.on('update', function( values, handle ){
 			if (handle){
-				limitFieldMax.innerHTML= $('#price-right').data('currency') + Math.round(values[handle]);
+				limitFieldMax =  $('#price-right').val(Math.round(values[handle]) + $('#price-right').data('currency'));
 			} else {
-				limitFieldMin.innerHTML= $('#price-left').data('currency') + Math.round(values[handle]);
+				limitFieldMin =  $('#price-left').val(Math.round(values[handle]) + $('#price-left').data('currency'));
 			}
 		});
 	});

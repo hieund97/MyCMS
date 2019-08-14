@@ -36,7 +36,9 @@ class HomeController extends Controller
         return view('client.home.support');
     }
 
-    public function test(){
-        return view('client.home.test');
+    public function test(Request $request){
+        // dd($request->all());
+        $filterProducts = Product::whereBetween('price',[substr($request->start, 0, -1),substr($request->end, 0, -1)])->get();
+        return view('client.product.filter', compact('filterProducts'));
     }
 }
