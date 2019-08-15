@@ -2,6 +2,7 @@
 @section('title', $item->name)
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
 <body class="product-page">
     <div class="page-header header-filter header-small" data-parallax="true"
         style="background-image: url({{ asset('client/img/bg6.jpg') }});">
@@ -82,30 +83,52 @@
                                 </div>
                             </div>
                         </div><!--  end acordeon -->
-                        <div class="row pick-size" style="padding-left: 15px;">
-                            <h4 class="panel-title">
-                                Số lượng
-                            </h4>
-                            <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
-                            
-                        </div>
 
-                        <div class="row pick-size">
-                            @foreach ($attribute as $attr)
-                            <div class="col-md-6 col-sm-6">
-                                <label>{{$attr->name}}</label>
-                                <select class="selectpicker" data-style="select-with-transition" data-size="7">
-                                    @foreach ($attr->value as $value)
-                                    <option value="{{$value->id}}">{{$value->value}} </option>
-                                    @endforeach
-                                </select>
+
+                        <form action="" method="">
+                            <div class="row pick-size" style="padding-left: 15px;">
+                                <h4 class="panel-title">
+                                    Số lượng
+                                </h4>
+                                <input type="number" value="1" min="1" max="99" name="quantity"
+                                    style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
+
                             </div>
-                            @endforeach
-                        </div>
-                        <div class="row text-right">
-                            <button class="btn btn-rose btn-round btn__primary">Thêm vào giỏ hàng &nbsp;<i
-                                    class="material-icons">shopping_cart</i></button>
-                        </div>
+
+                            <div class="row pick-size">
+                                @php
+                                $result= array();
+                                @endphp
+                                @foreach ($item->value as $key=> $value)
+                                @php
+                                $attr = $value->attribute->name;
+                                $result[$attr][] = $value->value
+                                @endphp
+                                @endforeach
+
+                                @foreach ($result as $key => $properties)
+                                <div class="col-md-6 col-sm-6">
+                                    <label>{{$key}}</label>
+                                    <select class="selectpicker" name="{{$key}}" data-style="select-with-transition"
+                                        data-size="7">
+                                        @foreach ($properties as $value)
+                                        <option value="{{$value}}">{{$value}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="row text-right">
+                                @if ($item->quantity == 0)
+                                <a href="/lien-he" class="btn btn-danger btn-round">Liên hệ &nbsp;<i
+                                        class="material-icons">perm_phone_msg</i></a>
+                                @else
+                                <button type="submit" class="btn btn-rose btn-round btn__primary">Thêm vào giỏ hàng
+                                    &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                @endif
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -172,7 +195,7 @@
 
                                 {{-- @foreach ($random->categories as $cate)
                                 <a href="/danh-muc/{{$cate->p_cate_slug}}">
-                                    <h6 class="category text-info">{{$cate->name}}</h6>
+                                <h6 class="category text-info">{{$cate->name}}</h6>
                                 </a>
                                 @endforeach --}}
                                 <h4 class="card-title">

@@ -406,7 +406,7 @@
 		var slider2 = document.getElementById('sliderRefine');
 
 		noUiSlider.create(slider2, {
-			start: [100000, 300000],
+			start: [300000, 800000],
 			connect: true,
 			range: {
 			'min': [50000],

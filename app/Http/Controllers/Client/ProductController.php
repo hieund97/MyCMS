@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Attribute;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -15,9 +16,9 @@ class ProductController extends Controller
     }
 
     public function item($p_slug){
-        $item = Product::where('p_slug', $p_slug)->firstOrFail();
+        $item = Product::where('p_slug', $p_slug)->firstOrFail();        
         $randomProduct = Product::inRandomOrder()->paginate(4);        
-        return view('client.product.item', compact('item', 'randomProduct', 'attribute'));
+        return view('client.product.item', compact('item', 'randomProduct'));
     }
 
     public function filter(Request $request){
