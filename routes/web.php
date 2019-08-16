@@ -247,6 +247,8 @@ Route::group([
         Route::get('/', 'CartController@index');
         Route::post('/', 'CartController@add');
         Route::delete('/xoa-san-pham/{id}', 'CartController@delete');
+        Route::get('/thanh-toan', 'CartController@checkout');
+        Route::get('/hoan-thanh', 'CartController@complete');
     });
 
     // Client Subcribe Route

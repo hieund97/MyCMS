@@ -60,7 +60,7 @@
                                     </p>
                                     <div class="footer">
                                         <div class="price-container">
-                                            <span class="price price-new">{{$item->quantity == 0? 'Hết hàng' : number_format($item->price). '₫'}}</span>
+                                            <span class="price {{$item->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$item->quantity == 0? 'Tạm hết hàng' : number_format($item->price). '₫'}}</span>
                                         </div>
 
                                         <div class="stats">

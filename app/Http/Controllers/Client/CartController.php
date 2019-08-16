@@ -46,7 +46,7 @@ class CartController extends Controller
         ]);
         switch ($request->add) {
             case 'paynow':
-            return redirect('/thanh-toan');
+            return redirect('/gio-hang/thanh-toan');
                 break;
 
             case 'addtocart':
@@ -61,5 +61,14 @@ class CartController extends Controller
     {
         Cart::remove($id);
         return response()->json([], 204);
+    }
+
+    public function checkout(){
+       
+        return view('client.cart.checkout');
+    }
+
+    public function complete(){
+        return view('client.cart.complete');
     }
 }

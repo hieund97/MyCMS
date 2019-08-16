@@ -38,10 +38,7 @@ class HomeController extends Controller
         return view('client.home.support');
     }
 
-    public function checkout(){
-       
-        return view('client.home.checkout');
-    }
+    
 
     public function test(){
         

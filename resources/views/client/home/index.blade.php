@@ -36,7 +36,7 @@
                                         <p class="card-description">{{$sale->description}}</p>
                                         <div class="footer">
                                             <div class="price-container">
-                                                <span class="price price-new">{{$sale->quantity == 0? 'Hết hàng' : number_format($sale->price). '₫'}}</span>
+                                                <span class="price {{$sale->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$sale->quantity == 0? 'Tạm hết hàng' : number_format($sale->price). '₫'}}</span>
                                             </div>
                                             <div class="stats">
 
@@ -182,7 +182,7 @@
                             </p>
                             <div class="footer">
                                 <div class="price-container">
-                                    <span class="price price-new">{{$feature->quantity == 0? 'Hết hàng' : number_format($feature->price). '₫'}} </span>
+                                    <span class="price {{$feature->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$feature->quantity == 0? 'Tạm hết hàng' : number_format($feature->price). '₫'}} </span>
                                 </div>
 
                                 <div class="stats">

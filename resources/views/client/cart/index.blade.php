@@ -75,7 +75,7 @@
                             <td class="td-price">
                                 <small></small>{{Cart::total(0,'',',')}} ₫
                             </td>
-                            <td colspan="3" class="text-right"> <a href="/thanh-toan" class="btn btn-info btn-round">Đi
+                            <td colspan="3" class="text-right"> <a href="/gio-hang/thanh-toan" class="btn btn-info btn-round">Đi
                                     đến thanh toán <i class="material-icons">keyboard_arrow_right</i></button></td>
 
                         </tr>

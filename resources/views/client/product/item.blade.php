@@ -212,8 +212,8 @@
                                     {{$random->description}}
                                 </div>
                                 <div class="footer">
-                                    <div class="price">
-                                        <h4>{{$random->quantity == 0? 'Hết hàng' : number_format($random->price). '₫'}}
+                                <div class="price {{$random->quantity == 0 ? 'price-sold-out': ''}}">
+                                        <h4>{{$random->quantity == 0? 'Tạm hết hàng' : number_format($random->price). '₫'}}
                                         </h4>
                                     </div>
                                     <div class="stats">
