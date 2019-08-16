@@ -147,6 +147,10 @@ function check_variant($product, $array)
     return true;
 }
 
+function showAttribute(){
+    
+}
+
 function getPrice($product, $array){
     foreach ($product->variant as $row) {
         $mang = array();

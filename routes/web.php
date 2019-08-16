@@ -245,8 +245,8 @@ Route::group([
         'prefix' => 'gio-hang'
     ], function () {
         Route::get('/', 'CartController@index');
-        Route::get('/them-san-pham', 'CartController@add');
-        Route::get('/xoa-san-pham/{id}', 'CartController@delete');
+        Route::post('/', 'CartController@add');
+        Route::delete('/xoa-san-pham/{id}', 'CartController@delete');
     });
 
     // Client Subcribe Route

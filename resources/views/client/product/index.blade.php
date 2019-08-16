@@ -45,12 +45,44 @@
                                             <span class="price price-new">{{number_format($product->price)}}</span>
                                         </div>
 
-                                        <button
-                                            class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary btn-cart"
-                                            rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left"
-                                            style="position: relative;">
-                                            <i class="material-icons">shopping_cart</i>
-                                        </button>
+                                        <div class="stats">
+
+                                            <form action="/gio-hang" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$product->id}}">
+                                                <input type="hidden" name="name" value="{{$product->name}}">
+                                                <input type="hidden" name="avatar"
+                                                    value="{{json_encode($product->avatar)}}">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="price" value="{{$product->price}}">
+
+
+                                                @php
+                                                $result= array();
+                                                @endphp
+                                                @foreach ($product->value as $value)
+                                                @php
+                                                $attr = $value->attribute->name;
+                                                $result[$attr][] = $value->value;
+                                                @endphp
+                                                @endforeach
+
+                                                @foreach ($result as $key => $properties)
+                                                <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                                {{-- Head() trả về phần tử đầu tiên của mảng --}}
+                                                @endforeach
+
+
+
+
+                                                <button type="submit" rel="tooltip" title=""
+                                                    class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
+                                                    data-original-title="Thêm vào giỏ hàng">
+                                                    <i class="material-icons">shopping_cart</i>
+                                                </button>
+                                            </form>
+
+                                        </div>
 
                                     </div>
                                 </div>

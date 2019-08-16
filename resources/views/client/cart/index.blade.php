@@ -50,10 +50,10 @@
                                 <small></small>{{number_format($item->price*$item->qty)}} ₫
                             </td>
                             <td class="td-actions">
-                                <a href="/gio-hang/xoa-san-pham/{{$item->rowId}}" rel="tooltip"
-                                    class="btn btn-danger btn-round btn-del" data-id="" data-original-title="Xóa">
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del-cart"
+                                    data-id="{{$item->rowId}}" data-original-title="Xóa">
                                     <i class="material-icons">close</i>
-                                    </button>
+                                </button>
                             </td>
                         </tr>
                         @empty
@@ -61,7 +61,7 @@
                             <td>
                                 <p>Không có sản phẩm nào</p>
                             </td>
-                            
+
                         </tr>
                         @endforelse
                         <tr>
@@ -87,3 +87,64 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(document).ready(function(){
+		$('.btn-del-cart').click(function(e){		
+            e.preventDefault();
+            console.log('im in');
+            	
+			let delCartId = $(this).attr('data-id')
+			const swalWithBootstrapButtons = Swal.mixin({
+					customClass: {
+						confirmButton: 'btn btn-success',
+						cancelButton: 'btn btn-danger'
+					},
+					buttonsStyling: false,
+					})
+
+					swalWithBootstrapButtons.fire({
+					title: 'Bạn có chắc chắn muốn xóa',
+					text: "Hành động sẽ không thể hoàn tác",
+					type: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Có, Xóa người dùng',
+					cancelButtonText: 'Không, Hủy bỏ!',
+					reverseButtons: true
+					}).then((result) => {
+					if (result.value) {
+						$.ajax({
+							url: '/gio-hang/xoa-san-pham/' + delCartId,
+							method: 'POST',
+							data: {
+								_token: "{{csrf_token()}}",
+								_method: "DELETE"
+							},
+							success: function(){
+								swalWithBootstrapButtons.fire(
+								'Đã xóa!',
+								'Người dùng đã bị xóa',
+								'success'
+								).then((result2) => {
+									if(result2.value){
+									window.location.reload();
+									}
+								});							
+							}
+						});
+						
+					} else if (
+						// Read more about handling dismissals
+						result.dismiss === Swal.DismissReason.cancel
+					) {
+						swalWithBootstrapButtons.fire(
+						'Đã hủy',
+						'Dữ liệu của bạn vẫn an toàn :)',
+						'error'
+						)
+					}
+				})	
+		});
+	});
+</script>
+@endpush

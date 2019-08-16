@@ -458,10 +458,10 @@
 		});
 		});
 </script>
-{{-- <script>
+<script>
 	$(document).ready(function(){
-			$('.btn-cart').click(function(e){
-				e.preventDefault();
+			$('.btn-cart').click(function(){
+				// e.preventDefault();
 				console.log('im in');
 				Swal.fire({
 				position: 'center',
@@ -472,7 +472,7 @@
 				})
 			});
 	});   
-</script> --}}
+</script>
 
 
 

@@ -39,11 +39,41 @@
                                                 <span class="price price-new">{{number_format($sale->price)}} ₫</span>
                                             </div>
                                             <div class="stats">
-                                                <button type="button" rel="tooltip" title=""
-                                                    class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
-                                                    data-original-title="Thêm vào giỏ hàng">
-                                                    <i class="material-icons">shopping_cart</i>
-                                                </button>
+
+                                                <form action="/gio-hang" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{$sale->id}}">
+                                                    <input type="hidden" name="name" value="{{$sale->name}}">
+                                                    <input type="hidden" name="avatar"
+                                                        value="{{json_encode($sale->avatar)}}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <input type="hidden" name="price" value="{{$sale->price}}">
+
+
+                                                    @php
+                                                    $result= array();
+                                                    @endphp
+                                                    @foreach ($sale->value as $value)
+                                                    @php
+                                                    $attr = $value->attribute->name;
+                                                    $result[$attr][] = $value->value;
+                                                    @endphp
+                                                    @endforeach
+
+                                                    @foreach ($result as $key => $properties)
+                                                    <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                                    {{-- Head() trả về phần tử đầu tiên của mảng --}}
+                                                    @endforeach
+
+
+
+
+                                                    <button type="submit" rel="tooltip" title=""
+                                                        class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
+                                                        data-original-title="Thêm vào giỏ hàng">
+                                                        <i class="material-icons">shopping_cart</i>
+                                                    </button>
+                                                </form>
 
                                             </div>
                                         </div>
@@ -51,11 +81,14 @@
                                 </div>
                             </div>
                         </div>
+
                         @php
                         $i =1;
                         @endphp
                         @endforeach
                     </div>
+
+
                     <!-- left,right control -->
                     <div id="slider-control">
                         <a class="left carousel-control" style="background: darkgrey; margin-top: 190px;"
@@ -150,10 +183,43 @@
                                     <span class="price price-new">{{number_format($feature->price)}} ₫</span>
                                 </div>
 
-                                <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right btn__primary btn-cart" 
-                                    rel="tooltip" title="Thêm vào giỏ hàng" data-placement="left">
-                                    <i class="material-icons">shopping_cart</i>
-                                </button>                                
+                                <div class="stats">
+
+                                    <form action="/gio-hang" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$feature->id}}">
+                                        <input type="hidden" name="name" value="{{$feature->name}}">
+                                        <input type="hidden" name="avatar" value="{{json_encode($feature->avatar)}}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="price" value="{{$feature->price}}">
+
+
+                                        @php
+                                        $result= array();
+                                        @endphp
+                                        @foreach ($feature->value as $value)
+                                        @php
+                                        $attr = $value->attribute->name;
+                                        $result[$attr][] = $value->value;
+                                        @endphp
+                                        @endforeach
+
+                                        @foreach ($result as $key => $properties)
+                                        <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                        {{-- Head() trả về phần tử đầu tiên của mảng --}}
+                                        @endforeach
+
+
+
+
+                                        <button type="submit" rel="tooltip" title=""
+                                            class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
+                                            data-original-title="Thêm vào giỏ hàng">
+                                            <i class="material-icons">shopping_cart</i>
+                                        </button>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
                     </div> <!-- end card -->

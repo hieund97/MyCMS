@@ -82,7 +82,7 @@
                             <input type="radio" value="" checked>
                             Phí vận chuyển
                         </label>
-                        <span style="float: right">20.000đ</span>
+                        <span style="float: right"> 20.000₫</span>
                     </div>
 
                     <h3 class="title">Phương thức thanh toán</h3>
@@ -219,7 +219,7 @@
                                 Tổng cộng
                             </td>
                             <td class="text-right" style="font-size: 30px">
-                                {{Cart::total(0,'',',')}}₫
+                                {{number_format((int) str_replace(',', '', Cart::total()) + 20000) }}₫
                             </td>
                         </tr>
                     </tfoot>

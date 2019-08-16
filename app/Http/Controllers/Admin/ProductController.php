@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Categories;
 use App\Http\Controllers\Controller;
-use App\Models\Attribute;
-use App\Models\Value;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Brand;
@@ -323,9 +321,6 @@ class ProductController extends Controller
                 'avatar2' => 'required',
                 'avatar3' => 'required',
                 'avatar4' => 'required'
-
-
-
             ],
             [
                 'require' => 'Trường này trống cmnr',

@@ -25,8 +25,10 @@ class CartController extends Controller
             $price = $request->Size;
         } elseif ($request->Size == NULL) {
             $price = $request->Color;
-        } else {
+        } elseif (is_array($request->Color) && is_array($request->Size)) {
             $price = array_merge($request->Color, $request->Size);
+        } else {
+            $price = $request->price;
         }
 
         $product = Product::findOrFail($request->id);
@@ -34,15 +36,20 @@ class CartController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'qty' => $request->quantity,
-            'price' => getPrice($product, $price),
+            'price' => $price == $request->price ? $request->price : getPrice($product, $price),
             'weight' => 550,
-            'options' => ['color' => array_get($request->Color,'0'), 'size' => array_get($request->Size,'0'), 'img' => json_decode($request->avatar)]
+            'options' => [
+                'color' => is_array($request->Color) ? array_get($request->Color, '0') : $request->Color,
+                'size' => is_array($request->Size) ? array_get($request->Size, '0') : $request->Size,
+                'img' => json_decode($request->avatar)
+            ]
         ]);
-        return redirect('/gio-hang');
+        return back();
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Cart::remove($id);
-        return redirect('/gio-hang');
+        return response()->json([], 204);
     }
 }

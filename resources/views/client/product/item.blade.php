@@ -85,7 +85,7 @@
                         </div><!--  end acordeon -->
 
 
-                        <form action="/gio-hang/them-san-pham" method="get">
+                        <form action="/gio-hang" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$item->id}}">
                             <input type="hidden" name="name" value="{{$item->name}}">
@@ -128,7 +128,7 @@
                                 <a href="/lien-he" class="btn btn-danger btn-round">Liên hệ &nbsp;<i
                                         class="material-icons">perm_phone_msg</i></a>
                                 @else
-                                <button type="submit" class="btn btn-rose btn-round btn__primary btn-cart">Thêm vào giỏ hàng
+                                <button type="submit" data-id="{{$item->id}}" class="btn btn-rose btn-round btn__primary btn-cart">Thêm vào giỏ hàng
                                     &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 @endif
                             </div>

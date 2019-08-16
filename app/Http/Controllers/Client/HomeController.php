@@ -18,6 +18,7 @@ class HomeController extends Controller
         $saleProduct = $saleCategory->product()->get();
         $activeCate = Categories::where('active', '=', 1)->get();
         $activeSlider = Slider::where('active', '=', 1)->get();
+       
         return view('client.home.index', compact('featureProduct', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));
     }
 
@@ -38,13 +39,11 @@ class HomeController extends Controller
     }
 
     public function checkout(){
-        $total = Cart::total();
-        return view('client.home.checkout', compact('total'));
+       
+        return view('client.home.checkout');
     }
 
-    public function test(Request $request){
-        // dd($request->all());
-        $filterProducts = Product::whereBetween('price',[substr($request->start, 0, -1),substr($request->end, 0, -1)])->get();
-        return view('client.product.filter', compact('filterProducts'));
+    public function test(){
+        
     }
 }
