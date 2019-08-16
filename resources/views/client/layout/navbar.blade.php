@@ -127,7 +127,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/gio-hang">Giỏ hàng
                         <i class="material-icons">shopping_cart</i>
-                        <span class="notification_cart">5</span>
+                        <span style="display: {{Cart::content()->count() > 0?'block':'none'}}" class="notification_cart">{{Cart::content()->count()}}</span>
                     </a>
                 </li>                
                 <li class="li-mar">

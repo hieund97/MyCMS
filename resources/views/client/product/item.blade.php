@@ -85,7 +85,11 @@
                         </div><!--  end acordeon -->
 
 
-                        <form action="" method="">
+                        <form action="/gio-hang/them-san-pham" method="get">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$item->id}}">
+                            <input type="hidden" name="name" value="{{$item->name}}">
+                        <input type="hidden" name="avatar" value="{{json_encode($item->avatar)}}">
                             <div class="row pick-size" style="padding-left: 15px;">
                                 <h4 class="panel-title">
                                     Số lượng
@@ -99,17 +103,18 @@
                                 @php
                                 $result= array();
                                 @endphp
-                                @foreach ($item->value as $key=> $value)
+                                @foreach ($item->value as $value)
                                 @php
                                 $attr = $value->attribute->name;
-                                $result[$attr][] = $value->value
+                                $result[$attr][] = $value->value;
+                                
                                 @endphp
                                 @endforeach
 
                                 @foreach ($result as $key => $properties)
                                 <div class="col-md-6 col-sm-6">
                                     <label>{{$key}}</label>
-                                    <select class="selectpicker" name="{{$key}}" data-style="select-with-transition"
+                                    <select class="selectpicker" name="{{$key}}[]" data-style="select-with-transition"
                                         data-size="7">
                                         @foreach ($properties as $value)
                                         <option value="{{$value}}">{{$value}} </option>
@@ -123,7 +128,7 @@
                                 <a href="/lien-he" class="btn btn-danger btn-round">Liên hệ &nbsp;<i
                                         class="material-icons">perm_phone_msg</i></a>
                                 @else
-                                <button type="submit" class="btn btn-rose btn-round btn__primary">Thêm vào giỏ hàng
+                                <button type="submit" class="btn btn-rose btn-round btn__primary btn-cart">Thêm vào giỏ hàng
                                     &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 @endif
                             </div>
@@ -192,12 +197,7 @@
                             </a>
 
                             <div class="card-content">
-
-                                {{-- @foreach ($random->categories as $cate)
-                                <a href="/danh-muc/{{$cate->p_cate_slug}}">
-                                <h6 class="category text-info">{{$cate->name}}</h6>
-                                </a>
-                                @endforeach --}}
+                                
                                 <h4 class="card-title">
                                     <a href="#pablo">{{$random->name}}</a>
                                 </h4>
@@ -210,7 +210,7 @@
                                     </div>
                                     <div class="stats">
                                         <button type="button" rel="tooltip" title="Saved to cart"
-                                            class="btn btn-just-icon btn-simple btn-rose btn__primary">
+                                            class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart">
                                             <i class="material-icons">shopping_cart</i>
                                         </button>
                                     </div>

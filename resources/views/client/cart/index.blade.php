@@ -21,135 +21,62 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse (Cart::content() as $item)
                         <tr>
                             <td>
                                 <div class="img-container">
-                                    <img src=" {{ asset ('client/img/product1.jpg') }}" alt="...">
+                                    <img src=" {{$item->options->img}}" alt="...">
                                 </div>
                             </td>
-                            <td class="td-name">
-                                <a href="#jacket">Spring Jacket</a>
-                                <br /><small>by Dolce&Gabbana</small>
-                            </td>
-                            <td>
-                                Red
-                            </td>
-                            <td>
-                                M
-                            </td>
-                            <td class="td-number">
-                                <small>&euro;</small>549
-                            </td>
-                            <td class="td-number">
-                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
-                                <div class="btn-group">
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
-                                    </button>
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">add</i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="td-number">
-                                <small>&euro;</small>549
-                            </td>
-                            <td class="td-actions">
-                                <button type="button" rel="tooltip" data-placement="left" title="Remove item"
-                                    class="btn btn-simple">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-container">
-                                    <img src=" {{ asset ('client/img/product2.jpg') }}" alt="..." />
-                                </div>
-                            </td>
-                            <td class="td-name">
-                                <a href="#pants">Short Pants</a>
-                                <br /><small>by Pucci</small>
-                            </td>
-                            <td>
-                                Purple
-                            </td>
-                            <td>
-                                M
-                            </td>
+                            <td class="td-name text-primary">
+                                {{$item->name}}
 
-                            <td class="td-number">
-                                <small>&euro;</small>499
+                            </td>
+                            <td>
+                                {{$item->options->color}}
+                            </td>
+                            <td>
+                                {{$item->options->size}}
                             </td>
                             <td class="td-number">
-                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
-                                <div class="btn-group">
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
-                                    </button>
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">add</i>
-                                    </button>
-                                </div>
+                                <small></small>{{number_format($item->price)}} ₫
                             </td>
                             <td class="td-number">
-                                <small>&euro;</small>998
+                                <input type="number" value="{{$item->qty}}" min="1" max="99"
+                                    style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
+
+                            </td>
+                            <td class="td-number">
+                                <small></small>{{number_format($item->price*$item->qty)}} ₫
                             </td>
                             <td class="td-actions">
-                                <button type="button" rel="tooltip" data-placement="left" title="Remove item"
-                                    class="btn btn-simple">
+                                <a href="/gio-hang/xoa-san-pham/{{$item->rowId}}" rel="tooltip"
+                                    class="btn btn-danger btn-round btn-del" data-id="" data-original-title="Xóa">
                                     <i class="material-icons">close</i>
-                                </button>
+                                    </button>
                             </td>
                         </tr>
+                        @empty
                         <tr>
                             <td>
-                                <div class="img-container">
-                                    <img src=" {{ asset ('client/img/product3.jpg') }}" alt="...">
-                                </div>
+                                <p>Không có sản phẩm nào</p>
                             </td>
-                            <td class="td-name">
-                                <a href="#nothing">Pencil Skirt</a>
-                                <br /><small>by Valentino</small>
-                            </td>
-                            <td>
-                                White
-                            </td>
-                            <td>
-                                XL
-                            </td>
-
-                            <td class="td-number">
-                                <small>&euro;</small>799
-                            </td>
-                            <td class="td-number">
-                                    <input type="number" value="1" min="1" max="99" style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
-                                <div class="btn-group">
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">remove</i>
-                                    </button>
-                                    <button class="btn btn-round btn-info btn-xs"> <i class="material-icons">add</i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="td-number">
-                                <small>&euro;</small>799</td>
-                            <td class="td-actions">
-                                <button type="button" rel="tooltip" data-placement="left" title="Remove item"
-                                    class="btn btn-simple">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
+                            
                         </tr>
+                        @endforelse
                         <tr>
                             <td colspan="3">
                                 <a href="/san-pham" type="button" class="btn btn-warning btn-round"><i
-                                    class="material-icons">keyboard_arrow_left</i>Tiếp tục mua sắm</a>
+                                        class="material-icons">keyboard_arrow_left</i>Tiếp tục mua sắm</a>
                             </td>
                             <td class="td-total">
-                                Total
+                                Tạm tính
                             </td>
                             <td class="td-price">
-                                <small>&euro;</small>2,346
+                                <small></small>{{Cart::total(0,'',',')}} ₫
                             </td>
-                            <td colspan="3" class="text-right"> <button type="button"
-                                    class="btn btn-info btn-round">Đi đến thanh toán <i
-                                        class="material-icons">keyboard_arrow_right</i></button></td>
+                            <td colspan="3" class="text-right"> <a href="/thanh-toan" class="btn btn-info btn-round">Đi
+                                    đến thanh toán <i class="material-icons">keyboard_arrow_right</i></button></td>
 
                         </tr>
                     </tbody>

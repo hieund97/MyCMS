@@ -193,6 +193,7 @@ Route::group([
     Route::post('logout', 'LoginController@logout');
     Route::post('/register', 'RegisterController@store');
     Route::get('/ho-tro-khach-hang', 'HomeController@support');
+    Route::get('/thanh-toan', 'HomeController@checkout');
 
     // test Route
     Route::get('/test', 'HomeController@test');
@@ -239,10 +240,13 @@ Route::group([
         Route::get('/{slug}', 'UserController@detail');
     });
 
+    // Client Cart Route
     Route::group([
         'prefix' => 'gio-hang'
     ], function () {
         Route::get('/', 'CartController@index');
+        Route::get('/them-san-pham', 'CartController@add');
+        Route::get('/xoa-san-pham/{id}', 'CartController@delete');
     });
 
     // Client Subcribe Route
@@ -254,8 +258,8 @@ Route::group([
     ], function () {
         Route::get('/', 'HomeController@contact');
         Route::post('/', 'ContactController@store');
-    });
-   
+    }); 
+    
 
     
 

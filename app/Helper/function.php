@@ -146,3 +146,20 @@ function check_variant($product, $array)
     }
     return true;
 }
+
+function getPrice($product, $array){
+    foreach ($product->variant as $row) {
+        $mang = array();
+        foreach ($row->value as $value) {
+            $mang[] = $value->value;
+        }
+
+        if(array_diff($mang, $array) == NULL){
+            if($row->price == 0){
+                return $product->price;
+            }
+            return $row->price;
+        }
+    }
+    return $product->price;
+}

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Categories;
+use Cart;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,11 @@ class HomeController extends Controller
 
     public function support(){
         return view('client.home.support');
+    }
+
+    public function checkout(){
+        $total = Cart::total();
+        return view('client.home.checkout', compact('total'));
     }
 
     public function test(Request $request){

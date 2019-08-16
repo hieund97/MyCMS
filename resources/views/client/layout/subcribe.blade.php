@@ -31,33 +31,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    @if (session()->has('subcribed'))
-    <div class="alert alert-success">
-        <div class="container">
-            <div class="alert-icon">
-                <i class="material-icons">check</i>
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-            </button>
-            <b>ĐĂNG KÝ THÀNH CÔNG - CÁM ƠN BẠN ĐÃ ĐĂNG KÝ NHÂN THÔNG TIN KHUYẾN MẠI CỦA CHÚNG TÔI</b>
-        </div>
-    </div>
-    @endif
-    @if ($errors->has('email'))
-    <div class="alert alert-danger">
-        <div class="container">
-            <div class="alert-icon">
-                <i class="material-icons">error_outline</i>
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class="material-icons">clear</i></span>
-            </button>
-            <b>LỖI - EMAIL NÀY ĐÃ ĐƯỢC ĐĂNG KÝ</b>
-        </div>
-    </div>
-    @endif
+    </div>    
 </div>
 
 <!--     *********   SIMPLE SUBSCRIBE LINE     *********      -->

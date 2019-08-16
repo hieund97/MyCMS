@@ -213,7 +213,7 @@ class ProductController extends Controller
         }
 
         session()->flash('edit_price', 'success');
-        return redirect('/admin/products/image/' . $product->id . '/add');
+        return redirect('/admin/products');
     }
 
 

@@ -139,7 +139,7 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số lượng</label>
-                                        <input type="text" name="quantity" class="form-control">
+                                        <input type="number" name="quantity" class="form-control">
                                     </div>
                                 </div>
                             </div>

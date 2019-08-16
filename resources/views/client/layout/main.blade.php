@@ -458,7 +458,7 @@
 		});
 		});
 </script>
-<script>
+{{-- <script>
 	$(document).ready(function(){
 			$('.btn-cart').click(function(e){
 				e.preventDefault();
@@ -472,7 +472,7 @@
 				})
 			});
 	});   
-</script>
+</script> --}}
 
 
 
