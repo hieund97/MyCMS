@@ -42,19 +42,20 @@
                                     </p>
                                     <div class="footer">
                                         <div class="price-container">
-                                            <span class="price price-new">{{number_format($product->price)}}</span>
+                                            <span class="price price-new">{{$product->quantity == 0? 'Hết hàng' : number_format($product->price). '₫'}}</span>
                                         </div>
 
                                         <div class="stats">
 
                                             <form action="/gio-hang" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{$product->id}}">
-                                                <input type="hidden" name="name" value="{{$product->name}}">
-                                                <input type="hidden" name="avatar"
+                                                <input type="hidden" id="id" name="id" value="{{$product->id}}">
+                                                <input type="hidden" id="name" name="name" value="{{$product->name}}">
+                                                <input type="hidden" name="avatar" id="avatar"
                                                     value="{{json_encode($product->avatar)}}">
-                                                <input type="hidden" name="quantity" value="1">
-                                                <input type="hidden" name="price" value="{{$product->price}}">
+                                                <input type="hidden" id="quantity" name="quantity" value="1">
+                                                <input type="hidden" id="price" name="price"
+                                                    value="{{$product->price}}">
 
 
                                                 @php
@@ -68,14 +69,15 @@
                                                 @endforeach
 
                                                 @foreach ($result as $key => $properties)
-                                                <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                                <input type="hidden" id="{{$key}}" name="{{$key}}"
+                                                    value="{{head($properties)}}">
                                                 {{-- Head() trả về phần tử đầu tiên của mảng --}}
                                                 @endforeach
 
 
 
 
-                                                <button type="submit" rel="tooltip" title=""
+                                                <button {{$product->quantity == 0? 'disabled' : NULL}} type="submit" rel="tooltip" title=""
                                                     class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                                     data-original-title="Thêm vào giỏ hàng">
                                                     <i class="material-icons">shopping_cart</i>

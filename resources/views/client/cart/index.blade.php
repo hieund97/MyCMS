@@ -108,7 +108,7 @@
 					text: "Hành động sẽ không thể hoàn tác",
 					type: 'warning',
 					showCancelButton: true,
-					confirmButtonText: 'Có, Xóa người dùng',
+					confirmButtonText: 'Có, Xóa sản phẩm',
 					cancelButtonText: 'Không, Hủy bỏ!',
 					reverseButtons: true
 					}).then((result) => {
@@ -123,7 +123,7 @@
 							success: function(){
 								swalWithBootstrapButtons.fire(
 								'Đã xóa!',
-								'Người dùng đã bị xóa',
+								'Sản phẩm đã bị xóa',
 								'success'
 								).then((result2) => {
 									if(result2.value){

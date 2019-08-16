@@ -44,8 +44,18 @@ class CartController extends Controller
                 'img' => json_decode($request->avatar)
             ]
         ]);
-        return back();
+        switch ($request->add) {
+            case 'paynow':
+            return redirect('/thanh-toan');
+                break;
+
+            case 'addtocart':
+            return back();
+                break;
+        }
+        
     }
+
 
     public function delete($id)
     {

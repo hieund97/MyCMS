@@ -36,18 +36,19 @@
                                         <p class="card-description">{{$sale->description}}</p>
                                         <div class="footer">
                                             <div class="price-container">
-                                                <span class="price price-new">{{number_format($sale->price)}} ₫</span>
+                                                <span class="price price-new">{{$sale->quantity == 0? 'Hết hàng' : number_format($sale->price). '₫'}}</span>
                                             </div>
                                             <div class="stats">
 
                                                 <form action="/gio-hang" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="id" value="{{$sale->id}}">
-                                                    <input type="hidden" name="name" value="{{$sale->name}}">
-                                                    <input type="hidden" name="avatar"
+                                                    <input type="hidden" name="id" id="id" value="{{$sale->id}}">
+                                                    <input type="hidden" name="name" id="name" value="{{$sale->name}}">
+                                                    <input type="hidden" name="avatar" id="avatar"
                                                         value="{{json_encode($sale->avatar)}}">
-                                                    <input type="hidden" name="quantity" value="1">
-                                                    <input type="hidden" name="price" value="{{$sale->price}}">
+                                                    <input type="hidden" id="quantity" name="quantity" value="1">
+                                                    <input type="hidden" id="price" name="price"
+                                                        value="{{$sale->price}}">
 
 
                                                     @php
@@ -61,7 +62,8 @@
                                                     @endforeach
 
                                                     @foreach ($result as $key => $properties)
-                                                    <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                                    <input type="hidden" id="{{$key}}" name="{{$key}}"
+                                                        value="{{head($properties)}}">
                                                     {{-- Head() trả về phần tử đầu tiên của mảng --}}
                                                     @endforeach
 
@@ -180,18 +182,19 @@
                             </p>
                             <div class="footer">
                                 <div class="price-container">
-                                    <span class="price price-new">{{number_format($feature->price)}} ₫</span>
+                                    <span class="price price-new">{{$feature->quantity == 0? 'Hết hàng' : number_format($feature->price). '₫'}} </span>
                                 </div>
 
                                 <div class="stats">
 
                                     <form action="/gio-hang" method="POST">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$feature->id}}">
-                                        <input type="hidden" name="name" value="{{$feature->name}}">
-                                        <input type="hidden" name="avatar" value="{{json_encode($feature->avatar)}}">
-                                        <input type="hidden" name="quantity" value="1">
-                                        <input type="hidden" name="price" value="{{$feature->price}}">
+                                        <input type="hidden" name="id" id="id" value="{{$feature->id}}">
+                                        <input type="hidden" name="name" id="name" value="{{$feature->name}}">
+                                        <input type="hidden" name="avatar" id="avatar"
+                                            value="{{json_encode($feature->avatar)}}">
+                                        <input type="hidden" name="quantity" id="quantity" value="1">
+                                        <input type="hidden" name="price" id="price" value="{{$feature->price}}">
 
 
                                         @php
@@ -205,14 +208,15 @@
                                         @endforeach
 
                                         @foreach ($result as $key => $properties)
-                                        <input type="hidden" name="{{$key}}" value="{{head($properties)}}">
+                                        <input type="hidden" id="{{$key}}" name="{{$key}}"
+                                            value="{{head($properties)}}">
                                         {{-- Head() trả về phần tử đầu tiên của mảng --}}
                                         @endforeach
 
 
 
 
-                                        <button type="submit" rel="tooltip" title=""
+                                        <button type="submit" id="btn-cart-feature" rel="tooltip" title=""
                                             class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                             data-original-title="Thêm vào giỏ hàng">
                                             <i class="material-icons">shopping_cart</i>

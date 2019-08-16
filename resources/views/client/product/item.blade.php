@@ -87,14 +87,14 @@
 
                         <form action="/gio-hang" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{$item->id}}">
-                            <input type="hidden" name="name" value="{{$item->name}}">
-                        <input type="hidden" name="avatar" value="{{json_encode($item->avatar)}}">
+                            <input type="hidden" name="id" id="id" value="{{$item->id}}">
+                            <input type="hidden" name="name" id="name" value="{{$item->name}}">
+                            <input type="hidden" name="avatar" id="avatar" value="{{json_encode($item->avatar)}}">
                             <div class="row pick-size" style="padding-left: 15px;">
                                 <h4 class="panel-title">
                                     Số lượng
                                 </h4>
-                                <input type="number" value="1" min="1" max="99" name="quantity"
+                                <input type="number" value="1" min="1" id="quantity" max="99" name="quantity"
                                     style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
 
                             </div>
@@ -107,15 +107,15 @@
                                 @php
                                 $attr = $value->attribute->name;
                                 $result[$attr][] = $value->value;
-                                
+
                                 @endphp
                                 @endforeach
 
                                 @foreach ($result as $key => $properties)
                                 <div class="col-md-6 col-sm-6">
                                     <label>{{$key}}</label>
-                                    <select class="selectpicker" name="{{$key}}[]" data-style="select-with-transition"
-                                        data-size="7">
+                                    <select class="selectpicker" id="{{$key}}" name="{{$key}}[]"
+                                        data-style="select-with-transition" data-size="7">
                                         @foreach ($properties as $value)
                                         <option value="{{$value}}">{{$value}} </option>
                                         @endforeach
@@ -125,10 +125,17 @@
                             </div>
                             <div class="row text-right">
                                 @if ($item->quantity == 0)
+                                <button type="submit" disabled class="btn btn-info btn-round btn__primary">Mua
+                                ngay
+                                &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 <a href="/lien-he" class="btn btn-danger btn-round">Liên hệ &nbsp;<i
                                         class="material-icons">perm_phone_msg</i></a>
                                 @else
-                                <button type="submit" data-id="{{$item->id}}" class="btn btn-rose btn-round btn__primary btn-cart">Thêm vào giỏ hàng
+                                <button type="submit" name="add" value="paynow"
+                                    class="btn btn-info btn-round btn__primary">Mua ngay
+                                    &nbsp;<i class="material-icons">shopping_cart</i></button>
+                                <button type="submit" name="add" value="addtocart"
+                                    class="btn btn-rose btn-round btn__primary btn-cart">Thêm vào giỏ hàng
                                     &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 @endif
                             </div>
@@ -197,7 +204,7 @@
                             </a>
 
                             <div class="card-content">
-                                
+
                                 <h4 class="card-title">
                                     <a href="#pablo">{{$random->name}}</a>
                                 </h4>
@@ -206,13 +213,48 @@
                                 </div>
                                 <div class="footer">
                                     <div class="price">
-                                        <h4>{{number_format($random->price)}} ₫</h4>
+                                        <h4>{{$random->quantity == 0? 'Hết hàng' : number_format($random->price). '₫'}}
+                                        </h4>
                                     </div>
                                     <div class="stats">
-                                        <button type="button" rel="tooltip" title="Saved to cart"
-                                            class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart">
-                                            <i class="material-icons">shopping_cart</i>
-                                        </button>
+
+                                        <form action="/gio-hang" method="POST">
+                                            @csrf
+                                            <input type="hidden" id="id" name="id" value="{{$random->id}}">
+                                            <input type="hidden" id="name" name="name" value="{{$random->name}}">
+                                            <input type="hidden" name="avatar" id="avatar"
+                                                value="{{json_encode($random->avatar)}}">
+                                            <input type="hidden" id="quantity" name="quantity" value="1">
+                                            <input type="hidden" id="price" name="price" value="{{$random->price}}">
+
+
+                                            @php
+                                            $result= array();
+                                            @endphp
+                                            @foreach ($random->value as $value)
+                                            @php
+                                            $attr = $value->attribute->name;
+                                            $result[$attr][] = $value->value;
+                                            @endphp
+                                            @endforeach
+
+                                            @foreach ($result as $key => $properties)
+                                            <input type="hidden" id="{{$key}}" name="{{$key}}"
+                                                value="{{head($properties)}}">
+                                            {{-- Head() trả về phần tử đầu tiên của mảng --}}
+                                            @endforeach
+
+
+
+
+                                            <button {{$item->quantity == 0? 'disabled' : NULL}} type="submit"
+                                                rel="tooltip" title=""
+                                                class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
+                                                data-original-title="Thêm vào giỏ hàng">
+                                                <i class="material-icons">shopping_cart</i>
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
 
