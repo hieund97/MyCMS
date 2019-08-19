@@ -4,12 +4,12 @@
   }
 
   .disabled {
-    pointer-events:none; 
-    opacity:0.6;         
+    pointer-events: none;
+    opacity: 0.6;
   }
 </style>
 <div class="sidebar" data-color="rose" data-background-color="black"
-  data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">  
+  data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">
   <div class="logo">
     <a href="/admin" class="simple-text logo-normal">
       <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
@@ -124,10 +124,10 @@
                 <span class="sidebar-mini"> DSD </span>
                 <span class="sidebar-normal"> Danh sách danh mục </span>
               </a>
-            </li>            
+            </li>
           </ul>
         </div>
-      </li>      
+      </li>
       <li
         class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">
         <a class="nav-link {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? null : 'collapsed'}}"
@@ -163,42 +163,6 @@
           </ul>
         </div>
       </li>
-      {{-- <li class="nav-item ">
-        <a class="nav-link" data-toggle="collapse" href="#mapsExamples">
-          <i class="material-icons">sentiment_satisfied_alt</i>
-          <p> Khách hàng
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse" id="mapsExamples">
-          <ul class="nav">
-            <li class="nav-item pad">
-              <a class="nav-link" href="../examples/maps/google.html">
-                <span class="sidebar-mini"> DK </span>
-                <span class="sidebar-normal"> Danh sách khách hàng </span>
-              </a>
-            </li>
-            <li class="nav-item pad">
-              <a class="nav-link" href="../examples/maps/fullscreen.html">
-                <span class="sidebar-mini"> ĐG </span>
-                <span class="sidebar-normal"> Khách hàng đánh giá </span>
-              </a>
-            </li>
-            <li class="nav-item pad">
-              <a class="nav-link" href="../examples/maps/fullscreen.html">
-                <span class="sidebar-mini"> GD </span>
-                <span class="sidebar-normal"> Giao dịch khách hàng </span>
-              </a>
-            </li>
-            <li class="nav-item pad">
-              <a class="nav-link" href="../examples/maps/fullscreen.html">
-                <span class="sidebar-mini"> LS </span>
-                <span class="sidebar-normal"> Lịch sử giao dịch </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
       <li class="nav-item ">
         <a class="nav-link" href="/admin/order">
           <i class="material-icons">calendar_today</i>
@@ -209,6 +173,18 @@
         <a class="nav-link" href="/admin/slider">
           <i class="material-icons">perm_media</i>
           <p> Slider </p>
+        </a>
+      </li>
+      <li class="nav-item {{Request::segment(2) === 'ship-method' ? 'active' : null}}">
+        <a class="nav-link" href="/admin/ship-method">
+          <i class="material-icons">motorcycle</i>
+          <p> Đơn vị vận chuyển </p>
+        </a>
+      </li>
+      <li class="nav-item {{Request::segment(2) === 'pay-method' ? 'active' : null}}">
+        <a class="nav-link" href="/admin/pay-method">
+          <i class="material-icons">payment</i>
+          <p> Phương thức thanh toán </p>
         </a>
       </li>
       <li class="nav-item {{Request::segment(2) === 'contact'    ? 'active' : null}}">

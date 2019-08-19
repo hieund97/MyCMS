@@ -36,10 +36,10 @@
                     </tbody>
                     <tr>
                         <td class="do-dai">
-                            Đơn hàng số:
+                            Mã đơn hàng
                         </td>
                         <td>
-                            690009
+                            {{$orders->order_code}}
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +47,23 @@
                             Ngày mua
                         </td>
                         <td>
-                            Oct 03, 2017
+                            {{$orders->created_at}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Số sản phẩm
+                        </td>
+                        <td>
+                            {{$orders->quantity}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Phí vận chuyển
+                        </td>
+                        <td>
+                            {{number_format($orders->ship->price)}}đ
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +71,7 @@
                             Tổng tiền
                         </td>
                         <td>
-                            4.000.000₫
+                            {{number_format($orders->total_price) }}đ
                         </td>
                     </tr>
                     <tr>
@@ -63,11 +79,13 @@
                             Phương thức thanh toán
                         </td>
                         <td>
-                            Thanh toán khi nhận hàng
+                            {{$orders->pay->name}}
                         </td>
                     </tr>
                 </table>
             </div>
+
+            @auth
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <h3>Địa chỉ nhận hàng
                 </h3>
@@ -84,7 +102,7 @@
                             Họ và tên
                         </td>
                         <td>
-                            Nguyễn Đức Hiếu
+                            {{auth()->user()->last_name}} {{auth()->user()->first_name}}
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +110,7 @@
                             Số điện thoại
                         </td>
                         <td>
-                            0359717468
+                            {{auth()->user()->phone}}
                         </td>
                     </tr>
                     <tr>
@@ -100,12 +118,71 @@
                             Địa chỉ nhận hàng
                         </td>
                         <td>
-                            11/15 Ngõ Tô Tiền, Khâm Thiên, Đống Đa, Hà Nội
+                            {{$orders->address}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Ghi chú
+                        </td>
+                        <td>
+                            {{$orders->note == NULL ?'Không có chú thích': $orders->note}}
                         </td>
                     </tr>
 
                 </table>
             </div>
+            @endauth
+
+            @guest
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <h3>Địa chỉ nhận hàng
+                </h3>
+                <table class="table">
+                    <thead>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tr>
+                        <td class="do-dai">
+                            Họ và tên
+                        </td>
+                        <td>
+                            {{$orders->guest->client_name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Số điện thoại
+                        </td>
+                        <td>
+                            {{$orders->guest->phone}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Địa chỉ nhận hàng
+                        </td>
+                        <td>
+                            {{$orders->address}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="do-dai">
+                            Ghi chú
+                        </td>
+                        <td>
+                            {{$orders->note == NULL ?'Không có chú thích': $orders->note}}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            @endguest
+
         </div>
     </div>
 

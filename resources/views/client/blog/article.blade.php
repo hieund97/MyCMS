@@ -17,7 +17,7 @@
             <div class="section section-blog-info">
                 <div class="row">
                     <hr />
-                    <h3>Tác giả: {{$blog->users->last_name}} {{$blog->users->first_name}}</h3>                    
+                    <h3>Tác giả: {{$blog->users->last_name}} {{$blog->users->first_name}}</h3>
                 </div>
             </div>
 
@@ -144,19 +144,18 @@
                         @foreach ($hots as $hot)
                         <div class="col-md-4">
                             <div class="card card-plain card-blog">
-                                <div class="card-image">
-                                    <a href="/blogs/{{$blog->slug}}">
+                                <a href="/bai-viet/{{$blog->slug}}">
+                                    <div class="card-image">
                                         <img class="img img-raised" src=" {{$hot->thumbnail}}" />
-                                    </a>
-                                </div>
-
+                                    </div>
+                                </a>
                                 <div class="card-content">
                                     <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
                                     <h4 class="card-title">
-                                        <a href="/blogs/{{$blog->slug}}">{{$hot->title}}</a>
+                                        <a href="/bai-viet/{{$blog->slug}}">{{$hot->title}}</a>
                                     </h4>
                                     <p class="card-description"> {{$hot->short_decription}} <b><a
-                                                href="/blogs/{{$blog->slug}}"> Read More </a></p></b>
+                                                href="/bai-viet/{{$blog->slug}}"> Read More </a></p></b>
                                 </div>
                             </div>
                         </div>
@@ -170,4 +169,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

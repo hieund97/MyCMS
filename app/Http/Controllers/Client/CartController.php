@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\Payment_Method;
+use App\Models\Ship_Method;
+use Illuminate\Support\Facades\Auth;
 use Cart;
 
 class CartController extends Controller
@@ -44,16 +48,25 @@ class CartController extends Controller
                 'img' => json_decode($request->avatar)
             ]
         ]);
+
+        
         switch ($request->add) {
             case 'paynow':
-            return redirect('/gio-hang/thanh-toan');
+                return redirect('/gio-hang/thanh-toan');
                 break;
 
             case 'addtocart':
-            return back();
+                return back();
+                break;
+
+            default:
+                return back();
                 break;
         }
-        
+    }
+
+    public function update($rowId, $qty){
+        Cart::update($rowId, $qty);
     }
 
 
@@ -63,12 +76,21 @@ class CartController extends Controller
         return response()->json([], 204);
     }
 
-    public function checkout(){
-       
-        return view('client.cart.checkout');
+    
+
+    public function checkout()
+    {
+        
+        $total = (int) str_replace(',', '', Cart::total());
+        // dd($total);
+        $ships = Ship_Method::latest()->get();
+        $pays = Payment_Method::latest()->get();
+        return view('client.cart.checkout', compact('ships', 'pays', 'total'));
     }
 
-    public function complete(){
-        return view('client.cart.complete');
+    public function complete($order_code)
+    {
+        $orders = Order::where('order_code', $order_code)->firstOrFail();
+        return view('client.cart.complete', compact('orders'));
     }
 }

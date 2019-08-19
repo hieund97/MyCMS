@@ -10,7 +10,7 @@
     <div class="container">
         <div class="section">
             <h2 class="section-title text-center">{{$blog_categories->name}}</h2>
-            
+
 
             @foreach ($b_cate as $post)
             <div class="blogs-3" style="padding-bottom: 0px; padding-top: 0px;">
@@ -59,20 +59,18 @@
                     @foreach ($hots as $hot)
                     <div class="col-md-4">
                         <div class="card card-plain card-blog">
-                            <div class="card-image">
-                                <a href="/bai-viet/{{$hot->slug}}">
+                            <a href="/bai-viet/{{$hot->slug}}">
+                                <div class="card-image">
                                     <img class="img img-raised" src=" {{$hot->thumbnail}}" />
-                                </a>
-                            </div>
-
+                                </div>
+                            </a>
                             <div class="card-content">
                                 <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
                                 <h4 class="card-title">
                                     <a href="/bai-viet/{{$hot->slug}}">{{$hot->title}}</a>
                                 </h4>
                                 <p class="card-description"> {{$hot->short_decription}} <b><a
-                                            href="/bai-viet/{{$hot->slug}}">
-                                            Read More </a></p></b>
+                                            href="/bai-viet/{{$hot->slug}}"> Read More </a></p></b>
                             </div>
                         </div>
                     </div>

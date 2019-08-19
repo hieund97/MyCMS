@@ -34,4 +34,15 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Image_product', 'product_id', 'id');
     }
+
+    public function order()
+    {
+        return $this->belongsToMany('App\Models\Order', 'product_order_pivot', 'product_id', 'order_id');
+    }
+
+    public function attr_order()
+    {
+        return $this->hasMany('App\Models\Attr_Order', 'product_id', 'id');
+    }
+    
 }

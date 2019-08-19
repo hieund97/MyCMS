@@ -42,7 +42,8 @@
                                 <small></small>{{number_format($item->price)}} ₫
                             </td>
                             <td class="td-number">
-                                <input type="number" value="{{$item->qty}}" min="1" max="99"
+                                <input type="number" onchange="updateCart('{{$item->rowId}}',this.value)"
+                                    value="{{$item->qty}}" min="1" max="99"
                                     style="width: 50px;padding-left: 10px;font-family: 'Pacifico', cursive;font-size: 16px;margin-top: 10px;padding-top: 5px;padding-bottom: 5px;margin-right: 10px;">
 
                             </td>
@@ -75,7 +76,8 @@
                             <td class="td-price">
                                 <small></small>{{Cart::total(0,'',',')}} ₫
                             </td>
-                            <td colspan="3" class="text-right"> <a href="/gio-hang/thanh-toan" class="btn btn-info btn-round">Đi
+                            <td colspan="3" class="text-right"> <a href="/gio-hang/thanh-toan"
+                                    class="btn btn-info btn-round {{Cart::content()->count() > 0? '': 'disabled'}}">Đi
                                     đến thanh toán <i class="material-icons">keyboard_arrow_right</i></button></td>
 
                         </tr>
@@ -146,5 +148,11 @@
 				})	
 		});
 	});
+
+    function updateCart(rowId,qty){
+       $.get('/gio-hang/cap-nhat/' + rowId + '/' + qty, function(){
+            window.location.reload();
+       });
+    }
 </script>
 @endpush

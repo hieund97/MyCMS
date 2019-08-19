@@ -159,17 +159,39 @@ Route::group([
             'prefix' => 'subcribe'
         ], function () {
             Route::get('/', 'SubcribeController@index');
-            Route::delete('/{subcribe}/delete','SubcribeController@destroy' );
+            Route::delete('/{subcribe}/delete', 'SubcribeController@destroy');
         });
 
-        // Admin Contact Controller
+        // Admin Contact Route
         Route::group([
             'prefix' => 'contact'
         ], function () {
             Route::get('/', 'ContactController@index');
-            Route::delete('/{contact}/delete','ContactController@destroy');
+            Route::delete('/{contact}/delete', 'ContactController@destroy');
         });
-        
+
+
+        // Admin Ship Method Route
+        Route::group([
+            'prefix' => 'ship-method'
+        ], function () {
+            Route::get('/', 'ShipMethodController@index');
+            Route::post('/', 'ShipMethodController@store');
+            Route::get('/{ship_method}/edit', 'ShipMethodController@edit');
+            Route::put('/{ship_method}/edit', 'ShipMethodController@update');
+            Route::delete('/{ship_method}/delete', 'ShipMethodController@destroy');
+        });
+
+        // Admin Ship Method Route
+        Route::group([
+            'prefix' => 'pay-method'
+        ], function () {
+            Route::get('/', 'PayMethodController@index');
+            Route::post('/', 'PayMethodController@store');
+            Route::get('/{payment_method}/edit', 'PayMethodController@edit');
+            Route::put('/{payment_method}/edit', 'PayMethodController@update');
+            Route::delete('/{payment_method}/delete', 'PayMethodController@destroy');
+        });
     });
 });
 
@@ -188,21 +210,20 @@ Route::group([
 ], function () {
     // Client Home Route
     Route::get('/', 'HomeController@index');
-    Route::get('/thong-tin', 'HomeController@about');    
+    Route::get('/thong-tin', 'HomeController@about');
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout');
     Route::post('/register', 'RegisterController@store');
     Route::get('/ho-tro-khach-hang', 'HomeController@support');
-    Route::get('/thanh-toan', 'HomeController@checkout');
 
     // test Route
-    Route::get('/test', 'HomeController@test');
+    Route::post('/test', 'HomeController@test');
 
     //  Client Blog Route
     Route::group([
         'prefix' => 'bai-viet'
     ], function () {
-        Route::get('/', 'BlogController@index');       
+        Route::get('/', 'BlogController@index');
         Route::get('/{slug}', 'BlogController@articles');
         Route::get('/danh-muc/{b_cate_slug}', 'BlogController@category');
     });
@@ -212,14 +233,14 @@ Route::group([
     Route::group([
         'prefix' => 'san-pham'
     ], function () {
-        Route::get('/', 'ProductController@index');       
+        Route::get('/', 'ProductController@index');
         Route::get('/{p_slug}', 'ProductController@item');
         Route::get('/loc-san-pham', 'ProductController@filter');
-    });   
-    
+    });
+
     // Client Filter Product
     Route::get('/loc-san-pham', 'ProductController@filter');
-    
+
 
     // Client Blog Category Route
     // Route::get('{b_cate_slug}', 'Blog_CategoryController@index');
@@ -229,7 +250,7 @@ Route::group([
     Route::group([
         'prefix' => 'danh-muc'
     ], function () {
-        Route::get('/{p_cate_slug}', 'CategoryController@category');        
+        Route::get('/{p_cate_slug}', 'CategoryController@category');
     });
 
     // Client User Route
@@ -246,9 +267,18 @@ Route::group([
     ], function () {
         Route::get('/', 'CartController@index');
         Route::post('/', 'CartController@add');
+        Route::get('/cap-nhat/{rowId}/{qty}', 'CartController@update');
         Route::delete('/xoa-san-pham/{id}', 'CartController@delete');
         Route::get('/thanh-toan', 'CartController@checkout');
-        Route::get('/hoan-thanh', 'CartController@complete');
+        Route::get('/hoan-thanh/{order_code}', 'CartController@complete');
+    });
+
+
+    Route::group([
+        'prefix' => 'don-hang'
+    ], function () {
+        Route::get('/', 'OrderController@order');
+        Route::post('/', 'OrderController@storeOrder');
     });
 
     // Client Subcribe Route
@@ -260,9 +290,5 @@ Route::group([
     ], function () {
         Route::get('/', 'HomeController@contact');
         Route::post('/', 'ContactController@store');
-    }); 
-    
-
-    
-
+    });
 });

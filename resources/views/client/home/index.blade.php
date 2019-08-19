@@ -70,7 +70,7 @@
 
 
 
-                                                    <button type="submit" rel="tooltip" title=""
+                                                    <button {{$sale->quantity == 0? 'disabled' : NULL}} type="submit" rel="tooltip" title=""
                                                         class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                                         data-original-title="Thêm vào giỏ hàng">
                                                         <i class="material-icons">shopping_cart</i>
@@ -216,7 +216,7 @@
 
 
 
-                                        <button type="submit" id="btn-cart-feature" rel="tooltip" title=""
+                                        <button {{$feature->quantity == 0? 'disabled' : NULL}} type="submit" id="btn-cart-feature" rel="tooltip" title=""
                                             class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                             data-original-title="Thêm vào giỏ hàng">
                                             <i class="material-icons">shopping_cart</i>

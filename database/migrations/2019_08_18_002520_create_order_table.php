@@ -14,12 +14,13 @@ class CreateOrderTable extends Migration
     public function up()
     {
         Schema::create('order', function (Blueprint $table) {
-            $table->bigIncrements('order_id');
-            $table->string('client_name')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('email')->nullable();
-            $table->string('status')->nullable();
+            $table->bigIncrements('id');
+            $table->string('order_code')->unique();
+            $table->string('color');
+            $table->string('size');
+            $table->unsignedDecimal('total_price',15,2)->default(0);
+            $table->unsignedDecimal('ship_price',15,2)->default(0);
+            $table->integer('quantity');           
             $table->timestamps();
         });
     }

@@ -366,6 +366,7 @@
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="{{ asset('client/js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
 
+
 <!-- Fixed Sidebar Nav - JS For Demo Purpose, Don't Include it in your project -->
 {{-- <script src="{{ asset('client/assets-for-demo/modernizr.js') }}" type="text/javascript"></script>
 <script src="{{ asset('client/assets-for-demo/vertical-nav.js') }}" type="text/javascript"></script> --}}

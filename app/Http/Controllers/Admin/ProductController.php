@@ -87,13 +87,14 @@ class ProductController extends Controller
             'avatar' => asset('media/avatar') . '/' . $avatarName
         ]);
 
-        // Add Value
+        // Add Category
         $cate_array = array();
         foreach ($request->category as $cate) {
             $cate_array[] = $cate;
         }
         $product->categories()->attach($cate_array);
 
+        // Add Value
         $value_array = array();
         foreach ($request->attr as $value) {
             foreach ($value as $item) {
