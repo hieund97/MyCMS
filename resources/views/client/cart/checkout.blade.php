@@ -277,7 +277,7 @@
                                 </td>
                                 <td class="td-number">
                                     <span>{{$item->qty}}</span>
-                                    <input type="hidden" name="quantity" value="{{$item->qty}}">
+                                    
                                 </td>
                                 <td class="td-number">
                                     <small></small>{{number_format($item->price*$item->qty)}}₫
@@ -291,6 +291,7 @@
 
                             </tr>
                             @endforelse
+                            <input type="hidden" name="quantity" value="{{$quantity}}">
 
 
 
@@ -329,7 +330,7 @@
                                 <td class="text-right" style="font-size: 30px">
                                     <span class="ship hide" id="total2"></span>
                                     <input type="hidden" name="total_price" id="total_price"
-                                        value="{{(int) str_replace(',', '', Cart::total()) + 20000}}">
+                                        value="">
                                 </td>
                             </tr>
                         </tfoot>

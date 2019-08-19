@@ -80,12 +80,13 @@ class CartController extends Controller
 
     public function checkout()
     {
-        
+        $quantity = Cart::content()->count();
+        // dd( $quantity);
         $total = (int) str_replace(',', '', Cart::total());
         // dd($total);
         $ships = Ship_Method::latest()->get();
         $pays = Payment_Method::latest()->get();
-        return view('client.cart.checkout', compact('ships', 'pays', 'total'));
+        return view('client.cart.checkout', compact('ships', 'pays', 'total', 'quantity'));
     }
 
     public function complete($order_code)

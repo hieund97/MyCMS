@@ -14,10 +14,6 @@ use Illuminate\Support\Carbon;
 
 class OrderController extends Controller
 {
-    public function order()
-    {
-        return view('client.user.order');
-    }
 
     public function storeOrder(Request $request)
     {
@@ -30,9 +26,9 @@ class OrderController extends Controller
                 'name' => 'required',
                 'phone' => 'required',
                 'address' => 'required',
-                'ship'=> 'required',
+                'ship' => 'required',
                 'pay' => 'required',
-                
+
             ],
             [
                 'require' => 'Trường này trống cmnr',
@@ -43,22 +39,21 @@ class OrderController extends Controller
             $order = Order::create([
                 'order_code' => rand(),
                 'note' => $request->note,
-                'total_price' => $request->total_price,
-                'pay_id' => $request->pay,
-                'ship_id' => $request->shiphidden,                
                 'quantity' => $request->quantity,
+                'total_price' =>$request->total_price,
+                'pay_id' => $request->pay,
+                'ship_id' => $request->shiphidden,
                 'address' => $request->address,
                 'user_id' => $request->user_id,
 
             ]);
             $order->save();
             foreach (Cart::content() as $key => $product) {
-                // dd($product);
-                $product_array = array();
-                $product_array[] = $product->id;
-                $order->product()->attach($product_array);
+                // dd($product);               
 
                 $attr = Attr_Order::create([
+                    'price' => $product->price * $product->qty,
+                    'quantity' => $product->qty,
                     'color' => $product->options->color,
                     'size' => $product->options->size,
                     'order_id' => $order->id,
@@ -79,11 +74,11 @@ class OrderController extends Controller
 
             $order = Order::create([
                 'order_code' => rand(),
-                'note' => $request->note,
-                'total_price' => $request->total_price,
-                'pay_id' => $request->pay,
-                'ship_id' => $request->shiphidden, 
                 'quantity' => $request->quantity,
+                'total_price' =>$request->total_price,
+                'note' => $request->note,
+                'pay_id' => $request->pay,
+                'ship_id' => $request->shiphidden,
                 'address' => $request->address,
                 'guest_id' => $guest->id,
 
@@ -91,11 +86,10 @@ class OrderController extends Controller
             $order->save();
             foreach (Cart::content() as $key => $product) {
                 // dd($product);
-                $product_array = array();
-                $product_array[] = $product->id;
-                $order->product()->attach($product_array);
 
                 $attr = Attr_Order::create([
+                    'price' => $product->price * $product->qty,
+                    'quantity' => $product->qty,
                     'color' => $product->options->color,
                     'size' => $product->options->size,
                     'order_id' => $order->id,

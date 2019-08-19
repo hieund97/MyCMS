@@ -59,7 +59,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/don-hang">
+                                    <a href="/thanh-vien/{{$user->slug}}/don-hang">
                                         <i class="material-icons">shopping_basket</i>
                                         Lịch sử mua hàng
                                     </a>

@@ -262,6 +262,8 @@ Route::group([
         Route::put('{slug}', 'UserController@update');
         Route::get('/{slug}/doi-mat-khau', 'UserController@updatepass');
         Route::put('/{slug}/doi-mat-khau', 'UserController@changepass');
+        Route::get('/{slug}/don-hang', 'UserController@order');
+        Route::put('/huy-don-hang/{id}', 'UserController@cancelorder');
     });
 
     // Client Cart Route
@@ -279,8 +281,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'don-hang'
-    ], function () {
-        Route::get('/', 'OrderController@order');
+    ], function () {        
         Route::post('/', 'OrderController@storeOrder');
     });
 

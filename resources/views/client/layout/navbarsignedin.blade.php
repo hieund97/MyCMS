@@ -58,7 +58,7 @@
                             <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
                         </li>
                         <li>
-                            <a href="/don-hang">Đơn hàng của tôi</a>
+                            <a href="/thanh-vien/{{auth()->user()->slug}}/don-hang">Đơn hàng của tôi</a>
                         </li>
                         <li style="display: {{auth()->user()->level == 1? 'block':'none'}}">
                             <a href="/admin">Trang quản trị</a>

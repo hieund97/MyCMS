@@ -18,6 +18,7 @@ class CreateOrderTable extends Migration
             $table->string('order_code')->unique();
             $table->string('color');
             $table->string('size');
+            $table->integer('quantity'); 
             $table->unsignedDecimal('total_price',15,2)->default(0);
             $table->unsignedDecimal('ship_price',15,2)->default(0);
             $table->integer('quantity');           

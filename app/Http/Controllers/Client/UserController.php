@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Attr_Order;
+use App\Models\Order;
 use App\Models\User;
 
 class UserController extends Controller
@@ -24,8 +26,7 @@ class UserController extends Controller
                 'avatar' => asset('media/avatar') . '/' . $avatarName
             ]);
         }       
-        $user->fill([
-            'company' => $request->company,
+        $user->update([            
             'user_name' => $request->username,
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
@@ -35,7 +36,6 @@ class UserController extends Controller
             'country' => $request->country,
             'phone' => $request->phone,
             'about_me' => $request->aboutme,
-            'level' => $request->level,
             'slug' => str_slug($request->username, '-')
 
         ]);
@@ -65,5 +65,21 @@ class UserController extends Controller
         ]);
         session()->flash('change_pass', 'success');
         return redirect('/thanh-vien/' . $user->slug);
+    }
+
+    public function order($slug)
+    {
+        $user = User::where('slug', $slug)->firstOrFail();
+        $orders = Order::where('user_id', $user->id)->paginate(5);
+        // dd($orders);
+        return view('client.user.order', compact('user', 'orders'));
+    }
+
+    public function cancelorder(Request $request, $id){
+        $attr_order = Attr_Order::where('id', $id)->firstOrFail();
+        $attr_order->update([
+            'status' => $request->status,
+        ]);
+        return response()->json([], 204);
     }
 }
