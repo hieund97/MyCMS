@@ -171,6 +171,16 @@ Route::group([
         });
 
 
+        // Admin Order Route
+        Route::group([
+            'prefix' => 'order'
+        ], function () {
+            Route::get('/', 'OrderController@index');
+            Route::put('/cancel/{id}','OrderController@cancel');
+            Route::get('/{id}/edit','OrderController@edit');
+        });
+
+
         // Admin Ship Method Route
         Route::group([
             'prefix' => 'ship-method'

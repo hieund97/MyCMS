@@ -26,7 +26,7 @@
               Xem trang web
             </span>
           </a>
-        </li>        
+        {{-- </li>        
         <li class="nav-item dropdown">
           <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -43,7 +43,7 @@
             <a class="dropdown-item" href="#">Another Notification</a>
             <a class="dropdown-item" href="#">Another One</a>
           </div>
-        </li>
+        </li> --}}
         <li class="nav-item dropdown">
           <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">

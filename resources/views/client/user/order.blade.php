@@ -78,10 +78,10 @@
                             <td class="td-number">
                                 {{$item->quantity}}
                             </td>
-                            <td class="td-number">
+                            <td class="td-number" style="{{$item->status == 2? 'text-decoration: line-through':''}}">
                                 {{number_format($order->ship->price)}}đ
                             </td>
-                            <td class="td-number">
+                            <td class="td-number" style="{{$item->status == 2? 'text-decoration: line-through':''}}">
                                 {{number_format($item->price * $item->quantity)}}đ
                             </td>
                             <td class="td-action text-right">

@@ -163,7 +163,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item ">
+      <li class="nav-item {{Request::segment(2) === 'order' ? 'active' : null}}">
         <a class="nav-link" href="/admin/order">
           <i class="material-icons">calendar_today</i>
           <p> Đơn hàng </p>
