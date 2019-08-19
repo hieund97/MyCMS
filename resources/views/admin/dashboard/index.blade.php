@@ -4,7 +4,7 @@
 <div class="content">
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="card ">
                         <div class="card-header card-header-success card-header-icon">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
                 7 days
             </button>
@@ -120,9 +120,6 @@
                         </div>
                         <div class="card-body">
                             <div class="card-actions">
-                                {{-- <button type="button" class="btn btn-danger btn-link fix-broken-card">
-              <i class="material-icons">build</i> Fix Header!
-            </button> --}}
                                 <button type="button" class="btn btn-info btn-link" rel="tooltip"
                                     data-placement="bottom" title="Refresh">
                                     <i class="material-icons">refresh</i>

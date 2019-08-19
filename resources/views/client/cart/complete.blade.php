@@ -24,7 +24,7 @@
         </div>
         <div class="container" style="margin-top:50px ">
             <div class="col-md-6 col-sm-12 col-xs-12" style="border-right: 1px solid #C8C8C8">
-                <h3>Thông tin đơn hàng
+                <h3 class="text-center">Thông tin đơn hàng
                 </h3>
                 <table class="table">
                     <thead>
@@ -87,8 +87,7 @@
 
             @auth
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <h3>Địa chỉ nhận hàng
-                </h3>
+                <h3 class="text-center">Thông tin khách hàng</h3>
                 <table class="table">
                     <thead>
                         <th></th>
@@ -136,7 +135,7 @@
 
             @guest
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <h3>Địa chỉ nhận hàng
+                <h3 class="text-center">Thông tin khách hàng
                 </h3>
                 <table class="table">
                     <thead>

@@ -259,6 +259,9 @@ Route::group([
     ], function () {
         Route::get('/uu-dai', 'HomeController@member');
         Route::get('/{slug}', 'UserController@detail');
+        Route::put('{slug}', 'UserController@update');
+        Route::get('/{slug}/doi-mat-khau', 'UserController@updatepass');
+        Route::put('/{slug}/doi-mat-khau', 'UserController@changepass');
     });
 
     // Client Cart Route
