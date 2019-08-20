@@ -178,6 +178,7 @@ Route::group([
             Route::get('/', 'OrderController@index');
             Route::put('/cancel/{id}','OrderController@cancel');
             Route::get('/{id}/edit','OrderController@edit');
+            Route::post('/{id}/edit','OrderController@update');
         });
 
 

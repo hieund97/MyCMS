@@ -36,7 +36,7 @@
                     @if ($navCate->childs->count() > 0)
                     <ul class="dropdown-menu" style="margin-top: 0px;">
                         @foreach ($navCate->childs as $item)
-                        <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>
+                        <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>                        
                         <li class="divider"></li>
                         @endforeach
                     </ul>
@@ -81,9 +81,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/gio-hang">Giỏ hàng
                         <i class="material-icons">shopping_cart</i>
-                    <span style="display: {{Cart::content()->count() > 0?'block':'none'}}" class="notification_cart">{{Cart::content()->count()}}</span>
+                        <span style="display: {{Cart::content()->count() > 0?'block':'none'}}"
+                            class="notification_cart">{{Cart::content()->count()}}</span>
                     </a>
-                </li>                
+                </li>
                 <li class="li-mar">
                     <div class="added__animation">
                         <span>+1</span>

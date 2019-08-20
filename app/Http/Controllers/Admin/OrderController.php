@@ -17,8 +17,17 @@ class OrderController extends Controller
 
     public function edit($id){
         $attr_order = Attr_Order::where('id', $id)->firstOrFail();
-        return view('admin.order.edit');
+        return view('admin.order.edit', compact('attr_order'));
 
+    }
+
+    public function update(Request $request, $id){
+        $attr_order = Attr_Order::where('id', $id)->firstOrFail();
+        $attr_order->update([
+            'status' => $request->status,
+        ]);
+        session()->flash('update_order', 'success');
+        return redirect('/admin/order');
     }
 
     public function cancel(Request $request, $id){

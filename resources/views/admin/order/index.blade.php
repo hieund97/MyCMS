@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <div class="col-md-12">
-        @if (session()->has('update_image'))
+        @if (session()->has('update_order'))
         <div class="alert alert-success">
             <div class="container">
                 <div class="alert-icon">
@@ -16,45 +16,7 @@
             </div>
         </div>
         @endif
-        @if (session()->has('edit_price'))
-        <div class="alert alert-success">
-            <div class="container">
-                <div class="alert-icon">
-                    <i class="material-icons">check</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-            </div>
-        </div>
-        @endif
-        @if (session()->has('upload_image'))
-        <div class="alert alert-success">
-            <div class="container">
-                <div class="alert-icon">
-                    <i class="material-icons">check</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-            </div>
-        </div>
-        @endif
-        @if (session()->has('update_product'))
-        <div class="alert alert-success">
-            <div class="container">
-                <div class="alert-icon">
-                    <i class="material-icons">check</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>SỬA THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-            </div>
-        </div>
-        @endif
+        
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
                 <div class="card-icon">
