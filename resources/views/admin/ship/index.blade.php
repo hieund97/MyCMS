@@ -36,20 +36,11 @@
                         <div class="card-icon">
                             <i class="material-icons">book</i>
                         </div>
-                        <h4 class="card-title">Danh sách đơn vị vận chuyển</h4>
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h4 class="card-title">Danh sách đơn vị vận chuyển</h4>                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="shiptable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
@@ -339,6 +330,9 @@
 					}
 				})	
 		});
-	});
+    });
+$(document).ready( function () {
+    $('#shiptable').DataTable();
+} ); 
 </script>
 @endpush

@@ -23,20 +23,11 @@
                         <div class="card-icon">
                             <i class="material-icons">book</i>
                         </div>
-                        <h4 class="card-title">Danh sách bài viết</h4>
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h4 class="card-title">Danh sách bài viết</h4>                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="blogtable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">ID</th>
@@ -75,11 +66,13 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="photo">
-                                                <a href="/admin/blog/{{$blog->id}}/edit"><img style=" width: 100px; height: 80px;"
-                                                    src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" /></a>
+                                                <a href="/admin/blog/{{$blog->id}}/edit"><img
+                                                        style=" width: 100px; height: 80px;"
+                                                        src="{{$blog->thumbnail&&$blog->thumbnail!==''?$blog->thumbnail:asset ('manage/img/noimage.png') }}" /></a>
                                             </div>
                                         </td>
-                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/blog/{{$blog->id}}/edit">{{$blog->title}}</a>
+                                        <td><a style="font-weight: bold; font-size: 120%;"
+                                                href="/admin/blog/{{$blog->id}}/edit">{{$blog->title}}</a>
                                         </td>
                                         <td class="text-center">
                                             {{$blog->blog_category->name}}
@@ -92,15 +85,16 @@
                                             <label style="padding-right: 10px;padding-left: 10px;"
                                                 class="btn btn-info">Published</label>
                                         </td>
-                                        <td class="td-actions"
-                                            style="width: 106px;padding-right: 0px;">
+                                        <td class="td-actions" style="width: 106px;padding-right: 0px;">
                                             <button type="button" rel="tooltip" class="btn btn-info btn-round"
                                                 data-id="" data-original-title="Xem">
-                                                <a style="color:white;" href="/bai-viet/{{$blog->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
+                                                <a style="color:white;" href="/bai-viet/{{$blog->slug}}"
+                                                    target="_blank"><i class="material-icons">visibility</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
-                                                <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i class="material-icons">edit</i></a>
+                                                <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i
+                                                        class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
                                                 data-id="{{$blog->id}}" data-original-title="Xóa">
@@ -112,22 +106,25 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{$blogs->links()}}
                                 <a href="/admin/blog/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm bài viết</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endsection
-                @push('js')
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@push('js')
 
-                {{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}">
-                --}}
-                {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}">
+--}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
 
-                <script>
-                    $(document).ready(function(){
+<script>
+    $(document).ready(function(){
 		$('.btn-del').click(function(e){		
             e.preventDefault();
             console.log('im in');
@@ -183,6 +180,9 @@
 					}
 				})	
 		});
-	});
-                </script>
-                @endpush
+    });
+    $(document).ready( function () {
+    $('#blogtable').DataTable();
+} );
+</script>
+@endpush

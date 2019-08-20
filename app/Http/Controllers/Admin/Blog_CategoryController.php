@@ -11,7 +11,7 @@ use App\Models\Blog;
 class Blog_CategoryController extends Controller
 {
     public function index(){
-        $blog_categories = Blog_Category::paginate(5);
+        $blog_categories = Blog_Category::all();
         return view('admin.blog_category.index', compact('blog_categories'));
     }
 

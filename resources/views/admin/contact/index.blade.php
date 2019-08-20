@@ -12,19 +12,11 @@
                         </div>
                         <h2 class="card-title">Danh sách thông tin liên hệ</h2>
 
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="contacttable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 50px;">id</th>
@@ -77,10 +69,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
-                            <div>
-                                {{$contacts->links()}}
-                            </div>
+                            </table>                            
                         </div>
                     </div>
                 </div>
@@ -148,6 +137,10 @@
 					}
 				})	
 		});
-	});
+    });
+
+$(document).ready( function () {
+    $('#contacttable').DataTable();
+} );
 </script>
 @endpush

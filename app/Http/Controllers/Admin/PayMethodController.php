@@ -11,7 +11,7 @@ class PayMethodController extends Controller
 {
     public function index()
     {
-        $pay_method = Payment_Method::paginate(5);
+        $pay_method = Payment_Method::all();
         return view('admin.pay.index', compact('pay_method'));
     }
 

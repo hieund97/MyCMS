@@ -37,19 +37,10 @@
                             <i class="material-icons">book</i>
                         </div>
                         <h4 class="card-title">Danh sách bài viết</h4>
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="blogcatetable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
@@ -111,9 +102,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div>
-                                {{$blog_categories->links()}}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -240,6 +228,9 @@
 					}
 				})	
 		});
-	});
+    });
+$(document).ready( function () {
+    $('#blogcatetable').DataTable();
+} );
 </script>
 @endpush

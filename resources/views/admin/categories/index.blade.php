@@ -36,17 +36,7 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Danh sách danh mục</h2>
-
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Danh sách danh mục</h2>                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -56,7 +46,7 @@
                             <h4 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Danh mục chọn Navbar
                                 active sẽ xuất hiện trên thanh navbar trên trang chủ (tối đa 4 danh
                                 mục)*</h4>
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="categorytable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
@@ -158,6 +148,9 @@
 					}
 				})	
 		});
-	});
+    });
+$(document).ready( function () {
+    $('#categorytable').DataTable();
+} );
 </script>
 @endpush

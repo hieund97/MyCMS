@@ -36,23 +36,13 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Danh sách ảnh</h2>
-
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Danh sách ảnh</h2>                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <h3 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Ảnh có thuộc tính active
                                 sẽ xuất hiện trên trang chủ (tối đa 5 ảnh)*</h3>
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="slidertable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
@@ -126,7 +116,7 @@
                             <div>
                                 <a href="/admin/slider/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm ảnh</a>
-                                {{$sliders->links()}}
+                                
                             </div>
                         </div>
                     </div>
@@ -198,6 +188,9 @@
 					}
 				})	
 		});
-	});
+    });
+$(document).ready( function () {
+    $('#slidertable').DataTable();
+} ); 
 </script>
 @endpush

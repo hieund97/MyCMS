@@ -23,24 +23,15 @@
                         <div class="card-icon">
                             <i class="material-icons">face</i>
                         </div>
-                        <h4 class="card-title">Danh sách thành viên</h4>
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h4 class="card-title">Danh sách thành viên</h4>                        
                     </div>
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="usertable">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">ID</th>
+                                        <th class="text-center"></th>
                                         <th>Tên</th>
                                         <th>User Name</th>
                                         <th>Email</th>
@@ -54,7 +45,9 @@
                                     @foreach ($user as $member)
                                     <tr>
                                         <td class="text-center">{{$member->id}}</td>
-                                        <td><a style="font-weight: bold; font-size: 120%;" href="/admin/user/{{$member->id}}/edit">{{$member->last_name}} {{$member->first_name}}</a></td>
+                                        <td><a style="font-weight: bold; font-size: 120%;"
+                                                href="/admin/user/{{$member->id}}/edit">{{$member->last_name}}
+                                                {{$member->first_name}}</a></td>
                                         <td>{{$member->user_name}}</td>
                                         <td>{{$member->email}}</td>
                                         <td>{{$member->phone}}</td>
@@ -84,10 +77,10 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{$user->links()}}
+                                {{-- {{$user->links()}} --}}
                                 <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm thành viên</a>
-                                    
+
                             </div>
                         </div>
                     </div>
@@ -155,6 +148,10 @@
 					}
 				})	
 		});
-	});
+    });
+    
+$(document).ready( function () {
+    $('#usertable').DataTable();
+} );
 </script>
 @endpush

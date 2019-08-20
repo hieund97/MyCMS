@@ -11,7 +11,7 @@ use App\Models\Blog_Category;
 class BlogController extends Controller
 {
     public function index(Blog $blogs){
-        $blogs = Blog::paginate(5);
+        $blogs = Blog::all();
         // $blog_categories = Blog_Category::get();
         // $users = User::get();
         return view('admin.blog.index', compact('blogs'));

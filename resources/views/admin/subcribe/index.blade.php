@@ -10,21 +10,11 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Danh sách email đăng ký</h2>
-
-                        <div style="float:right;">
-                            <div id="datatables_filter" class="dataTables_filter">
-                                <label>
-                                    <span class="bmd-form-group bmd-form-group-sm"><input type="search"
-                                            class="form-control form-control-sm" placeholder="Search records"
-                                            aria-controls="datatables"></span>
-                                </label>
-                            </div>
-                        </div>
+                        <h2 class="card-title">Danh sách email đăng ký</h2>                        
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="subscribetable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 50px;">id</th>
@@ -75,9 +65,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div>
-                                {{$subcribe->links()}}
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -145,6 +133,9 @@
 					}
 				})	
 		});
-	});
+    });
+$(document).ready( function () {
+    $('#subscribetable').DataTable();
+} );
 </script>
 @endpush

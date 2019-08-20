@@ -9,7 +9,7 @@ use App\Models\Subcribe;
 class SubcribeController extends Controller
 {
     public function index(){
-        $subcribe = Subcribe::paginate(10);
+        $subcribe = Subcribe::all();
         return view('admin.subcribe.index', compact('subcribe'));
     }
 

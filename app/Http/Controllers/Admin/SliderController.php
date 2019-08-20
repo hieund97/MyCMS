@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class SliderController extends Controller
 {
-    public function index(Slider $slider){
-        $sliders = Slider::paginate(3);
-        return view('admin.slider.index', compact('sliders', 'slider'));
+    public function index(){
+        $sliders = Slider::all();
+        return view('admin.slider.index', compact('sliders'));
     }
 
     public function create(){

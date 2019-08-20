@@ -73,11 +73,9 @@
                             <select class="selectpicker" name="category" data-size="7"
                                 data-style="btn btn-primary btn-round" title="Single Select">
                                 <option disabled selected>Chọn chủ đề</option>
-                                @if (isset($blog_categories))
                                 @foreach ($blog_categories as $blog_category)
                                 <option value="{{$blog_category->id}}">{{$blog_category->name}}</option>
                                 @endforeach
-                                @endif
                             </select>
                         </div>
                     </div>
