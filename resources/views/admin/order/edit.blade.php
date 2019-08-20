@@ -110,7 +110,7 @@
                             <div class="row padbottom">
                                 <div class="col-md-3" style="float: left; position: relative">
                                     <div class="img-container">
-                                        <img src="{{$attr_order->product->avatar}}" title="Áo thun trễ vai">
+                                        <img src="{{$attr_order->product->avatar}}" title="{{$attr_order->product->name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-2" style="height: 80px; float: left;">

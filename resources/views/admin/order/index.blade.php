@@ -16,7 +16,7 @@
             </div>
         </div>
         @endif
-        
+
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
                 <div class="card-icon">
@@ -40,13 +40,13 @@
                             <tr>
                                 <th class="text-center" style="width: 116px;">Mã đơn hàng</th>
                                 <th style="width: 236px;">Tên khách hàng</th>
-                                <th class="th-description" style="width: 66px;">Level</th>
+                                <th class="th-description text-center" style="width: 66px;">Level</th>
                                 <th class="text-left" style="width: 196px">Ảnh Sản Phẩm</th>
-                                <th style="width: 308px;">Tên sản Phẩm</th>
+                                <th style="width: 256px;">Tên sản Phẩm</th>
                                 <th class="th-description" style="width: 66px;">Màu sắc</th>
                                 <th class="text-center" style="width: 66px;">Size</th>
-                                <th class="th-description" style="width: 116px;">Trạng thái</th>
-                                <th class="th-description" style="width: 86px;">Số lượng</th>
+                                <th class="th-description text-center" style="width: 116px;">Trạng thái</th>
+                                <th class="th-description text-right" style="width: 86px;">Số lượng</th>
                                 <th class="text-center" style="width: 126px;">Giá</th>
                                 <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
                                 <th class="text-center" style="width: 96px;">Hành động</th>
@@ -61,11 +61,15 @@
                                     <a
                                         href="/">{{$product->order->user_id == NULL?$product->order->guest->client_name: $product->order->user->last_name .' '. $product->order->user->first_name }}</a>
                                     <br />
-                                    <small>sđt
+                                    <small>SĐT:
                                         {{$product->order->user_id == NULL?$product->order->guest->phone:$product->order->user->phone}}</small>
+                                    <br />
+                                    <small>Địa chỉ nhận hàng:<br />
+                                        {{$product->order->address}}</small>
                                 </td>
                                 <td>
-                                <label class="btn-{{$product->order->user_id == NULL?'warning':'success'}}">{{$product->order->user_id == NULL?'Guest':'Member'}}</small></label>
+                                    <label
+                                        class="btn-{{$product->order->user_id == NULL?'warning':'success'}}">{{$product->order->user_id == NULL?'Guest':'Member'}}</small></label>
                                 </td>
                                 <td>
                                     <a href="/" target="_blank">
@@ -109,7 +113,8 @@
                                 <td class="text-center">
                                     {{$product->quantity}}
                                 </td>
-                                <td class="td-number text-center" style="{{$product->status == 2? 'text-decoration: line-through':''}}">
+                                <td class="td-number text-center"
+                                    style="{{$product->status == 2? 'text-decoration: line-through':''}}">
                                     {{number_format($product->price)}}đ
                                 </td>
                                 <td>
@@ -118,7 +123,8 @@
                                 <td class="td-actions">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-round"
                                         data-original-title="Cập nhật">
-                                        <a style="color:white;" href="/admin/order/{{$product->id}}/edit"><i class="material-icons">edit</i></a>
+                                        <a style="color:white;" href="/admin/order/{{$product->id}}/edit"><i
+                                                class="material-icons">edit</i></a>
                                     </button>
                                     <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
                                         data-id="{{$product->id}}" data-original-title="Hủy đơn hàng">
