@@ -17,7 +17,7 @@ class HomeController extends Controller
         $saleCategory = Categories::find(19);
         $saleProduct = $saleCategory->product()->get();
         $activeCate = Categories::where('active', '=', 1)->get();
-        $activeSlider = Slider::where('active', '=', 1)->get();
+        $activeSlider = Slider::where('active', '=', 1)->latest()->get();
        
         return view('client.home.index', compact('featureProduct', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));
     }
@@ -36,6 +36,11 @@ class HomeController extends Controller
 
     public function support(){
         return view('client.home.support');
+    }
+
+    public function search(Request $request){
+        $searchProduct = Product::where('name', 'like', '%'. $request->key . '%')->get();
+        return view('client.home.search', compact('searchProduct'));
     }
 
     

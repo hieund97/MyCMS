@@ -36,7 +36,7 @@
                     @if ($navCate->childs->count() > 0)
                     <ul class="dropdown-menu" style="margin-top: 0px;">
                         @foreach ($navCate->childs as $item)
-                        <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>                        
+                        <li class="attrli"><a href="/danh-muc/{{$item->p_cate_slug}}"> > {{$item->name}}</a></li>
                         <li class="divider"></li>
                         @endforeach
                     </ul>
@@ -91,10 +91,10 @@
                     </div>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: 10px;">
-                <form class="navbar-form navbar-right" role="search">
+            <ul class="nav navbar-nav navbar-right" style="margin-top: 20px; margin-right: 10px;">
+                <form class="navbar-form navbar-right" action="/tim-kiem-san-pham" role="search">
                     <div class="form-group form-black">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                        <input type="text" name="key" class="form-control" placeholder="Tìm kiếm sản phẩm">
                     </div>
                     <button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini"><i
                             class="material-icons">search</i></button>

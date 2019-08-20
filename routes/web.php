@@ -226,6 +226,7 @@ Route::group([
     Route::post('logout', 'LoginController@logout');
     Route::post('/register', 'RegisterController@store');
     Route::get('/ho-tro-khach-hang', 'HomeController@support');
+    Route::get('/tim-kiem-san-pham', 'HomeController@search');
 
     // test Route
     Route::post('/test', 'HomeController@test');

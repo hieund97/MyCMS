@@ -62,7 +62,7 @@ class SliderController extends Controller
             $imageName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
             $request->avatar->move(public_path('media/slider'), $imageName); // di chuyển vào thư mục trên ổ cứng
             $slider->update([
-                'avatar' => asset('media/slider') . '/' . $imageName
+                'image' => asset('media/slider') . '/' . $imageName
             ]);
         }
 
