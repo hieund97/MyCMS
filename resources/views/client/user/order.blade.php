@@ -54,7 +54,7 @@
                                 {{$item->size}}
 
                             </td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 @if ($item->status == 0)
                                 <label class="btn-info">Đã tiếp nhận yêu cầu</label>
                                 @endif

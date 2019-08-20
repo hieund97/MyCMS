@@ -99,11 +99,9 @@
                             <select class="selectpicker" name="author" data-size="7"
                                 data-style="btn btn-primary btn-round" title="Single Select">
                                 <option disabled selected>Chọn tác giả</option>
-                                @if (isset($users))
-                                @foreach ($users as $user)
+                                @foreach ($adminUser as $user)
                                 <option value="{{$user->id}}">{{$user->last_name}} {{$user->first_name}}</option>
                                 @endforeach
-                                @endif
                             </select>
                         </div>
                     </div>

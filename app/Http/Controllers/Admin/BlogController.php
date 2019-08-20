@@ -19,8 +19,8 @@ class BlogController extends Controller
 
     public function create(Blog $blog){
         $blog_categories = Blog_Category::get();
-        $users = User::where('level', '=', 1)->get();
-        return view('admin.blog.create', compact('blog', 'users', 'blog_categories'));
+        $adminUser = User::where('level', '=', 1)->get();
+        return view('admin.blog.create', compact('blog', 'adminUser', 'blog_categories'));
     }    
 
     public function edit(Blog $blog){

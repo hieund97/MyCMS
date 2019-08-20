@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Blog;
 
 
 /*
@@ -21,7 +20,8 @@ use App\Models\Blog;
 
 Route::group([
     'prefix' => 'admin',
-    'namespace' => 'admin'
+    'namespace' => 'admin',
+    'middleware' => 'CheckAdmin'
 ], function () {
     Route::get('register', 'RegisterController@register');
     Route::post('/register', 'RegisterController@store');
@@ -33,7 +33,8 @@ Route::group([
     });
 
     Route::group([
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        
     ], function () {
         Route::get('/', 'DashboardController@index');
         Route::post('logout', 'LoginController@logout');

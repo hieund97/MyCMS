@@ -60,7 +60,7 @@
                         <li>
                             <a href="/thanh-vien/{{auth()->user()->slug}}/don-hang">Đơn hàng của tôi</a>
                         </li>
-                        <li style="display: {{auth()->user()->level == 1? 'block':'none'}}">
+                        <li style="display: {{auth()->user()->level == 1? 'block':'none'}};">
                             <a href="/admin">Trang quản trị</a>
                         </li>
                         <li class="divider"></li>
@@ -91,10 +91,10 @@
                     </div>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" style="margin-top: 20px; margin-right: 10px;">
+            <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: 10px;">
                 <form class="navbar-form navbar-right" action="/tim-kiem-san-pham" role="search">
                     <div class="form-group form-black">
-                        <input type="text" name="key" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                        <input type="text" name="key" class="form-control" required placeholder="Tìm kiếm sản phẩm">
                     </div>
                     <button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini"><i
                             class="material-icons">search</i></button>
