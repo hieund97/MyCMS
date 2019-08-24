@@ -11,7 +11,24 @@ class LoginController extends Controller
     use AuthenticatesUsers;
    
     
-    protected $redirectTo = '/';    
+    public function login(Request $request){
+        $request->validate([
+            'email' => 'email',
+            'password' => 'required'
+        ], [
+            'email.email' => "Sai email rồi",
+            'password.required' => 'Thiếu ô password rồi'
+        ]);
+        
+        if (auth()->attempt(['email' => $request->email, 'password' => $request->password], $request->has('remember')? true : false)){
+            return redirect()->back();
+        };
+
+        session()->flash('message', 'Sai thông tin đăng nhập');
+        return redirect()->back();
+
+        // return response()->json([], 204);
+    }    
 
     
     public function logout(Request $request)
@@ -20,6 +37,6 @@ class LoginController extends Controller
 
         session()->invalidate();
 
-        return redirect()->intended();
+        return redirect()->back();
     }
 }

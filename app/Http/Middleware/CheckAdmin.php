@@ -17,12 +17,18 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
 
-        if (Auth::user()->level == 1) {
+        if (Auth::check()) {
+            if (Auth::user()->level == 1) {
+                return $next($request);
+            } else {
+                abort(403, 'Unauthorized action.');
+            }
+        }
+        else{
             return $next($request);
-        } else {
-            abort(403, 'Unauthorized action.');
         }
 
-        return $next($request);
+
+        
     }
 }

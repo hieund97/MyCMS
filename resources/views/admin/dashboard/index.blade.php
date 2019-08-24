@@ -5,167 +5,39 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card ">
-                        <div class="card-header card-header-success card-header-icon">
-                            <div class="card-icon">
-                                <i class="material-icons"></i>
-                            </div>
-                            <h4 class="card-title">Global Sales by Top Locations</h4>
-                        </div>
-                        <div class="card-body ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="table-responsive table-sales">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/US.png') }}"> </div>
-                                                    </td>
-                                                    <td>USA</td>
-                                                    <td class="text-right">
-                                                        2.920
-                                                    </td>
-                                                    <td class="text-right">
-                                                        53.23%
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/DE.png') }}"> </div>
-                                                    </td>
-                                                    <td>Germany</td>
-                                                    <td class="text-right">
-                                                        1.300
-                                                    </td>
-                                                    <td class="text-right">
-                                                        20.43%
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/AU.png') }}"> </div>
-                                                    </td>
-                                                    <td>Australia</td>
-                                                    <td class="text-right">
-                                                        760
-                                                    </td>
-                                                    <td class="text-right">
-                                                        10.35%
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/GB.png') }}"> </div>
-                                                    </td>
-                                                    <td>United Kingdom</td>
-                                                    <td class="text-right">
-                                                        690
-                                                    </td>
-                                                    <td class="text-right">
-                                                        7.87%
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/RO.png') }}"> </div>
-                                                    </td>
-                                                    <td>Romania</td>
-                                                    <td class="text-right">
-                                                        600
-                                                    </td>
-                                                    <td class="text-right">
-                                                        5.94%
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img src="{{ asset('manage/img/flags/BR.png') }}"> </div>
-                                                    </td>
-                                                    <td>Brasil</td>
-                                                    <td class="text-right">
-                                                        550
-                                                    </td>
-                                                    <td class="text-right">
-                                                        4.34%
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ml-auto mr-auto">
-                                    <div id="worldMap" style="height: 300px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
-                7 days
-            </button>
-            <<div class="row">
                 <div class="col-md-4">
                     <div class="card card-chart">
                         <div class="card-header card-header-rose" data-header-animation="true">
                             <div class="ct-chart" id="websiteViewsChart"></div>
                         </div>
                         <div class="card-body">
-                            <div class="card-actions">
-                                <button type="button" class="btn btn-info btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Refresh">
-                                    <i class="material-icons">refresh</i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Change Date">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                            </div>
-                            <h4 class="card-title">Website Views</h4>
-                            <p class="card-category">Last Campaign Performance</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">access_time</i> campaign sent 2 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-success" data-header-animation="true">
-                            <div class="ct-chart" id="dailySalesChart"></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-actions">
-                                <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                    <i class="material-icons">build</i> Fix Header!
-                                </button>
-                                <button type="button" class="btn btn-info btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Refresh">
-                                    <i class="material-icons">refresh</i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Change Date">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                            </div>
-                            <h4 class="card-title">Daily Sales</h4>
+                            <h4 class="card-title">Doanh thu tháng này</h4>
                             <p class="card-category">
                                 <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in
                                 today sales.</p>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">access_time</i> updated 4 minutes ago
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success" data-header-animation="true">
+                            <div class="ct-chart" id="dailySalesChart"></div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Doanh thu tuần này</h4>
+                            <p class="card-category">
+                                <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in
+                                today sales.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Cập nhật 20p trước
                             </div>
                         </div>
                     </div>
@@ -176,132 +48,121 @@
                             <div class="ct-chart" id="completedTasksChart"></div>
                         </div>
                         <div class="card-body">
-                            <div class="card-actions">
-                                <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                    <i class="material-icons">build</i> Fix Header!
-                                </button>
-                                <button type="button" class="btn btn-info btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Refresh">
-                                    <i class="material-icons">refresh</i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-link" rel="tooltip"
-                                    data-placement="bottom" title="Change Date">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                            </div>
-                            <h4 class="card-title">Completed Tasks</h4>
-                            <p class="card-category">Last Campaign Performance</p>
+                            <h4 class="card-title">Doanh thu năm nay</h4>
+                            <p class="card-category">
+                                <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in
+                                today sales.</p>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                <i class="material-icons">date_range</i> Cập nhật 20p trước
                             </div>
                         </div>
                     </div>
                 </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">weekend</i>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-warning card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">weekend</i>
+                            </div>
+                            <p class="card-category">Số đơn hàng</p>
+                            <h3 class="card-title">{{$attr_order->count()}}</h3>
                         </div>
-                        <p class="card-category">Bookings</p>
-                        <h3 class="card-title">184</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="#pablo">Get More Space...</a>
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-rose card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">equalizer</i>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-rose card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">account_circle</i>
+                            </div>
+                            <p class="card-category">Số lượng User</p>
+                            <h3 class="card-title">{{$users->count()}}</h3>
                         </div>
-                        <p class="card-category">Website Visits</p>
-                        <h3 class="card-title">75.521</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Google Analytics
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">store</i>
-                        </div>
-                        <p class="card-category">Revenue</p>
-                        <h3 class="card-title">$34,245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon">
-                        <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">store</i>
+                            </div>
+                            <p class="card-category">Số lượng sản phẩm hiện có</p>
+                            <h3 class="card-title">{{$product->count()}}</h3>
                         </div>
-                        <p class="card-category">Followers</p>
-                        <h3 class="card-title">+245</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <h3>Bài viết ngẫu nhiên</h3>
-        <br>
-        <div class="row">
-            @foreach ($blogs as $post)
-            <div class="col-md-4">
-                <div class="card card-product">
-                    <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="/blogs/{{$post->slug}}" target="_blank">
-                            <img class="img" src="{{$post->thumbnail}}">
-                        </a>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-danger card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">description</i>
+                            </div>
+                            <p class="card-category">Số lượng bài viết</p>
+                        <h3 class="card-title">{{$blog->count()}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-actions text-center">
-                            <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                                <i class="material-icons">build</i> Fix Header!
-                            </button>
-                            <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom"
-                                title="View">
-                                <a href="/blogs/{{$post->slug}}" target="_blank"><i class="material-icons">visibility</i></a>
-                            </button>
-                            <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom"
-                                title="Edit">
-                                <a href="/admin/blog/{{$post->id}}/edit"><i class="material-icons">edit</i></a>
-                            </button>                            
-                        </div>
-                        <h4 class="card-title">
-                            <a href="/blogs/{{$post->slug}} target="_blank"">{{$post->title}}</a>
-                        </h4>
-                        <div class="card-description">
-                            {{$post->short_decription}}
-                        </div>
-                    </div>                    
                 </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-primary card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">thumb_up</i>
+                            </div>
+                            <p class="card-category">Số lượng khách hàng đăng ký</p>
+                        <h3 class="card-title">{{$sub->count()}}</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">supervisor_account</i>
+                            </div>
+                            <p class="card-category">Số lượng người đang truy cập</p>
+                            <h3 class="card-title">34,245</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            @endforeach
+
 
         </div>
     </div>

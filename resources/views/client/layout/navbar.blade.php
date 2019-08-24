@@ -57,7 +57,7 @@
         </div>
     </div>
     @endif
-    @if ($errors->has('email') || $errors->has('password'))
+    @if (session()->has('message'))
     <div class="alert alert-danger">
         <div class="container">
             <div class="alert-icon">

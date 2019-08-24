@@ -104,12 +104,7 @@
             <a href="/admin/login" class="nav-link">
               <i class="material-icons">fingerprint</i> Login
             </a>
-          </li>
-          {{-- <li class="nav-item ">
-            <a href="../pages/lock.html" class="nav-link">
-              <i class="material-icons">lock_open</i> Lock
-            </a>
-          </li> --}}
+          </li>          
         </ul>
       </div>
     </div>

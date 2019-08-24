@@ -132,14 +132,7 @@
 						<form class="form" method="POST" action="/login">
 							@csrf
 							<p class="description text-center">Or Be Classical</p>
-							<div class="card-content">
-
-								{{-- <div class="input-group">
-									<span class="input-group-addon">
-										<i class="material-icons">face</i>
-									</span>
-									<input type="text" class="form-control" placeholder="First Name...">
-								</div> --}}
+							<div class="card-content">								
 
 								<div class="input-group">
 									<span class="input-group-addon">
@@ -160,7 +153,7 @@
 
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="optionsCheckboxes">
+										<input type="checkbox" name="remember">
 										Ghi nhớ đăng nhập
 									</label>
 								</div>

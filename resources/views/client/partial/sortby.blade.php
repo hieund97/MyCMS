@@ -100,7 +100,7 @@
                         @foreach ($attr->value as $value)
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="{{$value->id}}" data-toggle="checkbox">
+                                <input type="checkbox" onchange="myFunction5()" id="attr_tag" value="{{$value->id}}" data-toggle="checkbox">
                                 {{$value->value}}
                             </label>
                             <span style="float: right">({{$value->product->count()}})</span>

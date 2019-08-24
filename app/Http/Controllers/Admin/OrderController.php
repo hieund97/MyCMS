@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Attr_Order;
+use App\Models\Product;
 
 class OrderController extends Controller
 {
@@ -26,6 +27,13 @@ class OrderController extends Controller
         $attr_order->update([
             'status' => $request->status,
         ]);
+        $attr_order->save();
+        if($attr_order->status == 4){
+            $updateProduct = Product::where('id', $attr_order->product->id)->firstOrFail();
+            $updateProduct->update([
+                'quantity' => $updateProduct->quantity - $attr_order->quantity
+            ]);
+        }
         session()->flash('update_order', 'success');
         return redirect('/admin/order');
     }

@@ -33,10 +33,40 @@
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true"><i class="material-icons">clear</i></span>
 									</button>
-									<b>CÁM ƠN BẠN ĐÃ GỬI THÔNG TIN CHO CHÚNG TÔI <br> CHÚNG TÔI CỐ GẮNG SẼ PHẢN HỒI TỚI BẠN MỘT CÁCH SỚM NHẤT</b>
+									<b>CÁM ƠN BẠN ĐÃ GỬI THÔNG TIN CHO CHÚNG TÔI <br> CHÚNG TÔI CỐ GẮNG SẼ PHẢN HỒI TỚI
+										BẠN MỘT CÁCH SỚM NHẤT</b>
 								</div>
 							</div>
 							@endif
+							@auth
+							<form role="form" id="contact-form" method="POST" action="/lien-he">
+								@csrf
+								<div class="form-group label-floating">
+									<label class="control-label">Họ và tên</label>
+								<input type="text" value=" {{auth()->user()->last_name}} {{auth()->user()->first_name}}" name="name" class="form-control" required>
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Email</label>
+									<input type="email" value="{{auth()->user()->email}}" name="email" class="form-control" required />
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Số điện thoại</label>
+									<input type="text" value="{{auth()->user()->phone}}" name="phone" class="form-control" required />
+								</div>
+								<div class="form-group label-floating">
+									<label class="control-label">Nội dung</label>
+									<textarea name="message" class="form-control" id="message" rows="6"
+										required></textarea>
+								</div>
+								<div class="submit text-center">
+									<button type="submit" class="btn btn-primary btn-raised btn-round">Gửi cho chúng
+										tôi</button>
+
+								</div>
+							</form>
+							@endauth
+
+							@guest
 							<form role="form" id="contact-form" method="POST" action="/lien-he">
 								@csrf
 								<div class="form-group label-floating">
@@ -59,10 +89,12 @@
 								<div class="submit text-center">
 									<button type="submit" class="btn btn-primary btn-raised btn-round">Gửi cho chúng
 										tôi</button>
-										
+
 								</div>
 							</form>
-							
+							@endguest
+
+
 						</div>
 						<div class="col-md-4">
 							<h3 class="title">Liên hệ</h3>
