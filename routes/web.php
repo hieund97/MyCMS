@@ -49,6 +49,8 @@ Route::group([
             Route::post('/', 'UserController@store');
             Route::put('{user}', 'UserController@update');
             Route::delete('{user}', 'UserController@destroy');
+            Route::post('import', 'UserController@import');
+            Route::get('export', 'UserController@export');
         });
 
         // Admin Product Route
@@ -62,6 +64,10 @@ Route::group([
             Route::put('/{product}/edit', 'ProductController@update');
             Route::delete('/{product}/delete', 'ProductController@destroy');
             Route::post('/', 'ProductController@store');
+
+            // import and Export excel
+            Route::post('import', 'ProductController@import');
+            Route::get('export', 'ProductController@export');
 
             //price
             Route::get('/price/{product}/edit', 'ProductController@editprice');
@@ -97,6 +103,8 @@ Route::group([
             Route::put('{category}/edit', 'CategoryController@update');
             Route::post('/', 'CategoryController@store');
             Route::delete('{categories}/delete', 'CategoryController@destroy');
+            Route::post('import', 'CategoryController@import');
+            Route::get('export', 'CategoryController@export');
         });
 
         // Admin Blog Route
@@ -109,6 +117,8 @@ Route::group([
             Route::put('{blog}/edit', 'BlogController@update');
             Route::post('/', 'BlogController@store');
             Route::delete('{blog}/delete', 'BlogController@destroy');
+            Route::post('import', 'BlogController@import');
+            Route::get('export', 'BlogController@export');
         });
 
         // Admin Blog-Category Route
@@ -116,11 +126,12 @@ Route::group([
             'prefix' => 'blog-category'
         ], function () {
             Route::get('/', 'Blog_CategoryController@index');
-            // Route::get('/create', 'Blog_CategoryController@create');
             Route::post('/', 'Blog_CategoryController@store');
             Route::get('{blog_category}/edit', 'Blog_CategoryController@edit');
             Route::put('{blog_category}/edit', 'Blog_CategoryController@update');
             Route::delete('{blog_category}/delete', 'Blog_CategoryController@destroy');
+            Route::post('import', 'Blog_CategoryController@import');
+            Route::get('export', 'Blog_CategoryController@export');
         });
 
         // Admin Attribute Route
@@ -161,6 +172,8 @@ Route::group([
         ], function () {
             Route::get('/', 'SubcribeController@index');
             Route::delete('/{subcribe}/delete', 'SubcribeController@destroy');
+            Route::post('import', 'SubcribeController@import');
+            Route::get('export', 'SubcribeController@export');
         });
 
         // Admin Contact Route
@@ -169,6 +182,8 @@ Route::group([
         ], function () {
             Route::get('/', 'ContactController@index');
             Route::delete('/{contact}/delete', 'ContactController@destroy');
+            Route::post('import', 'ContactController@import');
+            Route::get('export', 'ContactController@export');
         });
 
 
@@ -180,6 +195,8 @@ Route::group([
             Route::put('/cancel/{id}','OrderController@cancel');
             Route::get('/{id}/edit','OrderController@edit');
             Route::post('/{id}/edit','OrderController@update');
+            Route::post('import', 'OrderController@import');
+            Route::get('export', 'OrderController@export');
         });
 
 
@@ -192,6 +209,8 @@ Route::group([
             Route::get('/{ship_method}/edit', 'ShipMethodController@edit');
             Route::put('/{ship_method}/edit', 'ShipMethodController@update');
             Route::delete('/{ship_method}/delete', 'ShipMethodController@destroy');
+            Route::post('import', 'ShipMethodController@import');
+            Route::get('export', 'ShipMethodController@export');
         });
 
         // Admin Ship Method Route
@@ -203,6 +222,8 @@ Route::group([
             Route::get('/{payment_method}/edit', 'PayMethodController@edit');
             Route::put('/{payment_method}/edit', 'PayMethodController@update');
             Route::delete('/{payment_method}/delete', 'PayMethodController@destroy');
+            Route::post('import', 'PayMethodController@import');
+            Route::get('export', 'PayMethodController@export');
         });
     });
 });

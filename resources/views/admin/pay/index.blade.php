@@ -33,12 +33,24 @@
                 @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">book</i>
+                        <div class="col-md-8" style="float:left">
+                            <div class="card-icon">
+                                <i class="material-icons">book</i>
+                            </div>
+                            <h2 class="card-title">Danh sách phương thức thanh toán</h2>
                         </div>
-                        <h4 class="card-title">Danh sách phương thức thanh toán</h4>
-                        
+                        <div class="col-md-4" style="float:right;margin-top: 15px;">
+                            <form action="/admin/user/import" method="post">
+                                @csrf
+                                <span style=" color: black;">Nhập file excel</span>
+                                <input type="file" name="file" style="color:brown; width: 200px;" required>
+                                <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
+                                <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
+                                    excel</a>
+                            </form>
+                        </div>
                     </div>
+                    
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="paytable">
@@ -57,7 +69,7 @@
                                         </th>
                                         <th class="text-left" style="width: 116px">Logo</th>
                                         <th style="width: 416px;">Tên</th>
-                                        
+
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th>Hành động</th>
@@ -93,12 +105,12 @@
 
                                         <td class="td-actions"
                                             style="width: 106px;padding-right: 0px;padding-left: 20px;">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                            <button type="button" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
                                                 <a style="color:white;" href="/admin/pay-method/{{$pay->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                            <button type="button" class="btn btn-danger btn-round btn-del"
                                                 data-id="{{$pay->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
@@ -106,7 +118,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                            </table>                            
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -130,11 +142,11 @@
                                         <h4>Tên phương thức thanh toán</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text"  name="name" class="form-control" required>
+                                        <input type="text" name="name" class="form-control" required>
                                         </ <input>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">

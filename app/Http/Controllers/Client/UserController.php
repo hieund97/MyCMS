@@ -18,6 +18,15 @@ class UserController extends Controller
 
     public function update(Request $request, $slug)
     {
+        $this->validate(
+            $request,
+            [                
+                'username' => 'required | unique:users,user_name'
+            ],
+            [
+                'require' => 'Trường này trống cmnr',
+            ]
+        );
         $user = User::where('slug', $slug)->firstOrFail();
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
@@ -25,8 +34,8 @@ class UserController extends Controller
             $user->update([
                 'avatar' => asset('media/avatar') . '/' . $avatarName
             ]);
-        }       
-        $user->update([            
+        }
+        $user->update([
             'user_name' => $request->username,
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
@@ -44,19 +53,22 @@ class UserController extends Controller
         return redirect('/thanh-vien/' . $user->slug);
     }
 
-    public function updatepass($slug){
-        $user = User::where('slug', $slug)->firstOrFail();        
+    public function updatepass($slug)
+    {
+        $user = User::where('slug', $slug)->firstOrFail();
         return view('client.user.updatepass', compact('user'));
     }
 
-    public function changepass(Request $request, $slug){
-        $this->validate($request,
+    public function changepass(Request $request, $slug)
+    {
+        $this->validate(
+            $request,
             [
                 'password' => 'min:8|required|required_with:retypepassword|same:retypepassword|same:password',
                 'retypepassword' => 'min:8|required'
             ],
             [
-                'require' => 'Trường này trống cmnr',                
+                'require' => 'Trường này trống cmnr',
             ]
         );
         $user = User::where('slug', $slug)->firstOrFail();
@@ -75,7 +87,8 @@ class UserController extends Controller
         return view('client.user.order', compact('user', 'orders'));
     }
 
-    public function cancelorder(Request $request, $id){
+    public function cancelorder(Request $request, $id)
+    {
         $attr_order = Attr_Order::where('id', $id)->firstOrFail();
         $attr_order->update([
             'status' => $request->status,

@@ -37,6 +37,19 @@
                 </div>
             </div>
             @endif
+            @if ($errors->has('username'))
+            <div class="alert alert-danger">
+                <div class="container">
+                    <div class="alert-icon">
+                        <i class="material-icons">error_outline</i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                    </button>
+                    <b>LỖI</b> USERNAME ĐÃ ĐƯỢC SỬ DỤNG
+                </div>
+            </div>
+            @endif
 
             <div class="row">
                 <div class="col-md-12">
@@ -163,7 +176,8 @@
                                                     <div class="form-group">
                                                         <label class="bmd-label-floating">Mật khẩu:
                                                             ****************</label>
-                                                        <a href="/thanh-vien/{{$user->slug}}/doi-mat-khau" class="btn btn-info"
+                                                        <a href="/thanh-vien/{{$user->slug}}/doi-mat-khau"
+                                                            class="btn btn-info"
                                                             style="padding-left:10px; padding-right: 10px; margin-left: 40px;">Đổi
                                                             mật khẩu</a>
                                                     </div>

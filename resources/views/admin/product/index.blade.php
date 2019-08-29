@@ -2,7 +2,7 @@
 @section('title', 'Product')
 @section('content')
 <div class="content">
-    <div class="col-md-12">        
+    <div class="col-md-12">
         @if (session()->has('update_image'))
         <div class="alert alert-success">
             <div class="container">
@@ -57,11 +57,23 @@
         @endif
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
-                <div class="card-icon">
-                    <i class="material-icons">card_travel</i>
+                <div class="col-md-8" style="float:left">
+                    <div class="card-icon">
+                        <i class="material-icons">card_travel</i>
+                    </div>
+                    <h2 class="card-title">Danh sách sản phẩm</h2>
                 </div>
-                <h4 class="card-title">Danh sách sản phẩm</h4>              
-            </div>
+                <div class="col-md-4" style="float:right;margin-top: 15px;">
+                    <form action="/admin/user/import" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <span style=" color: black;">Nhập file excel</span>
+                        <input type="file" name="file" style="color:brown; width: 200px;" required>
+                        <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
+                        <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
+                            excel</a>
+                    </form>
+                </div>
+            </div>            
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-shopping" id="producttable">
@@ -77,7 +89,7 @@
                                 <th class="text-center" style="width: 126px;">Giá chung</th>
                                 <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
                                 <th class="text-center" style="width: 17px;">Tình trạng</th>
-                                <th class="text-center" style="width: 96px;">Hành động</th>                                
+                                <th class="text-center" style="width: 96px;">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,22 +134,22 @@
                                         style="padding-left: 15px;padding-right: 15px;">{{$product->quantity ==  0? 'Hết hàng':'Còn hàng'}}</label>
                                 </td>
                                 <td class="td-actions">
-                                    <button type="button" rel="tooltip" class="btn btn-warning btn-round"
+                                    <button type="button"  class="btn btn-warning btn-round"
                                         data-original-title="Giá tùy chỉnh" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/price/{{$product->id}}/edit"><i
                                                 class="material-icons">assessment</i></a>
                                     </button>
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-round"
+                                    <button type="button"  class="btn btn-info btn-round"
                                         data-original-title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/image/{{$product->id}}/edit"><i
                                                 class="material-icons">pageview</i></a>
                                     </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                    <button type="button"  class="btn btn-success btn-round"
                                         data-original-title="Chỉnh sửa">
                                         <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i
                                                 class="material-icons">edit</i></a>
                                     </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                    <button type="button"  class="btn btn-danger btn-round btn-del"
                                         data-id="{{$product->id}}" data-original-title="Xóa">
                                         <i class="material-icons">close</i>
                                     </button>

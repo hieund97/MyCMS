@@ -20,11 +20,23 @@
                 @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">book</i>
+                        <div class="col-md-8" style="float:left">
+                            <div class="card-icon">
+                                <i class="material-icons">book</i>
+                            </div>
+                            <h2 class="card-title">Danh sách bài viết</h2>
                         </div>
-                        <h4 class="card-title">Danh sách bài viết</h4>                        
-                    </div>
+                        <div class="col-md-4" style="float:right;margin-top: 15px;">
+                            <form action="/admin/blog/import" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <span style=" color: black;">Nhập file excel</span>
+                                <input type="file" name="file" style="color:brown; width: 200px;" required>
+                                <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
+                                <a href="/admin/blog/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
+                                    excel</a>
+                            </form>
+                        </div>
+                    </div>                    
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="blogtable">
@@ -86,17 +98,17 @@
                                                 class="btn btn-info">Published</label>
                                         </td>
                                         <td class="td-actions" style="width: 106px;padding-right: 0px;">
-                                            <button type="button" rel="tooltip" class="btn btn-info btn-round"
+                                            <button type="button" class="btn btn-info btn-round"
                                                 data-id="" data-original-title="Xem">
                                                 <a style="color:white;" href="/bai-viet/{{$blog->slug}}"
                                                     target="_blank"><i class="material-icons">visibility</i></a>
                                             </button>
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                            <button type="button" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
                                                 <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                            <button type="button" class="btn btn-danger btn-round btn-del"
                                                 data-id="{{$blog->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>

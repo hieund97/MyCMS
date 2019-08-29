@@ -82,11 +82,11 @@ function showCategory($mang, $parent, $shift)
             </td>
             <td class='td-actions'
                 style='width: 106px;padding-right: 0px;padding-left: 20px;'>
-                <button type='button' rel='tooltip' class='btn btn-success btn-round'
+                <button type='button' class='btn btn-success btn-round'
                     data-original-title='Sửa'>
                     <a style='color:white;' href='/admin/categories/$row->id/edit'><i class='material-icons'>edit</i></a>
                 </button>
-                <button type='button' rel='tooltip' class='btn btn-danger btn-round btn-del'
+                <button type='button' class='btn btn-danger btn-round btn-del'
                     data-id='$row->id' data-original-title='Xóa'>
                     <i class='material-icons'>close</i>
                 </button>

@@ -47,6 +47,7 @@
                             </div>
                         </div>
                         @endif
+                        
                         {{-- form --}}
                         <form action="/admin/user/{{$user->id}}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
@@ -94,8 +95,8 @@
                                         <select class="selectpicker" name="level" data-size="7"
                                             data-style="btn btn-primary btn-round" title="Level">
                                             <option {{$user->level == 1? 'Selected':''}} value="1">Admin</option>
-                                            <option {{$user->level == 2? 'Selected':''}} value="2">Member</option>                                            
-                                     
+                                            <option {{$user->level == 2? 'Selected':''}} value="2">Member</option>
+
                                         </select>
                                     </div>
                                 </div>

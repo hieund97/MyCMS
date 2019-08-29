@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportUser;
+use App\Imports\ImportUser;
 
 class UserController extends Controller
 {
@@ -33,7 +36,8 @@ class UserController extends Controller
             [
                 'email' => 'required',
                 'password' => 'min:8|required|required_with:retypepassword|same:retypepassword',
-                'retypepassword' => 'min:8|required'
+                'retypepassword' => 'min:8|required',
+                'username' => 'required | unique:users,user_name'
             ],
             [
                 'require' => 'Trường này trống cmnr',
@@ -126,5 +130,17 @@ class UserController extends Controller
         return response()->json([], 204);
     }
 
-    
+    // Import User from Excel
+    public function import(Request $request)
+    {
+        $data = Excel::import(new ImportUser,  $request->file('file'));
+        session()->flash('import_user', 'success');
+        return back();
+    }
+
+    // Export User to Excel
+    public function export()
+    {
+        return Excel::download(new ExportUser, 'users.xlsx');
+    }
 }

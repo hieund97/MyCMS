@@ -1,6 +1,7 @@
 @extends('admin.layout.main')
 @section('title', 'User')
 @section('content')
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -18,13 +19,39 @@
                     </div>
                 </div>
                 @endif
+                @if (session()->has('import_user'))
+                <div class="alert alert-success">
+                    <div class="container">
+                        <div class="alert-icon">
+                            <i class="material-icons">check</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                        </button>
+                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
+                    </div>
+                </div>
+                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">face</i>
+                        <div class="col-md-8" style="float:left">
+                            <div class="card-icon">
+                                <i class="material-icons">face</i>
+                            </div>
+                            <h2 class="card-title">Danh sách thành viên</h2>
                         </div>
-                        <h4 class="card-title">Danh sách thành viên</h4>                        
+                        <div class="col-md-4" style="float:right;margin-top: 15px;">
+                            <form action="/admin/user/import" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <span style=" color: black;">Nhập file excel</span>
+                                <input type="file" name="file" style="color:brown; width: 200px;" required>
+                                <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
+                                <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
+                                    excel</a>
+                            </form>
+                        </div>
                     </div>
+
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -62,12 +89,12 @@
                                             </div>
                                         </td>
                                         <td class="td-actions text-right" style="padding-right: 15px;">
-                                            <button type="button" rel="tooltip" class="btn btn-success btn-round"
+                                            <button type="button" class="btn btn-success btn-round"
                                                 data-original-title="Sửa">
                                                 <a style="color:white;" href="/admin/user/{{$member->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
-                                            <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-del"
+                                            <button type="button" class="btn btn-danger btn-round btn-del"
                                                 data-id="{{$member->id}}" data-original-title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
@@ -77,7 +104,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{-- {{$user->links()}} --}}
+
                                 <a href="/admin/user/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm thành viên</a>
 
