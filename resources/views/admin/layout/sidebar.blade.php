@@ -12,8 +12,7 @@
   data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">
   <div class="logo">
     <a href="/admin" class="simple-text logo-normal">
-      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
-        alt="">
+      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}" alt="">
     </a>
   </div>
   <div class="sidebar-wrapper">

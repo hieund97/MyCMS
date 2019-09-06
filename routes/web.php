@@ -225,6 +225,8 @@ Route::group([
             Route::post('import', 'PayMethodController@import');
             Route::get('export', 'PayMethodController@export');
         });
+
+        
     });
 });
 
@@ -328,5 +330,13 @@ Route::group([
     ], function () {
         Route::get('/', 'HomeController@contact');
         Route::post('/', 'ContactController@store');
+    });
+
+    // CLient Review Route
+    Route::group([
+        'prefix' => 'review'
+    ], function () {
+        Route::post('/member', 'ReviewController@storeAsMember');
+        Route::post('/guest', 'ReviewController@storeAsGuest');
     });
 });

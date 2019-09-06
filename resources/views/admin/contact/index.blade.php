@@ -1,5 +1,5 @@
 @extends("admin.layout.main")
-@section("title", "Subcribe")
+@section("title", "Contact")
 @section("content")
 <div class="content">
     <div class="container-fluid">
@@ -14,16 +14,17 @@
                             <h2 class="card-title">Danh sách thông tin liên hệ</h2>
                         </div>
                         <div class="col-md-4" style="float:right;margin-top: 15px;">
-                            <form action="/admin/user/import" method="post" enctype="multipart/form-data">
+                            <form action="/admin/contact/import" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <span style=" color: black;">Nhập file excel</span>
                                 <input type="file" name="file" style="color:brown; width: 200px;" required>
                                 <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
-                                <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
+                                <a href="/admin/contact/export" style="padding: 10px" class="btn btn-warning">Xuất ra
+                                    file
                                     excel</a>
                             </form>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped" id="contacttable">
@@ -67,8 +68,7 @@
                                         <td>{{$contact->created_at}}</td>
 
                                         <td class="td-actions text-center">
-                                            <button type="button" class="btn btn-success"
-                                                data-original-title="Gửi">
+                                            <button type="button" class="btn btn-success" data-original-title="Gửi">
                                                 <a style="color:white;" href="#">Phản hồi</a>
                                             </button>
                                             <button type="button" style="margin-left: 20px;"

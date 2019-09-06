@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Product;
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -17,8 +18,9 @@ class ProductController extends Controller
 
     public function item($p_slug){
         $item = Product::where('p_slug', $p_slug)->firstOrFail();        
-        $randomProduct = Product::inRandomOrder()->paginate(4);        
-        return view('client.product.item', compact('item', 'randomProduct'));
+        $randomProduct = Product::inRandomOrder()->paginate(4);
+        $review = Review::where('product_id', $item->id)->get();
+        return view('client.product.item', compact('item', 'randomProduct', 'review'));
     }
 
     public function filter(Request $request){

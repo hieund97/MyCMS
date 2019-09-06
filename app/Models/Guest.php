@@ -13,4 +13,9 @@ class Guest extends Model
     {
         return $this->hasMany('App\Models\Order', 'order_id', 'id');
     }
+
+    public function review()
+    {
+        return $this->hasMany('App\Models\review', 'guest_id', 'id');
+    }
 }

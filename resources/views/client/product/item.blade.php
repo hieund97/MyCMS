@@ -143,141 +143,109 @@
 
                     </div>
                 </div>
+
+                {{-- Comment Area --}}
                 <div class="section section-comments">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <div class="media-area">
-                                <h3 class="title text-center">3 Comments</h3>
+                            <div class="media-area" style="margin-bottom: 120px">
+                                @if ($review->count() > 0)
+                                <h3 class="title text-center">{{$review->count()}} Đánh giá</h3>
+                                @endif
+                                @foreach ($review as $comment)
+                                @if ($comment->user_id == NULL)
                                 <div class="media">
                                     <a class="pull-left" href="#pablo">
                                         <div class="avatar">
-                                            <img class="media-object"
-                                                src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}" />
+                                            <img class="media-object" style="height: 65px"
+                                                src=" {{ asset('client/img/placeholder.jpg') }}" />
                                         </div>
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading">Tina Andrew <small>&middot; 7 minutes ago</small></h4>
+                                        <h4 class="media-heading"> {{$comment->guest->client_name}}</h4>
                                         <h6 class="text-muted"></h6>
 
-                                        <p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in
-                                            the
-                                            country. Panda! Don't be scared of the truth because we need to restart the
-                                            human foundation in truth I stand with the most humility. We are so blessed!
-                                        </p>
-
-                                        <div class="media-footer">
-                                            <a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip"
-                                                title="Reply to Comment">
-                                                <i class="material-icons">reply</i> Reply
-                                            </a>
-                                            <a href="#pablo" class="btn btn-danger btn-simple pull-right">
-                                                <i class="material-icons">favorite</i> 243
-                                            </a>
-                                        </div>
+                                        <p>{{$comment->content}}</p>
                                     </div>
                                 </div>
-
+                                @else
                                 <div class="media">
                                     <a class="pull-left" href="#pablo">
                                         <div class="avatar">
-                                            <img class="media-object" alt="Tim Picture"
-                                                src="{{ asset ('client/img/faces/card-profile1-square.jpg') }}">
+                                            <img class="media-object" style="height: 65px"
+                                                src="{{ $comment->user->avatar}}" />
                                         </div>
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading">John Camber <small>&middot; Yesterday</small></h4>
+                                        <h4 class="media-heading"> {{$comment->user->last_name}}
+                                            {{$comment->user->first_name}}</h4>
+                                        <h6 class="text-muted"></h6>
 
-                                        <p>Hello guys, nice to have you on the platform! There will be a lot of great
-                                            stuff
-                                            coming soon. We will keep you posted for the latest news.</p>
-                                        <p> Don't forget, You're Awesome!</p>
-
-                                        <div class="media-footer">
-                                            <a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip"
-                                                title="Reply to Comment">
-                                                <i class="material-icons">reply</i> Reply
-                                            </a>
-                                            <a href="#pablo" class="btn btn-default btn-simple pull-right">
-                                                <i class="material-icons">favorite</i> 25
-                                            </a>
-                                        </div>
-                                        <div class="media">
-                                            <a class="pull-left" href="#pablo">
-                                                <div class="avatar">
-                                                    <img class="media-object" alt="64x64"
-                                                        src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}">
-                                                </div>
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Tina Andrew <small>&middot; 12 Hours
-                                                        Ago</small>
-                                                </h4>
-
-                                                <p>Hello guys, nice to have you on the platform! There will be a lot of
-                                                    great stuff coming soon. We will keep you posted for the latest
-                                                    news.
-                                                </p>
-                                                <p> Don't forget, You're Awesome!</p>
-
-                                                <div class="media-footer">
-                                                    <a href="#pablo" class="btn btn-primary btn-simple pull-right"
-                                                        rel="tooltip" title="Reply to Comment">
-                                                        <i class="material-icons">reply</i> Reply
-                                                    </a>
-                                                    <a href="#pablo" class="btn btn-default btn-simple pull-right">
-                                                        <i class="material-icons">favorite</i> 2
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p>{{$comment->content}}</p>
                                     </div>
                                 </div>
+                                @endif
+
+                                @endforeach
+
 
                             </div>
-                            <h3 class="title text-center">Post your comment</h3>
+
+                            <h3 class="title text-center">Đánh giá sản phẩm</h3>
                             @auth
-                            <div class="media media-post">
-                                <a class="pull-left author" href="#pablo">
-                                    <div class="avatar">
-                                        <img class="media-object" alt="64x64"
-                                            src="{{ asset ('client/img/faces/card-profile6-square.jpg') }}">
+                            <form action="/review/member" method="POST">
+                                @csrf
+                                <div class="media media-post">
+                                    <a class="pull-left author" href="#pablo">
+                                        <div class="avatar">
+                                            <img class="media-object" style="height: 65px;" alt="64x64"
+                                                src="{{ auth()->user()->avatar }}">
+                                        </div>
+                                    </a>
+
+                                    <div class="media-body">
+                                        <textarea class="form-control" name="content"
+                                            placeholder="Viết bình luận của bạn" rows="6"></textarea>
+                                        <div class="media-footer">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-round btn-wd pull-right">Viết
+                                                Bình luận</button>
+                                        </div>
                                     </div>
-                                </a>
-                                <div class="media-body">
-                                    <textarea class="form-control" placeholder="Write some nice stuff or nothing..."
-                                        rows="6"></textarea>
-                                    <div class="media-footer">
-                                        <a href="#pablo" class="btn btn-primary btn-round btn-wd pull-right">Post
-                                            Comment</a>
-                                    </div>
-                                </div>
-                            </div> <!-- end media-post -->
-                            @endauth
+                                    <input type="hidden" name="userid" value="{{auth()->user()->id}}">
+                                    <input type="hidden" name="productid" value="{{$item->id}}">
+                                </div> <!-- end media-post -->
+                                @endauth
+                            </form>
 
                             @guest
                             <div class="media media-post">
                                 <a class="pull-left author" href="#pablo">
                                     <div class="avatar">
-                                        <img class="media-object" alt="64x64" src=" {{ asset('client/img/placeholder.jpg') }}">
+                                        <img class="media-object" alt="64x64"
+                                            src=" {{ asset('client/img/placeholder.jpg') }}">
                                     </div>
                                 </a>
                                 <div class="media-body">
-                                    <form class="form">
+                                    <form class="form" action="/review/guest" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group is-empty">
-                                                    <input type="text" class="form-control" placeholder="Your Name">
+                                                    <input type="text" name="name" class="form-control"
+                                                        placeholder="Your Name" required>
                                                     <span class="material-input"></span></div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group is-empty">
-                                                    <input type="email" class="form-control" placeholder="Your email">
+                                                    <input type="email" class="form-control" name="email"
+                                                        placeholder="Your email" required>
                                                     <span class="material-input"></span></div>
                                             </div>
                                         </div>
                                         <div class="form-group is-empty"><textarea class="form-control"
-                                                placeholder="Write some nice stuff or nothing..."
-                                                rows="6"></textarea><span class="material-input"></span></div>
+                                                placeholder="Write some nice stuff or nothing..." rows="6"
+                                                name="content"></textarea><span class="material-input"></span></div>
                                         <div class="media-footer">
                                             <h6>Sign in with</h6>
                                             <a href="" class="btn btn-just-icon btn-round btn-twitter">
@@ -289,7 +257,8 @@
                                             <a href="" class="btn btn-just-icon btn-round btn-google">
                                                 <i class="fa fa-google-plus-square"></i>
                                             </a>
-                                            <a href="#pablo" class="btn btn-primary pull-right">Post Comment</a>
+                                            <input type="hidden" name="productid" value="{{$item->id}}">
+                                            <button type="submit" class="btn btn-primary pull-right">Bình luận</button>
                                         </div>
                                     </form>
 

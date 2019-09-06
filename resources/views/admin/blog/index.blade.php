@@ -99,17 +99,17 @@
                                         </td>
                                         <td class="td-actions" style="width: 106px;padding-right: 0px;">
                                             <button type="button" class="btn btn-info btn-round"
-                                                data-id="" data-original-title="Xem">
+                                                data-id="" title="Xem">
                                                 <a style="color:white;" href="/bai-viet/{{$blog->slug}}"
                                                     target="_blank"><i class="material-icons">visibility</i></a>
                                             </button>
                                             <button type="button" class="btn btn-success btn-round"
-                                                data-original-title="Sửa">
+                                                title="Sửa">
                                                 <a style="color:white;" href="/admin/blog/{{$blog->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" class="btn btn-danger btn-round btn-del"
-                                                data-id="{{$blog->id}}" data-original-title="Xóa">
+                                                data-id="{{$blog->id}}" title="Xóa">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -130,11 +130,6 @@
 </div>
 @endsection
 @push('js')
-
-{{-- <link rel="stylesheet" type="text/css" href="{{ asset ('node_modules/sweetalert2/dist/sweetalert2.css') }}">
---}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
-
 <script>
     $(document).ready(function(){
 		$('.btn-del').click(function(e){		
