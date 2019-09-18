@@ -77,17 +77,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="card card-profile">
-                        <label class="bmd-label-floating">
-                            <h4>Mô tả ngắn</h4>
-                        </label>
-                        <div class="form-group">
-                            <textarea class="form-control" name="short_description" required rows="8"></textarea>
-                        </div>
-                    </div>
-                </div>
+                </div>                
                 <div class="row">
                     <div class="col-md-9 padding">
                         <label class="bmd-label-floating">

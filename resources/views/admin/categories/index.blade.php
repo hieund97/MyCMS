@@ -85,11 +85,10 @@
                                     {{showCategory($categories, 0, '')}}
                                 </tbody>
                             </table>
-                            {{-- <div>
+                            <div>
                                 <a href="/admin/categories/create" style="padding-left: 15px; padding-right: 15px;"
                                     class="btn btn-primary pull-right">Thêm danh mục</a>
-                                {{$categories->links()}}
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>

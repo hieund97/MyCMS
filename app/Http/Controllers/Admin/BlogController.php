@@ -95,7 +95,6 @@ class BlogController extends Controller
             'content' => $request->content,
             'category_id' => $request->category,
             'user_id' => $request->author,
-            'slug' => str_slug($request->title, '-'),
             'short_decription' => $request->short_decription,
         ]);
 

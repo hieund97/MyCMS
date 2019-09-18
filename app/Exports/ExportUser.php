@@ -27,8 +27,7 @@ class ExportUser implements FromCollection, WithHeadings
             'phone',
             'level',
             'created_at',
-            'updated_at',
-            'review'
+            'updated_at'           
         )->get();
     }
 
@@ -50,8 +49,7 @@ class ExportUser implements FromCollection, WithHeadings
             'phone',
             'level',
             'created_at',
-            'updated_at',
-            'review',
+            'updated_at',            
         ];
     }
 }

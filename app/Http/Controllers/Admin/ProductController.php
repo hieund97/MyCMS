@@ -129,12 +129,12 @@ class ProductController extends Controller
             ]);
         }
 
-        $slug = str_slug($request->name, '-');
-        if (isset($slug)) {
-            while (Product::where('p_slug', $slug)->get()->count() > 0) {
-                $slug = $slug .= '-' . rand(2, 9);
-            }
-        }
+        // $slug = str_slug($request->name, '-');
+        // if (isset($slug)) {
+        //     while (Product::where('p_slug', $slug)->get()->count() > 0) {
+        //         $slug = $slug .= '-' . rand(2, 9);
+        //     }
+        // }
 
         $product->update([
             'name' => $request->name,
@@ -143,8 +143,7 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
-            'brand_id' => $request->brand,
-            'p_slug' => $slug,
+            'brand_id' => $request->brand,            
             'highlight' => $request->highlight,
         ]);
 

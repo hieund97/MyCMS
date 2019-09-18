@@ -57,7 +57,6 @@ class CategoryController extends Controller
             'name' => $request->category,
             'parent_id' => $request->parent,            
             'p_cate_slug' => $slug,
-            'short_description' => $request->short_description,
             'active' => $request->active,
             'navactive' => $request->navactive,
             'avatar' => asset('media/avatar') . '/' . $avatarName
@@ -80,7 +79,6 @@ class CategoryController extends Controller
         $category->update([
             'name' => $request->category,
             'parent_id' => $request->parent,
-            'short_description' =>$request->short_description,
             'active' => $request->active,
             'navactive' => $request->navactive,
             'p_cate_slug' => str_slug($request->category, '-')

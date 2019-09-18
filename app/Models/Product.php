@@ -12,7 +12,7 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Categories', 'category_product_privot', 'product_id', 'category_id');
+        return $this->belongsToMany('App\Models\Categories', 'category_product_pivot', 'product_id', 'category_id');
     }
 
     public function value()
