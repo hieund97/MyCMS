@@ -6,13 +6,30 @@
   .disabled {
     pointer-events: none;
     opacity: 0.6;
+  } 
+
+  #style-1::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  #style-1::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+  }
+
+  #style-1::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
   }
 </style>
-<div class="sidebar" data-color="rose" data-background-color="black"
-  data-image=" {{ asset ('manage/img/sidebar-7.jpg') }}">
+<div class="sidebar scrollbar" id="style-1" data-color="rose" data-background-color="black" style="overflow: scroll">
   <div class="logo">
     <a href="/admin" class="simple-text logo-normal">
-      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}" alt="">
+      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
+        alt="">
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -126,6 +143,18 @@
             </li>
           </ul>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/media">
+          <i class="material-icons">perm_camera_mic</i>
+          <p> Media </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/comments">
+          <i class="material-icons">reorder</i>
+          <p> Bình luận </p>
+        </a>
       </li>
       <li
         class="nav-item {{Request::segment(2) === 'blog-category'||Request::segment(2) === 'blog' ? 'active' : null}}">

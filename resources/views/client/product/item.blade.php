@@ -45,8 +45,9 @@
                         <h3 class="main-price">{{number_format($item->price)}} ₫</h3>
                         <span>Mã sản phẩm: {{$item->product_code}}</span>
                         <p></p>
-                        <label
-                            class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label>
+                        <label style="margin-bottom: 20px;"
+                            class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label><br>
+                    <span>Đã bán: {{$item->purchase}}</span>
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-border panel-default">
@@ -91,6 +92,7 @@
                             <input type="hidden" name="name" id="name" value="{{$item->name}}">
                             <input type="hidden" name="avatar" id="avatar" value="{{json_encode($item->avatar)}}">
                             <div class="row pick-size" style="padding-left: 15px;">
+
                                 <h4 class="panel-title">
                                     Số lượng
                                 </h4>

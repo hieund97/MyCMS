@@ -35,7 +35,7 @@
                             excel</a>
                     </form>
                 </div>
-            </div>            
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-shopping" id="ordertable">
@@ -62,7 +62,7 @@
                                 <td class="text-center">{{$product->order->order_code}}</td>
                                 <td class="td-name">
                                     <a
-                                        href="/">{{$product->order->user_id == NULL?$product->order->guest->client_name: $product->order->user->last_name .' '. $product->order->user->first_name }}</a>
+                                        href="/thanh-vien/{{$product->order->user->user_name}}">{{$product->order->user_id == NULL?$product->order->guest->client_name: $product->order->user->last_name .' '. $product->order->user->first_name }}</a>
                                     <br />
                                     <small>SĐT:
                                         {{$product->order->user_id == NULL?$product->order->guest->phone:$product->order->user->phone}}</small>
@@ -75,15 +75,15 @@
                                         class="btn-{{$product->order->user_id == NULL?'warning':'success'}}">{{$product->order->user_id == NULL?'Guest':'Member'}}</small></label>
                                 </td>
                                 <td>
-                                    <a href="/" target="_blank">
+                                    <a href="/san-pham/{{$product->product->p_slug}}" target="_blank">
                                         <div class="img-container">
-                                            <img src="{{ $product->product->avatar }}"
+                                            <img src="{{$product->product->avatar }}"
                                                 title="{{$product->product->name}}">
                                         </div>
                                     </a>
                                 </td>
                                 <td class="td-name">
-                                    <a href="/">{{$product->product->name}}</a>
+                                    <a href="/admin/order/{{$product->id}}/edit">{{$product->product->name}}</a>
 
                                 </td>
                                 <td>
@@ -111,6 +111,10 @@
 
                                     @if ($product->status == 4)
                                     <label class="text-center btn-success">Giao hàng thành công</label>
+                                    @endif
+
+                                    @if ($product->status == 5)
+                                    <label class="text-center" style="color: white;background-color: #9E9E9E;">Không liên lạc được</label>
                                     @endif
                                 </td>
                                 <td class="text-center">

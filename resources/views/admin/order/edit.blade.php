@@ -161,6 +161,8 @@
                                     </option>
                                     <option {{$attr_order->status == 4? 'selected': ''}} value="4">Giao hàng thành công
                                     </option>
+                                    <option {{$attr_order->status == 5? 'selected': ''}} value="5">Không liên lạc được
+                                        </option>
                                 </select>
                             </div>
                         </div>

@@ -18,33 +18,29 @@ function showCategory($mang, $parent, $shift)
 {
     foreach ($mang as $row) {
         $active = null;
-        if ($row->active  == 1){
+        if ($row->active  == 1) {
             $active = 'Active';
-        }
-        else {
+        } else {
             $active = 'Normal';
         }
         $classActive = null;
-        if ($row->active == 1){
+        if ($row->active == 1) {
             $classActive = 'danger';
-        }
-        else {
+        } else {
             $classActive = 'success';
         }
 
 
         $navActive = null;
-        if ($row->navactive  == 1){
+        if ($row->navactive  == 1) {
             $navActive = 'Active';
-        }
-        else {
+        } else {
             $navActive = 'Normal';
         }
         $classNavActive = null;
-        if ($row->navactive == 1){
+        if ($row->navactive == 1) {
             $classNavActive = 'danger';
-        }
-        else {
+        } else {
             $classNavActive = 'success';
         }
         if ($row->parent_id == $parent) {
@@ -147,19 +143,19 @@ function check_variant($product, $array)
     return true;
 }
 
-function showAttribute(){
-    
-}
+function showAttribute()
+{ }
 
-function getPrice($product, $array){
+function getPrice($product, $array)
+{
     foreach ($product->variant as $row) {
         $mang = array();
         foreach ($row->value as $value) {
             $mang[] = $value->value;
         }
 
-        if(array_diff($mang, $array) == NULL){
-            if($row->price == 0){
+        if (array_diff($mang, $array) == NULL) {
+            if ($row->price == 0) {
                 return $product->price;
             }
             return $row->price;
@@ -167,3 +163,4 @@ function getPrice($product, $array){
     }
     return $product->price;
 }
+

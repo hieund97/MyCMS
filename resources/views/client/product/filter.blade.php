@@ -8,6 +8,7 @@
 <div class="main main-raised">
     <div class="section">
         <div class="container">
+            <h2 class="section-title text-center">Tìm thấy {{$filterProducts->count()}} sản phẩm</h2>
             <h2 class="section-title">Tùy chọn</h2>
             <div class="row">
                 @include('client.partial.sortby')
@@ -62,14 +63,14 @@
                     <hr>
                     {{-- <div class="col-md-3 col-md-offset-3">
                         {{$filterProducts->links()}}
-                    </div> --}}
-                </div>
+                </div> --}}
             </div>
-
-
-
         </div>
-    </div><!-- section -->
+
+
+
+    </div>
+</div><!-- section -->
 
 </div> <!-- end-main-raised -->
 @endsection

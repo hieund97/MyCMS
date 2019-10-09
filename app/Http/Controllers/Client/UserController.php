@@ -18,15 +18,15 @@ class UserController extends Controller
 
     public function update(Request $request, $slug)
     {
-        $this->validate(
-            $request,
-            [                
-                'username' => 'required | unique:users,user_name'
-            ],
-            [
-                'require' => 'Trường này trống cmnr',
-            ]
-        );
+        // $this->validate(
+        //     $request,
+        //     [                
+        //         'username' => 'required | unique:users,user_name'
+        //     ],
+        //     [
+        //         'require' => 'Trường này trống cmnr',
+        //     ]
+        // );
         $user = User::where('slug', $slug)->firstOrFail();
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên

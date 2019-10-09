@@ -74,6 +74,10 @@
                                 @if ($item->status == 4)
                                 <label class="btn-success">Giao hàng thành công</label>
                                 @endif
+
+                                @if ($item->status == 5)
+                                <label style="color: white;background-color: #9E9E9E;">Không liên lạc được</label>
+                                @endif
                             </td>
                             <td class="td-number">
                                 {{$item->quantity}}
@@ -85,8 +89,11 @@
                                 {{number_format($item->price * $item->quantity)}}đ
                             </td>
                             <td class="td-action text-right">
-                                @if ($item->status == 2)
+                                @if ($item->status == 2 || $item->status == 5)
                                 <a href="/san-pham/{{$item->product->p_slug}}" class="btn btn-primary">Mua lại</a>
+                                @elseif ($item->status == 4)
+                                <button disabled data-id="{{$item->id}}" class="btn btn-danger btn-del"
+                                    style="padding: 12px 10px">Hủy đơn hàng</button>                                
                                 @else
                                 <button data-id="{{$item->id}}" class="btn btn-danger btn-del"
                                     style="padding: 12px 10px">Hủy đơn hàng</button>
@@ -98,10 +105,11 @@
                         @empty
                         <tr>
                             <p class="text-danger">Không có sản phẩm nào</p>
-                        </tr>                        
+                        </tr>
                         @endforelse
                     </tbody>
                 </table>
+                {{$orders->links()}}
             </div>
 
         </div>

@@ -11,7 +11,7 @@ use App\Models\Product;
 class OrderController extends Controller
 {
     public function index(){
-        $order = Order::all();
+        $order = Order::latest()->get();
         return view('admin.order.index', compact('order'));
     }
 
@@ -23,6 +23,7 @@ class OrderController extends Controller
     }
 
     public function update(Request $request, $id){
+        $i = 0;
         $attr_order = Attr_Order::where('id', $id)->firstOrFail();
         $attr_order->update([
             'status' => $request->status,
@@ -31,7 +32,8 @@ class OrderController extends Controller
         if($attr_order->status == 4){
             $updateProduct = Product::where('id', $attr_order->product->id)->firstOrFail();
             $updateProduct->update([
-                'quantity' => $updateProduct->quantity - $attr_order->quantity
+                'quantity' => $updateProduct->quantity - $attr_order->quantity,
+                'purchase' => $i + 1
             ]);
         }
         session()->flash('update_order', 'success');

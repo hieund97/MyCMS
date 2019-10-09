@@ -368,6 +368,6 @@ class ProductController extends Controller
         }
 
         session()->flash('upload_image', 'success');
-        return redirect('/admin/products');
+        return redirect('/admin/products/price/'.$request->id.'/edit');
     }
 }
