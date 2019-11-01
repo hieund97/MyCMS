@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Categories;
+use App\Models\Product;
 
 function getCategory($mang, $parent, $shift)
 {
@@ -12,24 +13,32 @@ function getCategory($mang, $parent, $shift)
     }
 }
 
+function editProductCategory($mang, $parent, $shift, $id)
+{
+    $product = Product::find($id);
+    foreach ($product->categories as $key => $category) {
+        $active[] = $category->id;
+    }
+    foreach ($mang as $row) {
+        $arrayID = array();
+        $arrayID[] = $row->id;
+        if ($row->parent_id == $parent) {
+
+            if (array_intersect($arrayID, $active)) { //so sánh value trong mảng
+                echo "<option selected value='$row->id'>" . $shift . $row->name . "</option>";
+            } else {
+                echo "<option value='$row->id'>" . $shift . $row->name . "</option>";
+            }
+            editProductCategory($mang, $row->id, $shift . '---|', $id);
+        }
+    }
+}
+
 
 
 function showCategory($mang, $parent, $shift)
 {
     foreach ($mang as $row) {
-        $active = null;
-        if ($row->active  == 1) {
-            $active = 'Active';
-        } else {
-            $active = 'Normal';
-        }
-        $classActive = null;
-        if ($row->active == 1) {
-            $classActive = 'danger';
-        } else {
-            $classActive = 'success';
-        }
-
 
         $navActive = null;
         if ($row->navactive  == 1) {
@@ -66,12 +75,7 @@ function showCategory($mang, $parent, $shift)
             <td><a style='font-weight: bold; font-size: 120%;' href='/admin/categories/$row->id/edit'>$shift $row->name</a>
             </td>
             <td class='text-center'>$row->created_at</td>
-            <td class='text-center'>$row->updated_at</td>
-
-            <td class='text-center'>
-                <label style='padding-right: 10px;padding-left: 10px;'
-                    class='btn btn-$classActive'>$active</label>
-            </td>
+            <td class='text-center'>$row->updated_at</td>            
             <td class='text-center'>
                 <label style='padding-right: 10px;padding-left: 10px;'
                     class='btn btn-$classNavActive'>$navActive</label>
@@ -95,6 +99,7 @@ function showCategory($mang, $parent, $shift)
 
 function editCategory($mang, $parent, $shift, $active)
 {
+
     foreach ($mang as $row) {
         if ($row->parent_id == $parent) {
             if ($row->id == $active) {
@@ -106,6 +111,8 @@ function editCategory($mang, $parent, $shift, $active)
         }
     }
 }
+
+
 
 function getUpperCase($value)
 {
@@ -163,4 +170,3 @@ function getPrice($product, $array)
     }
     return $product->price;
 }
-

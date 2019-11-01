@@ -1,11 +1,11 @@
 @extends('admin.layout.main')
-@section('title', 'Category')
+@section('title', 'Trending')
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                @if (session()->has('create_category'))
+                @if (session()->has('create_trending'))
                 <div class="alert alert-success">
                     <div class="container">
                         <div class="alert-icon">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 @endif
-                @if (session()->has('update_category'))
+                @if (session()->has('update_trending'))
                 <div class="alert alert-success">
                     <div class="container">
                         <div class="alert-icon">
@@ -39,17 +39,7 @@
                             </div>
                             <h2 class="card-title">Danh sách danh mục</h2>
                         </div>
-                        <div class="col-md-4" style="float:right;margin-top: 15px;">
-                            <form action="/admin/user/import" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <span style=" color: black;">Nhập file excel</span>
-                                <input type="file" name="file" style="color:brown; width: 200px;" required>
-                                <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
-                                <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
-                                    excel</a>
-                            </form>
-                        </div>
-                    </div>                    
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <h4 style="color:crimson;margin-left: 60px;">*Danh mục
@@ -58,7 +48,7 @@
                             <h4 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Danh mục chọn Navbar
                                 active sẽ xuất hiện trên thanh navbar trên trang chủ (tối đa 4 danh
                                 mục)*</h4>
-                            <table class="table table-striped" id="categorytable">
+                            <table class="table table-striped" id="trendingtable">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
@@ -75,26 +65,75 @@
                                         <th class="text-left" style="width: 266px">Ảnh Sản Phẩm</th>
                                         <th style="width: 416px;">Tên chủ đề </th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
-                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>                                        
+                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
+                                        <th class="text-center" style="width: 156px;">Trạng thái</th>
                                         <th class="text-center" style="width: 156px;">Navbar</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{showCategory($categories, 0, '')}}
+                                    @foreach ($trending as $trend)
+                                    <tr>
+                                    <td class='text-center'>{{$trend->id}}</td>
+                                        <td>
+                                            <div class='form-check'>
+                                                <label class='form-check-label'>
+                                                    <input class='form-check-input' type='checkbox'>
+                                                    <span class='form-check-sign'>
+                                                        <span class='check'></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href='' target='_blank'>
+                                                <div class='img-container'>
+                                                <img src="{{$trend->avatar}}" title="{{$trend->name}}"
+                                                        style='width: 150px; border: solid 1px lightgray;'>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a style='font-weight: bold; font-size: 120%;'
+                                                href='/admin/categories/$row->id/edit'>{{$trend->name}}</a>
+                                        </td>
+                                        <td class='text-center'>{{$trend->created_at}}</td>
+                                        <td class='text-center'>{{$trend->updated_at}}</td>
+
+                                        <td class='text-center'>
+                                            <label style='padding-right: 10px;padding-left: 10px;'
+                                        class='btn btn-{{$trend->active == 0?'success':'danger'}}'>{{$trend->active == 0?'Normal':'Active'}}</label>
+                                        </td>
+                                        <td class='text-center'>
+                                            <label style='padding-right: 10px;padding-left: 10px;'
+                                                class='btn btn-{{$trend->navactive == 0?'success':'danger'}}'>{{$trend->navactive == 0?'Normal':'Active'}}</label>
+                                        </td>
+                                        <td class='td-actions'
+                                            style='width: 106px;padding-right: 0px;padding-left: 20px;'>
+                                            <button type='button' class='btn btn-success btn-round'
+                                                data-original-title='Sửa'>
+                                    <a style='color:white;' href='/admin/trending/{{$trend->id}}/edit'><i
+                                                        class='material-icons'>edit</i></a>
+                                            </button>
+                                            <button type='button' class='btn btn-danger btn-round btn-del'
+                                                data-id="{{$trend->id}}" data-original-title='Xóa'>
+                                                <i class='material-icons'>close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div>
-                                <a href="/admin/categories/create" style="padding-left: 15px; padding-right: 15px;"
-                                    class="btn btn-primary pull-right">Thêm danh mục</a>
+                                <a href="/admin/trending/create" style="padding-left: 15px; padding-right: 15px;"
+                                    class="btn btn-primary pull-right">Thêm Trending</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 </div>
 @endsection
 @push('js')
@@ -160,7 +199,7 @@
 		});
     });
 $(document).ready( function () {
-    $('#categorytable').DataTable();
+    $('#trendingtable').DataTable();
 } );
 </script>
 @endpush

@@ -39,7 +39,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label class="bmd-label-floating">
                             <h4>Danh mục cha</h4>
                             <span>Chọn danh mục cấp bậc cao hơn của danh mục hiện tại. Để trống nếu muốn tạo danh mục gốc</span>
@@ -51,20 +51,8 @@
                         </select>
                     </div>
 
-                    <div class="col-md-4">
-                        <label class="bmd-label-floating">
-                            <h4>Active</h4>
-                            <span>Danh mục chọn active sẽ xuất hiện trên trang chủ (tối đa 3 danh mục)</span>
-                        </label>
-                        <div class="form-group">
-                            <select class="selectpicker" name="active" data-size="7"
-                                data-style="btn btn-primary btn-round" title="Active">
-                                <option value="1">Active</option>
-                                <option value="0">Normal</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-6">
                         <label class="bmd-label-floating">
                             <h4>Navbar Active</h4>
                             <span>Danh mục chọn Navbar active sẽ xuất hiện trên thanh navbar trên trang chủ (tối đa 4 danh mục)</span>

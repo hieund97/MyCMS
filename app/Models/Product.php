@@ -49,4 +49,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Review', 'product_id', 'id');
     }
+
+    public function trending()
+    {
+        return $this->belongsTo('App\Models\Trending', 'trending_id', 'id');
+    }
 }

@@ -210,14 +210,26 @@
                                 @endif
                             </div>
                             <div class="row">
+                                <div class="col-md-10" style="padding-bottom: 50px;">
+                                    <select class="selectpicker" name="trend" data-style="select-with-transition"
+                                        multiple title="Chọn trending" data-size="10">
+                                        @foreach ($trending as $trend)
+                                        <option value="{{$trend->id}}">{{$trend->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <a href="/admin/trending" title="Quản lý trending"><i
+                                            style="margin-left: 10px;margin-top: 10px;"
+                                            class="material-icons">settings</i></a>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-9" style="margin-top: 20px;">
-                                    <select class="selectpicker" data-size="7" name="brand" data-style="btn btn-primary btn-round"
-                                        title="Chọn thương hiệu">
-                                        @if (isset($brands))
+                                    <select class="selectpicker" data-size="7" name="brand"
+                                        data-style="btn btn-primary btn-round" title="Chọn thương hiệu">
                                         @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}">{{$brand->name}}</option>
                                         @endforeach
-                                        @endif                                        
                                     </select>
                                 </div>
                             </div>
@@ -234,6 +246,7 @@
                                 </div>
                             </div>
                             @endif
+
                         </div>
                         {{-- end area 2 --}}
 

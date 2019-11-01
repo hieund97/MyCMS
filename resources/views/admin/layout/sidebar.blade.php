@@ -120,14 +120,14 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}} ">
+      <li class="nav-item {{Request::segment(2) === 'categories' || 'trending'? 'active' : null}} ">
         <a class="nav-link" data-toggle="collapse" href="#formsExamples">
           <i class="material-icons">dns</i>
           <p> Danh mục sản phẩm
             <b class="caret"></b>
           </p>
         </a>
-        <div class=" {{Request::segment(2) === 'categories' ? 'collapse show' : 'collapse'}}" id="formsExamples">
+        <div class=" {{Request::segment(2) === 'categories' || 'trending'? 'collapse show' : 'collapse'}}" id="formsExamples">
           <ul class="nav">
             <li class="nav-item {{(request()->is('admin/categories/create'))? 'active' : null}} pad">
               <a class="nav-link" href="/admin/categories/create">
@@ -139,6 +139,12 @@
               <a class="nav-link" href="/admin/categories">
                 <span class="sidebar-mini"> DSD </span>
                 <span class="sidebar-normal"> Danh sách danh mục </span>
+              </a>
+            </li>
+            <li class="nav-item {{Request::segment(2) === 'trending'? 'active' : null}} pad">
+              <a class="nav-link" href="/admin/trending">
+                <span class="sidebar-mini"> TRE </span>
+                <span class="sidebar-normal"> Trending </span>
               </a>
             </li>
           </ul>

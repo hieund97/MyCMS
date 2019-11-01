@@ -42,20 +42,7 @@
                                         <input type="text" name="product_code" class="form-control"
                                             value="{{$product->product_code}}">
                                     </div>
-                                </div>
-                                {{-- @if ($errors->has('product_code'))
-                                <div style="width: 470px;" class="alert alert-danger">
-                                    <div class="container">
-                                        <div class="alert-icon">
-                                            <i class="material-icons">error_outline</i>
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                        </button>
-                                        <b>LỖI</b> MÃ SẢN PHẨM KHÔNG ĐƯỢC TRÙNG
-                                    </div>
-                                </div>
-                                @endif --}}
+                                </div>                                
                             </div>
 
                             <div class="row">
@@ -192,13 +179,12 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
                                     <select class="selectpicker" name="category[]" data-style="select-with-transition"
-                                        multiple title="Chọn danh mục" data-size="10">
-                                        @foreach ($product->categories as $category)
-                                        {{editCategory($categories, 0, '', $category->id)}}
-                                        @endforeach
+                                        multiple title="Chọn danh mục" data-size="10">                                        
+                                        {{editProductCategory($categories, 0, '', $product->id)}}
                                     </select>
                                     <a href="/admin/categories" title="Quản lý danh mục"><i
                                             style="margin-left: 10px;margin-top: 10px;"
@@ -219,14 +205,31 @@
                                 @endif
                             </div>
                             <div class="row">
-                                <div class="col-md-9" style="margin-top: 20px;">
-                                    <select class="selectpicker" data-size="7" name="brand" data-style="btn btn-primary btn-round"
-                                        title="Chọn thương hiệu">
-                                        @if (isset($brands))
-                                        @foreach ($brands as $brand)
-                                        <option {{$product->brand_id == $brand->id?'selected': ''}} value="{{$brand->id}}">{{$brand->name}}</option>
+                                <div class="col-md-10" style="padding-bottom: 50px;">
+                                    <select class="selectpicker" name="trend" data-style="select-with-transition"
+                                        multiple title="Chọn trending" data-size="10">
+                                        @foreach ($trending as $trend)
+                                        <option value="{{$trend->id}}"
+                                            {{$trend->id == $product->trending_id?'Selected': null}}>{{$trend->name}}
+                                        </option>
                                         @endforeach
-                                        @endif                                        
+
+                                    </select>
+                                    <a href="/admin/trending" title="Quản lý trending"><i
+                                            style="margin-left: 10px;margin-top: 10px;"
+                                            class="material-icons">settings</i></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9" style="margin-top: 20px;">
+                                    <select class="selectpicker" data-size="7" name="brand"
+                                        data-style="btn btn-primary btn-round" title="Chọn thương hiệu">
+
+                                        @foreach ($brands as $brand)
+                                        <option {{$product->brand_id == $brand->id?'selected': ''}}
+                                            value="{{$brand->id}}">{{$brand->name}}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -275,16 +278,17 @@
                                                                 <td>
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                           
-                                                                            <input  @foreach ($product->value as $value_check)
-                                                                             {{$value_check->id == $value->id?'checked':''}}
-                                                                             @endforeach
+
+                                                                            <input @foreach ($product->value as
+                                                                            $value_check)
+                                                                            {{$value_check->id == $value->id?'checked':''}}
+                                                                            @endforeach
                                                                             class="form-check-input"
                                                                             type="checkbox"
                                                                             name="attr[{{$attr->id}}][]"
-                                                                            value="{{$value->id}}">                                                                            
-                                                                            
-                                                                            
+                                                                            value="{{$value->id}}">
+
+
                                                                             <span class="form-check-sign">
                                                                                 <span class="check"></span>
                                                                             </span>

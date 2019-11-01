@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Brand;
 use App\Models\Image_product;
+use App\Models\Trending;
 
 class ProductController extends Controller
 {
@@ -24,6 +25,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        // $trending = Trending::all();
         // $brands = Brand::all();
         // $categories = Categories::get();
         // $attribute = Attribute::all();
@@ -33,16 +35,17 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        // $trending = Trending::all();
         // $categories = Categories::get();
         // $attribute = Attribute::all();
-        // $brands = Brand::all();
-        $data['category'] = Categories::find($product);
-
-        return view('admin.product.edit', $data, compact('product'));
+        // $brands = Brand::all();        
+        
+        return view('admin.product.edit', compact('product'));
     }
 
     public function store(Product $product, Request $request)
     {
+        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -84,6 +87,7 @@ class ProductController extends Controller
             'brand_id' => $request->brand,
             'p_slug' => $slug,
             'highlight' => $request->highlight,
+            'trending_id' => $request->trend,
             'avatar' => asset('media/avatar') . '/' . $avatarName
         ]);
 
@@ -143,7 +147,8 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
-            'brand_id' => $request->brand,            
+            'brand_id' => $request->brand,
+            'trending_id' => $request->trend,          
             'highlight' => $request->highlight,
         ]);
 

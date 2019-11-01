@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Categories;
+use App\Models\Trending;
 use Cart;
 
 class HomeController extends Controller
@@ -14,12 +15,12 @@ class HomeController extends Controller
     public function index(){
         $featureProduct = Product::where('highlight', '=', 1)->latest()->paginate(12);
         
-        $saleCategory = Categories::find(34);
+        $saleCategory = Categories::find(22);
         $saleProduct = $saleCategory->product()->get();
-        $activeCate = Categories::where('active', '=', 1)->get();
+        $activeTrending = Trending::where('active', '=', 1)->get();
         $activeSlider = Slider::where('active', '=', 1)->latest()->get();
        
-        return view('client.home.index', compact('featureProduct', 'saleCategory', 'saleProduct', 'activeCate', 'activeSlider'));
+        return view('client.home.index', compact('featureProduct', 'saleCategory', 'saleProduct', 'activeTrending', 'activeSlider'));
     }
 
     public function contact(){

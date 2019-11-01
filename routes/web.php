@@ -104,7 +104,19 @@ Route::group([
             Route::post('/', 'CategoryController@store');
             Route::delete('{categories}/delete', 'CategoryController@destroy');
             Route::post('import', 'CategoryController@import');
-            Route::get('export', 'CategoryController@export');
+            Route::get('export', 'CategoryController@export');           
+        });
+
+        // Admin Trending-Product Route
+        Route::group([
+            'prefix' => 'trending'
+        ], function () {
+            Route::get('/', 'TrendingController@index');
+            Route::get('/create', 'TrendingController@create');
+            Route::get('/{id}/edit', 'TrendingController@edit');
+            Route::put('{id}/edit', 'TrendingController@update');
+            Route::post('/', 'TrendingController@store');
+            Route::delete('{id}/delete', 'TrendingController@destroy');
         });
 
         // Admin Blog Route
@@ -272,6 +284,13 @@ Route::group([
         Route::get('/', 'ProductController@index');
         Route::get('/{p_slug}', 'ProductController@item');
         Route::get('/loc-san-pham', 'ProductController@filter');
+    });
+
+    // Client Trending Route
+    Route::group([
+        'prefix' => 'trending'
+    ], function () {
+        Route::get('/{slug}', 'TrendingController@index');
     });
 
     // Client Filter Product

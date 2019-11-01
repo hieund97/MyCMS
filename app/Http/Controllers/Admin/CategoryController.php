@@ -22,8 +22,8 @@ class CategoryController extends Controller
 
     public function edit($id){
         // $categories = Categories::all();
-        $data['category'] = Categories::find($id);
-        return view('admin.categories.edit', $data);
+        $category = Categories::find($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function store(Categories $categories, Request $request){
@@ -90,4 +90,6 @@ class CategoryController extends Controller
         $categories->delete();
         return response()->json([], 204);
     }
+
+    
 }

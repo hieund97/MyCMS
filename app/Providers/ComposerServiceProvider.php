@@ -54,6 +54,10 @@ class ComposerServiceProvider extends ServiceProvider
             '*', 'App\Http\ViewComposers\UserComposer'
         );
 
+        // Trending Variable
+        View::composer(
+            '*', 'App\Http\ViewComposers\TrendingComposer'
+        );
         
     }
 }

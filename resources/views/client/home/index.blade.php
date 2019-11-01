@@ -132,16 +132,16 @@
 
     <div class="container-fluid">
         <div class="title">
-            <h2>Danh mục hot</h2>
+            <h2>Trending</h2>
         </div>
 
         <div class="row" style="display: flex; flex-wrap:wrap;">
-            @foreach ($activeCate as $cate)
+            @foreach ($activeTrending as $trend)
             <div class="col-md-4">
                 <div class="card card-plain">
-                    <a href="/danh-muc/{{$cate->p_cate_slug}}">
+                    <a href="/trending/{{$trend->slug}}">
                         <div class="">
-                            <img src="{{$cate->avatar}}" />
+                            <img src="{{$trend->avatar}}" />
                         </div>
                     </a>
                 </div>
