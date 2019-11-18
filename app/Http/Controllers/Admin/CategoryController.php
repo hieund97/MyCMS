@@ -22,7 +22,9 @@ class CategoryController extends Controller
 
     public function edit($id){
         // $categories = Categories::all();
+        
         $category = Categories::find($id);
+        dd($category);
         return view('admin.categories.edit', compact('category'));
     }
 

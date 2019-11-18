@@ -47,7 +47,7 @@
                         <p></p>
                         <label style="margin-bottom: 20px;"
                             class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label><br>
-                    <span>Đã bán: {{$item->purchase}}</span>
+                        <span>Đã bán: {{$item->purchase}}</span>
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-border panel-default">
@@ -91,6 +91,7 @@
                             <input type="hidden" name="id" id="id" value="{{$item->id}}">
                             <input type="hidden" name="name" id="name" value="{{$item->name}}">
                             <input type="hidden" name="avatar" id="avatar" value="{{json_encode($item->avatar)}}">
+                            {{-- <input type="hidden" id="price" name="price" value="{{$item->price}}"> --}}
                             <div class="row pick-size" style="padding-left: 15px;">
 
                                 <h4 class="panel-title">
@@ -165,11 +166,50 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading"> {{$comment->guest->client_name}}</h4>
+                                        <span>{{$comment->created_at}}</span>
                                         <h6 class="text-muted"></h6>
 
                                         <p>{{$comment->content}}</p>
                                     </div>
+                                    <div class="media-footer">
+                                        <a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip"
+                                            title="Reply to Comment">
+                                            <i class="material-icons">reply</i> Reply
+                                        </a>
+                                        <a href="#pablo" class="btn btn-default btn-simple pull-right">
+                                            <i class="material-icons">favorite</i> 2
+                                        </a>
+                                    </div>
+                                    <div class="media">
+                                        <a class="pull-left" href="#pablo">
+                                            <div class="avatar">
+                                                <img class="media-object" alt="64x64"
+                                                    src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}">
+                                            </div>
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">Tina Andrew <small>&middot; 12 Hours Ago</small>
+                                            </h4>
+
+                                            <p>Hello guys, nice to have you on the platform! There will be a lot of
+                                                great stuff coming soon. We will keep you posted for the latest news.
+                                            </p>
+                                            <p> Don't forget, You're Awesome!</p>
+
+                                            <div class="media-footer">
+                                                <a href="#pablo" class="btn btn-primary btn-simple pull-right"
+                                                    rel="tooltip" title="Reply to Comment">
+                                                    <i class="material-icons">reply</i> Reply
+                                                </a>
+                                                <a href="#pablo" class="btn btn-default btn-simple pull-right">
+                                                    <i class="material-icons">favorite</i> 2
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                
                                 @else
                                 <div class="media">
                                     <a class="pull-left" href="#pablo">
@@ -180,11 +220,50 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading"> {{$comment->user->last_name}}
-                                            {{$comment->user->first_name}}</h4>
+                                            {{$comment->user->first_name}}</h4> <span>{{$comment->created_at}}</span>
                                         <h6 class="text-muted"></h6>
 
                                         <p>{{$comment->content}}</p>
+                                        <div class="media-footer">
+                                            <a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip"
+                                                title="Reply to Comment">
+                                                <i class="material-icons">reply</i> Reply
+                                            </a>
+                                            <a href="#pablo" class="btn btn-default btn-simple pull-right">
+                                                <i class="material-icons">favorite</i> 2
+                                            </a>
+                                        </div>
+                                        <div class="media">
+                                            <a class="pull-left" href="#pablo">
+                                                <div class="avatar">
+                                                    <img class="media-object" alt="64x64"
+                                                        src="{{ asset ('client/img/faces/card-profile4-square.jpg') }}">
+                                                </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">Tina Andrew <small>&middot; 12 Hours
+                                                        Ago</small>
+                                                </h4>
+
+                                                <p>Hello guys, nice to have you on the platform! There will be a lot of
+                                                    great stuff coming soon. We will keep you posted for the latest
+                                                    news.
+                                                </p>
+                                                <p> Don't forget, You're Awesome!</p>
+
+                                                <div class="media-footer">
+                                                    <a href="#pablo" class="btn btn-primary btn-simple pull-right"
+                                                        rel="tooltip" title="Reply to Comment">
+                                                        <i class="material-icons">reply</i> Reply
+                                                    </a>
+                                                    <a href="#pablo" class="btn btn-default btn-simple pull-right">
+                                                        <i class="material-icons">favorite</i> 2
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 @endif
 

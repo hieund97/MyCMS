@@ -39,16 +39,7 @@
                             </div>
                             <h2 class="card-title">Danh sách thương hiệu</h2>
                         </div>
-                        <div class="col-md-6" style="float:right;margin-top: 15px;">
-                            <form action="/admin/user/import" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <span style=" color: black;">Nhập file excel</span>
-                                <input type="file" name="file" style="color:brown; width: 200px;" required>
-                                <button type="submit" style="padding: 10px" class="btn btn-success">Nhập</button>
-                                <a href="/admin/user/export" style="padding: 10px" class="btn btn-warning">Xuất ra file
-                                    excel</a>
-                            </form>
-                        </div>
+                        
                     </div>
 
                     <div class="card-body">

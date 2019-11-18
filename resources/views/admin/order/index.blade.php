@@ -23,7 +23,7 @@
                     <div class="card-icon">
                         <i class="material-icons">card_travel</i>
                     </div>
-                    <h2 class="card-title">Danh sách sản phẩm</h2>
+                    <h2 class="card-title">Danh sách đơn hàng</h2>
                 </div>
                 <div class="col-md-4" style="float:right;margin-top: 15px;">
                     <form action="/admin/user/import" method="post" enctype="multipart/form-data">

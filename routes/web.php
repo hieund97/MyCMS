@@ -119,6 +119,13 @@ Route::group([
             Route::delete('{id}/delete', 'TrendingController@destroy');
         });
 
+        // Admin Comment Route
+        Route::group([
+            'prefix' => 'comment'
+        ], function () {
+            Route::get('/', 'ReviewController@index');
+        });
+
         // Admin Blog Route
         Route::group([
             'prefix' => 'blog'

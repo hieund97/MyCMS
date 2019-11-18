@@ -120,14 +120,14 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::segment(2) === 'categories' || 'trending'? 'active' : null}} ">
+      <li class="nav-item {{Request::segment(2) === 'categories'? 'active' : null}}  {{Request::segment(2) === 'trending'? 'active' : null}}">
         <a class="nav-link" data-toggle="collapse" href="#formsExamples">
           <i class="material-icons">dns</i>
           <p> Danh mục sản phẩm
             <b class="caret"></b>
           </p>
         </a>
-        <div class=" {{Request::segment(2) === 'categories' || 'trending'? 'collapse show' : 'collapse'}}" id="formsExamples">
+        <div class=" {{Request::segment(2) === 'categories' ? 'collapse show' : 'collapse'}} {{Request::segment(2) === 'trending' ? 'collapse show' : 'collapse'}}" id="formsExamples">
           <ul class="nav">
             <li class="nav-item {{(request()->is('admin/categories/create'))? 'active' : null}} pad">
               <a class="nav-link" href="/admin/categories/create">
@@ -156,8 +156,8 @@
           <p> Media </p>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/comments">
+      <li class="nav-item {{Request::segment(2) === 'comment'? 'active' : null}} " >
+        <a class="nav-link" href="/admin/comment">
           <i class="material-icons">reorder</i>
           <p> Bình luận </p>
         </a>

@@ -15,7 +15,7 @@
                     <div class="card-body">
 
                         {{-- form Attribute --}}
-                        <form action="/admin/attribute/{{$attribute->id}}/edit" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/attribute/{{$attr->id}}/edit" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="row">
@@ -24,7 +24,7 @@
                                         <h4>Tên thuộc tính</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" name="attribute" class="form-control" value="{{$attribute->name}}">
+                                        <input type="text" name="attribute" class="form-control" value="{{$attr->name}}">
                                     </div>
                                 </div>
                             </div>

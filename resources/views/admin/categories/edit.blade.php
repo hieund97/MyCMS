@@ -25,9 +25,9 @@
                                         <h4>Tên danh mục</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" style="" name="category" class="form-control" required
+                                        <input type="text" name="category" class="form-control" required
                                             value="{{$category->name}}">
-                                        </ <input>
+                                        <input>
                                     </div>
                                 </div>
                             </div>

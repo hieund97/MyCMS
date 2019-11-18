@@ -27,8 +27,10 @@ class AttributeController extends Controller
         return redirect('/admin/products/value');
     }
 
-    public function edit(Attribute $attribute){
-        return view('admin.attribute.edit', compact('attribute'));
+    public function edit($id){
+        $attr = Attribute::find($id);
+        // dd($attribute);
+        return view('admin.attribute.edit', compact('attr'));
     }
 
     public function update(Attribute $attribute, Request $request){
