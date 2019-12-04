@@ -124,6 +124,8 @@ Route::group([
             'prefix' => 'comment'
         ], function () {
             Route::get('/', 'ReviewController@index');
+            Route::get('/{review}', 'ReviewController@edit');
+            
         });
 
         // Admin Blog Route

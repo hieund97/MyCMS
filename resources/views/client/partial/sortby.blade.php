@@ -1,60 +1,61 @@
 <div class="col-md-3">
     <div class="card card-refine card-plain">
         <div class="card-content">
+
             {{-- Lọc theo danh mục --}}
-            <div class="panel panel-default panel-rose">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <h4 class="panel-title">Danh mục</h4>
-                        <i class="material-icons">keyboard_arrow_down</i>
+
+
+            @php
+            $i = 0;
+            @endphp
+            @foreach ($parentCate as $category)
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading{{$i}}">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}"
+                        aria-expanded="{{$i == 0?'true':'false'}}" aria-controls="collapse{{$i}}">
+                        <h4 class="panel-title">
+                            {{$category->name}}
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </h4>
                     </a>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-
-                        @foreach ($parentCate as $category)
-                        <div class="checkbox">
-                            <label style="font-size: 18px;">
-                                <a href="/danh-muc/{{$category->p_cate_slug}}">{{$category->name}}</a>
-                            </label>
-                            <span style="float: right">({{$category->product->count()}})</span>
-                        </div>
-
-                        <ul class="nav" style="padding-left: 30px;">
-                            @forelse ($category->childs as $subcate)
-                            <li>
-                                <div class="checkbox">
-                                    <label>
-                                        <a href="/danh-muc/{{$subcate->p_cate_slug}}"> > {{$subcate->name}}</a>
-                                    </label>
-                                    <span style="float: right">({{$subcate->product->count()}})</span>
-                                </div>
-                            </li>
-                            @forelse ($subcate->childs as $childSub)
-                            <ul class="nav" style="padding-left: 30px;">
-                                <li>
-                                    <div class="checkbox">
-                                        <label>
-                                            <a href="/danh-muc/{{$childSub->p_cate_slug}}"> > {{$childSub->name}}</a>
-                                        </label>
-                                        <span style="float: right">({{$childSub->product->count()}})</span>
-                                    </div>
-                                </li>
-                            </ul>
-                            @empty
-
-                            @endforelse
-                            @empty
-
-                            @endforelse
-                        </ul>
-                        @endforeach
-
-
+                <div id="collapse{{$i}}" class="panel-collapse collapse {{$i == 0?'in':''}}" role="tabpanel"
+                    aria-labelledby="heading{{$i}}">
+                    @forelse ($category->childs as $subcate)
+                    <div class="checkbox">
+                        <label style="font-size: 18px;">
+                            <a href="/danh-muc/{{$subcate->p_cate_slug}}">{{$subcate->name}}</a>
+                        </label>
+                        <span style="float: right">({{$subcate->product->count()}})</span>
                     </div>
+                    @forelse ($subcate->childs as $childSub)
+                    <ul class="nav" style="padding-left: 30px;">
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <a href="/danh-muc/{{$childSub->p_cate_slug}}"> > {{$childSub->name}}</a>
+                                </label>
+                                <span style="float: right">({{$childSub->product->count()}})</span>
+                            </div>
+                        </li>
+                    </ul>
+                    @empty
+
+                    @endforelse
+                    @empty
+
+                    @endforelse
+
                 </div>
             </div>
+            @php
+            $i++;
+            @endphp
+            @endforeach
+
+
+
+
 
 
             {{-- Lọc theo giá sp --}}
@@ -73,8 +74,10 @@
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                         aria-labelledby="headingOne">
                         <div class="panel-body panel-refine">
-                            <input type="text" name="start" id="price-left" class=" price-left pull-left" data-currency="₫" style="width: 80px; border: none">
-                            <input type="text" name="end" id="price-right" class=" price-right pull-right" data-currency="₫" style="width: 80px; border: none">                            
+                            <input type="text" name="start" id="price-left" class=" price-left pull-left"
+                                data-currency="₫" style="width: 80px; border: none">
+                            <input type="text" name="end" id="price-right" class=" price-right pull-right"
+                                data-currency="₫" style="width: 80px; border: none">
                             <div class="clearfix"></div>
                             <div id="sliderRefine" class="slider slider-rose"></div>
                             <button type="submit" class="btn btn-rose pull-right">LỌC</button>
@@ -86,21 +89,22 @@
             {{-- Lọc theo thuộc tính --}}
             @foreach ($attribute as $attr)
             <div class="panel panel-default panel-rose">
-                <div class="panel-heading" role="tab" id="heading{{$attr->id}}">
+                <div class="panel-heading" role="tab" id="heading{{$attr->name}}">
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#collapse{{$attr->id}}" aria-expanded="false" aria-controls="collapse{{$attr->id}}">
+                        href="#collapse{{$attr->name}}" aria-expanded="false" aria-controls="collapse{{$attr->name}}">
                         <h4 class="panel-title">{{$attr->name}}</h4>
                         <i class="material-icons">keyboard_arrow_down</i>
                     </a>
                 </div>
 
-                <div id="collapse{{$attr->id}}" class="panel-collapse collapse in" role="tabpanel"
+                <div id="collapse{{$attr->name}}" class="panel-collapse collapse in" role="tabpanel"
                     aria-labelledby="headingThree">
                     <div class="panel-body">
                         @foreach ($attr->value as $value)
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" onchange="myFunction5()" id="attr_tag" value="{{$value->id}}" data-toggle="checkbox">
+                                <input type="checkbox" onchange="myFunction5()" id="attr_tag" value="{{$value->id}}"
+                                    data-toggle="checkbox">
                                 {{$value->value}}
                             </label>
                             <span style="float: right">({{$value->product->count()}})</span>

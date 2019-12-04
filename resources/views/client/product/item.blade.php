@@ -209,7 +209,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 @else
                                 <div class="media">
                                     <a class="pull-left" href="#pablo">
@@ -224,8 +224,19 @@
                                         <h6 class="text-muted"></h6>
 
                                         <p>{{$comment->content}}</p>
+
+                                        <div class="media-body hide" id="reply">
+                                            <textarea class="form-control" name="content"
+                                                placeholder="Viết bình luận của bạn" rows="6"></textarea>
+                                            <div class="media-footer">
+                                                <button type="submit"
+                                                    class="btn btn-primary btn-round btn-wd pull-right">Viết
+                                                    Bình luận</button>
+                                            </div>
+                                        </div>
+
                                         <div class="media-footer">
-                                            <a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip"
+                                            <a href="#pablo" onclick="myfunction()" class="btn btn-primary btn-simple pull-right" rel="tooltip"
                                                 title="Reply to Comment">
                                                 <i class="material-icons">reply</i> Reply
                                             </a>
@@ -480,3 +491,9 @@
 
 </body>
 @endsection
+<script>
+    function myfunction(){
+        $('#reply').removeClass("hide")
+    };
+
+</script>

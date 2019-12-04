@@ -83,8 +83,8 @@
                                         <td class='text-center'>{{$cmt->created_at}}</td>
                                         <td class="td-actions text-right" style="padding-right: 15px;">
                                             <button type="button" class="btn btn-success btn-round"
-                                                data-original-title="Phản hồi">
-                                                <a style="color:white;" href="/admin/user//edit"><i
+                                                data-original-title="Sửa">
+                                        <a style="color:white;" href="/admin/user/{{$cmt->id}}/edit"><i
                                                         class="material-icons">edit</i></a>
                                             </button>
                                             <button type="button" class="btn btn-danger btn-round btn-del" data-id=""
