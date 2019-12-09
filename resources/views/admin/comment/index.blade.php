@@ -43,7 +43,7 @@
                     </div>
 
 
-                    <div class="card-body">
+                    <div class="card-body table-hover">
                         <div class="table-responsive">
                             <table class="table" id="cmttable">
                                 <thead>

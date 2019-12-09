@@ -38,7 +38,7 @@
                         </div>
                         <h2 class="card-title">Danh sách ảnh</h2>                        
                     </div>
-                    <div class="card-body">
+                    <div class="card-body table-hover">
                         <div class="table-responsive">
                             <h3 style="color:crimson;margin-bottom: 40px;margin-left: 60px;">*Ảnh có thuộc tính active
                                 sẽ xuất hiện trên trang chủ (tối đa 5 ảnh)*</h3>

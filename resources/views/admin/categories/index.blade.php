@@ -40,7 +40,7 @@
                             <h2 class="card-title">Danh sách danh mục</h2>
                         </div>                        
                     </div>                    
-                    <div class="card-body">
+                    <div class="card-body table-hover">
                         <div class="table-responsive">
                             <h4 style="color:crimson;margin-left: 60px;">*Danh mục
                                 chọn active sẽ xuất hiện trên trang chủ (tối đa 6 danh
