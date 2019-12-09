@@ -124,11 +124,15 @@ Route::group([
             'prefix' => 'comment'
         ], function () {
             Route::get('/', 'ReviewController@index');
-            Route::get('/{review}/edit', 'ReviewController@edit');
+            Route::get('/{review}/detail', 'ReviewController@detail');
             Route::get('/block', 'ReviewController@listBlock');
             Route::post('/{id}/block', 'ReviewController@block');
             Route::post('/{id}/unblock', 'ReviewController@unblock');
             Route::delete('{id}/delete', 'ReviewController@destroy');
+            Route::post('/{id}/repblock', 'ReviewController@repBlock');
+            Route::post('/{id}/unrepblock', 'ReviewController@unRepBlock');
+            Route::delete('{id}/deletereply', 'ReviewController@destroyReply');
+            Route::post('reply', 'ReviewController@reply');
         });
 
         // Admin Blog Route

@@ -87,7 +87,7 @@
                                             <div class="row">                                                
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
-                                                        class="btn btn-warning btn-round bt-unblock"
+                                                        class="btn btn-info btn-round bt-unblock"
                                                         data-id="{{$cmt->id}}" rel="tooltip" title="Gỡ Block">
                                                         <a style="color:white;"
                                                             href="/admin/comment/{{$cmt->id}}/block"><i

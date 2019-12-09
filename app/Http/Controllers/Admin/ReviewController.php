@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reply;
 use App\Models\Review;
 
 class ReviewController extends Controller
@@ -18,9 +19,7 @@ class ReviewController extends Controller
         return view('admin.comment.block', compact('listBlock'));
     }
 
-    public function edit(Review $review){
-        return view ('admin.comment.edit', compact('review'));
-    }
+   
 
     public function block($id){
         $block = Review::find($id);
@@ -41,4 +40,40 @@ class ReviewController extends Controller
         $review->delete();
         return response()->json([], 204);
     }
+
+    public function detail(Review $review){
+        $reply = $review->reply;
+        return view ('admin.comment.detail', compact('review', 'reply'));
+    }
+
+    public function reply(Request $request){
+        $reply = Reply::create([
+            'content' => $request->content,
+            'comment_id'=> $request->commentid,
+            'user_id' => $request->userid
+        ]);
+        session()->flash('reply', 'success');
+        return redirect()->back();
+    }
+
+    public function repBlock($id){
+        $repBlock = Reply::find($id);
+        $repBlock->update([
+            'block' => 1
+        ]);
+    }
+
+    public function unRepBlock($id){
+        $unRepBlock = Reply::find($id);
+        $unRepBlock->update([
+            'block' => 0
+        ]);
+    }
+
+    public function destroyReply($id){
+        $delReply = Reply::find($id);
+        $delReply->delete();
+        return response()->json([], 204);
+    }
+
 }

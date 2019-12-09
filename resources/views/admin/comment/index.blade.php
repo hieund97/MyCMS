@@ -89,10 +89,10 @@
                                                     <button type="button" style="padding: 12px;"
                                                         class="btn btn-success btn-round" rel="tooltip" title="Sửa">
                                                         <a style="color:white;"
-                                                            href="/admin/comment/{{$cmt->id}}/edit"><i
+                                                            href="/admin/comment/{{$cmt->id}}/detail"><i
                                                                 class="material-icons">edit</i> Xem chi tiết</a>
                                                     </button>
-                                                </div>                                                
+                                                </div>
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
                                                         class="btn btn-warning btn-round bt-block"
@@ -104,12 +104,12 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
-                                                        class="btn btn-danger btn-round btn-del" data-id="{{$cmt->id}}" rel="tooltip"
-                                                        title="Xóa">
+                                                        class="btn btn-danger btn-round btn-del" data-id="{{$cmt->id}}"
+                                                        rel="tooltip" title="Xóa">
                                                         <i class="material-icons">close</i>Xóa
                                                     </button>
                                                 </div>
-                                               
+
                                             </div>
 
                                         </td>
@@ -119,7 +119,7 @@
                                 </tbody>
                             </table>
                             <a href="/admin/comment/block" style="padding-left: 15px; padding-right: 15px;"
-                                class="btn btn-primary pull-right">Danh sách block</a>
+                                class="btn btn-danger pull-right">Danh sách block</a>
                         </div>
                     </div>
                 </div>
@@ -187,12 +187,8 @@
 				})	
 		});
     });
-    
-// $(document).ready( function () {
-//     $('#cmttable').DataTable();
-// } );
 
-$(document).ready(function(){
+    $(document).ready(function(){
 		$('.bt-block').click(function(e){		
             e.preventDefault();
             console.log('im in');
@@ -207,7 +203,7 @@ $(document).ready(function(){
 					})
 
 					swalWithBootstrapButtons.fire({
-					title: 'Bạn có chắc chắn muốn block',
+					title: 'Bạn có chắc chắn muốn block bình luận',
 					text: "Hành động sẽ không thể hoàn tác",
 					type: 'warning',
 					showCancelButton: true,
@@ -224,7 +220,7 @@ $(document).ready(function(){
 							},
 							success: function(){
 								swalWithBootstrapButtons.fire(
-								'Đã block!',
+								'Đã Block!',
 								'Bình luận đã bị block',
 								'success'
 								).then((result2) => {
@@ -248,6 +244,10 @@ $(document).ready(function(){
 				})	
 		});
     });
+    
+$(document).ready( function () {
+    $('#cmttable').DataTable();
+} );		
     
 </script>
 @endpush
