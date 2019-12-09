@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Reply extends Model
 {
-    protected $table = 'review';
+    protected $table = 'reply';
     protected $guarded = ['id'];
 
-    public function product()
+    public function review()
     {
-        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+        return $this->belongsTo('App\Models\Review', 'comment_id', 'id');
     }
 
     public function user()
@@ -22,10 +22,5 @@ class Review extends Model
     public function guest()
     {
         return $this->belongsTo('App\Models\Guest', 'guest_id', 'id');
-    }
-
-    public function reply()
-    {
-        return $this->hasMany('App\Models\Reply', 'comment_id', 'id');
     }
 }

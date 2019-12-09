@@ -12,14 +12,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading{{$i}}">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$i}}"
-                        aria-expanded="{{$i == 0?'true':'false'}}" aria-controls="collapse{{$i}}">
+                        aria-expanded="{{$category->p_cate_slug == $cate->p_cate_slug?'true':'false'}}" aria-controls="collapse{{$i}}">
                         <h4 class="panel-title">
                             {{$category->name}}
                             <i class="material-icons">keyboard_arrow_down</i>
                         </h4>
                     </a>
                 </div>
-                <div id="collapse{{$i}}" class="panel-collapse collapse {{$i == 0?'in':''}}" role="tabpanel"
+                <div id="collapse{{$i}}" class="panel-collapse collapse {{$category->p_cate_slug == $cate->p_cate_slug?'in':''}}" role="tabpanel"
                     aria-labelledby="heading{{$i}}">
                     @forelse ($category->childs as $subcate)
                     <div class="checkbox">

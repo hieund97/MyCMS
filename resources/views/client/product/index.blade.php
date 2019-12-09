@@ -15,7 +15,7 @@
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">
                         @foreach ($products as $product)
-                        <div class="col-md-3">
+                        <div class="col-md-3 main-img">
                             <div class="card card-product card-plain no-shadow main-img" data-colored-shadow="false">
                                 <div>
                                     <a href="/san-pham/{{$product->p_slug}}">

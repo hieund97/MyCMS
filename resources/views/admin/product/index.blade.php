@@ -126,22 +126,22 @@
                                 </td>
                                 <td class="td-actions">
                                     <button type="button"  class="btn btn-warning btn-round"
-                                        data-original-title="Giá tùy chỉnh" style="margin-bottom: 7px;">
+                                       title="Giá tùy chỉnh" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/price/{{$product->id}}/edit"><i
                                                 class="material-icons">assessment</i></a>
                                     </button>
                                     <button type="button"  class="btn btn-info btn-round"
-                                        data-original-title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
+                                       title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/image/{{$product->id}}/edit"><i
                                                 class="material-icons">pageview</i></a>
                                     </button>
                                     <button type="button"  class="btn btn-success btn-round"
-                                        data-original-title="Chỉnh sửa">
+                                        title="Chỉnh sửa">
                                         <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i
                                                 class="material-icons">edit</i></a>
                                     </button>
                                     <button type="button"  class="btn btn-danger btn-round btn-del"
-                                        data-id="{{$product->id}}" data-original-title="Xóa">
+                                        data-id="{{$product->id}}"title="Xóa">
                                         <i class="material-icons">close</i>
                                     </button>
                                 </td>

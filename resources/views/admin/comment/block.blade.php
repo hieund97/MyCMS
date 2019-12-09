@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'Bình luận')
+@section('title', 'Block')
 @section('content')
 
 <div class="content">
@@ -38,7 +38,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">description</i>
                             </div>
-                            <h2 class="card-title">Danh sách bình luận</h2>
+                            <h2 class="card-title">Danh sách chặn</h2>
                         </div>
                     </div>
 
@@ -53,11 +53,11 @@
                                         <th class="text-center">Vị trí</th>
                                         <th class="text-center">Comment</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
-
+                                    
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($comment as $cmt)
+                                    @foreach ($listBlock as $cmt)
                                     <tr>
                                         <td class="text-center">{{$cmt->id}}</td>
                                         <td>
@@ -76,50 +76,40 @@
                                             </div>
 
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <label style="padding: 10px;"
                                                 class="btn btn-{{$cmt->user_id == null? 'warning':'success'}}">{{$cmt->user_id == null? 'Guest':'Member'}}</label>
                                         </td>
-                                        <td class="text-justify" style="padding-left: 30px;">
+                                        <td class="text-justify">
                                             <div class="row" style="margin: 0">
                                                 <p>{{$cmt->content}}</p>
                                             </div>
-                                            <div class="row">
+                                            <div class="row">                                                
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
-                                                        class="btn btn-success btn-round" rel="tooltip" title="Sửa">
-                                                        <a style="color:white;"
-                                                            href="/admin/comment/{{$cmt->id}}/edit"><i
-                                                                class="material-icons">edit</i> Xem chi tiết</a>
-                                                    </button>
-                                                </div>                                                
-                                                <div class="col-md-2">
-                                                    <button type="button" style="padding: 12px;"
-                                                        class="btn btn-warning btn-round bt-block"
-                                                        data-id="{{$cmt->id}}" rel="tooltip" title="Block">
+                                                        class="btn btn-warning btn-round bt-unblock"
+                                                        data-id="{{$cmt->id}}" rel="tooltip" title="Gỡ Block">
                                                         <a style="color:white;"
                                                             href="/admin/comment/{{$cmt->id}}/block"><i
-                                                                class="material-icons">lock</i>Block</a>
+                                                                class="material-icons">lock_open</i>Gỡ Block</a>
                                                     </button>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
-                                                        class="btn btn-danger btn-round btn-del" data-id="{{$cmt->id}}" rel="tooltip"
-                                                        title="Xóa">
+                                                        class="btn btn-danger btn-round btn-del" data-id="{{$cmt->id}}"
+                                                        rel="tooltip" title="Xóa">
                                                         <i class="material-icons">close</i>Xóa
                                                     </button>
                                                 </div>
-                                               
                                             </div>
-
                                         </td>
                                         <td class='text-center'>{{$cmt->created_at}}</td>
+                                        
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            <a href="/admin/comment/block" style="padding-left: 15px; padding-right: 15px;"
-                                class="btn btn-primary pull-right">Danh sách block</a>
+
                         </div>
                     </div>
                 </div>
@@ -193,59 +183,59 @@
 // } );
 
 $(document).ready(function(){
-		$('.bt-block').click(function(e){		
-            e.preventDefault();
-            console.log('im in');
+	$('.bt-unblock').click(function(e){		
+        e.preventDefault();
+        console.log('im in');
             	
-			let blockId = $(this).attr('data-id')
-			const swalWithBootstrapButtons = Swal.mixin({
-					customClass: {
-						confirmButton: 'btn btn-success',
-						cancelButton: 'btn btn-danger'
-					},
-					buttonsStyling: false,
-					})
+		let unBlockId = $(this).attr('data-id')
+		const swalWithBootstrapButtons = Swal.mixin({
+			customClass: {
+					confirmButton: 'btn btn-success',
+					cancelButton: 'btn btn-danger'
+				},
+				buttonsStyling: false,
+				})
 
-					swalWithBootstrapButtons.fire({
-					title: 'Bạn có chắc chắn muốn block',
-					text: "Hành động sẽ không thể hoàn tác",
-					type: 'warning',
-					showCancelButton: true,
-					confirmButtonText: 'Có, Block bình luận',
-					cancelButtonText: 'Không, Hủy bỏ!',
-					reverseButtons: true
-					}).then((result) => {
-					if (result.value) {
-						$.ajax({
-							url: '/admin/comment/' + blockId + '/block',
-							method: 'POST',
-							data: {
-								_token: "{{csrf_token()}}",								
-							},
-							success: function(){
-								swalWithBootstrapButtons.fire(
-								'Đã block!',
-								'Bình luận đã bị block',
-								'success'
-								).then((result2) => {
-									if(result2.value){
-									window.location.reload();
-									}
-								});							
-							}
-						});
+				swalWithBootstrapButtons.fire({
+				title: 'Bạn có chắc chắn muốn gỡ block',
+				text: "Hành động sẽ không thể hoàn tác",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Có, Gỡ Block bình luận',
+				cancelButtonText: 'Không, Hủy bỏ!',
+				reverseButtons: true
+				}).then((result) => {
+				if (result.value) {
+					$.ajax({
+						url: '/admin/comment/' + unBlockId + '/unblock',
+						method: 'POST',
+						data: {
+							_token: "{{csrf_token()}}",								
+						},
+						success: function(){
+							swalWithBootstrapButtons.fire(
+							'Đã Gỡ Block!',
+							'Bình luận đã được gỡ block',
+							'success'
+							).then((result2) => {
+								if(result2.value){
+								window.location.reload();
+								}
+							});							
+						}
+					});
 						
-					} else if (
-						// Read more about handling dismissals
-						result.dismiss === Swal.DismissReason.cancel
-					) {
-						swalWithBootstrapButtons.fire(
-						'Đã hủy',
-						'Dữ liệu của bạn vẫn an toàn :)',
-						'error'
-						)
-					}
-				})	
+				} else if (
+					// Read more about handling dismissals
+				result.dismiss === Swal.DismissReason.cancel
+				) {
+					swalWithBootstrapButtons.fire(
+					'Đã hủy',
+					'Dữ liệu của bạn vẫn an toàn :)',
+					'error'
+					)
+				}
+			})	
 		});
     });
     

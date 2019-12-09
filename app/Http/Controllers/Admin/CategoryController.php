@@ -24,7 +24,7 @@ class CategoryController extends Controller
         // $categories = Categories::all();
         
         $category = Categories::find($id);
-        dd($category);
+        // dd($category);
         return view('admin.categories.edit', compact('category'));
     }
 

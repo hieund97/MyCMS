@@ -124,8 +124,11 @@ Route::group([
             'prefix' => 'comment'
         ], function () {
             Route::get('/', 'ReviewController@index');
-            Route::get('/{review}', 'ReviewController@edit');
-            
+            Route::get('/{review}/edit', 'ReviewController@edit');
+            Route::get('/block', 'ReviewController@listBlock');
+            Route::post('/{id}/block', 'ReviewController@block');
+            Route::post('/{id}/unblock', 'ReviewController@unblock');
+            Route::delete('{id}/delete', 'ReviewController@destroy');
         });
 
         // Admin Blog Route
@@ -366,5 +369,7 @@ Route::group([
     ], function () {
         Route::post('/member', 'ReviewController@storeAsMember');
         Route::post('/guest', 'ReviewController@storeAsGuest');
+        Route::post('/{id}/memreply', 'ReviewController@memReply' );
+        Route::post('/{id}/guestreply', 'ReviewController@guestReply' );
     });
 });

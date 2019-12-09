@@ -20,6 +20,7 @@ class ProductController extends Controller
         $item = Product::where('p_slug', $p_slug)->firstOrFail();        
         $randomProduct = Product::inRandomOrder()->paginate(4);
         $review = Review::where('product_id', $item->id)->get();
+        
         return view('client.product.item', compact('item', 'randomProduct', 'review'));
     }
 
