@@ -64,21 +64,21 @@
                 <h2 class="title text-center">Có thể bạn quan tâm</h2>
                 <br />
                 <div class="row">
-                    @foreach ($hots as $hot)
+                    @foreach ($randomBlog as $random)
                     <div class="col-md-4">
                         <div class="card card-plain card-blog">
-                            <a href="/bai-viet/{{$hot->slug}}">
+                            <a href="/bai-viet/{{$random->slug}}">
                                 <div class="card-image">
-                                    <img class="img img-raised" src=" {{$hot->thumbnail}}" />
+                                    <img class="img img-raised" src=" {{$random->thumbnail}}" />
                                 </div>
                             </a>
                             <div class="card-content">
-                                <h6 class="category text-info">{{$hot->blog_category['name']}}</h6>
+                                <h6 class="category text-info">{{$random->blog_category['name']}}</h6>
                                 <h4 class="card-title">
-                                    <a href="/bai-viet/{{$hot->slug}}">{{$hot->title}}</a>
+                                    <a href="/bai-viet/{{$random->slug}}">{{$random->title}}</a>
                                 </h4>
-                                <p class="card-description"> {{$hot->short_decription}} <b><a
-                                            href="/bai-viet/{{$hot->slug}}"> Read More </a></p></b>
+                                <p class="card-description"> {{$random->short_decription}} <b><a
+                                            href="/bai-viet/{{$random->slug}}"> Read More </a></p></b>
                             </div>
                         </div>
                     </div>

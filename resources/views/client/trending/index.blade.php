@@ -8,19 +8,7 @@
     <div class="section" style="padding-bottom:0px;">
         <div class="container">
             <h2 class="section-title text-center">{{$trend->name}}</h2>
-            {{-- <div class="row">
-
-                <ul class="nav nav-pills-primary text-center ">
-                    @forelse ($cate->childs as $subCate)
-                    <li style="display: inline-block"><a
-                            style="text-transform: uppercase;font-weight: 500;color: #555555;"
-                            href="/danh-muc/{{$subCate->p_cate_slug}}">{{$subCate->name}}</a></li>
-                    @empty
-
-                    @endforelse
-                </ul>
-
-            </div> --}}
+            
         </div>
     </div><!-- section -->
 
@@ -28,7 +16,7 @@
         <div class="container">
             <h2 class="section-title">Tùy chọn</h2>
             <div class="row">
-                @include('client.partial.sortby')
+                @include('client.partial.sortby2')
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">
 

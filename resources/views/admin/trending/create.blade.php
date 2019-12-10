@@ -71,6 +71,7 @@
                     <div class="col-md-9 padding">
                         <label class="bmd-label-floating">
                             <h4>Ảnh Trending</h4>
+                            <span>2048 x 1361</span>
                         </label>
                         <div class="card card-profile" style="margin-top: 0px;">
                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">

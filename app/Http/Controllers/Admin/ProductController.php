@@ -18,7 +18,7 @@ class ProductController extends Controller
     // Product Zone
     public function index(Product $product)
     {
-        $products = Product::all();
+        $products = Product::latest()->get();
         // $categories = Categories::get();
         return view('admin.product.index', compact('products'));
     }

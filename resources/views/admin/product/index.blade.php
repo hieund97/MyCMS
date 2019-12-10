@@ -125,22 +125,22 @@
                                         style="padding-left: 15px;padding-right: 15px;">{{$product->quantity ==  0? 'Hết hàng':'Còn hàng'}}</label>
                                 </td>
                                 <td class="td-actions">
-                                    <button type="button"  class="btn btn-warning btn-round"
+                                    <button type="button"  class="btn btn-warning btn-round" rel="tooltip"
                                        title="Giá tùy chỉnh" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/price/{{$product->id}}/edit"><i
                                                 class="material-icons">assessment</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-info btn-round"
+                                    <button type="button"  class="btn btn-info btn-round" rel="tooltip"
                                        title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/image/{{$product->id}}/edit"><i
                                                 class="material-icons">pageview</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-success btn-round"
+                                    <button type="button"  class="btn btn-success btn-round" rel="tooltip"
                                         title="Chỉnh sửa">
                                         <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i
                                                 class="material-icons">edit</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-danger btn-round btn-del"
+                                    <button type="button"  class="btn btn-danger btn-round btn-del" rel="tooltip"
                                         data-id="{{$product->id}}"title="Xóa">
                                         <i class="material-icons">close</i>
                                     </button>

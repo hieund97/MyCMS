@@ -155,7 +155,11 @@
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Chi tiết sản phẩm</label>
                                     <div class="form-group">
-                                        <textarea name="detail" cols="60" rows="7"></textarea>
+                                        <textarea name="detail" cols="60"
+                                            rows="7">– Chất liệu: Vải cao cấp
+                                                    – Màu: Trắng, hông, xanh da trời
+                                                    – Size: M – L – XL – XXL
+                                                    – Sản phẩm đã có mặt ở toàn bộ các cửa hàng trên hệ thống và Shopee.</textarea>
                                     </div>
                                 </div>
                             </div>
