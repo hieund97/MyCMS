@@ -11,7 +11,7 @@
             <h2 class="section-title text-center">Tìm thấy {{$filterProducts->count()}} sản phẩm</h2>
             <h2 class="section-title">Tùy chọn</h2>
             <div class="row">
-                @include('client.partial.sortby')
+                @include('client.partial.sortby2')
 
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">

@@ -24,7 +24,7 @@
 
 						<div class="col-md-7" style="margin-right:40px; margin-left:30px;">
 							<h3 class="title">Gửi thắc mắc cho chúng tôi</h3>
-							@if (session()->has('create_contact'))
+							@if (session()->has('send_email'))
 							<div class="alert alert-success">
 								<div class="container">
 									<div class="alert-icon">

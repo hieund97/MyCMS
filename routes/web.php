@@ -210,8 +210,10 @@ Route::group([
         ], function () {
             Route::get('/', 'ContactController@index');
             Route::delete('/{contact}/delete', 'ContactController@destroy');
-            Route::post('import', 'ContactController@import');
-            Route::get('export', 'ContactController@export');
+            Route::post('/import', 'ContactController@import');
+            Route::get('/export', 'ContactController@export');
+            Route::get('/{id}/reply', 'ContactController@edit');
+            Route::post('/reply', 'ContactController@reply');
         });
 
 

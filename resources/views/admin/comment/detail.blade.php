@@ -154,9 +154,7 @@
                                     @forelse ($reply as $rep)
                                     <tr class="{{$rep->block == 1?'table-danger':''}}">
                                         <td class="text-center">
-                                            @if ($rep->block == 1)
-                                            <i class="material-icons" style="color: red;">lock</i>
-                                            @endif
+                                            {!! $rep->block == 1? '<i class="material-icons" style="color: red;">lock</i>':'' !!}                                            
                                             <span>{{$rep->id}}</span>
                                         </td>
                                         <td>

@@ -69,7 +69,7 @@
 
                                         <td class="td-actions text-center">
                                             <button type="button" class="btn btn-success" data-original-title="Gửi">
-                                                <a style="color:white;" href="#">Phản hồi</a>
+                                                <a style="color:white;" href="/admin/contact/{{$contact->id}}/reply">Phản hồi</a>
                                             </button>
                                             <button type="button" style="margin-left: 20px;"
                                                 class="btn btn-danger btn-round btn-del" data-id="{{$contact->id}}"

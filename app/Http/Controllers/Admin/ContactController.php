@@ -8,6 +8,8 @@ use App\Models\Contact;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportContact;
 use App\Imports\ImportContact;
+use App\Mail\ReplyContactEmail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -21,17 +23,31 @@ class ContactController extends Controller
         return response()->json([], 204);
     }
 
-    // Import Contact from Excel
-    public function import(Request $request)
-    {
-        $data = Excel::import(new ImportContact,  $request->file('file'));
-        session()->flash('import_user', 'success');
-        return back();
+    public function edit($id){
+        $reply = Contact::find($id);
+        return view('admin.contact.reply', compact('reply'));
     }
 
-    // Export Contact to Excel
-    public function export()
-    {
-        return Excel::download(new ExportContact, 'contact.xlsx');
+    public function reply(Request $request){
+        $reply = request()->validate([
+            'title' => 'required',
+            'message' => 'required'
+        ]);
+        Mail::to('boychel1997@gmail.com')->send(new ReplyContactEmail($reply));
+       
     }
+
+    // Import Contact from Excel
+    // public function import(Request $request)
+    // {
+    //     $data = Excel::import(new ImportContact,  $request->file('file'));
+    //     session()->flash('import_user', 'success');
+    //     return back();
+    // }
+
+    // // Export Contact to Excel
+    // public function export()
+    // {
+    //     return Excel::download(new ExportContact, 'contact.xlsx');
+    // }
 }
