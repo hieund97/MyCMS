@@ -11,6 +11,7 @@ use App\Models\Variant;
 use App\Models\Brand;
 use App\Models\Image_product;
 use App\Models\Trending;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -19,27 +20,16 @@ class ProductController extends Controller
     public function index(Product $product)
     {
         $products = Product::latest()->get();
-        // $categories = Categories::get();
         return view('admin.product.index', compact('products'));
     }
 
     public function create()
     {
-        // $trending = Trending::all();
-        // $brands = Brand::all();
-        // $categories = Categories::get();
-        // $attribute = Attribute::all();
-
         return view('admin.product.create');
     }
 
     public function edit(Product $product)
     {
-        // $trending = Trending::all();
-        // $categories = Categories::get();
-        // $attribute = Attribute::all();
-        // $brands = Brand::all();        
-        
         return view('admin.product.edit', compact('product'));
     }
 
@@ -49,15 +39,30 @@ class ProductController extends Controller
         $this->validate(
             $request,
             [
+                'name'         => 'required',
                 'product_code' => 'required | unique:product,product_code',
+                'price'        => 'required',
+                'quantity'     => 'required',
                 'category'     => 'required',
                 'attr'         => 'required',
-                'brand'        => 'required'
-
+                'brand'        => 'required',
+                'description'  => 'required',
+                'avatar'       => 'required',
+                'trend'        => 'required',
+                'brand'        => 'required',
             ],
             [
-                'require' => 'Trường này trống cmnr',
-                'unique'  => 'Tên danh mục đã bị trùng'
+                'name.required'                  => 'Tên sản phẩn không được để trống',
+                'product_code.required'          => 'Mã sản phẩn không được để trống',
+                'product_code.unique'            => 'Mã sản phẩn không được trùng',
+                'price.required'                 => 'Giá sản phẩn không được để trống',
+                'quantity.required'              => 'Số lượng sản phẩn không được để trống',
+                'category.required'              => 'Danh mục sản phẩn không được để trống',
+                'attr.required'                  => 'Thuộc tính sản phẩn không được để trống',
+                'brand.required'                 => 'Thương hiệu sản phẩn không được để trống',
+                'description.required'           => 'Mô tả sản phẩn không được để trống',
+                'avatar.required'                => 'Ảnh sản phẩn không được để trống',
+                'trend.required'                 => 'Xu hướng sản phẩn không được để trống',
             ]
         );
         // dd($request->all());
@@ -232,7 +237,6 @@ class ProductController extends Controller
     // Brand Zone
     public function brand()
     {
-        
         return view('admin.product.brand');
     }
 
@@ -242,13 +246,11 @@ class ProductController extends Controller
         $this->validate(
             $request,
             [
-                'brand' => 'required | unique:brand,name',
-
-
+                'brand' => 'required | unique:brand,name'
             ],
             [
-                'require' => 'Trường này trống cmnr',
-                'unique'  => 'Tên danh mục đã bị trùng'
+                'brand.required' => 'Tên thương hiệu không được để trống',
+                'brand.unique'  => 'Tên thương hiệu không được trùng'
             ]
         );
         $slug = str_slug($request->brand, '-');

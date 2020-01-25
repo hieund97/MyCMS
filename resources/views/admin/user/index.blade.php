@@ -119,64 +119,64 @@
 @endsection
 @push('js')
 <script>
-    $(document).ready(function(){
-		$('.btn-del').click(function(e){		
-            e.preventDefault();
-            console.log('im in');
-            	
-			let userId = $(this).attr('data-id')
-			const swalWithBootstrapButtons = Swal.mixin({
-					customClass: {
-						confirmButton: 'btn btn-success',
-						cancelButton: 'btn btn-danger'
-					},
-					buttonsStyling: false,
-					})
+$(document).ready(function(){
+    $('.btn-del').click(function(e){
+        e.preventDefault();
+        // console.log('im in');
+            
+        let userId = $(this).attr('data-id')
+        const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false,
+                })
 
-					swalWithBootstrapButtons.fire({
-					title: 'Bạn có chắc chắn muốn xóa',
-					text: "Hành động sẽ không thể hoàn tác",
-					type: 'warning',
-					showCancelButton: true,
-					confirmButtonText: 'Có, Xóa người dùng',
-					cancelButtonText: 'Không, Hủy bỏ!',
-					reverseButtons: true
-					}).then((result) => {
-					if (result.value) {
-						$.ajax({
-							url: '/admin/user/' + userId,
-							method: 'POST',
-							data: {
-								_token: "{{csrf_token()}}",
-								_method: "DELETE"
-							},
-							success: function(){
-								swalWithBootstrapButtons.fire(
-								'Đã xóa!',
-								'Người dùng đã bị xóa',
-								'success'
-								).then((result2) => {
-									if(result2.value){
-									window.location.reload();
-									}
-								});							
-							}
-						});
-						
-					} else if (
-						// Read more about handling dismissals
-						result.dismiss === Swal.DismissReason.cancel
-					) {
-						swalWithBootstrapButtons.fire(
-						'Đã hủy',
-						'Dữ liệu của bạn vẫn an toàn :)',
-						'error'
-						)
-					}
-				})	
-		});
+                swalWithBootstrapButtons.fire({
+                title: 'Bạn có chắc chắn muốn xóa',
+                text: "Hành động sẽ không thể hoàn tác",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Có, Xóa người dùng',
+                cancelButtonText: 'Không, Hủy bỏ!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: '/admin/user/' + userId,
+                        method: 'POST',
+                        data: {
+                            _token: "{{csrf_token()}}",
+                            _method: "DELETE"
+                        },
+                        success: function(){
+                            swalWithBootstrapButtons.fire(
+                            'Đã xóa!',
+                            'Người dùng đã bị xóa',
+                            'success'
+                            ).then((result2) => {
+                                if(result2.value){
+                                window.location.reload();
+                                }
+                            });
+                        }
+                    });
+                    
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                    'Đã hủy',
+                    'Dữ liệu của bạn vẫn an toàn :)',
+                    'error'
+                    )
+                }
+            })	
     });
-    
+});
+
 $(document).ready( function () {
     $('#usertable').DataTable();
 } );

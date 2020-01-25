@@ -25,24 +25,9 @@
                     <form action="/admin/products" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- area 1 --}}
-                        <div class="col-md-5 martop" style="float:left;">
-                            <div class="row">
-                                <div class="col-md-9 padding">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Tên sản phẩm</label>
-                                        <input type="text" name="name" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-9 padding">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">Mã sản phẩm</label>
-                                        <input type="text" name="product_code" class="form-control">
-                                    </div>
-                                </div>
-                                @if ($errors->has('product_code'))
-                                <div style="width: 470px;" class="alert alert-danger">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
                                     <div class="container">
                                         <div class="alert-icon">
                                             <i class="material-icons">error_outline</i>
@@ -50,10 +35,27 @@
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                         </button>
-                                        <b>LỖI</b> MÃ SẢN PHẨM KHÔNG ĐƯỢC TRÙNG
+                                    <b>{{$error}}</b>
                                     </div>
                                 </div>
-                                @endif
+                            @endforeach
+                        @endif
+                        <div class="col-md-5 martop" style="float:left;">
+                            <div class="row">
+                                <div class="col-md-9 padding">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Tên sản phẩm</label>
+                                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 padding">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Mã sản phẩm</label>
+                                    <input type="text" name="product_code" class="form-control" value="{{old('product_code')}}">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -61,7 +63,7 @@
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Giá sản phẩm (Giá chung)</label>
                                         <input onkeyup="this.value=FormatNumber(this.value);" type="text" name="price"
-                                            class="form-control">
+                                            class="form-control" value="{{old('price')}}">
                                     </div>
                                 </div>
                                 {{-- Hàm định dạng tiền tệ --}}
@@ -139,7 +141,7 @@
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số lượng</label>
-                                        <input type="number" name="quantity" class="form-control">
+                                        <input type="number" name="quantity" value="{{old('quantity')}}" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +149,7 @@
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Mô tả ngắn</label>
                                     <div class="form-group">
-                                        <textarea name="description" cols="60" rows="5"></textarea>
+                                        <textarea name="description" value="{{old('description')}}" cols="60" rows="5"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +182,7 @@
                                                 <span class="btn btn-rose btn-round btn-file">
                                                     <span class="fileinput-new">Select image</span>
                                                     <span class="fileinput-exists">Change</span>
-                                                    <input type="file" name="avatar" />
+                                                    <input type="file" name="avatar"/>
                                                 </span>
                                                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
                                                     data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
@@ -199,28 +201,14 @@
                                             style="margin-left: 10px;margin-top: 10px;"
                                             class="material-icons">settings</i></a>
                                 </div>
-                                @if ($errors->has('category'))
-                                <div style="width: 300px;" class="alert alert-danger">
-                                    <div class="container">
-                                        <div class="alert-icon">
-                                            <i class="material-icons">error_outline</i>
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                        </button>
-                                        <b>LỖI</b> DANH MỤC KHÔNG ĐƯỢC ĐỂ TRỐNG
-                                    </div>
-                                </div>
-                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
                                     <select class="selectpicker" name="trend" data-style="select-with-transition"
                                         multiple title="Chọn trending" data-size="10">
                                         @foreach ($trending as $trend)
-                                        <option value="{{$trend->id}}">{{$trend->name}}</option>
+                                        <option value="{{$trend->id}}" {{$trend->id == old('trend') ? 'selected' : ''}}>{{$trend->name}}</option>
                                         @endforeach
-
                                     </select>
                                     <a href="/admin/trending" title="Quản lý trending"><i
                                             style="margin-left: 10px;margin-top: 10px;"
@@ -232,25 +220,11 @@
                                     <select class="selectpicker" data-size="7" name="brand"
                                         data-style="btn btn-primary btn-round" title="Chọn thương hiệu">
                                         @foreach ($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                        <option value="{{$brand->id}}" {{$brand->id == old('brand') ? 'selected' : ''}}>{{$brand->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            @if ($errors->has('brand'))
-                            <div style="width: 300px;" class="alert alert-danger">
-                                <div class="container">
-                                    <div class="alert-icon">
-                                        <i class="material-icons">error_outline</i>
-                                    </div>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                    </button>
-                                    <b>LỖI</b> THƯƠNG HIỆU KHÔNG ĐƯỢC ĐỂ TRỐNG
-                                </div>
-                            </div>
-                            @endif
-
                         </div>
                         {{-- end area 2 --}}
 
@@ -319,19 +293,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($errors->has('attr'))
-                                <div style="margin-left: 20px;width: 480px;" class="alert alert-danger">
-                                    <div class="container">
-                                        <div class="alert-icon">
-                                            <i class="material-icons">error_outline</i>
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                        </button>
-                                        <b>LỖI</b> THUỘC TÍNH KHÔNG ĐƯỢC ĐỂ TRỐNG
-                                    </div>
-                                </div>
-                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-md-9 padding">
@@ -342,7 +303,7 @@
                                             <input id="mySelect" onchange="myFunction()" type="checkbox"
                                                 name="highlight" value="1">
                                             <span class="toggle"></span>
-                                            <span id="show" style="color: darkgray">Sản phẩm không nổi bật</span>
+                                            <span id="show" style="color: red">Sản phẩm không nổi bật</span>
                                         </label>
                                     </div>
                                     <script>
@@ -354,7 +315,6 @@
                                             {
                                                 document.getElementById("show").innerHTML = "Sản phẩm không nổi bật"
                                             }
-                                            
                                         }
                                     </script>
                                 </div>

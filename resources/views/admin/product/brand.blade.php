@@ -129,23 +129,25 @@
                                         <h4>Tên thương hiệu</h4>
                                     </label>
                                     <div class="form-group">
-                                        <input type="text" style="" name="brand" class="form-control" required>
+                                    <input type="text" style="" name="brand" class="form-control" value="{{old('brand')}}">
                                         </ <input>
                                     </div>
                                 </div>
                             </div>
-                            @if ($errors->has('brand'))
-                            <div class="alert alert-danger">
-                                <div class="container">
-                                    <div class="alert-icon">
-                                        <i class="material-icons">error_outline</i>
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger">
+                                        <div class="container">
+                                            <div class="alert-icon">
+                                                <i class="material-icons">error_outline</i>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+                                        <b>{{$error}}</b>
+                                        </div>
                                     </div>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                    </button>
-                                    <b>LỖI</b> THƯƠNG HIỆU BỊ TRÙNG
-                                </div>
-                            </div>
+                                @endforeach
                             @endif
                             <button type="submit" class="btn btn-rose pull-right">Thêm thương hiệu</button>
                             <div class="clearfix"></div>
