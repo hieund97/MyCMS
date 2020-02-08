@@ -49,9 +49,21 @@
                         Membership
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gio-hang">Giỏ hàng
+                        <i class="material-icons">shopping_cart</i>
+                        <span style="display: {{Cart::content()->count() > 0?'block':'none'}}"
+                            class="notification_cart">{{Cart::content()->count()}}</span>
+                    </a>
+                </li>
+                <li class="li-mar">
+                    <div class="added__animation">
+                        <span>+1</span>
+                    </div>
+                </li>
                 <li style="margin-left:10px;">
                     <a style="font-size:100%;" href="/thanh-vien/{{auth()->user()->slug}}">
-                        {{auth()->user()->last_name}} {{auth()->user()->first_name}} <b class="caret"></b>
+                        Xin chào, {{auth()->user()->first_name}} <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" style="margin-top: 0px;">
                         <li>
@@ -77,18 +89,6 @@
                                 alt="Circle Image" class="img-circle img-responsive">
                         </div>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/gio-hang">Giỏ hàng
-                        <i class="material-icons">shopping_cart</i>
-                        <span style="display: {{Cart::content()->count() > 0?'block':'none'}}"
-                            class="notification_cart">{{Cart::content()->count()}}</span>
-                    </a>
-                </li>
-                <li class="li-mar">
-                    <div class="added__animation">
-                        <span>+1</span>
-                    </div>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: 10px;">

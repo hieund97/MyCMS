@@ -87,7 +87,7 @@
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
-                                                        class="btn btn-success btn-round" rel="tooltip" title="Sửa">
+                                                        class="btn btn-success btn-round" rel="tooltip" title="Xem chi tiết">
                                                         <a style="color:white;"
                                                             href="/admin/comment/{{$cmt->id}}/detail"><i
                                                                 class="material-icons">edit</i> Xem chi tiết</a>

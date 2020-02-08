@@ -318,9 +318,7 @@ class ProductController extends Controller
         return redirect('/admin/products');
     }
 
-    public function addimage(Image_product $image_product, Request
-     $request){
-        // dd($request->all());
+    public function addimage(Image_product $image_product, Request $request){
         $this->validate(
             $request,
             [
@@ -330,8 +328,10 @@ class ProductController extends Controller
                 'avatar4' => 'required'
             ],
             [
-                'require' => 'Trường này trống cmnr',
-                'unique'  => 'Tên danh mục đã bị trùng'
+                'avatar1.require' => 'Ảnh không được phép để trống',
+                'avatar2.require' => 'Ảnh không được phép để trống',
+                'avatar3.require' => 'Ảnh không được phép để trống',
+                'avatar4.require' => 'Ảnh không được phép để trống',
             ]
         );
         $avatarName1 = Null;
