@@ -19,6 +19,8 @@ class DashboardController extends Controller
         $product = Product::all();
         $blog = Blog::all();
         $sub = Subcribe::all();
-        return view('admin.dashboard.index', compact('blogs', 'attr_order', 'product', 'blog', 'sub'));
+        $bestSellerProduct = Product::orderBy('purchase', 'DESC')->paginate(5);
+        $unsoldProduct = Product::orderBy('quantity', 'DESC')->where('purchase', 0)->paginate(5);
+        return view('admin.dashboard.index', compact('blogs', 'attr_order', 'product', 'blog', 'sub', 'bestSellerProduct', 'unsoldProduct'));
     }
 }

@@ -302,6 +302,7 @@ Route::group([
         Route::get('/', 'ProductController@index');
         Route::get('/{p_slug}', 'ProductController@item');
         Route::get('/loc-san-pham', 'ProductController@filter');
+        Route::get('/loc-thuoc-tinh', 'ProductController@filterAttribute');
     });
 
     // Client Trending Route

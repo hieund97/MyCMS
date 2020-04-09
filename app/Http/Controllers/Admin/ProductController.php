@@ -35,7 +35,6 @@ class ProductController extends Controller
 
     public function store(Product $product, Request $request)
     {
-        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -65,12 +64,11 @@ class ProductController extends Controller
                 'trend.required'                 => 'Xu hướng sản phẩn không được để trống',
             ]
         );
-        // dd($request->all());
 
         $avatarName = Null;
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
-            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng            
+            $request->avatar->move(public_path('media/avatar'), $avatarName); // di chuyển vào thư mục trên ổ cứng
         } else {
             $avatarName = 'noimage.png';
         }
@@ -128,7 +126,6 @@ class ProductController extends Controller
 
     public function update(Product $product, Request $request)
     {
-        // dd($request->all());
         $avatarName = Null;
         if ($request->hasFile('avatar')) {
             $avatarName = Str::uuid('image') . '.' . $request->avatar->getClientOriginalExtension(); //getclient là hàm lấy đuôi ảnh, str::uuid hàm tạo ngẫu nhiên
@@ -242,7 +239,6 @@ class ProductController extends Controller
 
     public function addbrand(Request $request)
     {
-        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -302,7 +298,6 @@ class ProductController extends Controller
 
     public function updateimage(Product $product,  Request $request)
     {
-        // dd($request->all());
         foreach ($request->avatar as $key => $image) {
             $avatarName = Null;
             if ($request->hasFile('avatar')) {
