@@ -14,7 +14,7 @@
             </button>
             <a class="navbar-brand" href="/"
                 style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">
-                MrSpicy Boutique
+                360 Boutique
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navigation-example">

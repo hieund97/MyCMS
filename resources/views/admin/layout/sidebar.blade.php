@@ -28,7 +28,7 @@
 <div class="sidebar scrollbar" id="style-1" data-color="rose" data-background-color="black" style="overflow: scroll">
   <div class="logo">
     <a href="/admin" class="simple-text logo-normal">
-      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/logo_transparent.png')}}"
+      <img class="img-fluid" style="width: 200px;margin-left: 20px;" src="{{asset ('manage/img/admin-ajax-1.png')}}"
         alt="">
     </a>
   </div>

@@ -23,7 +23,6 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        // dd($request->all());
         $price = array();
         if ($request->Color == NULL) {
             $price = $request->Size;
@@ -81,9 +80,7 @@ class CartController extends Controller
     public function checkout()
     {
         $quantity = Cart::content()->count();
-        // dd( $quantity);
         $total = (int) str_replace(',', '', Cart::total());
-        // dd($total);
         $ships = Ship_Method::latest()->get();
         $pays = Payment_Method::latest()->get();
         return view('client.cart.checkout', compact('ships', 'pays', 'total', 'quantity'));

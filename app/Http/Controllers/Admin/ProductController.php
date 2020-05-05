@@ -150,7 +150,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'detail' => $request->detail,
             'brand_id' => $request->brand,
-            'trending_id' => $request->trend,          
+            'trending_id' => $request->trend,
             'highlight' => $request->highlight,
         ]);
 
