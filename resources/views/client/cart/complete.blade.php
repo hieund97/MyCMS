@@ -17,7 +17,7 @@
                 <i class="material-icons" style="font-size: 150px">done_outline</i>
             </div>
             <h3 class="text-success" style="font-weight: 500">Đặt hàng thành công. Cảm ơn bạn đã tin tưởng chọn sản phẩm
-                của Mr Spicy. Sự lựa chọn của bạn là niềm
+                của 360. Sự lựa chọn của bạn là niềm
                 hạnh phục của chúng tôi</h3>
             <a href="/" type="button" class="btn btn-success btn-round">Trang chủ</a>
             <a href="/san-pham" type="button" class="btn btn-info btn-round">Tiếp tục mua sắm</a>

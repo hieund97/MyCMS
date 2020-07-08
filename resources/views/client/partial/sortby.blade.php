@@ -55,11 +55,6 @@
             @endphp
             @endforeach
 
-
-
-
-
-
             {{-- Lọc theo giá sp --}}
             <div class="panel panel-default panel-rose">
                 <div class="panel-heading" role="tab" id="headingOne">
@@ -69,7 +64,6 @@
                         <i class="material-icons">keyboard_arrow_down</i>
                     </a>
                 </div>
-
 
                 <form action="/loc-san-pham" method="GET">
                     @csrf
@@ -102,22 +96,32 @@
                 <div id="collapse{{$attr->name}}" class="panel-collapse collapse in" role="tabpanel"
                     aria-labelledby="headingThree">
                     <div class="panel-body">
-                        @foreach ($attr->value as $value)
+                        @foreach ($attr->value as $key => $item)
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" onchange="myFunction5()" id="attr_tag" value="{{$value->id}}"
-                                    data-toggle="checkbox">
-                                {{$value->value}}
+                                <input type="checkbox" class="check_attr" id="attr_tag" value="{{$item->value}}" name="attribute[]" data-toggle="checkbox"> {{$item->value}}
                             </label>
-                            <span style="float: right">({{$value->product->count()}})</span>
+                            <span style="float: right">({{$item->product->count()}})</span>
                         </div>
                         @endforeach
                     </div>
                 </div>
-
-
             </div>
             @endforeach
         </div>
     </div><!-- end card -->
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    $( document ).ready(function() {
+        var array = [];
+        $(".check_attr").change(function() {
+            $(".check_attr input[type=checkbox]:checked").each(function () {
+                array.push($(this).attr("value") )
+            })
+        })
+        console.log(array);
+        
+
+    })
+</script>

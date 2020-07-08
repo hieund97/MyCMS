@@ -150,12 +150,12 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="/admin/media">
           <i class="material-icons">perm_camera_mic</i>
           <p> Media </p>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item {{Request::segment(2) === 'comment'? 'active' : null}} " >
         <a class="nav-link" href="/admin/comment">
           <i class="material-icons">reorder</i>

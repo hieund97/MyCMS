@@ -23,13 +23,13 @@
 						<div class="faq open">
 							<div class="faq_question">
 								<h3 class="greenFAQ" style="margin-bottom: 10px;" data-mce-style="margin-bottom: 10px;">
-									1. Spicy Membership là gì?</h3>
+									1. 360 Membership là gì?</h3>
 							</div>
 							<div class="faq_answer_container">
 								<div class="faq_answer">
-									<p><i>Spicy Membership</i> là chương trình Khách hàng Thân Thiết mới,
+									<p><i>360 Membership</i> là chương trình Khách hàng Thân Thiết mới,
 										mang đến những ưu đãi và những quyền lợi đặc biêt dành riêng cho
-										khách hàng thân thiết của Spicy. Tài khoản thành viên được quản lý và
+										khách hàng thân thiết của 360. Tài khoản thành viên được quản lý và
 										cập nhật theo số điện thoại.</p>
 								</div>
 							</div>
@@ -40,11 +40,11 @@
 							<div class="faq_question">
 								<h3 class="greenFAQ" style="margin-bottom: 10px;" data-mce-style="margin-bottom: 10px;">
 									2. Làm sao để trở thành khách hàng
-									thân thiết Spicy?</h3>
+									thân thiết 360?</h3>
 							</div>
 							<div class="faq_answer_container">
 								<div class="faq_answer">
-									<p>Bạn sẽ trở thành Khách hàng thân thiết Spicy ngay khi mua sản phẩm bất
+									<p>Bạn sẽ trở thành Khách hàng thân thiết 360 ngay khi mua sản phẩm bất
 										kỳ đầu tiên và để lại thông tin đăng ký (Số điện thoại). Bạn có thể
 										được yêu cầu cung cấp các thông tin khác (để nhận tất cả Ưu Đãi đủ
 										điều kiện): tên người dùng, mật khẩu, ngày sinh (ngày sinh chỉ được
@@ -106,7 +106,7 @@
 									<div class="faq_question">
 										<h3 class="greenFAQ" style="margin-bottom: 10px;"
 											data-mce-style="margin-bottom: 10px;">5. Quyền lợi của khách
-											hàng thân thiết Spicy là gì?</h3>
+											hàng thân thiết 360 là gì?</h3>
 									</div>
 									<div class="faq_answer_container">
 										<div class="faq_answer">
@@ -157,7 +157,7 @@
 										zalo chat hoặc hotline 18001162</p>
 									<p><strong>Ưu đãi giảm giá sản phẩm đặc biệt</strong><br>Thông tin sản
 										phẩm giảm giá đặc biệt sẽ được gửi qua email hoặc tin
-										nhắn.<br><br><em>* Không áp dụng các ưu đãi “Spicy Membership" cùng
+										nhắn.<br><br><em>* Không áp dụng các ưu đãi “360 Membership" cùng
 											các chương trình khuyến mãi khác.</em></p>
 								</div>
 							</div>
@@ -171,7 +171,7 @@
 							</div>
 							<div class="faq_answer_container">
 								<div class="faq_answer">Xếp hạng lần đầu: Để ra mắt chương trình Khách hàng
-									thân thiết mới, Spicy xếp hạng thành viên cho tất cả Khách hàng dựa vào
+									thân thiết mới, 360 xếp hạng thành viên cho tất cả Khách hàng dựa vào
 									chi tiêu tích lũy kể từ 1/6/2016 để thành viên nhận được ưu đãi từ
 									1/7/2018 Sau đó, bất kỳ khi nào Khách hàng mua sắm đạt chi tiêu tích lũy
 									mới (đủ điều kiện tích lũy của Bạc - Vàng - Kim Cương), sẽ ngay lập tức
@@ -206,7 +206,7 @@
 								</h3>
 							</div>
 							<div class="faq_answer_container">
-								<div class="faq_answer">Nhân viên cửa hàng Spicy luôn sẵn sàng hỗ trợ bạn
+								<div class="faq_answer">Nhân viên cửa hàng 360 luôn sẵn sàng hỗ trợ bạn
 									đăng ký thành viên, tra cứu chi tiêu tích luỹ, và cung cấp các ưu đãi.
 									Hoặc liên hệ tổng đài <strong>18001160</strong>&nbsp;(Miễn phí cuộc gọi)
 									bạn nhé!</div>
