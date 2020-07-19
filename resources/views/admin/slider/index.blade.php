@@ -190,7 +190,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#slidertable').DataTable();
+    $('#slidertable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } ); 
 </script>
 @endpush

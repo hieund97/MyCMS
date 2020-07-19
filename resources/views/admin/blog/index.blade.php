@@ -26,8 +26,7 @@
                             </div>
                             <h2 class="card-title">Danh sách bài viết</h2>
                         </div>
-                        
-                    </div>                    
+                    </div>
                     <div class="card-body table-hover">
                         <div class="table-responsive">
                             <table class="table table-striped" id="blogtable">
@@ -123,10 +122,8 @@
 @push('js')
 <script>
     $(document).ready(function(){
-		$('.btn-del').click(function(e){		
+		$('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');
-            	
 			let blogId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -180,7 +177,12 @@
 		});
     });
     $(document).ready( function () {
-    $('#blogtable').DataTable();
+    $('#blogtable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );
 </script>
 @endpush

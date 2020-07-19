@@ -246,7 +246,12 @@
     });
     
 $(document).ready( function () {
-    $('#cmttable').DataTable();
+    $('#cmttable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );		
     
 </script>

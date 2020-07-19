@@ -332,7 +332,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#shiptable').DataTable();
+    $('#shiptable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } ); 
 </script>
 @endpush

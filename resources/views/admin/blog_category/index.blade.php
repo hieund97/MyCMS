@@ -232,7 +232,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#blogcatetable').DataTable();
+    $('#blogcatetable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );
 </script>
 @endpush

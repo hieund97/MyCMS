@@ -48,12 +48,12 @@
                 <div class="col-md-4">
                     <h5>Thông tin công ty</h5>
                     <p>
-                        <p>Công ty Cổ phần thời trang MrSpicy</p>
+                        <p>Công ty Cổ phần thời trang 360</p>
                         <p>Số ĐKKD 0106142011 do Sở KHĐT Tp. Hà Nội cấp ngày 04/04/2013</p>
                         <p>Người đại diện: Nguyễn Đức Hiếu</p>
                         <p>Địa chỉ: Lô S3-1, cụm làng nghề Tân Triều, Triều Khúc, Thanh Xuân, Hà Nội</p> 
                         <p> Hotline: 1900.066.826 - 0931064555</p>
-                        <p>Email: saleonline@mrspicy.vn</p>
+                        <p>Email: saleonline@360.vn</p>
                     </p>
 
                 </div>
@@ -94,7 +94,7 @@
         <div class="copyright pull-right">
             Copyright &copy; <script>
                 document.write(new Date().getFullYear())
-            </script> MrSpicy Boutique All Rights Reserved.
+            </script> 360 Boutique All Rights Reserved.
         </div>
     </div>
 </footer>

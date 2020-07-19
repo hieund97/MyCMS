@@ -192,11 +192,8 @@
 
 <script>
     $(document).ready(function(){
-		$('.btn-del').click(function(e){		
+		$('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');
-        
-            	
 			let payId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -250,7 +247,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#paytable').DataTable();
+    $('#paytable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } ); 
 </script>
 @endpush

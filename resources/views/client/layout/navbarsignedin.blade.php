@@ -43,7 +43,11 @@
                     @endif
                 </li>
                 @endforeach
-
+                <li>
+                    <a style="font-size:100%;" href="/bai-viet">
+                        Blog
+                    </a>
+                </li>
                 <li>
                     <a style="font-size:100%;" href="/thanh-vien/uu-dai">
                         Membership

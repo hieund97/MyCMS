@@ -218,7 +218,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#producttable').DataTable();
+    $('#producttable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );
 </script>
 @endpush

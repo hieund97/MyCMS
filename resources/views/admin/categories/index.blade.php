@@ -65,7 +65,7 @@
                                         <th class="text-left" style="width: 266px">Ảnh Sản Phẩm</th>
                                         <th style="width: 416px;">Tên chủ đề </th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
-                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>                                        
+                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th class="text-center" style="width: 156px;">Navbar</th>
                                         <th>Hành động</th>
                                     </tr>
@@ -88,15 +88,10 @@
 </div>
 @endsection
 @push('js')
-
-
-
 <script>
     $(document).ready(function(){
-        $('.btn-del').click(function(e){		
+        $('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');        
-            	
 			let CategoryId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -150,7 +145,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#categorytable').DataTable();
+    $('#categorytable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );
 </script>
 @endpush

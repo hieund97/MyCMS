@@ -80,7 +80,7 @@
             </button>
             <a class="navbar-brand" href="/"
                 style="font-family: 'Sigmar One', cursive; font-size: 23px; padding-top: 20px;margin-left: 0px;">
-                MrSpicy Boutique
+                360 Boutique
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navigation-example">
@@ -109,6 +109,11 @@
                     @endif
                 </li>
                 @endforeach
+                <li>
+                    <a style="font-size:100%;" href="/bai-viet">
+                        Blog
+                    </a>
+                </li>
                 <li>
                     <a style="font-size:100%;" href="/thanh-vien/uu-dai">
                         Membership

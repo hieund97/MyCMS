@@ -199,7 +199,12 @@
 		});
     });
 $(document).ready( function () {
-    $('#trendingtable').DataTable();
+    $('#trendingtable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ]
+    });
 } );
 </script>
 @endpush
