@@ -36,13 +36,9 @@
 <body>
 
 	{{-- Navbar --}}
-	@auth
-	@include('client.layout.navbarsignedin')
-	@endauth
 
-	@guest
 	@include('client.layout.navbar')
-	@endguest
+
 
 	{{-- End navbar --}}
 

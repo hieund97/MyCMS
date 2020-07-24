@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attr_Order;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {

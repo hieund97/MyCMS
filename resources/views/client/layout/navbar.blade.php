@@ -119,22 +119,56 @@
                         Membership
                     </a>
                 </li>
-                <li>
-                    <a style="font-size:100%;" href="#pablo" data-toggle="modal" data-target="#loginModal">
-                        Đăng nhập
-                    </a>
-                </li>
-                <li>
-                    <a style="font-size:100%;" href="#pablo" data-toggle="modal" data-target="#signupModal">
-                        Đăng ký
-                    </a>
-                </li>
+                @auth
+                    <li style="margin-left:10px;">
+                        <a style="font-size:100%;" href="/thanh-vien/{{auth()->user()->slug}}">
+                            Xin chào, {{auth()->user()->first_name}} <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" style="margin-top: 0px;">
+                            <li>
+                                <a href="/thanh-vien/{{auth()->user()->slug}}">Thông tin cá nhân</a>
+                            </li>
+                            <li>
+                                <a href="/thanh-vien/{{auth()->user()->slug}}/don-hang">Đơn hàng của tôi</a>
+                            </li>
+                            <li style="display: {{auth()->user()->level == 1? 'block':'none'}};">
+                                <a href="/admin">Trang quản trị</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Đăng
+                                    xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="margin-right:20px;">
+                        <a href="/thanh-vien/{{auth()->user()->slug}}" class="profile-photo dropdown-toggle">
+                            <div class="profile-photo-small">
+                                <img style="height: 40px;width: 50px;"
+                                    src="{{auth()->user()->avatar&&auth()->user()->avatar!==''?auth()->user()->avatar:asset ('manage/img/default-avatar.png') }}"
+                                    alt="Circle Image" class="img-circle img-responsive">
+                            </div>
+                        </a>
+                    </li>
+                @endauth
+
+                @guest
+                    <li>
+                        <a style="font-size:100%;" href="#pablo" data-toggle="modal" data-target="#loginModal">
+                            Đăng nhập
+                        </a>
+                    </li>
+                    <li>
+                        <a style="font-size:100%;" href="#pablo" data-toggle="modal" data-target="#signupModal">
+                            Đăng ký
+                        </a>
+                    </li>
+                @endguest
                 <li class="nav-item">
                     <a class="nav-link" href="/gio-hang">Giỏ hàng
                         <i class="material-icons">shopping_cart</i>
                         <span style="display: {{Cart::content()->count() > 0?'block':'none'}}" class="notification_cart">{{Cart::content()->count()}}</span>
                     </a>
-                </li>                
+                </li>
                 <li class="li-mar">
                     <div class="added__animation">
                         <span>+1</span>
@@ -153,3 +187,6 @@
         </div>
     </div>
 </nav>
+<form action="/logout" method="POST" id="logout-form">
+    @csrf
+</form>

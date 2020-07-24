@@ -52,7 +52,7 @@
                                 <td class="text-center">{{$product->order->order_code}}</td>
                                 <td class="td-name">
                                     <a
-                                        href="/thanh-vien/{{$product->order->user->user_name}}">{{$product->order->user_id == NULL?$product->order->guest->client_name: $product->order->user->last_name .' '. $product->order->user->first_name }}</a>
+                                href="/thanh-vien/{{isset($product->order->user->user_name) ? $product->order->user->user_name : 'javascript:void(0)'}}">{{$product->order->user_id == NULL?$product->order->guest->client_name: $product->order->user->last_name .' '. $product->order->user->first_name }}</a>
                                     <br />
                                     <small>SĐT:
                                         {{$product->order->user_id == NULL?$product->order->guest->phone:$product->order->user->phone}}</small>
@@ -74,7 +74,6 @@
                                 </td>
                                 <td class="td-name">
                                     <a href="/admin/order/{{$product->id}}/edit">{{$product->product->name}}</a>
-
                                 </td>
                                 <td>
                                     {{$product->color}}
