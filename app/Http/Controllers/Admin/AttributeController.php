@@ -16,7 +16,7 @@ class AttributeController extends Controller
                 'attribute' => 'required | unique:attribute,name'
             ],
             [
-                'require' => 'Trường này trống cmnr',                
+                'attribute.require' => 'Trường này trống cmnr',
             ]
         );
         // dd($request->all());

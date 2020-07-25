@@ -58,6 +58,8 @@
 
   <link href="{{asset('manage/demo/demo.css') }}" rel="stylesheet" />
   <!-- Google Tag Manager -->
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   
   
   <script>
@@ -164,6 +166,7 @@
   <script src="{{asset ('manage/demo/demo.js') }}"></script>
   {{-- ck editor --}}
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script> CKEDITOR.replace( 'editor1', {
       filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
       filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',

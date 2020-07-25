@@ -25,21 +25,6 @@
                     <form action="/admin/products" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- area 1 --}}
-                        @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger">
-                                    <div class="container">
-                                        <div class="alert-icon">
-                                            <i class="material-icons">error_outline</i>
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                        </button>
-                                    <b>{{$error}}</b>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
                         <div class="col-md-5 martop" style="float:left;">
                             <div class="row">
                                 <div class="col-md-9 padding">
@@ -319,7 +304,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-rose">Thêm sản phẩm</button>
+                            <button type="submit" class="btn btn-rose" >Thêm sản phẩm</button>
                         </div>
                         {{-- end area 3 --}}
                         <div class="clearfix"></div>
@@ -330,3 +315,30 @@
     </div>
 </div>
 @endsection
+@push('js')
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            Command: toastr["error"]("{{$error}}")
+
+                toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+                }
+            @endforeach
+        @endif
+    </script>
+@endpush
