@@ -71,14 +71,14 @@
                                                 <p>{{$review->content}}</p>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-2">
+                                                {{-- <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
                                                         class="btn btn-success btn-round" rel="tooltip" title="Sửa">
                                                         <a style="color:white;"
                                                             href="/admin/comment/{{$review->id}}/detail"><i
                                                                 class="material-icons">edit</i> Xem chi tiết</a>
                                                     </button>
-                                                </div>
+                                                </div> --}}
                                                 <div class="col-md-2">
                                                     <button type="button" style="padding: 12px;"
                                                         class="btn btn-warning btn-round bt-block"

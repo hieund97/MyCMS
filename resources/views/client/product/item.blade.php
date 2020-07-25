@@ -47,8 +47,8 @@
                         <span>Mã sản phẩm: {{$item->product_code}}</span>
                         <p></p>
                         <label style="margin-bottom: 20px;"
-                            class="btn-{{$item->quantity == 0? 'danger': 'success'}}">{{$item->quantity == 0? 'Hết hàng': 'Còn hàng'}}</label><br>
-                        <span>Đã bán: {{$item->purchase}}</span>
+                            class="btn-{{checkQuantityProduct($item->id) == false? 'danger': 'success'}}">{{checkQuantityProduct($item->id) == false? 'Hết hàng': 'Còn hàng'}}</label><br>
+                        {{-- <span>Đã bán: {{$item->purchase}}</span> --}}
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-border panel-default">
@@ -128,7 +128,7 @@
                                 @endforeach
                             </div>
                             <div class="row text-right">
-                                @if ($item->quantity == 0)
+                                @if (checkQuantityProduct($item->id) == false)
                                 <button type="submit" disabled class="btn btn-info btn-round btn__primary">Mua
                                     ngay
                                     &nbsp;<i class="material-icons">shopping_cart</i></button>
@@ -197,7 +197,6 @@
                 </div>
             </div>
 
-
             {{-- Random product --}}
             <div class="related-products">
                 <h3 class="title text-center">Có thể bạn quan tâm</h3>
@@ -228,8 +227,8 @@
                                     {{$random->description}}
                                 </div>
                                 <div class="footer">
-                                    <div class="price {{$random->quantity == 0 ? 'price-sold-out': ''}}">
-                                        <h4>{{$random->quantity == 0? 'Tạm hết hàng' : number_format($random->price). '₫'}}
+                                    <div class="price {{checkQuantityProduct($random->id) == false ? 'price-sold-out': ''}}">
+                                        <h4>{{checkQuantityProduct($random->id) == false? 'Tạm hết hàng' : number_format($random->price). '₫'}}
                                         </h4>
                                     </div>
                                     <div class="stats">
@@ -242,7 +241,6 @@
                                                 value="{{json_encode($random->avatar)}}">
                                             <input type="hidden" id="quantity" name="quantity" value="1">
                                             <input type="hidden" id="price" name="price" value="{{$random->price}}">
-
 
                                             @php
                                             $result= array();
@@ -260,10 +258,7 @@
                                             {{-- Head() trả về phần tử đầu tiên của mảng --}}
                                             @endforeach
 
-
-
-
-                                            <button {{$item->quantity == 0? 'disabled' : NULL}} type="submit"
+                                            <button {{checkQuantityProduct($item->id) == false? 'disabled' : NULL}} type="submit"
                                                 rel="tooltip" title=""
                                                 class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                                 data-original-title="Thêm vào giỏ hàng">
@@ -288,8 +283,8 @@
 </body>
 @endsection
 <script>
-    function myfunction(){        
-        $('#reply').removeClass("hide")        
+    function myfunction(){
+        $('#reply').removeClass("hide")
     };
 
 </script>

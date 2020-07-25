@@ -206,7 +206,7 @@
                             <div class="footer">
                                 <div class="price-container">
                                     <span
-                                        class="price {{$feature->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$feature->quantity == 0? 'Tạm hết hàng' : number_format($feature->price). '₫'}}
+                                        class="price {{checkQuantityProduct($feature->id) == false ? 'price-sold-out': 'price-new'}}">{{checkQuantityProduct($feature->id) == false? 'Tạm hết hàng' : number_format($feature->price). '₫'}}
                                     </span>
 
 
@@ -214,7 +214,7 @@
 
                                 <div class="stats">
 
-                                    <button {{$feature->quantity == 0? 'disabled' : NULL}} type="submit"
+                                    <button {{checkQuantityProduct($feature->id) == false? 'disabled' : NULL}} type="submit"
                                         id="btn-cart-feature" rel="tooltip" title=""
                                         class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                         data-original-title="Thêm vào giỏ hàng">
