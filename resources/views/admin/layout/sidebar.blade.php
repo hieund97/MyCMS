@@ -117,6 +117,12 @@
                 <span class="sidebar-normal">Thương hiệu </span>
               </a>
             </li>
+            <li class="nav-item pad {{(request()->is('admin/products/brand'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/revenue">
+                <span class="sidebar-mini"> TH </span>
+                <span class="sidebar-normal">Phiếu nhập</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
@@ -150,12 +156,12 @@
           </ul>
         </div>
       </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="/admin/media">
-          <i class="material-icons">perm_camera_mic</i>
-          <p> Media </p>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/revenue">
+          <i class="material-icons">timeline</i>
+          <p> Doanh thu </p>
         </a>
-      </li> --}}
+      </li>
       <li class="nav-item {{Request::segment(2) === 'comment'? 'active' : null}} " >
         <a class="nav-link" href="/admin/comment">
           <i class="material-icons">reorder</i>

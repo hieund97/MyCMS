@@ -256,6 +256,12 @@ Route::group([
             Route::get('export', 'PayMethodController@export');
         });
 
+        Route::group([
+            'prefix' => 'revenue'
+        ], function () {
+            Route::get('/', 'RevenueController@index');
+        });
+
         
     });
 });

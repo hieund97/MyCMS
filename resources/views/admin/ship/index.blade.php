@@ -269,9 +269,6 @@
 </div>
 @endsection
 @push('js')
-
-
-
 <script>
     $(document).ready(function(){
 		$('.btn-del').click(function(e){		
