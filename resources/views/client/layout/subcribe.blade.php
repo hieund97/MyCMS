@@ -77,4 +77,29 @@
             
         });
     });
+
+    var checkerCategoryViet = [];
+    $('input[name="attr_tag"]').click(function(){
+        var check = $(this).val();
+        console.log(check);
+        if ($(this).is(":checked")) {
+            checkerCategoryViet.push(check);
+        } else {
+            var checkerExist = checkerCategoryViet.indexOf(check);
+            if (checkerExist > -1) {
+                checkerCategoryViet.splice(checkerExist, 1);
+            }
+        }
+        if (checkerCategoryViet.length == 0) {
+            $(".list-category").show();
+            return;
+        }
+        $(".list-category").each(function() {;
+            if( $(this).data('list').split(',').some(r=> checkerCategoryViet.includes(r)) ) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });         
 </script>

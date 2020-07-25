@@ -32,9 +32,11 @@
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">
 
-
                         @forelse ($category as $item)
-                        <div class="col-md-3 ">
+                        <?php
+                            $listType = implode(',', \App\Models\ValueProduct::with('attribute')->where('product_id', $item->id)->get()->pluck('attribute.id')->toArray());
+                        ?>
+                        <div class="col-md-3 list-category" data-list = '{{$listType}}'>
                             <div class="card card-product card-plain no-shadow main-img" data-colored-shadow="false">
                                 <div>
                                     <a href="/san-pham/{{$item->p_slug}}">

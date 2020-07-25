@@ -16,7 +16,10 @@
                 <div class="col-md-9">
                     <div class="row" style="display: flex; flex-wrap:wrap;">
                         @foreach ($filterProducts as $product)
-                        <div class="col-md-3">
+                        <?php
+                            $listType = implode(',', \App\Models\ValueProduct::with('attribute')->where('product_id', $product->id)->get()->pluck('attribute.id')->toArray());
+                        ?>
+                        <div class="col-md-3 list-category" data-list = '{{$listType}}'>
                             <div class="card card-product card-plain no-shadow main-img" data-colored-shadow="false">
                                 <div>
                                     <a href="/san-pham/{{$product->p_slug}}">
@@ -75,3 +78,29 @@
 </div> <!-- end-main-raised -->
 @endsection
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script>
+    var checkerCategoryViet = [];
+    $('input[name="attr_tag"]').click(function(){
+        var check = $(this).val();
+        console.log(check);
+        if ($(this).is(":checked")) {
+            checkerCategoryViet.push(check);
+        } else {
+            var checkerExist = checkerCategoryViet.indexOf(check);
+            if (checkerExist > -1) {
+                checkerCategoryViet.splice(checkerExist, 1);
+            }
+        }
+        if (checkerCategoryViet.length == 0) {
+            $(".list-category").show();
+            return;
+        }
+        $(".list-category").each(function() {;
+            if( $(this).data('list').split(',').some(r=> checkerCategoryViet.includes(r)) ) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });  
+</script>

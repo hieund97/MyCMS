@@ -103,7 +103,7 @@
                             @foreach ($attr->value as $value)
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" id="attr_tag" value="{{$value->id}}"
+                                    <input type="checkbox" id="attr_tag" name="attr_tag" value="{{$value->id}}"
                                         data-toggle="checkbox">
                                     {{$value->value}}
                                 </label>
