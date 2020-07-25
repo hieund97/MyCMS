@@ -64,10 +64,10 @@
                                             <div class="footer">
                                                 <div class="price-container">
                                                     <span
-                                                        class="price {{$sale->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$sale->quantity == 0? 'Tạm hết hàng' : number_format($sale->price). '₫'}}</span>
+                                                        class="price {{checkQuantityProduct($sale->id) == false ? 'price-sold-out': 'price-new'}}">{{checkQuantityProduct($sale->id) == false? 'Tạm hết hàng' : number_format($sale->price). '₫'}}</span>
                                                 </div>
                                                 <div class="stats">
-                                                    <button {{$sale->quantity == 0? 'disabled' : NULL}} type="submit"
+                                                    <button {{checkQuantityProduct($sale->id) == false? 'disabled' : NULL}} type="submit"
                                                         rel="tooltip" title=""
                                                         class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                                         data-original-title="Thêm vào giỏ hàng">

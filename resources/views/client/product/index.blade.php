@@ -45,7 +45,7 @@
                                     </p>
                                     <div class="footer">
                                         <div class="price-container">
-                                            <span class="price {{$product->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$product->quantity == 0? 'Tạm hết hàng' : number_format($product->price). '₫'}}</span>
+                                            <span class="price {{checkQuantityProduct($product->id) == false ? 'price-sold-out': 'price-new'}}">{{checkQuantityProduct($product->id) == false? 'Tạm hết hàng' : number_format($product->price). '₫'}}</span>
                                         </div>
 
                                         <div class="stats">
@@ -80,7 +80,7 @@
 
 
 
-                                                <button {{$product->quantity == 0? 'disabled' : NULL}} type="submit" rel="tooltip" title=""
+                                                <button {{checkQuantityProduct($product->id) == false? 'disabled' : NULL}} type="submit" rel="tooltip" title=""
                                                     class="btn btn-just-icon btn-simple btn-rose btn__primary btn-cart"
                                                     data-original-title="Thêm vào giỏ hàng">
                                                     <i class="material-icons">shopping_cart</i>
