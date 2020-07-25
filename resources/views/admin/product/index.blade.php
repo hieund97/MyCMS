@@ -77,8 +77,9 @@
                                 <th class="text-center" style="width: 166px;">Danh mục</th>
                                 <th class="th-description" style="width: 66px;">Số lượng</th>
                                 <th class="th-description" style="width: 116px;">SP Nổi bật</th>
+                                <th class="th-description" style="width: 116px;">Trạng thái</th>
                                 <th class="text-center" style="width: 126px;">Giá chung</th>
-                                <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
+                                <th class="text-center" style="width: 163px;">Ngày tạo</th>
                                 <th class="text-center" style="width: 17px;">Tình trạng</th>
                                 <th class="text-center" style="width: 96px;">Hành động</th>
                             </tr>
@@ -111,8 +112,38 @@
                                     {{$product->quantity}}
                                 </td>
                                 <td>
-                                    <span
-                                        style="color: {{$product->highlight == 1? 'Red':'darkgray'}}">{{$product->highlight == 1? 'Có':'Không'}}</span>
+                                    <label class="btn-{{$product->highlight == 1? 'danger':'default'}}">{{$product->highlight == 1? 'Có':'Không'}}</label>
+                                </td>
+                                @switch($product->status)
+                                    @case(0)
+                                        @php
+                                            $status = 'Đang chờ';
+                                            $button = 'info';
+                                        @endphp
+                                        @break
+                                    @case(1)
+                                        @php
+                                            $status = 'Đã duyệt';
+                                            $button = 'success';
+                                        @endphp
+                                        @break
+                                    @case(2)
+                                        @php
+                                            $status = 'Hỏng hóc';
+                                            $button = 'danger';
+                                        @endphp
+                                        @break
+                                    @case(3)
+                                        @php
+                                            $status = 'Trả về';
+                                            $button = 'warning';
+                                        @endphp
+                                        @break
+                                    @default
+                                        
+                                @endswitch
+                                <td>
+                                <label class="btn-{{ $button }}">{{ $status }}</label>
                                 </td>
                                 <td class="td-number text-center">
                                     {{number_format($product->price)}} VNĐ
@@ -161,7 +192,7 @@
 @push('js')
 <script>
     $(document).ready(function(){
-		$('.btn-del').click(function(e){		
+		$('.btn-del').click(function(e){
             e.preventDefault();
             console.log('im in');
             	
@@ -200,7 +231,7 @@
 									if(result2.value){
 									window.location.reload();
 									}
-								});							
+								});
 							}
 						});
 						
@@ -222,7 +253,8 @@ $(document).ready( function () {
         dom: 'Bfrtip',
         buttons: [
             'csv', 'excel', 'pdf'
-        ]
+        ],
+        "order": [[ 'id', "desc" ]]
     });
 } );
 </script>

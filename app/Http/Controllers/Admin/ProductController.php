@@ -49,6 +49,7 @@ class ProductController extends Controller
                 'avatar'       => 'required',
                 'trend'        => 'required',
                 'brand'        => 'required',
+                'detail'       => 'required',
             ],
             [
                 'name.required'                  => 'Tên sản phẩn không được để trống',
@@ -61,6 +62,7 @@ class ProductController extends Controller
                 'brand.required'                 => 'Thương hiệu sản phẩn không được để trống',
                 'description.required'           => 'Mô tả sản phẩn không được để trống',
                 'avatar.required'                => 'Ảnh sản phẩn không được để trống',
+                'detail.required'                => 'Chi tiết sản phẩn không được để trống',
                 'trend.required'                 => 'Xu hướng sản phẩn không được để trống',
             ]
         );

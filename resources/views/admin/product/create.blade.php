@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Tên sản phẩm</label>
+                                        <label class="bmd-label-floating">Tên sản phẩm <span style="color: red">*</span></label>
                                         <input type="text" name="name" class="form-control" value="{{old('name')}}">
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Mã sản phẩm</label>
+                                        <label class="bmd-label-floating">Mã sản phẩm <span style="color: red">*</span></label>
                                     <input type="text" name="product_code" class="form-control" value="{{old('product_code')}}">
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Giá sản phẩm (Giá chung)</label>
+                                        <label class="bmd-label-floating">Giá sản phẩm (Giá chung) <span style="color: red">*</span></label>
                                         <input onkeyup="this.value=FormatNumber(this.value);" type="text" name="price"
                                             class="form-control" value="{{old('price')}}">
                                     </div>
@@ -125,14 +125,14 @@
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Số lượng</label>
+                                        <label class="bmd-label-floating">Số lượng <span style="color: red">*</span></label>
                                         <input type="number" name="quantity" value="{{old('quantity')}}" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9 padding">
-                                    <label class="bmd-label-floating">Mô tả ngắn</label>
+                                    <label class="bmd-label-floating">Mô tả ngắn <span style="color: red">*</span></label>
                                     <div class="form-group">
                                         <textarea name="description" value="{{old('description')}}" cols="60" rows="5"></textarea>
                                     </div>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-9 padding">
-                                    <label class="bmd-label-floating">Chi tiết sản phẩm</label>
+                                    <label class="bmd-label-floating">Chi tiết sản phẩm<span style="color: red">*</span></label>
                                     <div class="form-group">
                                         <textarea name="detail" cols="60"
                                             rows="7">– Chất liệu: Vải cao cấp
@@ -178,6 +178,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
+                                    <label for="category">Chọn danh mục <span style="color: red">*</span></label>
                                     <select class="selectpicker" name="category[]" data-style="select-with-transition"
                                         multiple title="Chọn danh mục" data-size="10">
                                         {{getCategory($categories, 0, '')}}
@@ -189,6 +190,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
+                                    <label for="trend">Chọn xu hướng sản phẩm <span style="color: red">*</span></label>
                                     <select class="selectpicker" name="trend" data-style="select-with-transition"
                                         multiple title="Chọn trending" data-size="10">
                                         @foreach ($trending as $trend)
@@ -202,6 +204,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-9" style="margin-top: 20px;">
+                                    <label for="brand">Chọn thương hiệu sản phẩm <span style="color: red">*</span></label>
                                     <select class="selectpicker" data-size="7" name="brand"
                                         data-style="btn btn-primary btn-round" title="Chọn thương hiệu">
                                         @foreach ($brands as $brand)
@@ -218,6 +221,7 @@
                             <div class="row padding" style="padding-left: 0px;">
                                 <div class="col-md-12">
                                     <div class="card-body" style="padding-left: 0px;">
+                                        <label for="brand">Chọn thuộc tính sản phẩm <span style="color: red">*</span></label>
                                         <ul class="nav nav-pills nav-pills-primary" role="tablist">
                                             @php
                                             $i = 0;
