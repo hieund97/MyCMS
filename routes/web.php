@@ -91,6 +91,9 @@ Route::group([
             Route::get('/image/{product}/edit', 'ProductController@editimage');
             Route::post('/image/add', 'ProductController@addimage');
             Route::put('/image/{product}/update', 'ProductController@updateimage');
+
+            //update stauts
+            Route::post('/update-status/{id}', 'ProductController@updateStatus');
         });
 
         // Admin Product-Category Route
@@ -104,7 +107,7 @@ Route::group([
             Route::post('/', 'CategoryController@store');
             Route::delete('{categories}/delete', 'CategoryController@destroy');
             Route::post('import', 'CategoryController@import');
-            Route::get('export', 'CategoryController@export');           
+            Route::get('export', 'CategoryController@export');
         });
 
         // Admin Trending-Product Route
@@ -361,7 +364,7 @@ Route::group([
 
     Route::group([
         'prefix' => 'don-hang'
-    ], function () {        
+    ], function () {
         Route::post('/', 'OrderController@storeOrder');
     });
 

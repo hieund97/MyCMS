@@ -143,7 +143,7 @@
                                         
                                 @endswitch
                                 <td>
-                                <label class="btn-{{ $button }}">{{ $status }}</label>
+                                <button data-id="{{$product->id}}" data-toggle="modal" data-target="#status-modal" class="btn-{{ $button }} status-product">{{ $status }}</button>
                                 </td>
                                 <td class="td-number text-center">
                                     {{number_format($product->price)}} VNĐ
@@ -188,14 +188,63 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Đang chờ
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Đã duyệt
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="2"> Hàng hỏng hóc
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="3"> Hảng trả về
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
 <script>
     $(document).ready(function(){
 		$('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');
-            	
 			let productId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -246,7 +295,33 @@
 						)
 					}
 				})	
-		});
+        });
+        
+        $('.status-product').click(function(){
+            var productId = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/products/update-status/' + productId,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái sản phẩm đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
     });
 $(document).ready( function () {
     $('#producttable').DataTable({

@@ -15,8 +15,6 @@ class CartController extends Controller
 {
     public function index()
     {
-        // dd(Cart::total());
-        // dd(Cart::content());
         $total = Cart::total();
         return view('client.cart.index', compact('total'));
     }
@@ -55,10 +53,12 @@ class CartController extends Controller
                 break;
 
             case 'addtocart':
+                sleep(1);
                 return back();
                 break;
 
             default:
+                sleep(1);
                 return back();
                 break;
         }

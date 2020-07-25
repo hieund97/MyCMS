@@ -28,6 +28,7 @@
 	{{-- 404 css --}}
 	<link rel="stylesheet" href="{{ asset ('client/css/404.css') }}">
 
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 
 
@@ -355,6 +356,8 @@
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="{{ asset('client/js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 <!-- Fixed Sidebar Nav - JS For Demo Purpose, Don't Include it in your project -->
 {{-- <script src="{{ asset('client/assets-for-demo/modernizr.js') }}" type="text/javascript"></script>
@@ -452,14 +455,32 @@
 	$(document).ready(function(){
 			$('.btn-cart').click(function(){
 				// e.preventDefault();
-				console.log('im in');
-				Swal.fire({
-				position: 'center',
-				type: 'success',
-				title: 'Thêm vào giỏ hàng thành công',
-				showConfirmButton: false,
-				timer: 1300
-				})
+				// Swal.fire({
+				// position: 'center',
+				// type: 'success',
+				// title: 'Thêm vào giỏ hàng thành công',
+				// showConfirmButton: false,
+				// timer: 1300
+				// })
+				Command: toastr["success"]("Thêm giỏ hàng thành công")
+
+					toastr.options = {
+					"closeButton": false,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": false,
+					"positionClass": "toast-top-center",
+					"preventDuplicates": false,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"timeOut": "5000",
+					"extendedTimeOut": "1000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+					}
 			});
 	});   
 </script>

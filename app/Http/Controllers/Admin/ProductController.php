@@ -374,4 +374,13 @@ class ProductController extends Controller
         session()->flash('upload_image', 'success');
         return redirect('/admin/products/price/'.$request->id.'/edit');
     }
+
+    public function updateStatus(Request $request, $id){
+        $product = Product::find($id);
+        $product->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
 }
