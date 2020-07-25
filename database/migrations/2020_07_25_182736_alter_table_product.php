@@ -14,7 +14,7 @@ class AlterTableProduct extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->tinyInteger('status')->default(0)->after('detail')->comment('0: Đang chờ, 1: Đã duyệt');
+            $table->integer('quantity')->default(0)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterTableProduct extends Migration
     public function down()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->dropColumn('status')->change();
+            $table->integer('quantity')->nullable()->change();
         });
     }
 }

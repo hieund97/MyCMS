@@ -122,14 +122,14 @@
                                     }
                                 </script>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-9 padding">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số lượng <span style="color: red">*</span></label>
                                         <input type="number" name="quantity" value="{{old('quantity')}}" class="form-control">
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-9 padding">
                                     <label class="bmd-label-floating">Mô tả ngắn <span style="color: red">*</span></label>

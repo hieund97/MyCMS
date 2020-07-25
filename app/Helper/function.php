@@ -2,6 +2,7 @@
 
 use App\Models\Categories;
 use App\Models\Product;
+use App\Models\Variant;
 
 function getCategory($mang, $parent, $shift)
 {
@@ -169,4 +170,23 @@ function getPrice($product, $array)
         }
     }
     return $product->price;
+}
+
+
+function checkQuantityProduct($product_id){
+    $check = Variant::where('product_id', $product_id)->select('quantity')->get();
+
+    $quantity = 0;
+    foreach ($check as $key => $value) {
+        $quantity += $value->quantity;
+    }
+
+    if($quantity == 0){
+        return false;
+    }
+    else {
+        return true;
+    }
+
+    return false;
 }

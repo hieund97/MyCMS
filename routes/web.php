@@ -93,7 +93,8 @@ Route::group([
             Route::put('/image/{product}/update', 'ProductController@updateimage');
 
             //update stauts
-            Route::post('/update-status/{id}', 'ProductController@updateStatus');
+            Route::post('/update-status-product/{id}', 'ProductController@updateStatusProduct');
+            Route::post('/update-status-variant/{id}', 'ProductController@updateStatusVariant');
         });
 
         // Admin Product-Category Route

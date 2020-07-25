@@ -16,19 +16,6 @@
             </div>
         </div>
         @endif
-        @if (session()->has('edit_price'))
-        <div class="alert alert-success">
-            <div class="container">
-                <div class="alert-icon">
-                    <i class="material-icons">check</i>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                </button>
-                <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-            </div>
-        </div>
-        @endif
         @if (session()->has('upload_image'))
         <div class="alert alert-success">
             <div class="container">
@@ -63,8 +50,7 @@
                     </div>
                     <h2 class="card-title">Danh sách sản phẩm</h2>
                 </div>
-                
-            </div>            
+            </div>
             <div class="card-body table-hover">
                 <div class="table-responsive">
                     <table class="table table-shopping" id="producttable">
@@ -75,7 +61,7 @@
                                 <th style="width: 308px;">Tên sản Phẩm</th>
                                 <th class="th-description" style="width: 136px;">Mã sản phẩm</th>
                                 <th class="text-center" style="width: 166px;">Danh mục</th>
-                                <th class="th-description" style="width: 66px;">Số lượng</th>
+                                {{-- <th class="th-description" style="width: 66px;">Số lượng</th> --}}
                                 <th class="th-description" style="width: 116px;">SP Nổi bật</th>
                                 <th class="th-description" style="width: 116px;">Trạng thái</th>
                                 <th class="text-center" style="width: 126px;">Giá chung</th>
@@ -108,9 +94,9 @@
                                     <a href="#"><b>{{$cate->name}}</b></a>
                                     @endforeach
                                 </td>
-                                <td>
+                                {{-- <td>
                                     {{$product->quantity}}
-                                </td>
+                                </td> --}}
                                 <td>
                                     <label class="btn-{{$product->highlight == 1? 'danger':'default'}}">{{$product->highlight == 1? 'Có':'Không'}}</label>
                                 </td>
@@ -127,20 +113,7 @@
                                             $button = 'success';
                                         @endphp
                                         @break
-                                    @case(2)
-                                        @php
-                                            $status = 'Hỏng hóc';
-                                            $button = 'danger';
-                                        @endphp
-                                        @break
-                                    @case(3)
-                                        @php
-                                            $status = 'Trả về';
-                                            $button = 'warning';
-                                        @endphp
-                                        @break
                                     @default
-                                        
                                 @endswitch
                                 <td>
                                 <button data-id="{{$product->id}}" data-toggle="modal" data-target="#status-modal" class="btn-{{ $button }} status-product">{{ $status }}</button>
@@ -152,26 +125,26 @@
                                     {{$product->updated_at}}
                                 </td>
                                 <td class="td-number text-center">
-                                    <label class="btn btn-{{$product->quantity ==  0? 'danger':'success'}}"
-                                        style="padding-left: 15px;padding-right: 15px;">{{$product->quantity ==  0? 'Hết hàng':'Còn hàng'}}</label>
+                                    <label class="btn btn-{{checkQuantityProduct($product->id) ==  false ? 'danger':'success'}}"
+                                        style="padding-left: 15px;padding-right: 15px;">{{checkQuantityProduct($product->id) ==  false ? 'Hết hàng':'Còn hàng'}}</label>
                                 </td>
                                 <td class="td-actions">
-                                    <button type="button"  class="btn btn-warning btn-round" rel="tooltip"
-                                       title="Giá tùy chỉnh" style="margin-bottom: 7px;">
+                                    <button type="button" style="z-index: 9999"  class="btn btn-warning btn-round" rel="tooltip"
+                                       title="Chi tiết" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/price/{{$product->id}}/edit"><i
                                                 class="material-icons">assessment</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-info btn-round" rel="tooltip"
+                                    <button type="button" style="z-index: 9999"  class="btn btn-info btn-round" rel="tooltip"
                                        title="Ảnh Sản phẩm" style="margin-bottom: 7px;">
                                         <a style="color:white;" href="/admin/products/image/{{$product->id}}/edit"><i
                                                 class="material-icons">pageview</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-success btn-round" rel="tooltip"
+                                    <button type="button" style="z-index: 99999"  class="btn btn-success btn-round" rel="tooltip"
                                         title="Chỉnh sửa">
                                         <a style="color:white;" href="/admin/products/{{$product->id}}/edit"><i
                                                 class="material-icons">edit</i></a>
                                     </button>
-                                    <button type="button"  class="btn btn-danger btn-round btn-del" rel="tooltip"
+                                    <button type="button" style="z-index: 99999"  class="btn btn-danger btn-round btn-del" rel="tooltip"
                                         data-id="{{$product->id}}"title="Xóa">
                                         <i class="material-icons">close</i>
                                     </button>
@@ -210,22 +183,6 @@
               <div class="form-check">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="status" value="1"> Đã duyệt
-                  <span class="circle">
-                    <span class="check"></span>
-                  </span>
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="status" value="2"> Hàng hỏng hóc
-                  <span class="circle">
-                    <span class="check"></span>
-                  </span>
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="status" value="3"> Hảng trả về
                   <span class="circle">
                     <span class="check"></span>
                   </span>
@@ -302,7 +259,7 @@
             $('#btn-update-status').click(function(){
                 var status = $('input[name=status]:checked').val();
                 $.ajax({
-                    url: '/admin/products/update-status/' + productId,
+                    url: '/admin/products/update-status-product/' + productId,
                     method: 'POST',
                     data: {
                         _token: "{{csrf_token()}}",
@@ -329,7 +286,7 @@ $(document).ready( function () {
         buttons: [
             'csv', 'excel', 'pdf'
         ],
-        "order": [[ 'id', "desc" ]]
+        "order": [[ 1, "desc" ]]
     });
 } );
 </script>

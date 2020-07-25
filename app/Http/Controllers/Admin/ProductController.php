@@ -41,7 +41,7 @@ class ProductController extends Controller
                 'name'         => 'required',
                 'product_code' => 'required | unique:product,product_code',
                 'price'        => 'required',
-                'quantity'     => 'required',
+                // 'quantity'     => 'required',
                 'category'     => 'required',
                 'attr'         => 'required',
                 'brand'        => 'required',
@@ -56,7 +56,7 @@ class ProductController extends Controller
                 'product_code.required'          => 'Mã sản phẩn không được để trống',
                 'product_code.unique'            => 'Mã sản phẩn không được trùng',
                 'price.required'                 => 'Giá sản phẩn không được để trống',
-                'quantity.required'              => 'Số lượng sản phẩn không được để trống',
+                // 'quantity.required'              => 'Số lượng sản phẩn không được để trống',
                 'category.required'              => 'Danh mục sản phẩn không được để trống',
                 'attr.required'                  => 'Thuộc tính sản phẩn không được để trống',
                 'brand.required'                 => 'Thương hiệu sản phẩn không được để trống',
@@ -86,7 +86,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'product_code' => $request->product_code,
             'price' => Intval(str_replace(",", "", $request->price)),
-            'quantity' => $request->quantity,
+            // 'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
             'brand_id' => $request->brand,
@@ -148,7 +148,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'product_code' => $request->product_code,
             'price' => Intval(str_replace(",", "", $request->price)),
-            'quantity' => $request->quantity,
+            // 'quantity' => $request->quantity,
             'description' => $request->description,
             'detail' => $request->detail,
             'brand_id' => $request->brand,
@@ -211,16 +211,27 @@ class ProductController extends Controller
 
     public function updateprice(Variant $variant, Product $product, Request $request)
     {
-        // dd($request->all());
+        $this->validate(
+            $request,
+            [
+                'quantity.*' => 'required|not_in:0',
+                
+            ],
+            [
+                'quantity.*.not_in' => 'Bạn chưa điền số lượng sản phẩm',
+            ]
+        );
+
         foreach ($request->price as $key => $value) {
             $variant = Variant::find($key);
             $variant->update([
-                'price' => Intval(str_replace(",", "", $value)),
+                'price'     => Intval(str_replace(",", "", $value)),
+                'quantity'  => $request->quantity[$key]
             ]);
         }
 
         session()->flash('edit_price', 'success');
-        return redirect('/admin/products');
+        return redirect()->back();
     }
 
 
@@ -375,9 +386,18 @@ class ProductController extends Controller
         return redirect('/admin/products/price/'.$request->id.'/edit');
     }
 
-    public function updateStatus(Request $request, $id){
+    public function updateStatusProduct(Request $request, $id){
         $product = Product::find($id);
         $product->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
+
+    public function updateStatusVariant(Request $request, $id){
+        $variant = Variant::find($id);
+        $variant->update([
             'status' => $request->status
         ]);
 
