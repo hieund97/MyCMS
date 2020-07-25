@@ -284,7 +284,7 @@ $(document).ready( function () {
     $('#producttable').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'csv', 'excel', 'pdf'
+            'excel', 'pdf'
         ],
         "order": [[ 1, "desc" ]]
     });

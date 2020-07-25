@@ -18,7 +18,6 @@ class OrderController extends Controller
     public function storeOrder(Request $request)
     {
 
-        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -49,7 +48,6 @@ class OrderController extends Controller
             ]);
             $order->save();
             foreach (Cart::content() as $key => $product) {
-                // dd($product);               
 
                 $attr = Attr_Order::create([
                     'price' => $product->price * $product->qty,
@@ -85,8 +83,6 @@ class OrderController extends Controller
             ]);
             $order->save();
             foreach (Cart::content() as $key => $product) {
-                // dd($product);
-
                 $attr = Attr_Order::create([
                     'price' => $product->price * $product->qty,
                     'quantity' => $product->qty,

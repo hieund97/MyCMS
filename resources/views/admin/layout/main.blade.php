@@ -60,6 +60,8 @@
   <!-- Google Tag Manager -->
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
   
   
   <script>
@@ -167,6 +169,7 @@
   {{-- ck editor --}}
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script> CKEDITOR.replace( 'editor1', {
       filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
       filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',

@@ -179,11 +179,14 @@
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
                                     <label for="category">Chọn danh mục <span style="color: red">*</span></label>
-                                    <select class="selectpicker" name="category[]" data-style="select-with-transition"
-                                        multiple title="Chọn danh mục" data-size="10">
+                                    <select class="form-control" name="category[]" id="select-category">
                                         {{getCategory($categories, 0, '')}}
                                     </select>
-                                    <a href="/admin/categories" title="Quản lý danh mục"><i
+                                    {{-- <select class="selectpicker" name="category[]" data-style="select-with-transition"
+                                        multiple title="Chọn danh mục" data-size="10">
+                                        {{getCategory($categories, 0, '')}}
+                                    </select> --}}
+                                    <a href="/admin/categories" style="position: absolute;top: 20px;" title="Quản lý danh mục"><i
                                             style="margin-left: 10px;margin-top: 10px;"
                                             class="material-icons">settings</i></a>
                                 </div>
@@ -191,22 +194,20 @@
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
                                     <label for="trend">Chọn xu hướng sản phẩm <span style="color: red">*</span></label>
-                                    <select class="selectpicker" name="trend" data-style="select-with-transition"
-                                        multiple title="Chọn trending" data-size="10">
+                                    <select class="form-control" name="trend" id="select-trend">
                                         @foreach ($trending as $trend)
                                         <option value="{{$trend->id}}" {{$trend->id == old('trend') ? 'selected' : ''}}>{{$trend->name}}</option>
                                         @endforeach
                                     </select>
-                                    <a href="/admin/trending" title="Quản lý trending"><i
+                                    <a href="/admin/trending" style="position: absolute;top: 20px;" title="Quản lý trending"><i
                                             style="margin-left: 10px;margin-top: 10px;"
                                             class="material-icons">settings</i></a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-9" style="margin-top: 20px;">
+                                <div class="col-md-10">
                                     <label for="brand">Chọn thương hiệu sản phẩm <span style="color: red">*</span></label>
-                                    <select class="selectpicker" data-size="7" name="brand"
-                                        data-style="btn btn-primary btn-round" title="Chọn thương hiệu">
+                                    <select class="form-control"  name="brand" id="select-brand">
                                         @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}" {{$brand->id == old('brand') ? 'selected' : ''}}>{{$brand->name}}</option>
                                         @endforeach
@@ -321,6 +322,12 @@
 @endsection
 @push('js')
     <script>
+         $(document).ready(function(){
+            $('#select-category').select2();
+            $('#select-trend').select2();
+            $('#select-brand').select2();
+
+        })
         @if ($errors->any())
             @foreach ($errors->all() as $error)
             Command: toastr["error"]("{{$error}}")
