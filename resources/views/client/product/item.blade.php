@@ -213,7 +213,7 @@
                             <div class="hover-img">
                                 <a href="/san-pham/{{$random->p_slug}}">
                                     <div class="card-image">
-                                        <img src="{{$random->image_product->first()->image}}"
+                                        <img src="{{$random->image_product->first()}}"
                                             title="{{$random->name}}" />
                                     </div>
                                 </a>
@@ -282,6 +282,58 @@
 
 </body>
 @endsection
+@push('js')
+<script>
+    // $(document).ready(function(){
+    //     var id = '{{$item->id}}';
+    //     var color = '';
+    //     var size = '';
+    //     $('body').on('change', 'select', function() {
+    //         color = $('#Color').val();
+    //         size = $('#Size').val();
+    //         getPriceItem(id, color, size);
+    //     });
+    // });
+
+    function getPriceItem(id, color, size){
+        $.ajax({
+            url: '/san-pham/gia',
+            method: 'GET',
+            data: {
+                id: id,
+                Color: color,
+                Size: Size
+            },
+            success: function(response){
+                $('.main-price').html(response.data)
+            }
+        });
+    }
+
+    @error('content')
+    Command: toastr["error"]("{{$message}}")
+
+        toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+    @enderror
+</script>
+@endpush
+
 <script>
     function myfunction(){
         $('#reply').removeClass("hide")

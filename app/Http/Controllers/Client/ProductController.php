@@ -28,7 +28,22 @@ class ProductController extends Controller
         return view('client.product.filter', compact('filterProducts'));
     }
 
-    // public function filterAttribute(){
-    //     $filterProducts = Pr
-    // }
+    public function getCustomPrice(Request $request){
+        $price = array();
+        if ($request->Color == NULL) {
+            $price = $request->Size;
+        } elseif ($request->Size == NULL) {
+            $price = $request->Color;
+        } elseif (is_array($request->Color) && is_array($request->Size)) {
+            $price = array_merge($request->Color, $request->Size);
+        } else {
+            $price = $request->price;
+        }
+
+        $product = Product::findOrFail($request->id);
+
+        $data = getPrice($product, $price);
+
+        return response()->json(['data' => $data]);
+    }
 }

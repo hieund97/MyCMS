@@ -11,6 +11,16 @@ use App\Models\Review;
 class ReviewController extends Controller
 {
     public function storeAsMember(Request $request){
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+            ],
+            [
+                'content.required' => 'Bạn chưa nhập bình luận',
+            ]
+        );
+
         $memberReview = Review::create([
             'content' => $request->content,
             'user_id' => $request->userid,
@@ -21,6 +31,16 @@ class ReviewController extends Controller
     }
 
     public function storeAsGuest(Request $request){
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+            ],
+            [
+                'content.required' => 'Bạn chưa nhập bình luận',
+            ]
+        );
+
         $guest = Guest::create([
             'client_name' => $request->name,
             'email' => $request->email,
@@ -37,6 +57,16 @@ class ReviewController extends Controller
     }
 
     public function guestReply(Request $request, $id){
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+            ],
+            [
+                'content.required' => 'Bạn chưa nhập bình luận',
+            ]
+        );
+
         $guest = Guest::create([
             'client_name' => $request->name,
             'email' => $request->email,
@@ -52,6 +82,16 @@ class ReviewController extends Controller
     }
 
     public function memReply(Request $request, $id){
+        $this->validate(
+            $request,
+            [
+                'content' => 'required',
+            ],
+            [
+                'content.required' => 'Bạn chưa nhập bình luận',
+            ]
+        );
+
         $memReply = Reply::create([
             'content' => $request->content,
             'comment_id' => $id,

@@ -82,29 +82,48 @@
                                     {{$product->size}}
                                 </td>
                                 <td>
-                                    @if ($product->status == 0)
-                                    <label class="text-center btn-info">Đã tiếp nhận yêu cầu</label>
-                                    @endif
-
-                                    @if ($product->status == 1)
-                                    <label class="text-center btn-warning">Đã xác nhận đơn hàng</label>
-                                    @endif
-
-                                    @if ($product->status == 2)
-                                    <label class="text-center btn-danger">Đã hủy</label>
-                                    @endif
-
-                                    @if ($product->status == 3)
-                                    <label class="text-center btn-primary">Đang giao hàng</label>
-                                    @endif
-
-                                    @if ($product->status == 4)
-                                    <label class="text-center btn-success">Giao hàng thành công</label>
-                                    @endif
-
-                                    @if ($product->status == 5)
-                                    <label class="text-center" style="color: white;background-color: #9E9E9E;">Không liên lạc được</label>
-                                    @endif
+                                    @switch($product->status)
+                                        @case(0)
+                                            @php
+                                                $status = 'Đã tiếp nhận yêu cầu';
+                                                $button = 'info';
+                                            @endphp
+                                            @break
+                                        @case(1)
+                                            @php
+                                                $status = 'Đã xác nhận đơn hàng';
+                                                $button = 'warning';
+                                            @endphp
+                                            @break
+                                        @case(2)
+                                            @php
+                                                $status = 'Đã hủy';
+                                                $button = 'danger';
+                                            @endphp
+                                            @break
+                                        @case(3)
+                                            @php
+                                                $status = 'Đang giao hàng';
+                                                $button = 'primary';
+                                            @endphp
+                                            @break
+                                        @case(4)
+                                            @php
+                                                $status = 'Giao hàng thành công';
+                                                $button = 'success';
+                                            @endphp
+                                            @break
+                                        @case(5)
+                                            @php
+                                                $status = 'Không liện lạc được, hàng trả về';
+                                                $button = 'default';
+                                            @endphp
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
+                                   
+                                <button class="text-center btn-{{$button}} status-order" data-toggle="modal" data-target="#status-modal" data-id="{{$product->id}}">{{ $status }}</button>
                                 </td>
                                 <td class="text-center">
                                     {{$product->quantity}}
@@ -145,6 +164,73 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Đã tiếp nhận đơn hàng
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Đã xác nhận đơn hàng
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="2"> Đã hủy
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="3"> Đang giao hàng
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="4"> Giao hàng thành công
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="5"> Không liện lạc được, hàng trả về
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
 <script>
@@ -205,7 +291,37 @@
 					}
 				})	
 		});
-    });   
+
+        $('.status-order').click(function(){
+            var orderid = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/order/update-status/' + orderid,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái sản phẩm đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
+    });
+
+
+
+
 $(document).ready( function () {
     $('#ordertable').DataTable();
 } ); 

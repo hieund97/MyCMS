@@ -75,8 +75,6 @@ class CartController extends Controller
         return response()->json([], 204);
     }
 
-    
-
     public function checkout()
     {
         $quantity = Cart::content()->count();

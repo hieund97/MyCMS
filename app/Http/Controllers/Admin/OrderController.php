@@ -48,4 +48,13 @@ class OrderController extends Controller
         return response()->json([], 204);
     }
 
+    public function updateStatus(Request $request, $id){
+        $order = Attr_Order::find($id);
+        $order->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
+
 }

@@ -229,6 +229,7 @@ Route::group([
             Route::put('/cancel/{id}','OrderController@cancel');
             Route::get('/{id}/edit','OrderController@edit');
             Route::post('/{id}/edit','OrderController@update');
+            Route::post('update-status/{id}', 'OrderController@updateStatus');
             Route::post('import', 'OrderController@import');
             Route::get('export', 'OrderController@export');
         });
@@ -313,6 +314,8 @@ Route::group([
         Route::get('/{p_slug}', 'ProductController@item');
         Route::get('/loc-san-pham', 'ProductController@filter');
         Route::get('/loc-thuoc-tinh', 'ProductController@filterAttribute');
+        Route::get('/gia', 'ProductController@getCustomPrice');
+
     });
 
     // Client Trending Route
