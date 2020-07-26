@@ -214,19 +214,22 @@ class ProductController extends Controller
         $this->validate(
             $request,
             [
-                'quantity.*' => 'required|not_in:0',
+                'quantity.*'     => 'required|not_in:0',
+                'price_origin.*' => 'required|not_in:0',
                 
             ],
             [
-                'quantity.*.not_in' => 'Bạn chưa điền số lượng sản phẩm',
+                'quantity.*.not_in'     => 'Bạn chưa điền số lượng sản phẩm',
+                'price_origin.*.not_in' => 'Bạn chưa điền giá nhập vào',
             ]
         );
 
         foreach ($request->price as $key => $value) {
             $variant = Variant::find($key);
             $variant->update([
-                'price'     => Intval(str_replace(",", "", $value)),
-                'quantity'  => $request->quantity[$key]
+                'price'        => Intval(str_replace(",", "", $value)),
+                'price_origin' => Intval(str_replace(",", "", $request->price_origin[$key])),
+                'quantity'     => $request->quantity[$key]
             ]);
         }
 

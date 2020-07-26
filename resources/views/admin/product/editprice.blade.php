@@ -36,8 +36,8 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Giá theo biển thể sản phẩm: <span style="color:darkmagenta">{{$product->name}}</span> </h2>                        
-                    </div>                    
+                        <h2 class="card-title">Giá theo biển thể sản phẩm: <span style="color:darkmagenta">{{$product->name}}</span> </h2>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <form method="POST">
@@ -47,11 +47,12 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="width: 56px;">#</th>
-                                            <th style="width: 516px;">Thuộc tính</th>
-                                            <th style="width: 616px;" class="text-center">Giá</th>
-                                            <th style="width: 616px;" class="text-center">Số lượng</th>
-                                            <th style="width: 616px;" class="text-center">Đã bán</th>
-                                            <th style="width: 616px;" class="text-center">Trạng thái</th>
+                                            <th style="width: 266px;">Thuộc tính</th>
+                                            <th>Giá nhập vào</th>
+                                            <th>Giá bán</th>
+                                            <th class="text-center">Số lượng</th>
+                                            <th class="text-center">Đã bán</th>
+                                            <th style="width: 216px" class="text-center">Trạng thái</th>
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
@@ -63,10 +64,19 @@
                                                 @foreach ($variant->value as $value)
                                                 {{$value->attribute->name}}: {{$value->value}},
                                                 @endforeach
+                                            </td>
                                             <td>
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Giá cho biến thể</label>
-                                                    <input style="width: 400px;" type="text" onkeyup="this.value=FormatNumber(this.value);"
+                                                    <input style="width: 200px;" type="text" onkeyup="this.value=FormatNumber(this.value);"
+                                                        name="price_origin[{{$variant->id}}]" class="form-control"
+                                                        value="{{$variant->price_origin != 0 ? number_format($variant->price_origin) : 0}}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Giá cho biến thể</label>
+                                                    <input style="width: 200px;" type="text" onkeyup="this.value=FormatNumber(this.value);"
                                                         name="price[{{$variant->id}}]" class="form-control"
                                                         value="{{ $variant->price != 0 ? number_format($variant->price) : number_format($product->price)}}">
                                                 </div>
@@ -141,6 +151,7 @@
                                                     }
                                                 </script>
                                             </td>
+                                            
                                             <td class="text-center">
                                                 <input type="number" name="quantity[{{$variant->id}}]" value="{{old('quantity') ? old('quantity') : $variant->quantity}}">
                                             </td>
@@ -367,5 +378,28 @@
         "hideMethod": "fadeOut"
         }
     @enderror
+
+    @error('price_origin.*')
+    Command: toastr["error"]("{{$message}}")
+
+        toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+    @enderror
+
 </script>
 @endpush
