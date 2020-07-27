@@ -12,6 +12,7 @@ use App\Models\Brand;
 use App\Models\Image_product;
 use App\Models\Trending;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -405,5 +406,17 @@ class ProductController extends Controller
         ]);
 
         return response()->json([], 204);
+    }
+
+    public function getTicketProduct(Request $request)
+    {
+        // dd($request->date);
+        $now = Carbon::now()->format('Y-m-d');
+
+        if(isset($request->date)){
+            $now = date('Y-m-d',strtotime($request->date));
+        }
+        $listTicket = Product::where('day_created', $now)->get();
+        return view('admin.product.ticket', compact('listTicket'));
     }
 }

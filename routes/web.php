@@ -95,6 +95,9 @@ Route::group([
             //update stauts
             Route::post('/update-status-product/{id}', 'ProductController@updateStatusProduct');
             Route::post('/update-status-variant/{id}', 'ProductController@updateStatusVariant');
+
+            // ticket
+            Route::get('/ticket-product', 'ProductController@getTicketProduct');
         });
 
         // Admin Product-Category Route

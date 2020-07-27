@@ -117,9 +117,9 @@
                 <span class="sidebar-normal">Thương hiệu </span>
               </a>
             </li>
-            <li class="nav-item pad {{(request()->is('admin/products/brand'))? 'active' : null}}">
-              <a class="nav-link" href="/admin/revenue">
-                <span class="sidebar-mini"> TH </span>
+            <li class="nav-item pad {{(request()->is('admin/products/ticket-product'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/ticket-product">
+                <span class="sidebar-mini"> PN </span>
                 <span class="sidebar-normal">Phiếu nhập</span>
               </a>
             </li>
@@ -156,7 +156,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {{Request::segment(2) === 'revenue'? 'active' : null}}">
         <a class="nav-link" href="/admin/revenue">
           <i class="material-icons">timeline</i>
           <p> Doanh thu </p>
