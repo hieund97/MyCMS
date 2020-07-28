@@ -288,6 +288,7 @@
         var id = '{{$item->id}}';
         var color = $('#Color').val();
         var size = $('#Size').val();
+        getPriceItem(color, size, id);
         $('select').change(function() {
             color = $('#Color').val();
             size = $('#Size').val();
