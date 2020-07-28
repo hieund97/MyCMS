@@ -27,14 +27,14 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="hover-img">
+                                {{-- <div class="hover-img">
                                     <a href="/san-pham/{{$product->p_slug}}">
                                         <div class="card-image">
-                                            <img src="{{$product->image_product->first()->image}}"
+                                            <img src="{{$product->image_product->first()}}"
                                                 title="{{$product->name}}" />
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 <div class="card-content">
                                     <a href="/san-pham/{{$product->p_slug}}">

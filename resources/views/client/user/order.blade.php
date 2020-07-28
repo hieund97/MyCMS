@@ -91,9 +91,9 @@
                             <td class="td-action text-right">
                                 @if ($item->status == 2 || $item->status == 5)
                                 <a href="/san-pham/{{$item->product->p_slug}}" class="btn btn-primary">Mua lại</a>
-                                @elseif ($item->status == 4)
+                                @elseif ($item->status == 4 || $item->status == 3 || !checkTimeOrder($order->order_code))
                                 <button disabled data-id="{{$item->id}}" class="btn btn-danger btn-del"
-                                    style="padding: 12px 10px">Hủy đơn hàng</button>                                
+                                    style="padding: 12px 10px">Hủy đơn hàng</button>
                                 @else
                                 <button data-id="{{$item->id}}" class="btn btn-danger btn-del"
                                     style="padding: 12px 10px">Hủy đơn hàng</button>

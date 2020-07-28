@@ -46,8 +46,11 @@
                         <h3 class="main-price">{{number_format($item->price)}} ₫</h3>
                         <span>Mã sản phẩm: {{$item->product_code}}</span>
                         <p></p>
-                        <label style="margin-bottom: 20px;"
+                        <div id="status_item">
+
+                            <label style="margin-bottom: 20px;"
                             class="btn-{{checkQuantityProduct($item->id) == false? 'danger': 'success'}}">{{checkQuantityProduct($item->id) == false? 'Hết hàng': 'Còn hàng'}}</label><br>
+                        </div>
                         {{-- <span>Đã bán: {{$item->purchase}}</span> --}}
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
@@ -127,11 +130,8 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <div class="row text-right">
+                            <div class="row text-right" id="button_sale">
                                 @if (checkQuantityProduct($item->id) == false)
-                                <button type="submit" disabled class="btn btn-info btn-round btn__primary">Mua
-                                    ngay
-                                    &nbsp;<i class="material-icons">shopping_cart</i></button>
                                 <a href="/lien-he" class="btn btn-danger btn-round">Liên hệ &nbsp;<i
                                         class="material-icons">perm_phone_msg</i></a>
                                 @else
@@ -284,31 +284,54 @@
 @endsection
 @push('js')
 <script>
-    // $(document).ready(function(){
-    //     var id = '{{$item->id}}';
-    //     var color = '';
-    //     var size = '';
-    //     $('body').on('change', 'select', function() {
-    //         color = $('#Color').val();
-    //         size = $('#Size').val();
-    //         getPriceItem(id, color, size);
-    //     });
-    // });
+    $(document).ready(function(){
+        var id = '{{$item->id}}';
+        var color = $('#Color').val();
+        var size = $('#Size').val();
+        $('select').change(function() {
+            color = $('#Color').val();
+            size = $('#Size').val();
+            getPriceItem(color, size, id);
+        });
+    });
 
-    function getPriceItem(id, color, size){
+    function getPriceItem(color, size, id, price){
+        var button = '';
+            button += "<a href='/lien-he' class='btn btn-danger btn-round'>Liên hệ &nbsp;";
+            button += "<i class='material-icons'>perm_phone_msg</i></a>";
+
+        var label = "<label style='margin-bottom: 20px;' class='btn-danger'>Hết hàng</label>";
+        
         $.ajax({
             url: '/san-pham/gia',
-            method: 'GET',
+            method: 'POST',
             data: {
+                _token: "{{csrf_token()}}",
+                color: color,
+                size: size,
                 id: id,
-                Color: color,
-                Size: Size
             },
             success: function(response){
-                $('.main-price').html(response.data)
+                $('.main-price').html(formatNumber(Math.floor(response.price), '.', ',') + 'đ');
+                if (response.quantity <= 0) {
+                    $('#button_sale').html(button);
+                    $('#status_item').html(label)
+                }
             }
         });
     }
+
+    function formatNumber(nStr, decSeperate, groupSeperate) {
+        nStr += '';
+        x = nStr.split(decSeperate);
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+        }
+        return x1 + x2;
+    };
 
     @error('content')
     Command: toastr["error"]("{{$message}}")

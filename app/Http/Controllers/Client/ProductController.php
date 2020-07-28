@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Sale;
+use App\Models\Variant;
+use App\Models\Value;
 
 class ProductController extends Controller
 {
@@ -29,21 +32,34 @@ class ProductController extends Controller
     }
 
     public function getCustomPrice(Request $request){
-        $price = array();
-        if ($request->Color == NULL) {
-            $price = $request->Size;
-        } elseif ($request->Size == NULL) {
-            $price = $request->Color;
-        } elseif (is_array($request->Color) && is_array($request->Size)) {
-            $price = array_merge($request->Color, $request->Size);
-        } else {
-            $price = $request->price;
+        $data_value_id = Value::select('id')->where('value', $request->color)->orWhere('value', $request->size)->get();
+
+        $data = Variant::select('variant.id')->where('variant.product_id', $request->id)
+        ->join('variant_value', 'variant_value.variant_id', '=', 'variant.id')
+        ->whereIn('variant_value.value_id', $data_value_id)
+        ->get()->toArray();
+
+        $variant_id = '';
+
+        foreach ($data as $key => $value) {
+            if($data[$key]['id'] == $data[$key + 1]['id']){
+                $variant_id = $data[$key]['id'];
+                break;
+            };
         }
 
-        $product = Product::findOrFail($request->id);
+        $variant = Variant::find($variant_id);
 
-        $data = getPrice($product, $price);
+        return response()->json(['price' => $variant->price, 'quantity' => $variant->quantity]);
+    }
 
-        return response()->json(['data' => $data]);
+    public function checkSale(Request $request){
+        $checkSale = Sale::where('code_sale', $request->code)->first();
+
+        if ($checkSale) {
+            return response()->json(['status' => 200, 'percent' => $checkSale->percent_sale, 'name' => $checkSale->name, 'message' => 'Áp dụng thành công']);
+        }
+
+        return response()->json(['status' => 400, 'message' => 'Mã khuyến mại không tồn tài']);
     }
 }

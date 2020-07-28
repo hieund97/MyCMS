@@ -68,7 +68,7 @@
                     </tr>
                     <tr>
                         <td class="do-dai">
-                            Tổng tiền
+                            Số tiền phải trả
                         </td>
                         <td>
                             {{number_format($orders->total_price) }}đ

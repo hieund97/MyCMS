@@ -40,7 +40,6 @@
             <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12" style="border-right: 1px solid #C8C8C8">
                     <h3 class="title">Thông tin giao hàng</h3>
-
                     @auth
                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                     <div class="form-group label-floating">
@@ -168,12 +167,7 @@
                         <input type="text" name="note" class="form-control" />
                     </div>
                     @endguest
-
-
-
-
                     <h3 class="title">Phương thức vận chuyển</h3>
-
                     <div id="ship" class="ship hide ">
                         @foreach ($ships as $ship)
                         <div class="radio" style="border: 1px solid #C8C8C8; padding: 15px 10px;">
@@ -203,11 +197,7 @@
                         </div>
                     </div>
                     @endif
-
-
-
                     <h3 class="title">Phương thức thanh toán</h3>
-
                     @foreach ($pays as $pay)
                     <div class="radio" style="border: 1px solid #C8C8C8; padding: 15px 10px;">
                         <label>
@@ -229,8 +219,6 @@
                         </div>
                     </div>
                     @endif
-
-
                     <div class="submit text-center">
                         <a href="/gio-hang" class="btn btn-warning btn-raised btn-round pull-left ">
                             < Trở về giỏ hàng </a> <button type="submit"
@@ -238,9 +226,6 @@
                                 Hoàn tất đơn
                                 hàng</button>
                     </div>
-
-
-
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <h3 class="title">Thông tin sản phẩm</h3>
@@ -259,7 +244,6 @@
                         <tbody>
                             @forelse (Cart::content() as $item)
                             <tr>
-
                                 <td>
                                     <div class="img-container">
                                         <img src=" {{$item->options->img}}" alt="...">
@@ -288,15 +272,20 @@
                                 <td>
                                     <p>Không có sản phẩm nào</p>
                                 </td>
-
                             </tr>
                             @endforelse
                             <input type="hidden" name="quantity" value="{{$quantity}}">
-
-
-
                         </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="code_sale" style="position: relative;top: 30px;left: 10px;">NHẬP MÃ KHUYẾN MÃI</label>
+                            <input type="text" name="code_sale" id="code_sale" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" id="btn-sale" style="margin-top: 50px;" class="btn btn-info" >Áp dụng</button>
+                        </div>
+                    </div>
 
                     <table class="table">
                         <thead>
@@ -312,6 +301,7 @@
                             </td>
                             <td class="text-right">
                                 {{Cart::total(0,'',',')}}₫
+                                <input type="hidden" name="temp_price" id="temp_price" value="{{Cart::total(0,'',',')}}">
                             </td>
                         </tr>
                         <tr id="shipmoney" class="ship hide">
@@ -320,6 +310,14 @@
                             </td>
                             <td class="text-right">
                                 <span id="shipmoney2">đ</span>
+                            </td>
+                        </tr>
+                        <tr id="sale" class="ship hide">
+                            <td>
+                                Chiết khấu khuyến mãi
+                            </td>
+                            <td class="text-right">
+                                <span id="percent_sale"></span>
                             </td>
                         </tr>
                         <tfoot>
@@ -335,9 +333,8 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <h4 style="border: 1px solid tomato; padding: 15px;">MrSpicy sẽ XÁC NHẬN đơn hàng bằng TIN NHẮN SMS
-                        hoặc
-                        GỌI ĐIỆN. Bạn vui lòng kiểm tra TIN NHẮN hoặc NGHE
+                    <h4 style="border: 1px solid tomato; padding: 15px;">360 sẽ XÁC NHẬN đơn hàng bằng TIN NHẮN SMS
+                        hoặc GỌI ĐIỆN TRỰC TIẾP. Bạn vui lòng kiểm tra TIN NHẮN hoặc NGHE
                         MÁY ngay khi đặt hàng thành công và CHỜ NHẬN HÀNG
                     </h4>
                 </div>
@@ -346,12 +343,89 @@
     </div>
 </form>
 
-
-
-
-
-
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function(){
+            $('#btn-sale').click(function(){
+                var code_sale = $('#code_sale').val();
+                var temp_price = $('#total_price').val();
+                var total_order = 0;
+                $.ajax({
+                    url: '/san-pham/check-khuyen-mai',
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        code: code_sale,
+                    },
+                    success: function(response){
+                        if (response.status == 200) {
+                            Command: toastr["success"](response.message)
+
+                                toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            };
+                            $('#sale').removeClass("hide");
+                            $('#percent_sale').html('-' + response.percent + '%');
+                            total_order = temp_price * response.percent / 100;
+                            $('#total2').html(formatNumber(total_order, '.', ',') + 'đ');
+                            $('#total_price').val(total_order);
+
+                        }
+
+                        if(response.status == 400){
+                            Command: toastr["error"](response.message)
+
+                                toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-bottom-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        }
+                    }
+                });
+            })
+        });
+
+        function formatNumber(nStr, decSeperate, groupSeperate) {
+            nStr += '';
+            x = nStr.split(decSeperate);
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+            }
+            return x1 + x2;
+        };
+    </script>
+@endpush
 
 <script>
     function myFunction3(){
@@ -363,23 +437,23 @@
 
 // Hàm định dạng số
 function formatNumber(nStr, decSeperate, groupSeperate) {
-            nStr += '';
-            x = nStr.split(decSeperate);
-            x1 = x[0];
-            x2 = x.length > 1 ? '.' + x[1] : '';
-            var rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
-            }
-            return x1 + x2;
-        };
+    nStr += '';
+    x = nStr.split(decSeperate);
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+    }
+    return x1 + x2;
+};
 
 
 function myFunction2(total){
     var checkbox = document.getElementsByName("ship");
     for (var i = 0; i < checkbox.length; i++){
         if (checkbox[i].checked === true){
-            document.getElementById("shipmoney2").innerHTML = checkbox[i].value + 'đ';  
+            document.getElementById("shipmoney2").innerHTML = checkbox[i].value + 'đ';
         };
         if (checkbox[i].checked === true){
             var ship = checkbox[i].value;
@@ -392,16 +466,10 @@ function myFunction2(total){
             var ship = checkbox[i].value;
             var replace = ship.replace(',', '')
             var result = parseInt(replace) + parseInt(total);
-            $('#total_price').val(result);            
+            $('#total_price').val(result);
         };
-                                    
     };
 };
-
-                       
-
-
-
 
 
 $().ready(function(){

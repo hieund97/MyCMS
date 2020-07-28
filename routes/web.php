@@ -317,7 +317,8 @@ Route::group([
         Route::get('/{p_slug}', 'ProductController@item');
         Route::get('/loc-san-pham', 'ProductController@filter');
         Route::get('/loc-thuoc-tinh', 'ProductController@filterAttribute');
-        Route::get('/gia', 'ProductController@getCustomPrice');
+        Route::post('/gia', 'ProductController@getCustomPrice');
+        Route::post('/check-khuyen-mai','ProductController@checkSale');
 
     });
 

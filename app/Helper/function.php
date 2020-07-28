@@ -3,6 +3,9 @@
 use App\Models\Categories;
 use App\Models\Product;
 use App\Models\Variant;
+use App\Models\Order;
+use Carbon\Carbon;
+// use DateTime;
 
 function getCategory($mang, $parent, $shift)
 {
@@ -189,4 +192,19 @@ function checkQuantityProduct($product_id){
     }
 
     return false;
+}
+
+function checkTimeOrder($order_code){
+    $now = Carbon::now();
+    $order = Order::where('order_code', $order_code)->first();
+
+    $time_created = $order->created_at;
+
+    $diff = $time_created->diff($now);
+
+    if($diff->m > 0 || $diff->d >= 10){
+        return false;
+    }
+
+    return true;
 }

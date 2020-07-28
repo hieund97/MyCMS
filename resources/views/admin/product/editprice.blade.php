@@ -52,7 +52,7 @@
                                             <th>Giá bán</th>
                                             <th class="text-center">Số lượng</th>
                                             <th class="text-center">Đã bán</th>
-                                            <th style="width: 216px" class="text-center">Trạng thái</th>
+                                            {{-- <th style="width: 216px" class="text-center">Trạng thái</th> --}}
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
@@ -158,7 +158,7 @@
                                             <td class="text-center">
                                                 {{$variant->purchase}}
                                             </td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 @switch($variant->status)
                                                     @case(0)
                                                         @php
@@ -188,7 +188,7 @@
                                                         
                                                 @endswitch
                                                 <button type="button" data-id="{{$variant->id}}" data-toggle="modal" data-target="#status-modal" class="btn-{{ $button }} status-variant">{{ $status }}</button>
-                                            </td>
+                                            </td> --}}
                                             <td class="td-actions">
                                                 <button style=" margin-right: 50px;  margin-bottom: 15px;" type="button"
                                                     rel="tooltip" class="btn btn-danger btn-del"
