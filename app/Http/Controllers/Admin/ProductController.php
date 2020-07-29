@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Brand;
+use App\Models\Sale;
 use App\Models\Image_product;
 use App\Models\Trending;
 use Illuminate\Support\Facades\Validator;
@@ -418,5 +419,77 @@ class ProductController extends Controller
         }
         $listTicket = Product::where('day_created', $now)->get();
         return view('admin.product.ticket', compact('listTicket'));
+    }
+
+    public function getListSale(){
+        $listSale = Sale::latest()->get();
+        return view('admin.sale.sale', compact('listSale'));
+    }
+
+    public function addSale(Request $request){
+        $this->validate(
+            $request,
+            [
+                'name'         => 'required',
+                'code_sale'    => 'required|unique:sale,code_sale',
+                'percent_sale' => 'required|not_in:0'
+            ],
+            [
+                'name.required'         => 'Tên khuyến mại không được để trống',
+                'code_sale.required'    => 'Mã khuyến mại không được để trống',
+                'percent_sale.required' => 'Phần trăm khuyến mại không được để trống',
+                'percent_sale.not_in'   => 'Phần trăm khuyến mại phải lớn hơn 0',
+                'code_sale.unique'      => 'Mã khuyến mại đã được sử dụng',
+            ]
+        );
+
+        $sale = Sale::create([
+            'name'          => $request->name,
+            'code_sale'     => $request->code_sale,
+            'percent_sale'  => $request->percent_sale,
+        ]);
+
+        session()->flash('create_sale', 'success');
+        return redirect()->back();
+    }
+
+    public function editSale($id){
+        $sale = Sale::find($id);
+        return view('admin.sale.edit', compact('sale'));
+    }
+
+    public function updateSale(Request $request, $id){
+        $this->validate(
+            $request,
+            [
+                'name'         => 'required',
+                'code_sale'    => 'required',
+                'percent_sale' => 'required|not_in:0'
+            ],
+            [
+                'name.required'         => 'Tên khuyến mại không được để trống',
+                'code_sale.required'    => 'Mã khuyến mại không được để trống',
+                'percent_sale.required' => 'Phần trăm khuyến mại không được để trống',
+                'percent_sale.not_in'   => 'Phần trăm khuyến mại phải lớn hơn 0',
+                // 'code_sale.unique'      => 'Mã khuyến mại đã được sử dụng',
+            ]
+        );
+
+        $sale = Sale::find($id);
+
+        $sale->update([
+            'name'          => $request->name,
+            'code_sale'     => $request->code_sale,
+            'percent_sale'  => $request->percent_sale,
+        ]);
+
+        session()->flash('update_sale', 'success');
+        return redirect('/admin/products/sale');
+    }
+
+    public function destroySale($id){
+        $sale = Sale::find($id);
+        $sale->delete();
+        return response()->json([], 204);
     }
 }

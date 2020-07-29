@@ -98,6 +98,13 @@ Route::group([
 
             // ticket
             Route::get('/ticket-product', 'ProductController@getTicketProduct');
+
+            //sale
+            Route::get('/sale', 'ProductController@getListSale');
+            Route::get('/sale/{id}/edit', 'ProductController@editSale');
+            Route::post('/add-sale', 'ProductController@addSale');
+            Route::put('/sale/{id}/edit', 'ProductController@updateSale');
+            Route::delete('/sale/{id}/delete', 'ProductController@destroySale');
         });
 
         // Admin Product-Category Route

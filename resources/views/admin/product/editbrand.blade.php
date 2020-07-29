@@ -42,7 +42,7 @@
                                     <b>LỖI</b> THƯƠNG HIỆU BỊ TRÙNG
                                 </div>
                             </div>
-                            @endif                            
+                            @endif
                             <button type="submit" class="btn btn-rose pull-right">Sửa thương hiệu</button>
                             <div class="clearfix"></div>
                         </form>

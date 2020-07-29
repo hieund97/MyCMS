@@ -123,6 +123,12 @@
                 <span class="sidebar-normal">Phiếu nhập</span>
               </a>
             </li>
+            <li class="nav-item pad {{(request()->is('admin/products/sale'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/sale">
+                <span class="sidebar-mini"> KM </span>
+                <span class="sidebar-normal">Khuyến mại</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
