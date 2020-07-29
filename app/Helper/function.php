@@ -203,7 +203,7 @@ function checkTimeOrder($order_code){
 
     $diff = $time_created->diff($now);
 
-    if($diff->m > 0 || $diff->d >= 10){
+    if($diff->m > 0 || $diff->d >= 5){
         return false;
     }
 

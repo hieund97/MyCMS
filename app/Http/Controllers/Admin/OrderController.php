@@ -45,11 +45,10 @@ class OrderController extends Controller
         if($attr_order->status == 5){
             $variant->update([
                 'quantity' => $variant->quantity - $attr_order->quantity,
-                'purchase' => $i + 1
             ]);
 
             $product_back = Product_back::create([
-                'product_id' => $variant->product_id,
+                'product_id' => $variant->id,
                 'status'     => 0 // 0. Hàng trả về lưu kho, 1. Hàng trả về nhưng đã đưa lại để bán lại
             ]);
         }
@@ -66,10 +65,31 @@ class OrderController extends Controller
     }
 
     public function updateStatus(Request $request, $id){
-        $order = Attr_Order::find($id);
-        $order->update([
+        $attr_order = Attr_Order::find($id);
+        $attr_order->update([
             'status' => $request->status
         ]);
+
+        $variant = getVariant($attr_order->color, $attr_order->size, $attr_order->product_id);
+        // Nếu cập nhật giao hàng thành công
+        if($attr_order->status == 4){
+            $variant->update([
+                'quantity' => $variant->quantity - $attr_order->quantity,
+                'purchase' => $i + 1
+            ]);
+        }
+
+        // Nếu cập nhật hàng trả về
+        if($attr_order->status == 5){
+            $variant->update([
+                'quantity' => $variant->quantity - $attr_order->quantity,
+            ]);
+
+            $product_back = Product_back::create([
+                'product_id' => $variant->id,
+                'status'     => 0 // 0. Hàng trả về lưu kho, 1. Hàng trả về nhưng đã đưa lại để bán lại
+            ]);
+        }
 
         return response()->json([], 204);
     }
