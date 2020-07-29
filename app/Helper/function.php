@@ -3,6 +3,7 @@
 use App\Models\Categories;
 use App\Models\Product;
 use App\Models\Variant;
+use App\Models\Value;
 use App\Models\Order;
 use Carbon\Carbon;
 // use DateTime;
@@ -207,4 +208,26 @@ function checkTimeOrder($order_code){
     }
 
     return true;
+}
+
+function getVariant($color, $size, $product_id){
+    $data_value_id = Value::select('id')->where('value', $color)->orWhere('value', $size)->get();
+
+    $data = Variant::select('variant.id')->where('variant.product_id', $product_id)
+    ->join('variant_value', 'variant_value.variant_id', '=', 'variant.id')
+    ->whereIn('variant_value.value_id', $data_value_id)
+    ->get()->toArray();
+
+    $variant_id = '';
+
+    foreach ($data as $key => $value) {
+        if($data[$key]['id'] == $data[$key + 1]['id']){
+            $variant_id = $data[$key]['id'];
+            break;
+        };
+    }
+
+    $variant = Variant::find($variant_id);
+
+    return $variant;
 }

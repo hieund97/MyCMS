@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Attr_Order;
+use App\Models\Product_back;
 use App\Models\Product;
 
 class OrderController extends Controller
@@ -18,6 +19,7 @@ class OrderController extends Controller
 
     public function edit($id){
         $attr_order = Attr_Order::where('id', $id)->firstOrFail();
+        // dd(getVariant($attr_order->color, $attr_order->size, $attr_order->product_id));
         return view('admin.order.edit', compact('attr_order'));
 
     }
@@ -28,12 +30,27 @@ class OrderController extends Controller
         $attr_order->update([
             'status' => $request->status,
         ]);
+
         $attr_order->save();
+        $variant = getVariant($attr_order->color, $attr_order->size, $attr_order->product_id);
+        // Nếu cập nhật giao hàng thành công
         if($attr_order->status == 4){
-            $updateProduct = Product::where('id', $attr_order->product->id)->firstOrFail();
-            $updateProduct->update([
-                'quantity' => $updateProduct->quantity - $attr_order->quantity,
+            $variant->update([
+                'quantity' => $variant->quantity - $attr_order->quantity,
                 'purchase' => $i + 1
+            ]);
+        }
+
+        // Nếu cập nhật hàng trả về
+        if($attr_order->status == 5){
+            $variant->update([
+                'quantity' => $variant->quantity - $attr_order->quantity,
+                'purchase' => $i + 1
+            ]);
+
+            $product_back = Product_back::create([
+                'product_id' => $variant->product_id,
+                'status'     => 0 // 0. Hàng trả về lưu kho, 1. Hàng trả về nhưng đã đưa lại để bán lại
             ]);
         }
         session()->flash('update_order', 'success');

@@ -32,25 +32,9 @@ class ProductController extends Controller
     }
 
     public function getCustomPrice(Request $request){
-        $data_value_id = Value::select('id')->where('value', $request->color)->orWhere('value', $request->size)->get();
+        $variant = getVariant($request->color, $request->size, $request->id);
 
-        $data = Variant::select('variant.id')->where('variant.product_id', $request->id)
-        ->join('variant_value', 'variant_value.variant_id', '=', 'variant.id')
-        ->whereIn('variant_value.value_id', $data_value_id)
-        ->get()->toArray();
-
-        $variant_id = '';
-
-        foreach ($data as $key => $value) {
-            if($data[$key]['id'] == $data[$key + 1]['id']){
-                $variant_id = $data[$key]['id'];
-                break;
-            };
-        }
-
-        $variant = Variant::find($variant_id);
-
-        return response()->json(['price' => $variant->price, 'quantity' => $variant->quantity]);
+        return response()->json(['price' => $variant->price, 'quantity' => $variant->quantity, 'purchase' => $variant->purchase]);
     }
 
     public function checkSale(Request $request){

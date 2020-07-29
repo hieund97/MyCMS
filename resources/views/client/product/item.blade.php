@@ -51,7 +51,7 @@
                             <label style="margin-bottom: 20px;"
                             class="btn-{{checkQuantityProduct($item->id) == false? 'danger': 'success'}}">{{checkQuantityProduct($item->id) == false? 'Hết hàng': 'Còn hàng'}}</label><br>
                         </div>
-                        {{-- <span>Đã bán: {{$item->purchase}}</span> --}}
+                        <span id="quantity_purchase"></span>
                         <div id="acordeon">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-border panel-default">
@@ -314,6 +314,7 @@
             },
             success: function(response){
                 $('.main-price').html(formatNumber(Math.floor(response.price), '.', ',') + 'đ');
+                $('#quantity_purchase').html('Đã bán: ' + response.purchase);
                 if (response.quantity <= 0) {
                     $('#button_sale').html(button);
                     $('#status_item').html(label)
