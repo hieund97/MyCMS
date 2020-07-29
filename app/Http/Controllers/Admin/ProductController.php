@@ -411,7 +411,6 @@ class ProductController extends Controller
 
     public function getTicketProduct(Request $request)
     {
-        // dd($request->date);
         $now = Carbon::now()->format('Y-m-d');
 
         if(isset($request->date)){
