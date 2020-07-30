@@ -5,41 +5,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
-                @if (session()->has('add_brand'))
-                <div class="alert alert-success">
-                    <div class="container">
-                        <div class="alert-icon">
-                            <i class="material-icons">check</i>
-                        </div>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                        </button>
-                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-                    </div>
-                </div>
-                @endif
-                @if (session()->has('update_brand'))
-                <div class="alert alert-success">
-                    <div class="container">
-                        <div class="alert-icon">
-                            <i class="material-icons">check</i>
-                        </div>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                        </button>
-                        <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-                    </div>
-                </div>
-                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="col-md-6" style="float:left">
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h2 class="card-title">Danh sách thương hiệu</h2>
+                            <h2 class="card-title">Danh sách khuyến mại</h2>
                         </div>
-                        
                     </div>
 
                     <div class="card-body">
@@ -60,7 +33,7 @@
                                     @foreach ($listSale as $sale)
                                     <tr>
                                         <td class='text-center'>{{$sale->id}}</td>
-                                        <td><a style='font-weight: bold; font-size: 120%;' href=''>{{$sale->name}}</a>
+                                        <td><a style='font-weight: bold; font-size: 120%;' href='javascript:void(0)'>{{$sale->name}}</a>
                                         </td>
                                         <td class='text-center'>
                                             <label style='padding-right: 10px;padding-left: 10px;'
