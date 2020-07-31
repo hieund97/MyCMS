@@ -82,10 +82,10 @@ function showCategory($mang, $parent, $shift)
             <td><a style='font-weight: bold; font-size: 120%;' href='/admin/categories/$row->id/edit'>$shift $row->name</a>
             </td>
             <td class='text-center'>$row->created_at</td>
-            <td class='text-center'>$row->updated_at</td>            
+            <td class='text-center'>$row->updated_at</td>
             <td class='text-center'>
-                <label style='padding-right: 10px;padding-left: 10px;'
-                    class='btn btn-$classNavActive'>$navActive</label>
+                <button type='button' style='padding-right: 10px;padding-left: 10px;' data-id='$row->id' data-toggle='modal' data-target='#status-modal'
+                    class='btn btn-$classNavActive status-category'>$navActive</button>
             </td>
             <td class='td-actions'
                 style='width: 106px;padding-right: 0px;padding-left: 20px;'>

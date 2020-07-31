@@ -36,7 +36,7 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <h2 class="card-title">Danh sách ảnh</h2>                        
+                        <h2 class="card-title">Danh sách ảnh</h2>
                     </div>
                     <div class="card-body table-hover">
                         <div class="table-responsive">

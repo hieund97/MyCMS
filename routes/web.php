@@ -124,6 +124,7 @@ Route::group([
             Route::delete('{categories}/delete', 'CategoryController@destroy');
             Route::post('import', 'CategoryController@import');
             Route::get('export', 'CategoryController@export');
+            Route::post('/update-status/{id}', 'CategoryController@updateStatus');
         });
 
         // Admin Trending-Product Route
@@ -136,6 +137,9 @@ Route::group([
             Route::put('{id}/edit', 'TrendingController@update');
             Route::post('/', 'TrendingController@store');
             Route::delete('{id}/delete', 'TrendingController@destroy');
+            Route::post('/update-status/{id}', 'TrendingController@updateStatus');
+            Route::post('/update-status-navbar/{id}', 'TrendingController@updateStatusNavbar');
+
         });
 
         // Admin Comment Route

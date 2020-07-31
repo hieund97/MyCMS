@@ -69,12 +69,30 @@ class TrendingController extends Controller
         $trend = Trending::find($id);
         $trend->update([
             'name' => $request->name,
-            'slug' => str_slug($request->name, '-'),            
+            'slug' => str_slug($request->name, '-'),
             'active' => $request->active,
             'navactive' => $request->navactive
             
         ]);
         session()->flash('update_trending', 'success');
         return redirect('/admin/trending');
+    }
+
+    public function updateStatusNavbar(Request $request, $id){
+        $trend = Trending::find($id);
+        $trend->update([
+            'navactive' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
+
+    public function updateStatus(Request $request, $id){
+        $trend = Trending::find($id);
+        $trend->update([
+            'active' => $request->status
+        ]);
+
+        return response()->json([], 204);
     }
 }

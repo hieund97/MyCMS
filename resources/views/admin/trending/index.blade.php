@@ -100,12 +100,12 @@
                                         <td class='text-center'>{{$trend->updated_at}}</td>
 
                                         <td class='text-center'>
-                                            <label style='padding-right: 10px;padding-left: 10px;'
-                                        class='btn btn-{{$trend->active == 0?'success':'danger'}}'>{{$trend->active == 0?'Normal':'Active'}}</label>
+                                            <button type="button" style='padding-right: 10px;padding-left: 10px;' data-id="{{$trend->id}}" data-toggle="modal" data-target="#status-modal"
+                                        class='btn btn-{{$trend->active == 0?'success':'danger'}} status-trend'>{{$trend->active == 0?'Normal':'Active'}}</button>
                                         </td>
                                         <td class='text-center'>
-                                            <label style='padding-right: 10px;padding-left: 10px;'
-                                                class='btn btn-{{$trend->navactive == 0?'success':'danger'}}'>{{$trend->navactive == 0?'Normal':'Active'}}</label>
+                                            <button type="button" style='padding-right: 10px;padding-left: 10px;' data-id="{{$trend->id}}" data-toggle="modal" data-target="#status-modal-nav"
+                                                class='btn btn-{{$trend->navactive == 0?'success':'danger'}} status-trend-nav'>{{$trend->navactive == 0?'Normal':'Active'}}</button>
                                         </td>
                                         <td class='td-actions'
                                             style='width: 106px;padding-right: 0px;padding-left: 20px;'>
@@ -135,6 +135,77 @@
         </div>
     </div>
 </div>
+<!-- Modal nav -->
+<div class="modal fade" id="status-modal-nav" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status_nav" value="0" checked> Normal
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status_nav" value="1"> Active
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status-nav">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Normal
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Active
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
 
@@ -142,10 +213,8 @@
 
 <script>
     $(document).ready(function(){
-        $('.btn-del').click(function(e){		
+        $('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');        
-            	
 			let CategoryId = $(this).attr('data-id')
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -181,7 +250,7 @@
 									if(result2.value){
 									window.location.reload();
 									}
-								});							
+								});
 							}
 						});
 						
@@ -197,14 +266,64 @@
 					}
 				})	
 		});
+
+        $('.status-trend-nav').click(function(){
+            debugger;
+            var trendIdNav = $(this).attr('data-id');
+            $('#btn-update-status-nav').click(function(){
+                var statusNav = $('input[name=status_nav]:checked').val();
+                $.ajax({
+                    url: '/admin/trending/update-status-navbar/' + trendIdNav,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: statusNav
+                    },
+                    success: function(){
+                        $('#status-modal-nav').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
+
+        $('.status-trend').click(function(){
+            var trendId = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/trending/update-status/' + trendId,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
+
+
+        $('#trendingtable').DataTable({
+            "order": [[ 0, "desc" ]]
+        });
     });
-$(document).ready( function () {
-    $('#trendingtable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'csv', 'excel', 'pdf'
-        ]
-    });
-} );
 </script>
 @endpush

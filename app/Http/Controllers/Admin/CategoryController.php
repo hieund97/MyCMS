@@ -93,5 +93,12 @@ class CategoryController extends Controller
         return response()->json([], 204);
     }
 
-    
+    public function updateStatus(Request $request, $id){
+        $categories = Categories::find($id);
+        $categories->update([
+            'navactive' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
 }

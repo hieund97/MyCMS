@@ -38,8 +38,8 @@
                                 <i class="material-icons">assignment</i>
                             </div>
                             <h2 class="card-title">Danh sách danh mục</h2>
-                        </div>                        
-                    </div>                    
+                        </div>
+                    </div>
                     <div class="card-body table-hover">
                         <div class="table-responsive">
                             <h4 style="color:crimson;margin-left: 60px;">*Danh mục
@@ -86,6 +86,41 @@
     </div>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Normal
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Active
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
 <script>
@@ -143,14 +178,34 @@
 					}
 				})	
 		});
+
+        $('.status-category').click(function(){
+            var catId = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/categories/update-status/' + catId,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái sản phẩm đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
+
+        $('#categorytable').DataTable();
     });
-$(document).ready( function () {
-    $('#categorytable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'csv', 'excel', 'pdf'
-        ]
-    });
-} );
 </script>
 @endpush
