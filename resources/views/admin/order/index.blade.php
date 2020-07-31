@@ -317,13 +317,14 @@
                 });
             });
         });
+
+        $('#ordertable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf'
+            ],
+            "order": [[ 11, "desc" ]]
+        });
     });
-
-
-
-
-$(document).ready( function () {
-    $('#ordertable').DataTable();
-} ); 
 </script>
 @endpush

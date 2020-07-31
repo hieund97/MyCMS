@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Categories;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Product_back;
 use App\Models\Variant;
 use App\Models\Brand;
 use App\Models\Sale;
@@ -489,6 +490,27 @@ class ProductController extends Controller
     public function destroySale($id){
         $sale = Sale::find($id);
         $sale->delete();
+        return response()->json([], 204);
+    }
+
+    public function getProductBack(){
+        $list_product_back = Product_back::latest()->get();
+        return view('admin.product.product_back', compact('list_product_back'));
+    }
+
+    public function updateStatusProductBack(Request $request, $id){
+        $product_back = Product_back::find($id);
+        $product_back->update([
+            'status' => $request->status
+        ]);
+
+        if($request->status == 2){ // 0: hàng trả về, 1: hàng hỏng hóc, 2: hàng có thể bán lại
+            $variant = Variant::find($product_back->variant_id);
+            $variant->update([
+                'quantity' => $variant->quantity + $product_back->quantity,
+            ]);
+        }
+
         return response()->json([], 204);
     }
 }

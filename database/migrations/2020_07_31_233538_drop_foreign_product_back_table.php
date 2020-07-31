@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableProductBack extends Migration
+class DropForeignProductBackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AlterTableProductBack extends Migration
     public function up()
     {
         Schema::table('product_back', function (Blueprint $table) {
-            $table->renameColumn('product_id', 'variant_id');
+            $table->dropForeign(['product_id']);
         });
     }
 
@@ -25,8 +25,6 @@ class AlterTableProductBack extends Migration
      */
     public function down()
     {
-        Schema::table('product_back', function (Blueprint $table) {
-            $table->renameColumn('variant_id', 'product_id');
-        });
+        //
     }
 }

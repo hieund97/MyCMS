@@ -11,7 +11,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h2 class="card-title">Danh sách khuyến mại</h2>
+                            <h2 class="card-title">Danh sách hàng trả về</h2>
                         </div>
                     </div>
 
@@ -21,8 +21,8 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 66px;">id</th>
-                                        <th style="width: 300px;">Tên chủ đề</th>
-                                        <th class="text-center" style="width: 156px;">Mã khuyến mại</th>
+                                        <th style="width: 300px;">Tên sản phẩm</th>
+                                        <th class="text-center" style="width: 156px;">Số lượng</th>
                                         <th class="text-center" style="width: 156px;">Phần trăm giảm giá</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
                                         <th class="text-center" style="width: 186px;">Ngày cập nhật</th>

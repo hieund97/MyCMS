@@ -31,7 +31,7 @@
                                 <th style="width: 250px;">Tên sản Phẩm</th>
                                 <th style="width: 136px;">Mã sản phẩm</th>
                                 <th>Chi tiết</th>
-                                <th class="text-center" style="width: 126px;">Giá chung</th>
+                                {{-- <th class="text-center" style="width: 126px;">Giá chung</th> --}}
                                 <th class="text-center" style="width: 163px;">Ngày tạo</th>
                             </tr>
                         </thead>
@@ -61,9 +61,9 @@
                                     @endforeach
                                     @endforeach
                                 </td>
-                                <td class="td-number text-center">
+                                {{-- <td class="td-number text-center">
                                     {{number_format($product->price)}} VNĐ
-                                </td>
+                                </td> --}}
                                 <td class="text-center">
                                     {{date('d-m-Y' ,strtotime($product->day_created))}}
                                 </td>

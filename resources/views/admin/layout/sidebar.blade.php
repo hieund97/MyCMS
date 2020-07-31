@@ -129,6 +129,12 @@
                 <span class="sidebar-normal">Khuyến mại</span>
               </a>
             </li>
+            <li class="nav-item pad {{(request()->is('admin/products/product-back'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/product-back">
+                <span class="sidebar-mini"> PB </span>
+                <span class="sidebar-normal">Hàng trả về</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>

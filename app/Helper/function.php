@@ -4,7 +4,9 @@ use App\Models\Categories;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\Value;
+use App\Models\Guest;
 use App\Models\Order;
+use App\Models\User;
 use Carbon\Carbon;
 // use DateTime;
 
@@ -230,4 +232,37 @@ function getVariant($color, $size, $product_id){
     $variant = Variant::find($variant_id);
 
     return $variant;
+}
+
+function getInfoProduct($id){
+    $data = Product::where('id', $id)->first();
+    return $data;
+}
+
+function getInfoOrder($id){
+    $data = Order::where('id', $id)->first();
+    return $data;
+}
+
+function getInfoUser($id){
+    $data = User::where('id', $id)->first();
+    return $data;
+}
+
+function getInfoGuest($id){
+    $data = Guest::where('id', $id)->first();
+    return $data;
+}
+
+function getInfoProductFromVariant($id){
+    $data = [];
+    $variant = Variant::find($id);
+    $dataValue = Variant::join('variant_value', 'variant.id', '=', 'variant_value.variant_id')->where('variant.id', $id)->select('variant_value.value_id')->get();
+    $value = Value::whereIn('id', $dataValue)->select('value')->get()->toArray();
+    $data =[
+        'variant' => $variant,
+        'value'   => $value,
+    ];
+    return $data;
+
 }

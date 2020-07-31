@@ -75,7 +75,7 @@ class OrderController extends Controller
         if($attr_order->status == 4){
             $variant->update([
                 'quantity' => $variant->quantity - $attr_order->quantity,
-                'purchase' => $i + 1
+                'purchase' => $variant->quantity + $attr_order->quantity
             ]);
         }
 
@@ -86,7 +86,10 @@ class OrderController extends Controller
             ]);
 
             $product_back = Product_back::create([
-                'product_id' => $variant->id,
+                'variant_id' => $variant->id,
+                'order_id'   => $attr_order->order_id,
+                'product_id' => $attr_order->product_id,
+                'quantity'   => $attr_order->quantity,
                 'status'     => 0 // 0. Hàng trả về lưu kho, 1. Hàng trả về nhưng đã đưa lại để bán lại
             ]);
         }

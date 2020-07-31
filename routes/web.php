@@ -105,6 +105,11 @@ Route::group([
             Route::post('/add-sale', 'ProductController@addSale');
             Route::put('/sale/{id}/edit', 'ProductController@updateSale');
             Route::delete('/sale/{id}/delete', 'ProductController@destroySale');
+
+            // Product back
+            Route::get('/product-back', 'ProductController@getProductBack');
+            Route::post('/update-status-product-back/{id}', 'ProductController@updateStatusProductBack');
+
         });
 
         // Admin Product-Category Route

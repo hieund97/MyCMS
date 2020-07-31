@@ -14,7 +14,7 @@ class AlterTableProductBack extends Migration
     public function up()
     {
         Schema::table('product_back', function (Blueprint $table) {
-            $table->renameColumn('product_id', 'variant_id');
+            $table->unsignedBigInteger('order_id')->after('variant_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterTableProductBack extends Migration
     public function down()
     {
         Schema::table('product_back', function (Blueprint $table) {
-            $table->renameColumn('variant_id', 'product_id');
+            $table->dropColumn('order_id');
         });
     }
 }
