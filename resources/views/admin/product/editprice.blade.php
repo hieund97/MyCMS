@@ -272,10 +272,8 @@
 
 <script>
     $(document).ready(function(){
-        $('.btn-del').click(function(e){		
+        $('.btn-del').click(function(e){
             e.preventDefault();
-            console.log('im in');
-                
             let variantId = $(this).attr('data-id')
             const swalWithBootstrapButtons = Swal.mixin({
                     customClass: {
@@ -311,7 +309,7 @@
                                     if(result2.value){
                                     window.location.reload();
                                     }
-                                });							
+                                });
                             }
                         });
                         

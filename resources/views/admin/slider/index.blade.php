@@ -93,8 +93,8 @@
                                         <td class="text-center">{{$slider->updated_at}}</td>
 
                                         <td class="text-center">
-                                            <label style="padding-right: 10px;padding-left: 10px;"
-                                                class="btn btn-{{$slider->active == 1? "danger": "success"}}">{{$slider->active == 1? "Active": "Normal"}}</label>
+                                            <button type="button" style="padding-right: 10px;padding-left: 10px;" data-id="{{$slider->id}}" data-toggle="modal" data-target="#status-modal"
+                                                class="btn btn-{{$slider->active == 1? "danger": "success"}} status-slider">{{$slider->active == 1? "Active": "Normal"}}</button>
                                         </td>
                                         <td class="td-actions"
                                             style="width: 106px;padding-right: 0px;padding-left: 20px;">
@@ -126,6 +126,41 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Normal
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Active
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push("js")
 
@@ -133,10 +168,8 @@
 
 <script>
     $(document).ready(function(){
-        $(".btn-del").click(function(e){		
+        $(".btn-del").click(function(e){
             e.preventDefault();
-            console.log("im in");        
-            	
 			let sliderId = $(this).attr("data-id")
 			const swalWithBootstrapButtons = Swal.mixin({
 					customClass: {
@@ -172,7 +205,7 @@
 									if(result2.value){
 									window.location.reload();
 									}
-								});							
+								});
 							}
 						});
 						
@@ -188,14 +221,36 @@
 					}
 				})	
 		});
+
+        $('.status-slider').click(function(){
+            var sliderId = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/slider/update-status/' + sliderId,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái sản phẩm đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
+        });
+
+        $('#slidertable').DataTable({
+            "order": [[ 0, "desc" ]]
+        });
     });
-$(document).ready( function () {
-    $('#slidertable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'csv', 'excel', 'pdf'
-        ]
-    });
-} ); 
 </script>
 @endpush

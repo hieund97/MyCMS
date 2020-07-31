@@ -78,4 +78,13 @@ class SliderController extends Controller
         $slider->delete();
         return response()->json([], 204);
     }
+
+    public function updateStatusSlider(Request $request, $id){
+        $slider = Slider::find($id);
+        $slider->update([
+            'active' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
 }

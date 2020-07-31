@@ -211,6 +211,8 @@ Route::group([
             Route::post('/', 'SliderController@store');
             Route::put('/{slider}/edit', 'SliderController@update');
             Route::delete('/{slider}/delete', 'SliderController@destroy');
+            Route::post('/update-status/{id}', 'SliderController@updateStatusSlider');
+
         });
 
         // Admin Subcribe Route
