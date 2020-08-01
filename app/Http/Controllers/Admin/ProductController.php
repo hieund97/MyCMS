@@ -513,4 +513,13 @@ class ProductController extends Controller
 
         return response()->json([], 204);
     }
+
+    public function updateStatusSale(Request $request, $id){
+        $sale = Sale::find($id);
+        $sale->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([], 204);
+    }
 }

@@ -30,7 +30,12 @@ class OrderController extends Controller
 
             ],
             [
-                'require' => 'Trường này trống cmnr',
+                'email.require'     => 'Email không được để trống',
+                'name.require'      => 'Tên không được để trống',
+                'phone.require'     => 'Số điện thoại không được để trống',
+                'address.require'   => 'Địa chỉ không được để trống',
+                'ship.require'      => 'Bạn chưa chọn đơn vị vẫn chuyển',
+                'pay.require'       => 'Bạn chưa chọn phương thức thanh toán',
             ]
         );
 

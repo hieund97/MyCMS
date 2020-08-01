@@ -24,8 +24,8 @@
                                         <th style="width: 300px;">Tên sản phẩm</th>
                                         <th class="text-center" style="width: 156px;">Số lượng</th>
                                         <th class="text-center" style="width: 156px;">Phần trăm giảm giá</th>
+                                        <th class="text-center" style="width: 120px;">Trạng thái</th>
                                         <th class="text-center" style="width: 186px;">Ngày tạo</th>
-                                        <th class="text-center" style="width: 186px;">Ngày cập nhật</th>
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
@@ -40,8 +40,11 @@
                                                 class='btn-info'>{{ $sale->code_sale }}</label>
                                         </td>
                                         <td class='text-center'>{{$sale->percent_sale}}%</td>
+                                        <td class="text-center">
+                                            <button type="button" style="padding-right: 10px;padding-left: 10px;" data-id="{{$sale->id}}" data-toggle="modal" data-target="#status-modal"
+                                                class="btn btn-{{$sale->status == 1? "info": "warning"}} status-sale">{{$sale->status == 1? "Đã duyệt": "Chưa duyệt"}}</button>
+                                        </td>
                                         <td class='text-center'>{{$sale->created_at}}</td>
-                                        <td class='text-center'>{{$sale->updated_at}}</td>
                                         <td class='td-actions'
                                             style='width: 106px;padding-right: 0px;padding-left: 20px;'>
                                             <button type='button' class='btn btn-success btn-round'
@@ -120,6 +123,41 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="status-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="0" checked> Chưa duyệt
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="status" value="1"> Đã duyệt
+                  <span class="circle">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="btn-update-status">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
 
@@ -184,8 +222,45 @@
         $('#brandtable').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'excel', 'pdf'
-            ]
+            {
+                extend: 'pdfHtml5',
+                messageTop: 'Danh sách mã giảm giá',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5 ]
+                }, 
+                customize : function(doc) {
+                    doc.styles['td:nth-child(3)'] = { 
+                    width: '300px',
+                    }
+                }
+            }
+        ]
+        });
+
+        $('.status-sale').click(function(){
+            var saleId = $(this).attr('data-id');
+            $('#btn-update-status').click(function(){
+                var status = $('input[name=status]:checked').val();
+                $.ajax({
+                    url: '/admin/products/sale/update-status/' + saleId,
+                    method: 'POST',
+                    data: {
+                        _token: "{{csrf_token()}}",
+                        status: status
+                    },
+                    success: function(){
+                        $('#status-modal').modal('hide');
+                        Swal.fire({
+                            title: 'Thành công',
+                            text: 'Trạng thái đã được cập nhật',
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                });
+            });
         });
     });
 

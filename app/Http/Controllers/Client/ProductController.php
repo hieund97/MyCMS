@@ -38,12 +38,12 @@ class ProductController extends Controller
     }
 
     public function checkSale(Request $request){
-        $checkSale = Sale::where('code_sale', $request->code)->first();
+        $checkSale = Sale::where('code_sale', $request->code)->where('status', 1)->first();
 
         if ($checkSale) {
             return response()->json(['status' => 200, 'percent' => $checkSale->percent_sale, 'name' => $checkSale->name, 'message' => 'Áp dụng thành công']);
         }
 
-        return response()->json(['status' => 400, 'message' => 'Mã khuyến mại không tồn tài']);
+        return response()->json(['status' => 400, 'message' => 'Mã khuyến mại không tồn tại']);
     }
 }

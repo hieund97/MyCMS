@@ -23,6 +23,7 @@ Route::group([
     'namespace' => 'admin',
     'middleware' => 'CheckAdmin'
 ], function () {
+    Route::get('/pdf','PdfController@index');
     Route::get('register', 'RegisterController@register');
     Route::post('/register', 'RegisterController@store');
     Route::group([
@@ -105,6 +106,8 @@ Route::group([
             Route::post('/add-sale', 'ProductController@addSale');
             Route::put('/sale/{id}/edit', 'ProductController@updateSale');
             Route::delete('/sale/{id}/delete', 'ProductController@destroySale');
+            Route::post('/sale/update-status/{id}', 'ProductController@updateStatusSale');
+
 
             // Product back
             Route::get('/product-back', 'ProductController@getProductBack');

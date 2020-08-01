@@ -69,7 +69,7 @@
                                 </td>
                             </tr>
                             @endforeach
-
+                            <input type="hidden" name="user_create" id="user_create" value="{{auth()->user()->last_name . ' ' . auth()->user()->first_name }}">
                         </tbody>
                     </table>
                 </div>
@@ -81,13 +81,26 @@
 @push('js')
 <script>
     $(document).ready( function () {
+    var user =  $('#user_create').val();
     $('.datepicker').datetimepicker({
         format: 'DD-MM-YYYY',
     });
     $('#ticket-table').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf'
+            {
+                extend: 'pdfHtml5',
+                messageTop: 'Người tạo: ' + user,
+                exportOptions: {
+                    columns: [ 0, 2, 3, 4, 5 ]
+                }, 
+                orientation: 'landscape',
+                pageSize: 'LEGAL',
+                title: function () { return 'Phiếu nhập hàng hóa cửa hàng 360' },
+                customize : function(doc) {
+                    doc.content[2].table.widths = [ '5%', '20%', '20%', '35%', '20%'];
+                },
+            }
         ],
         "order": [[ 1, "desc" ]]
     });

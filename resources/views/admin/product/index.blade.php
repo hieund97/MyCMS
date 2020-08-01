@@ -282,11 +282,7 @@
     });
 $(document).ready( function () {
     $('#producttable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'excel', 'pdf'
-        ],
-        "order": [[ 1, "desc" ]]
+        "order": [[ 0, "desc" ]]
     });
 } );
 </script>
