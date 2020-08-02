@@ -37,7 +37,7 @@
                 </div>
             </div>
             </form>
-            <div class="row">
+            <div class="row" style="background-color: white;">
                 <div class="card-body table-hover">
                     <div class="table-responsive">
                         @if (isset($order))
