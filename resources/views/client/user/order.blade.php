@@ -150,6 +150,9 @@
                                 status: $('#status').val(),
 								_method: "PUT"
 							},
+                            beforeSend: function() {
+                                toastr.info('Đang xử lý thông tin. Vui lòng đợi!');
+                            },
 							success: function(){
 								swalWithBootstrapButtons.fire(
 								'Đã hủy!',

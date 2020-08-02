@@ -8,6 +8,9 @@ use App\Models\Attr_Order;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Str;
+use App\Models\Email_Template;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class UserController extends Controller
 {
@@ -94,6 +97,95 @@ class UserController extends Controller
         $attr_order->update([
             'status' => $request->status,
         ]);
+
+        $data = [];
+        $product_name = getInfoProduct($attr_order->product_id)->name;
+        $data['attr_order'] = $attr_order;
+        $data['attr_order']['product_name'] = $product_name;
+        $data['order'] = [
+            'email' => $attr_order->order->user_id ? getInfoUser($attr_order->order->user_id)->email : getInfoGuest($attr_order->order->guest_id)->email,
+            'name' => $attr_order->order->user_id ? getInfoUser($attr_order->order->user_id)->last_name . getInfoUser($attr_order->order->user_id)->first_name : getInfoGuest($attr_order->order->guest_id)->client_name,
+            'date' => $attr_order->order->day_created,
+            'time' => date('H:i', strtotime($attr_order->order->updated_at)),
+            'order_code' => $attr_order->order->order_code,
+            'total_money' => $attr_order->order->total_price,
+        ];
+
+        $this->sendMailOrder('order_fail', $data);
         return response()->json([], 204);
+    }
+
+    private function sendMailOrder($action, $data = []){
+        $template = Email_Template::where('category', $action)->first();
+        $body = $template->template;
+        $body = str_replace('[NAME]', $data['order']['name'], $body);
+        $body = str_replace('[ORDER_CODE]', $data['order']['order_code'], $body);
+        $body = str_replace('[DATE]', $data['order']['date'], $body);
+        $body = str_replace('[TIME]', $data['order']['time'], $body);
+        $body = str_replace('[PRODUCT_NAME]', $data['attr_order']['product_name'], $body);
+        $body = str_replace('[COLOR]', $data['attr_order']['color'], $body);
+        $body = str_replace('[SIZE]', $data['attr_order']['size'], $body);
+        $body = str_replace('[TOTAL_MONEY]', number_format($data['order']['total_money']). 'đ', $body);
+
+
+        if($action = 'order_success'){
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'duchieu97.hn@gmail.com';           // SMTP username
+                $mail->Password = 'cokcqekzkxppnpbz';                 // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('duchieu97.hn@gmail.com', '360 BOUTIQUE');
+                $mail->addAddress($data['order']['email']);     // Add a recipient
+
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = mb_convert_encoding('ĐƠN HÀNG ' . $data['order']['order_code'] . ' ' . $template->subject, "UTF-8", "auto");
+                $mail->Body    = $body;
+                $mail->CharSet = 'UTF-8';
+
+
+                $mail->send();
+            } catch (Exception $e) {
+                return response()->json(['status' => 400, 'message' => $mail->ErrorInfo]);
+            }
+        }
+
+        if($action = 'order_fail'){
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                $mail->Username = 'duchieu97.hn@gmail.com';           // SMTP username
+                $mail->Password = 'cokcqekzkxppnpbz';                 // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('duchieu97.hn@gmail.com', '360 BOUTIQUE');
+                $mail->addAddress($data['order']['email']);     // Add a recipient
+
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = mb_convert_encoding('ĐƠN HÀNG ' . $data['order']['order_code'] . ' ' . $template->subject, "UTF-8", "auto");
+                $mail->Body    = $body;
+                $mail->CharSet = 'UTF-8';
+
+
+                $mail->send();
+            } catch (Exception $e) {
+                return response()->json(['status' => 400, 'message' => $mail->ErrorInfo]);
+            }
+        }
     }
 }
