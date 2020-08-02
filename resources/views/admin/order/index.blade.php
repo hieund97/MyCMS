@@ -19,12 +19,31 @@
 
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
-                <div class="col-md-8" style="float:left">
-                    <div class="card-icon">
-                        <i class="material-icons">card_travel</i>
+                <form action="/admin/order" method="get">
+                <div class="row">
+                    <div class="col-md-7" style="float:left">
+                        <div class="card-icon">
+                            <i class="material-icons">card_travel</i>
+                        </div>
+                        <h2 class="card-title">Danh sách đơn hàng</h2>
                     </div>
-                    <h2 class="card-title">Danh sách đơn hàng</h2>
+                    <div class="col-md-2" style="margin-top:15px">
+                        <form action="/admin/products/ticket-product" method="get">
+                        <div class="form-group">
+                            <input type="text" name="from_date" class="form-control datepicker" placeholder="Chọn ngày lấy phiếu" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top:15px">
+                        <form action="/admin/products/ticket-product" method="get">
+                        <div class="form-group">
+                            <input type="text" name="to_date" class="form-control datepicker" placeholder="Chọn ngày lấy phiếu" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="margin-top:15px">
+                        <button class="btn btn-info" type="submit" >Lấy</button>
+                    </div>
                 </div>
+                </form>
             </div>
             <div class="card-body table-hover">
                 <div class="table-responsive">
@@ -235,6 +254,10 @@
 @push('js')
 <script>
     $(document).ready(function(){
+        $('.datepicker').datetimepicker({
+            format: 'YYYY-MM-DD',
+        });
+
 		$('.btn-del').click(function(e){		
             e.preventDefault();
             console.log('im in');
@@ -341,7 +364,7 @@
                     title: function () { return 'Danh sách đơn hàng' },
                 }
             ],
-            "order": [[ 11, "desc" ]]
+            "order": [[ 10, "desc" ]]
         });
     });
 </script>

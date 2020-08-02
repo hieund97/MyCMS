@@ -114,7 +114,7 @@
             <li class="nav-item pad {{(request()->is('admin/products/brand'))? 'active' : null}}">
               <a class="nav-link" href="/admin/products/brand">
                 <span class="sidebar-mini"> TH </span>
-                <span class="sidebar-normal">Thương hiệu </span>
+                <span class="sidebar-normal">Nhà cung cấp</span>
               </a>
             </li>
             <li class="nav-item pad {{(request()->is('admin/products/ticket-product'))? 'active' : null}}">
@@ -171,7 +171,7 @@
       <li class="nav-item {{Request::segment(2) === 'revenue'? 'active' : null}}">
         <a class="nav-link" href="/admin/revenue">
           <i class="material-icons">timeline</i>
-          <p> Doanh thu </p>
+          <p> Thống kê </p>
         </a>
       </li>
       <li class="nav-item {{Request::segment(2) === 'comment'? 'active' : null}} " >

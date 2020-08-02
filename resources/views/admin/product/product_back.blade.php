@@ -9,7 +9,7 @@
                     <div class="card-icon">
                         <i class="material-icons">card_travel</i>
                     </div>
-                    <h2 class="card-title">Danh sách đơn hàng</h2>
+                    <h2 class="card-title">Danh sách hàng trả về</h2>
                 </div>
             </div>
             <div class="card-body table-hover">

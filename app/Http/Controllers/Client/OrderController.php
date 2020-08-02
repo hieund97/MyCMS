@@ -49,6 +49,7 @@ class OrderController extends Controller
                 'ship_id' => $request->shiphidden,
                 'address' => $request->address,
                 'user_id' => $request->user_id,
+                'day_created' => Carbon::now()->format('Y-m-d'),
 
             ]);
             $order->save();
@@ -83,6 +84,7 @@ class OrderController extends Controller
                 'pay_id' => $request->pay,
                 'ship_id' => $request->shiphidden,
                 'address' => $request->address,
+                'day_created' => Carbon::now()->format('Y-m-d'),
                 'guest_id' => $guest->id,
 
             ]);

@@ -11,7 +11,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h2 class="card-title">Danh sách hàng trả về</h2>
+                            <h2 class="card-title">Danh sách khuyến mại</h2>
                         </div>
                     </div>
 

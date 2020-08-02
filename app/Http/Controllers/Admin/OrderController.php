@@ -11,8 +11,15 @@ use App\Models\Product;
 
 class OrderController extends Controller
 {
-    public function index(){
-        $order = Order::latest()->get();
+    public function index(Request $request){
+        if (isset($request->from_date) && isset($request->to_date)) {
+            $from_date = $request->from_date;
+            $to_date = $request->to_date;
+            $order = Order::whereBetween('day_created', [$from_date, $to_date])->get();
+        }
+        else{
+            $order = Order::latest()->get();
+        }
         return view('admin.order.index', compact('order'));
     }
 
