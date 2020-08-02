@@ -23,7 +23,19 @@ Route::group([
     'namespace' => 'admin',
     'middleware' => 'CheckAdmin'
 ], function () {
-    Route::get('/pdf','PdfController@index');
+    // Xuất pdf
+    Route::get('/ticket-pdf','PdfController@ticket_pdf');
+    Route::get('/analytic-pdf','PdfController@analytic_pdf');
+
+    // Email template
+    Route::get('/email-template','EmailController@list');
+    Route::get('/email-template/{id}/edit','EmailController@edit');
+    Route::get('/email-template/create','EmailController@create');
+    Route::post('/email-template/store','EmailController@store');
+    Route::put('/email-template/{id}/update','EmailController@update');
+    Route::delete('/email-template/{id}/delete', 'EmailController@destroy');
+
+    
     Route::get('register', 'RegisterController@register');
     Route::post('/register', 'RegisterController@store');
     Route::group([

@@ -15,6 +15,8 @@ use App\Models\Image_product;
 use App\Models\Trending;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class ProductController extends Controller
 {

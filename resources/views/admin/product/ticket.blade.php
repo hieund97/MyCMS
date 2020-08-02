@@ -6,17 +6,20 @@
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
                 <div class="row" style="margin-top: 20px;">
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <h2 class="card-title">Phiếu nhập sản phẩm</h2>
                     </div>
                     <div class="col-md-2">
                         <form action="/admin/products/ticket-product" method="get">
                         <div class="form-group">
-                            <input type="text" name="date" class="form-control datepicker" placeholder="Chọn ngày lấy phiếu" value="{{old('date')}}">
+                            <input type="text" name="date" id="date" class="form-control datepicker" placeholder="Chọn ngày lấy phiếu" value="{{old('date')}}">
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button class="btn btn-info" type="submit" >Lấy</button>
+                        <button class="btn btn-info" id="btn-get" type="submit" >Lấy</button>
+                    </div>
+                    <div class="col-md-1" style="padding-left: 0px">
+                        <a href="/admin/ticket-pdf" class="btn btn-info" id="btn-pdf">Xuất PDF</a>
                     </div>
                 </form>
                 </div>
@@ -31,7 +34,6 @@
                                 <th style="width: 250px;">Tên sản Phẩm</th>
                                 <th style="width: 136px;">Mã sản phẩm</th>
                                 <th>Chi tiết</th>
-                                {{-- <th class="text-center" style="width: 126px;">Giá chung</th> --}}
                                 <th class="text-center" style="width: 163px;">Ngày tạo</th>
                             </tr>
                         </thead>
@@ -61,15 +63,11 @@
                                     @endforeach
                                     @endforeach
                                 </td>
-                                {{-- <td class="td-number text-center">
-                                    {{number_format($product->price)}} VNĐ
-                                </td> --}}
                                 <td class="text-center">
                                     {{date('d-m-Y' ,strtotime($product->day_created))}}
                                 </td>
                             </tr>
                             @endforeach
-                            <input type="hidden" name="user_create" id="user_create" value="{{auth()->user()->last_name . ' ' . auth()->user()->first_name }}">
                         </tbody>
                     </table>
                 </div>
@@ -81,29 +79,23 @@
 @push('js')
 <script>
     $(document).ready( function () {
-    var user =  $('#user_create').val();
+    var date = $('#date').val();
     $('.datepicker').datetimepicker({
         format: 'DD-MM-YYYY',
     });
     $('#ticket-table').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'pdfHtml5',
-                messageTop: 'Người tạo: ' + user,
-                exportOptions: {
-                    columns: [ 0, 2, 3, 4, 5 ]
-                }, 
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
-                title: function () { return 'Phiếu nhập hàng hóa cửa hàng 360' },
-                customize : function(doc) {
-                    doc.content[2].table.widths = [ '5%', '20%', '20%', '30%', '20%'];
-                },
-            }
-        ],
         "order": [[ 1, "desc" ]]
     });
+
+    $('#btn-get').click(function (){
+        var date = $('#date').val();
+        $('#btn-pdf').attr('href', '/admin/ticket-pdf?date=' + date);
+    });
+
+    $('#btn-pdf').click(function (){
+        toastr.info('Đang xử lý');
+    });
+
 } );
 </script>
 @endpush

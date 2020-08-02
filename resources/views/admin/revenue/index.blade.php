@@ -5,30 +5,6 @@
 <div class="content">
     <div class="container-fluid">
         <div class="container-fluid">
-            {{-- <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-rose">
-                            <div id="roundedLineChart" class="ct-chart"></div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Doanh thu tuần này</h4>
-                            <p class="card-category">Line Chart</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-info">
-                            <div id="simpleBarChart" class="ct-chart"></div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title ">Doanh thu tháng này</h4>
-                            <p class="card-category">Bar Chart</p>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             <form action="/admin/revenue" method="get">
             <div class="row">
                 <div class="col-md-3">
@@ -44,7 +20,10 @@
                 <div class="col-md-1">
                     <button class="btn btn-info" type="submit" id="btn-analytic" >Lấy</button>
                 </div>
-                <div class="col-md-5 card" style="margin-top: 0px; padding-bottom: 15px;">
+                <div class="col-md-1" style="padding-left: 0px">
+                    <a href="/admin/analytic-pdf" class="btn btn-info" id="btn-analytic" >Xuất pdf</a>
+                </div>
+                <div class="col-md-4 card" style="margin-top: 0px; padding-bottom: 15px;">
                     <h3>Thống kê tổng thu nhập</h3>
                     <div class="row" style="padding-left: 15px" id="text_tong_nhap">
                         Tổng nhập: {{number_format($tong_nhap)}}đ
@@ -61,6 +40,7 @@
             <div class="row">
                 <div class="card-body table-hover">
                     <div class="table-responsive">
+                        @if (isset($order))
                         <table class="table table-shopping" id="revenue_table">
                             <thead>
                                 <tr>
@@ -77,18 +57,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $tong_nhap = 0;
-                                        $tong_thu = 0;
-                                        $loi_nhuan = 0;
-
-                                @endphp
                                 @forelse ($order as $key => $item)
                                 @foreach ($item->attr_order as $index => $product)
                                 @php
                                     $variant = getVariant($product->color, $product->size, $product->product_id);
-                           
-                                        
                                         $tong_nhap +=  $variant->price_origin * $product->quantity;
                                         $tong_thu  += $product->price * $product->quantity;
                                         $loi_nhuan = $tong_thu - $tong_nhap;
@@ -136,6 +108,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -152,88 +125,12 @@
         });
 
         $('#revenue_table').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5, 6, 7, 8 ]
-                    }, 
-                    orientation: 'landscape',
-                    pageSize: 'LEGAL',
-                    title: function () { return 'Thống kê hàng hóa' },
-                    customize : function(doc) {
-                        doc.content[1].table.widths = [ '5%', '15%', '10%', '10%', '15%', '15%', '15%', '15%'];
-                    },
-                }
-            ],
-            "order": [[ 8, "desc" ]]
+            "order": [[ 9, "desc" ]]
         });
 
-
-        // Biểu dồ doanh thu theo ngày
-        dataRoundedLineChart = {
-            labels: ['Monday', 'Tuesday', 'Wenesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            series: [
-                [12, 17, 7, 17, 23, 18, 38]
-            ]
-        };
-
-        optionsRoundedLineChart = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 10
-            }),
-            axisX: {
-                showGrid: false,
-            },
-            low: 0,
-            high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
-            },
-            showPoint: false
-        }
-
-        var RoundedLineChart = new Chartist.Line('#roundedLineChart', dataRoundedLineChart, optionsRoundedLineChart);
-
-        md.startAnimationForLineChart(RoundedLineChart);
-
-
-        // Biểu đồ doanh thu theo tháng
-        var dataSimpleBarChart = {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                series: [
-                    [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-                ]
-            };
-
-            var optionsSimpleBarChart = {
-                seriesBarDistance: 10,
-                axisX: {
-                    showGrid: false
-                }
-            };
-
-            var responsiveOptionsSimpleBarChart = [
-                ['screen and (max-width: 640px)', {
-                    seriesBarDistance: 5,
-                    axisX: {
-                        labelInterpolationFnc: function(value) {
-                            return value[0];
-                        }
-                    }
-                }]
-            ];
-
-            var simpleBarChart = Chartist.Bar('#simpleBarChart', dataSimpleBarChart, optionsSimpleBarChart, responsiveOptionsSimpleBarChart);
-
-            //start animation for the Emails Subscription Chart
-            md.startAnimationForBarChart(simpleBarChart);
+        $('#btn-analytics').click(function (){
+            toastr.info('Đang xử lý');
+        });
     });
-
-    
   </script>
 @endpush

@@ -52,7 +52,7 @@
                             <tr>
                                 <th class="text-center" style="width: 116px;">Mã đơn hàng</th>
                                 <th style="width: 236px;">Tên khách hàng</th>
-                                <th class="th-description text-center" style="width: 66px;">Level</th>
+                                <th class="th-description text-center" style="width: 66px;">Type User</th>
                                 <th class="text-left" style="width: 196px">Ảnh Sản Phẩm</th>
                                 <th style="width: 256px;">Tên sản Phẩm</th>
                                 <th class="th-description" style="width: 66px;">Màu sắc</th>
@@ -325,6 +325,9 @@
                     data: {
                         _token: "{{csrf_token()}}",
                         status: status
+                    },
+                    beforeSend: function() {
+                        toastr.info('Đang xử lý gửi mail tới khách hàng. Vui lòng đợi!');
                     },
                     success: function(){
                         $('#status-modal').modal('hide');
