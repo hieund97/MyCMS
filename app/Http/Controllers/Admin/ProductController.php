@@ -96,7 +96,8 @@ class ProductController extends Controller
             'p_slug' => $slug,
             'highlight' => $request->highlight,
             'trending_id' => $request->trend,
-            'avatar' => asset('media/avatar') . '/' . $avatarName
+            'avatar' => asset('media/avatar') . '/' . $avatarName,
+            'day_created' => Carbon::now()->format('Y-m-d')
         ]);
 
         // Add Category
@@ -223,7 +224,9 @@ class ProductController extends Controller
             ],
             [
                 'quantity.*.not_in'     => 'Bạn chưa điền số lượng sản phẩm',
+                'quantity.*.required'     => 'Bạn chưa điền số lượng sản phẩm',
                 'price_origin.*.not_in' => 'Bạn chưa điền giá nhập vào',
+                'price_origin.*.required' => 'Bạn chưa điền giá nhập vào',
             ]
         );
 

@@ -5,32 +5,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12" style="float:left;">
-                @if (session()->has('create_product'))
-                <div class="alert alert-success">
-                    <div class="container">
-                        <div class="alert-icon">
-                            <i class="material-icons">check</i>
-                        </div>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                        </button>
-                        <b>THÊM THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-                    </div>
-                </div>
-                @endif
-                @if (session()->has('edit_price'))
-                <div class="alert alert-success">
-                    <div class="container">
-                        <div class="alert-icon">
-                            <i class="material-icons">check</i>
-                        </div>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                        </button>
-                        <b>CẬP NHẬT THÀNH CÔNG</b> <span>THÔNG TIN CỦA BẠN ĐÃ ĐƯỢC LƯU LẠI</span>
-                    </div>
-                </div>
-                @endif
                 <div class="card">
                     <div class="card-header card-header-rose card-header-icon">
                         <div class="card-icon">
@@ -51,7 +25,7 @@
                                             <th>Giá nhập vào</th>
                                             <th>Giá bán</th>
                                             <th class="text-center">Số lượng</th>
-                                            <th class="text-center">Đã bán</th>
+                                            {{-- <th class="text-center">Đã bán</th> --}}
                                             {{-- <th style="width: 216px" class="text-center">Trạng thái</th> --}}
                                             <th>Hành động</th>
                                         </tr>
@@ -155,9 +129,9 @@
                                             <td class="text-center">
                                                 <input type="number" name="quantity[{{$variant->id}}]" value="{{old('quantity') ? old('quantity') : $variant->quantity}}">
                                             </td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 {{$variant->purchase}}
-                                            </td>
+                                            </td> --}}
                                             {{-- <td class="text-center">
                                                 @switch($variant->status)
                                                     @case(0)
@@ -355,6 +329,9 @@
 </script>
 
 <script>
+    @if (session()->has('edit_price'))
+    toastr.success('Thêm thông tin thành công');
+    @endif
     @error('quantity.*')
     Command: toastr["error"]("{{$message}}")
 

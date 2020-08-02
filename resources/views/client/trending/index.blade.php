@@ -31,13 +31,13 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="hover-img">
+                                {{-- <div class="hover-img">
                                     <a href="/san-pham/{{$item->p_slug}}">
                                         <div class="card-image ">
-                                            <img src="{{$item->image_product->first()->image}}" alt="..." />
+                                            <img src="{{$item->image_product->first()}}" alt="..." />
                                         </div>
                                     </a>
-                                </div>
+                                </div> --}}
 
                                 <div class="card-content">
                                     <a href="/san-pham/{{$item->p_slug}}">
@@ -75,7 +75,7 @@
                                         <div class="footer">
                                             <div class="price-container">
                                                 <span
-                                                    class="price {{$item->quantity == 0 ? 'price-sold-out': 'price-new'}}">{{$item->quantity == 0? 'Tạm hết hàng' : number_format($item->price). '₫'}}</span>
+                                                class="price {{checkQuantityProduct($item->id) == false ? 'price-sold-out': 'price-new'}}">{{checkQuantityProduct($item->id) == false? 'Tạm hết hàng' : number_format($item->price). '₫'}}</span>
                                             </div>
 
                                             <div class="stats">

@@ -42,7 +42,7 @@
                                         <input type="text" name="product_code" class="form-control"
                                             value="{{$product->product_code}}">
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
 
                             <div class="row">

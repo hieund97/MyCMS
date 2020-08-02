@@ -41,7 +41,7 @@
                                 <th class="th-description text-center" style="width: 116px;">Trạng thái</th>
                                 <th class="th-description text-right" style="width: 86px;">Số lượng</th>
                                 <th class="text-center" style="width: 126px;">Giá</th>
-                                <th class="text-center" style="width: 163px;">Ngày cập nhật</th>
+                                <th class="text-center" style="width: 163px;">Ngày tạo</th>
                                 <th class="text-center" style="width: 96px;">Hành động</th>
                             </tr>
                         </thead>
@@ -321,7 +321,25 @@
         $('#ordertable').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'excel', 'pdf'
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [ 0, 1, 4, 5, 6, 7, 8, 9, 10 ]
+                    }, 
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    title: function () { return 'Danh sách đơn hàng' },
+                    customize : function(doc) {
+                        doc.content[1].table.widths = [ '10%', '20%', '20%', '5%', '5%', '15%', '5%', '10%', '10%' ];
+                    },
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: [ 0, 1, 4, 5, 6, 7, 8, 9, 10 ]
+                    }, 
+                    title: function () { return 'Danh sách đơn hàng' },
+                }
             ],
             "order": [[ 11, "desc" ]]
         });

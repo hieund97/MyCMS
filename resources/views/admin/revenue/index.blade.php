@@ -44,12 +44,12 @@
                         </div>
                         <div class="card-body">
                             <h4 class="card-title ">Doanh thu theo tháng</h4>
-                            <p class="card-category">Bar Chart</p>
+                            {{-- <p class="card-category">Bar Chart</p> --}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header card-header-icon card-header-info">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

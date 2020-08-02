@@ -98,7 +98,7 @@
                 pageSize: 'LEGAL',
                 title: function () { return 'Phiếu nhập hàng hóa cửa hàng 360' },
                 customize : function(doc) {
-                    doc.content[2].table.widths = [ '5%', '20%', '20%', '35%', '20%'];
+                    doc.content[2].table.widths = [ '5%', '20%', '20%', '30%', '20%'];
                 },
             }
         ],
