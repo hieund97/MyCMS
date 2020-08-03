@@ -344,28 +344,6 @@
         });
 
         $('#ordertable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [ 0, 1, 4, 5, 6, 7, 8, 9, 10 ]
-                    }, 
-                    orientation: 'landscape',
-                    pageSize: 'LEGAL',
-                    title: function () { return 'Danh sách đơn hàng' },
-                    customize : function(doc) {
-                        doc.content[1].table.widths = [ '10%', '20%', '20%', '5%', '5%', '15%', '5%', '10%', '10%' ];
-                    },
-                },
-                {
-                    extend: 'excel',
-                    exportOptions: {
-                        columns: [ 0, 1, 4, 5, 6, 7, 8, 9, 10 ]
-                    }, 
-                    title: function () { return 'Danh sách đơn hàng' },
-                }
-            ],
             "order": [[ 10, "desc" ]]
         });
     });

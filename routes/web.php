@@ -26,6 +26,8 @@ Route::group([
     // Xuất pdf
     Route::get('/ticket-pdf','PdfController@ticket_pdf');
     Route::get('/analytic-pdf','PdfController@analytic_pdf');
+    Route::get('/product-back','PdfController@product_back_pdf');
+    Route::get('/unsold-pdf','PdfController@unsold_pdf');
 
     // Email template
     Route::get('/email-template','EmailController@list');
@@ -111,6 +113,7 @@ Route::group([
 
             // ticket
             Route::get('/ticket-product', 'ProductController@getTicketProduct');
+            Route::get('/unsold', 'ProductController@getUnsoldProduct');
 
             //sale
             Route::get('/sale', 'ProductController@getListSale');

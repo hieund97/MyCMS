@@ -527,4 +527,9 @@ class ProductController extends Controller
 
         return response()->json([], 204);
     }
+
+    public function getUnsoldProduct(){
+        $unsoldProduct = Variant::orderBy('quantity', 'DESC')->paginate(5);
+        return view('admin.product.unsold', compact('unsoldProduct'));
+    }
 }

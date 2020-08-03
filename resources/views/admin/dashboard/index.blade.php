@@ -93,26 +93,27 @@
                                             <th>Tên</th>
                                             <th style="width: 86px;">Ảnh</th>
                                             <th class="text-center">Số lượng đã bán</th>
-                                            <th class="text-center">Số lượng còn lại</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($bestSellerProduct as $item)
+                                        @php
+                                        $product = getInfoProduct($item->product_id);
+                                        @endphp
                                         <tr>
                                             <td class="td-name">
-                                                <a href="/admin/products/{{$item->id}}/edit">{{$item->name}}</a>
+                                                <a href="/admin/products/{{$product->id}}/edit">{{$product->name}}</a>
                                                 <br />
-                                                <small>by {{$item->brand->name}}</small>
+                                                <small>by {{$product->brand->name}}</small>
                                             </td>
                                             <td>
-                                                <a href="/san-pham/{{$item->p_slug}}" target="_blank">
+                                                <a href="/san-pham/{{$product->p_slug}}" target="_blank">
                                                     <div class="img-container">
-                                                        <img src="{{ $item->avatar }}" title="{{$item->name}}">
+                                                        <img src="{{ $product->avatar }}" title="{{$product->name}}">
                                                     </div>
                                                 </a>
                                             </td>
                                             <td class="text-center">{{$item->purchase}}</td>
-                                            <td class="text-center">{{$item->quantity}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -146,16 +147,19 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($unsoldProduct as $item)
+                                        @php
+                                        $product = getInfoProduct($item->product_id);
+                                        @endphp
                                         <tr>
                                             <td class="td-name">
-                                                <a href="/admin/products/{{$item->id}}/edit">{{$item->name}}</a>
+                                                <a href="/admin/products/{{$product->id}}/edit">{{$product->name}}</a>
                                                 <br />
-                                                <small>by {{$item->brand->name}}</small>
+                                                <small>by {{$product->brand->name}}</small>
                                             </td>
                                             <td>
-                                                <a href="/san-pham/{{$item->p_slug}}" target="_blank">
+                                                <a href="/san-pham/{{$product->p_slug}}" target="_blank">
                                                     <div class="img-container">
-                                                        <img src="{{ $item->avatar }}" title="{{$item->name}}">
+                                                        <img src="{{ $product->avatar }}" title="{{$product->name}}">
                                                     </div>
                                                 </a>
                                             </td>

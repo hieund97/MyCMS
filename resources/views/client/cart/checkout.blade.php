@@ -221,7 +221,7 @@
                     @endif
                     <div class="submit text-center">
                         <a href="/gio-hang" class="btn btn-warning btn-raised btn-round pull-left ">
-                            < Trở về giỏ hàng </a> <button type="submit"
+                            < Trở về giỏ hàng </a> <button type="submit" id="btn-complete"
                                 class="btn btn-info btn-raised btn-round pull-right {{Cart::content()->count() > 0? '': 'disabled'}}">
                                 Hoàn tất đơn
                                 hàng</button>
@@ -410,6 +410,10 @@
                         }
                     }
                 });
+            });
+
+            $('#btn-complete').click(function (){
+                toastr.info('Hệ thống đang xử lý vui lòng đợi');
             })
         });
 

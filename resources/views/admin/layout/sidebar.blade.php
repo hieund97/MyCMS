@@ -135,6 +135,12 @@
                 <span class="sidebar-normal">Hàng trả về</span>
               </a>
             </li>
+            <li class="nav-item pad {{(request()->is('admin/products/unsold'))? 'active' : null}}">
+              <a class="nav-link" href="/admin/products/unsold">
+                <span class="sidebar-mini"> UP </span>
+                <span class="sidebar-normal">Hàng tồn kho</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
@@ -171,7 +177,7 @@
       <li class="nav-item {{Request::segment(2) === 'revenue'? 'active' : null}}">
         <a class="nav-link" href="/admin/revenue">
           <i class="material-icons">timeline</i>
-          <p> Thống kê </p>
+          <p> Doanh thu</p>
         </a>
       </li>
       <li class="nav-item {{Request::segment(2) === 'comment'? 'active' : null}} " >

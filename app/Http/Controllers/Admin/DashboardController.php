@@ -10,6 +10,7 @@ use App\Models\Categories;
 use App\Models\Blog;
 use App\Models\Product;
 use App\Models\Subcribe;
+use App\Models\Variant;
 
 class DashboardController extends Controller
 {
@@ -18,8 +19,8 @@ class DashboardController extends Controller
         $product = Product::all();
         $blog = Blog::all();
         $sub = Subcribe::all();
-        $bestSellerProduct = Product::orderBy('purchase', 'DESC')->paginate(5);
-        $unsoldProduct = Product::orderBy('quantity', 'DESC')->where('purchase', 0)->paginate(5);
+        $bestSellerProduct = Variant::orderBy('purchase', 'DESC')->paginate(5);
+        $unsoldProduct = Variant::orderBy('quantity', 'DESC')->paginate(5);
         return view('admin.dashboard.index', compact('attr_order', 'product', 'blog', 'sub', 'bestSellerProduct', 'unsoldProduct'));
     }
 }

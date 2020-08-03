@@ -5,11 +5,16 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-rose card-header-icon">
-                <div class="col-md-8" style="float:left">
-                    <div class="card-icon">
-                        <i class="material-icons">card_travel</i>
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="card-icon">
+                            <i class="material-icons">card_travel</i>
+                        </div>
+                        <h2 class="card-title">Danh sách hàng trả về</h2>
                     </div>
-                    <h2 class="card-title">Danh sách hàng trả về</h2>
+                    <div class="col-md-1" style="right: 15px;top: 15px;">
+                        <a href="/admin/product-back" class="btn btn-info" id="btn-pdf" >Xuất pdf</a>
+                    </div>
                 </div>
             </div>
             <div class="card-body table-hover">
@@ -48,6 +53,7 @@
                             $user = getInfoGuest($order->guest_id);
                             }
                             @endphp
+                            @if ($product != null)
                             <tr>
                                 <td class="text-center">{{$order->order_code}}</td>
                                 <td class="td-name">
@@ -115,6 +121,7 @@
                                     {{$item->updated_at}}
                                 </td>
                             </tr>
+                            @endif
                             @empty
                             <tr>Không sản phẩm nào</tr>
                             @endforelse
@@ -251,6 +258,10 @@
                     }
                 });
             });
+        });
+
+        $('#btn-pdf').click(function (){
+            toastr.info('Đang xử lý');
         });
     });
 
