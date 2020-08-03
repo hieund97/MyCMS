@@ -93,12 +93,15 @@
                                             <th>Tên</th>
                                             <th style="width: 86px;">Ảnh</th>
                                             <th class="text-center">Số lượng đã bán</th>
+                                            <th class="text-center">Kích cỡ</th>
+                                            <th class="text-center">Màu sắc</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($bestSellerProduct as $item)
                                         @php
                                         $product = getInfoProduct($item->product_id);
+                                        $data = getInfoProductFromVariant($item->id);
                                         @endphp
                                         <tr>
                                             <td class="td-name">
@@ -114,6 +117,9 @@
                                                 </a>
                                             </td>
                                             <td class="text-center">{{$item->purchase}}</td>
+                                            @foreach ($data['value'] as $item)
+                                            <td class="text-center">{{$item['value'] }}</td>
+                                            @endforeach
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -143,12 +149,15 @@
                                             <th style="width: 86px;">Ảnh</th>
                                             <th class="text-center">Số lượng đã bán</th>
                                             <th class="text-center">Số lượng còn lại</th>
+                                            <th class="text-center">Kích cỡ</th>
+                                            <th class="text-center">Màu sắc</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($unsoldProduct as $item)
                                         @php
                                         $product = getInfoProduct($item->product_id);
+                                        $data = getInfoProductFromVariant($item->id);
                                         @endphp
                                         <tr>
                                             <td class="td-name">
@@ -165,6 +174,9 @@
                                             </td>
                                             <td class="text-center">{{$item->purchase}}</td>
                                             <td class="text-center">{{$item->quantity}}</td>
+                                            @foreach ($data['value'] as $item)
+                                            <td class="text-center">{{$item['value'] }}</td>
+                                            @endforeach
                                         </tr>
                                         @endforeach
                                     </tbody>

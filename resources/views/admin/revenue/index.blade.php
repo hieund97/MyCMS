@@ -21,7 +21,7 @@
                     <button class="btn btn-info" type="submit" id="btn-analytic" >Lấy</button>
                 </div>
                 <div class="col-md-1" style="padding-left: 0px">
-                    <a href="/admin/analytic-pdf" class="btn btn-info" id="btn-analytic" >Xuất pdf</a>
+                    <a href="/admin/analytic-pdf" class="btn btn-info" id="btn-analytics" >Xuất pdf</a>
                 </div>
                 <div class="col-md-4 card" style="margin-top: 0px; padding-bottom: 15px;">
                     <h3>Thống kê tổng thu nhập</h3>
@@ -129,7 +129,7 @@
         });
 
         $('#btn-analytics').click(function (){
-            toastr.info('Đang xử lý');
+            toastr.info('Đang xử lý. Vui lòng đợi trong giây lát!');
         });
     });
   </script>

@@ -35,15 +35,19 @@
                 <th style="width: 10%;">ID</th>
                 <th style="width: 20%;">Tên</th>
                 <th style="width: 20%;">Ảnh</th>
-                <th style="width: 15%;"  class="text-center">Số lượng đã bán</th>
-                <th style="width: 15%;" class="text-center">Số lượng còn lại</th>
-                <th style="width: 10%;" class="text-center">Ngày tạo</th>
+                <th style="width: 20%;"  class="text-center">Số lượng đã bán</th>
+                <th style="width: 20%;" class="text-center">Số lượng còn lại</th>
+                <th style="width: 15%;"  class="text-center">Kích cỡ</th>
+                <th style="width: 15%;"  class="text-center">Màu sắc</th>
+
+                <th style="width: 20%;" class="text-center">Ngày tạo</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($unsoldProduct as $item)
             @php
             $product = getInfoProduct($item->product_id);
+            $data = getInfoProductFromVariant($item->id);
             @endphp
             <tr>
                 <td>{{$product->id}}</td>
@@ -57,7 +61,10 @@
                 </td>
                 <td class="text-center">{{$item->purchase}}</td>
                 <td class="text-center">{{$item->quantity}}</td>
-                <td class="text-center">{{$item->created_at}}</td>
+                @foreach ($data['value'] as $item)
+                <td class="text-center">{{$item['value'] }}</td>
+                @endforeach
+                <td class="text-center">{{$product->created_at}}</td>
             </tr>
             @endforeach
         </tbody>
