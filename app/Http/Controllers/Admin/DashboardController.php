@@ -15,12 +15,11 @@ class DashboardController extends Controller
 {
     public function index(){
         $attr_order = Attr_Order::all();
-        $blogs = Blog::inRandomOrder()->paginate(3);
         $product = Product::all();
         $blog = Blog::all();
         $sub = Subcribe::all();
         $bestSellerProduct = Product::orderBy('purchase', 'DESC')->paginate(5);
         $unsoldProduct = Product::orderBy('quantity', 'DESC')->where('purchase', 0)->paginate(5);
-        return view('admin.dashboard.index', compact('blogs', 'attr_order', 'product', 'blog', 'sub', 'bestSellerProduct', 'unsoldProduct'));
+        return view('admin.dashboard.index', compact('attr_order', 'product', 'blog', 'sub', 'bestSellerProduct', 'unsoldProduct'));
     }
 }

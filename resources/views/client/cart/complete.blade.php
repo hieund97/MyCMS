@@ -101,7 +101,7 @@
                             Họ và tên
                         </td>
                         <td>
-                            {{auth()->user()->last_name}} {{auth()->user()->first_name}}
+                            {{$orders->surrogate_name}}
                         </td>
                     </tr>
                     <tr>
@@ -150,7 +150,7 @@
                             Họ và tên
                         </td>
                         <td>
-                            {{$orders->guest->client_name}}
+                            {{$orders->surrogate_name}}
                         </td>
                     </tr>
                     <tr>

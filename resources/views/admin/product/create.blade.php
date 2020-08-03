@@ -179,7 +179,7 @@
                             <div class="row">
                                 <div class="col-md-10" style="padding-bottom: 50px;">
                                     <label for="category">Chọn danh mục <span style="color: red">*</span></label>
-                                    <select class="form-control" name="category[]" id="select-category">
+                                    <select class="form-control" name="category[]" id="select-category" multiple="multiple" placeholder="Chọn danh mục">
                                         {{getCategory($categories, 0, '')}}
                                     </select>
                                     {{-- <select class="selectpicker" name="category[]" data-style="select-with-transition"
@@ -323,7 +323,9 @@
 @push('js')
     <script>
          $(document).ready(function(){
-            $('#select-category').select2();
+            $('#select-category').select2({
+                placeholder: "Chọn danh mục",
+            });
             $('#select-trend').select2();
             $('#select-brand').select2();
 
