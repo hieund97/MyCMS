@@ -15,6 +15,8 @@ class AlterTableProduct extends Migration
     {
         Schema::table('product', function (Blueprint $table) {
             $table->tinyInteger('status')->default(0)->after('detail')->comment('0: Đang chờ, 1: Đã duyệt');
+            $table->integer('quantity')->default(0)->change();
+            $table->date('day_created')->after('highlight')->nullable();
         });
     }
 
@@ -27,6 +29,8 @@ class AlterTableProduct extends Migration
     {
         Schema::table('product', function (Blueprint $table) {
             $table->dropColumn('status')->change();
+            $table->dropColumn('day_created')->change();
+            $table->integer('quantity')->nullable()->change();
         });
     }
 }

@@ -14,9 +14,11 @@ class HomeController extends Controller
 {
     public function index(){
         $featureProduct = Product::where('highlight', '=', 1)->where('status', 1)->latest()->paginate(12);
-        
+        $saleProduct = [];
         $saleCategory = Categories::find(22);
-        $saleProduct = $saleCategory->product()->where('product.status', 1)->get();
+        if($saleProduct){
+            $saleProduct = $saleCategory->product()->where('product.status', 1)->get();
+        }
         $activeTrending = Trending::where('active', '=', 1)->get();
         $activeSlider = Slider::where('active', '=', 1)->latest()->get();
        

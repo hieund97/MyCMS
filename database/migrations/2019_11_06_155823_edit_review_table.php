@@ -16,6 +16,7 @@ class EditReviewTable extends Migration
         Schema::table('review', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_comment')->nullable()->change();
             $table->unsignedBigInteger('user_id')->nullable()->change();
+            $table->unsignedBigInteger('parent_comment')->default(0)->change();
         });
     }
 
