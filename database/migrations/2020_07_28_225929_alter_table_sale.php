@@ -18,6 +18,8 @@ class AlterTableSale extends Migration
             $table->dropColumn('color');
             $table->renameColumn('sale', 'percent_sale');
             $table->string('code_sale')->after('product_id')->unique();
+            $table->dropForeign(['product_id']);
+            $table->dropColumn('product_id');
         });
     }
 
@@ -33,6 +35,7 @@ class AlterTableSale extends Migration
             $table->bigInteger('color');
             $table->renameColumn('percent_sale', 'sale');
             $table->dropColumn('code_sale');
+            $table->bigInteger('product_id')->nullable();
         });
     }
 }

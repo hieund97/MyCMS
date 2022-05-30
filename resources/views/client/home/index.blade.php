@@ -13,6 +13,7 @@
         <h2 class="section-title">Sản phẩm sale</h2>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
+                @if ($saleProduct)
                 <div class="carousel carousel-showmanymoveone slide" id="itemslider2">
                     <div class="carousel-inner">
                         @php
@@ -86,6 +87,7 @@
                 $i =1;
                 @endphp
                 @endforeach
+                @endif
             </div>
 
 
@@ -136,6 +138,7 @@
         </div>
 
         <div class="row" style="display: flex; flex-wrap:wrap;">
+            @if ($activeTrending)
             @foreach ($activeTrending as $trend)
             <div class="col-md-4">
                 <div class="card card-plain">
@@ -147,6 +150,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
 
@@ -154,6 +158,7 @@
 
 {{-- Sản phẩm nổi bật --}}
 <div class="section">
+    @if ($featureProduct)
     <div class="container-fluid">
         <h2 class="section-title" style="margin-left: 20px; ">Sản phẩm nổi bật</h2>
         <div class="row" style="display: flex; flex-wrap:wrap;">
@@ -228,6 +233,7 @@
         </div> <!-- end card -->
     </div>
     @endforeach
+    @endif
 </div>
 
 
